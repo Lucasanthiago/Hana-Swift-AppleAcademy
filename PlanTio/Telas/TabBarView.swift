@@ -12,7 +12,7 @@ struct TabBarView: View {
 
     var body: some View {
         TabView {
-            ContentView()
+            ContentView(viewModel: viewModel)
                 .tabItem {
                     Label("Plantas", systemImage: "leaf")
                 }
@@ -24,7 +24,7 @@ struct TabBarView: View {
             
             SunlightView(viewModel: viewModel)
                 .tabItem {
-                    Label("Sunligth", systemImage: "sun.max.fill")
+                    Label("Sunlight", systemImage: "sun.max.fill")
                 }
         }
     }

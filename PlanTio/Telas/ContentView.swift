@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    @StateObject private var viewModel = PlantViewModel()
+    @ObservedObject var viewModel: PlantViewModel
     @State private var showingAddPlant = false
 
     var body: some View {
@@ -43,5 +43,5 @@ struct ContentView: View {
 
 
 #Preview {
-    ContentView()
+    ContentView(viewModel: PlantViewModel())
 }
