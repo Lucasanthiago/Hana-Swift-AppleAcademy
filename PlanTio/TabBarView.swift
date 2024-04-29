@@ -8,11 +8,30 @@
 import SwiftUI
 
 struct TabBarView: View {
+    @StateObject var viewModel = PlantViewModel()
+
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        TabView {
+            ContentView()
+                .tabItem {
+                    Label("Plantas", systemImage: "leaf")
+                }
+            
+            WateringView(viewModel: viewModel)
+                .tabItem {
+                    Label("Watering", systemImage: "drop.circle.fill")
+                }
+            
+            SunlightView(viewModel: viewModel)
+                .tabItem {
+                    Label("Sunligth", systemImage: "sun.max.fill")
+                }
+        }
     }
 }
+
 
 #Preview {
     TabBarView()
 }
+

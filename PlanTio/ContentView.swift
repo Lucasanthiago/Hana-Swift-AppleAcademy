@@ -8,16 +8,39 @@
 import SwiftUI
 
 struct ContentView: View {
+    @StateObject private var viewModel = PlantViewModel()
+    @State private var showingAddPlant = false
+
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        NavigationView {
+            List {
+                ForEach(viewModel.plants) { plant in
+                    NavigationLink(destination: PlantDetailView(viewModel: viewModel, plant: plant)) {
+                        VStack(alignment: .leading) {
+                            Text(plant.name).font(.headline)
+                            Text(plant.type)
+                            
+                        }
+                    }
+                }
+                .onDelete(perform: viewModel.removePlant(at:))
+
+            }
+            .navigationBarTitle("Plantas")
+            .navigationBarItems(
+                trailing: Button(action: {
+                    showingAddPlant = true
+                }) {
+                    Image(systemName: "plus")
+                }
+            )
+            .sheet(isPresented: $showingAddPlant) {
+                AddPlantView(viewModel: viewModel)
+            }
         }
-        .padding()
     }
 }
+
 
 #Preview {
     ContentView()

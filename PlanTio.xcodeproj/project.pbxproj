@@ -15,6 +15,14 @@
 		76BA2A702BE0162B0038E2AD /* PlanTioUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76BA2A6F2BE0162B0038E2AD /* PlanTioUITests.swift */; };
 		76BA2A722BE0162B0038E2AD /* PlanTioUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76BA2A712BE0162B0038E2AD /* PlanTioUITestsLaunchTests.swift */; };
 		76BA2A7F2BE016720038E2AD /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76BA2A7E2BE016720038E2AD /* TabBarView.swift */; };
+		76BA2A812BE01B230038E2AD /* AddPlantView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76BA2A802BE01B230038E2AD /* AddPlantView.swift */; };
+		76BA2A832BE01B490038E2AD /* PlantViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76BA2A822BE01B490038E2AD /* PlantViewModel.swift */; };
+		76BA2A852BE01B5F0038E2AD /* Plant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76BA2A842BE01B5F0038E2AD /* Plant.swift */; };
+		76BA2A872BE01B770038E2AD /* DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76BA2A862BE01B770038E2AD /* DateFormatter.swift */; };
+		76BA2A892BE01BDE0038E2AD /* PlantDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76BA2A882BE01BDE0038E2AD /* PlantDetailView.swift */; };
+		76BA2A8B2BE01C100038E2AD /* WateringView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76BA2A8A2BE01C100038E2AD /* WateringView.swift */; };
+		76BA2A8D2BE01C230038E2AD /* SunlightView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76BA2A8C2BE01C230038E2AD /* SunlightView.swift */; };
+		76BA2A8F2BE01C390038E2AD /* AlarmView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76BA2A8E2BE01C390038E2AD /* AlarmView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +54,14 @@
 		76BA2A6F2BE0162B0038E2AD /* PlanTioUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanTioUITests.swift; sourceTree = "<group>"; };
 		76BA2A712BE0162B0038E2AD /* PlanTioUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanTioUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		76BA2A7E2BE016720038E2AD /* TabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
+		76BA2A802BE01B230038E2AD /* AddPlantView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPlantView.swift; sourceTree = "<group>"; };
+		76BA2A822BE01B490038E2AD /* PlantViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantViewModel.swift; sourceTree = "<group>"; };
+		76BA2A842BE01B5F0038E2AD /* Plant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Plant.swift; sourceTree = "<group>"; };
+		76BA2A862BE01B770038E2AD /* DateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatter.swift; sourceTree = "<group>"; };
+		76BA2A882BE01BDE0038E2AD /* PlantDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantDetailView.swift; sourceTree = "<group>"; };
+		76BA2A8A2BE01C100038E2AD /* WateringView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WateringView.swift; sourceTree = "<group>"; };
+		76BA2A8C2BE01C230038E2AD /* SunlightView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunlightView.swift; sourceTree = "<group>"; };
+		76BA2A8E2BE01C390038E2AD /* AlarmView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,7 +114,15 @@
 			children = (
 				76BA2A542BE0162A0038E2AD /* PlanTioApp.swift */,
 				76BA2A562BE0162A0038E2AD /* ContentView.swift */,
+				76BA2A882BE01BDE0038E2AD /* PlantDetailView.swift */,
+				76BA2A802BE01B230038E2AD /* AddPlantView.swift */,
+				76BA2A822BE01B490038E2AD /* PlantViewModel.swift */,
+				76BA2A842BE01B5F0038E2AD /* Plant.swift */,
+				76BA2A862BE01B770038E2AD /* DateFormatter.swift */,
 				76BA2A7E2BE016720038E2AD /* TabBarView.swift */,
+				76BA2A8A2BE01C100038E2AD /* WateringView.swift */,
+				76BA2A8C2BE01C230038E2AD /* SunlightView.swift */,
+				76BA2A8E2BE01C390038E2AD /* AlarmView.swift */,
 				76BA2A582BE0162B0038E2AD /* Assets.xcassets */,
 				76BA2A5A2BE0162B0038E2AD /* Preview Content */,
 			);
@@ -260,9 +284,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				76BA2A812BE01B230038E2AD /* AddPlantView.swift in Sources */,
+				76BA2A852BE01B5F0038E2AD /* Plant.swift in Sources */,
+				76BA2A8D2BE01C230038E2AD /* SunlightView.swift in Sources */,
 				76BA2A572BE0162A0038E2AD /* ContentView.swift in Sources */,
+				76BA2A872BE01B770038E2AD /* DateFormatter.swift in Sources */,
 				76BA2A7F2BE016720038E2AD /* TabBarView.swift in Sources */,
+				76BA2A892BE01BDE0038E2AD /* PlantDetailView.swift in Sources */,
+				76BA2A8F2BE01C390038E2AD /* AlarmView.swift in Sources */,
+				76BA2A832BE01B490038E2AD /* PlantViewModel.swift in Sources */,
 				76BA2A552BE0162A0038E2AD /* PlanTioApp.swift in Sources */,
+				76BA2A8B2BE01C100038E2AD /* WateringView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
