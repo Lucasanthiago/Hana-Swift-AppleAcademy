@@ -14,6 +14,7 @@
 		76BA2A662BE0162B0038E2AD /* PlanTioTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76BA2A652BE0162B0038E2AD /* PlanTioTests.swift */; };
 		76BA2A702BE0162B0038E2AD /* PlanTioUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76BA2A6F2BE0162B0038E2AD /* PlanTioUITests.swift */; };
 		76BA2A722BE0162B0038E2AD /* PlanTioUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76BA2A712BE0162B0038E2AD /* PlanTioUITestsLaunchTests.swift */; };
+		76BA2A7F2BE016720038E2AD /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76BA2A7E2BE016720038E2AD /* TabBarView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +45,7 @@
 		76BA2A6B2BE0162B0038E2AD /* PlanTioUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PlanTioUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		76BA2A6F2BE0162B0038E2AD /* PlanTioUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanTioUITests.swift; sourceTree = "<group>"; };
 		76BA2A712BE0162B0038E2AD /* PlanTioUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanTioUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		76BA2A7E2BE016720038E2AD /* TabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +98,7 @@
 			children = (
 				76BA2A542BE0162A0038E2AD /* PlanTioApp.swift */,
 				76BA2A562BE0162A0038E2AD /* ContentView.swift */,
+				76BA2A7E2BE016720038E2AD /* TabBarView.swift */,
 				76BA2A582BE0162B0038E2AD /* Assets.xcassets */,
 				76BA2A5A2BE0162B0038E2AD /* Preview Content */,
 			);
@@ -258,6 +261,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				76BA2A572BE0162A0038E2AD /* ContentView.swift in Sources */,
+				76BA2A7F2BE016720038E2AD /* TabBarView.swift in Sources */,
 				76BA2A552BE0162A0038E2AD /* PlanTioApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
