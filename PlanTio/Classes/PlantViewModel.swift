@@ -21,11 +21,20 @@ class PlantViewModel: ObservableObject {
         plants = (try? JSONDecoder().decode([Plant].self, from: plantData)) ?? []
     }
 
-    func addPlant(name: String, type: String, wateringTime: Date, sunTime: Date) {
-        let newPlant = Plant(name: name, type: type, wateringTime: wateringTime, sunTime: sunTime)
+    func addPlant(name: String, type: String, wateringTime: Date, sunTime: Date, image: UIImage?) {
+        var imageName: String? = nil
+        if let image = image {
+            imageName = UUID().uuidString + ".jpeg"
+            let imagePath = getDocumentsDirectory().appendingPathComponent(imageName!)
+            if let jpegData = image.jpegData(compressionQuality: 0.8) {
+                try? jpegData.write(to: imagePath)
+            }
+        }
+        let newPlant = Plant(name: name, type: type, wateringTime: wateringTime, sunTime: sunTime, imageName: imageName)
         plants.append(newPlant)
         savePlants()
     }
+
 
     private func savePlants() {
         plantData = (try? JSONEncoder().encode(plants)) ?? Data()
@@ -42,4 +51,10 @@ class PlantViewModel: ObservableObject {
             plants.remove(atOffsets: offsets)
             savePlants()
         }
+    
+    func getDocumentsDirectory() -> URL {
+        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        return paths[0]
+    }
+
 }

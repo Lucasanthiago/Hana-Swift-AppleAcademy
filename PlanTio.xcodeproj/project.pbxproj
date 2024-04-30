@@ -24,6 +24,7 @@
 		76BA2A8D2BE01C230038E2AD /* SunlightView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76BA2A8C2BE01C230038E2AD /* SunlightView.swift */; };
 		76BA2A8F2BE01C390038E2AD /* AlarmView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76BA2A8E2BE01C390038E2AD /* AlarmView.swift */; };
 		76BA2A972BE15FA90038E2AD /* InfoPlantas in Resources */ = {isa = PBXBuildFile; fileRef = 76BA2A962BE15FA90038E2AD /* InfoPlantas */; };
+		76BA2A992BE16B1A0038E2AD /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76BA2A982BE16B1A0038E2AD /* ImagePicker.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +65,7 @@
 		76BA2A8C2BE01C230038E2AD /* SunlightView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunlightView.swift; sourceTree = "<group>"; };
 		76BA2A8E2BE01C390038E2AD /* AlarmView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmView.swift; sourceTree = "<group>"; };
 		76BA2A962BE15FA90038E2AD /* InfoPlantas */ = {isa = PBXFileReference; lastKnownFileType = text; path = InfoPlantas; sourceTree = "<group>"; };
+		76BA2A982BE16B1A0038E2AD /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +124,7 @@
 				76BA2A8E2BE01C390038E2AD /* AlarmView.swift */,
 				76BA2A582BE0162B0038E2AD /* Assets.xcassets */,
 				76BA2A5A2BE0162B0038E2AD /* Preview Content */,
+				76BA2A982BE16B1A0038E2AD /* ImagePicker.swift */,
 			);
 			path = PlanTio;
 			sourceTree = "<group>";
@@ -313,6 +316,7 @@
 				76BA2A892BE01BDE0038E2AD /* PlantDetailView.swift in Sources */,
 				76BA2A8F2BE01C390038E2AD /* AlarmView.swift in Sources */,
 				76BA2A832BE01B490038E2AD /* PlantViewModel.swift in Sources */,
+				76BA2A992BE16B1A0038E2AD /* ImagePicker.swift in Sources */,
 				76BA2A552BE0162A0038E2AD /* PlanTioApp.swift in Sources */,
 				76BA2A8B2BE01C100038E2AD /* WateringView.swift in Sources */,
 			);

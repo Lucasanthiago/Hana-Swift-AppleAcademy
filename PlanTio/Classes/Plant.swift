@@ -12,6 +12,7 @@ struct Plant: Codable, Identifiable {
     let id = UUID()
     var name: String
     var type: String
-    var wateringTime: Date  // Horário específico para regar
-    var sunTime: Date       // Horário específico para tomar sol
+    var wateringTime: Date
+    var sunTime: Date
+    var imageName: String? // Nome do arquivo da imagem local
 }
