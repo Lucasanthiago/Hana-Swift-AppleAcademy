@@ -23,6 +23,7 @@
 		76BA2A8B2BE01C100038E2AD /* WateringView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76BA2A8A2BE01C100038E2AD /* WateringView.swift */; };
 		76BA2A8D2BE01C230038E2AD /* SunlightView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76BA2A8C2BE01C230038E2AD /* SunlightView.swift */; };
 		76BA2A8F2BE01C390038E2AD /* AlarmView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76BA2A8E2BE01C390038E2AD /* AlarmView.swift */; };
+		76BA2A972BE15FA90038E2AD /* InfoPlantas in Resources */ = {isa = PBXBuildFile; fileRef = 76BA2A962BE15FA90038E2AD /* InfoPlantas */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +63,7 @@
 		76BA2A8A2BE01C100038E2AD /* WateringView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WateringView.swift; sourceTree = "<group>"; };
 		76BA2A8C2BE01C230038E2AD /* SunlightView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunlightView.swift; sourceTree = "<group>"; };
 		76BA2A8E2BE01C390038E2AD /* AlarmView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmView.swift; sourceTree = "<group>"; };
+		76BA2A962BE15FA90038E2AD /* InfoPlantas */ = {isa = PBXFileReference; lastKnownFileType = text; path = InfoPlantas; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +114,7 @@
 		76BA2A532BE0162A0038E2AD /* PlanTio */ = {
 			isa = PBXGroup;
 			children = (
+				76BA2A962BE15FA90038E2AD /* InfoPlantas */,
 				76BA2A932BE01D580038E2AD /* Classes */,
 				76BA2A912BE01D210038E2AD /* Telas */,
 				76BA2A542BE0162A0038E2AD /* PlanTioApp.swift */,
@@ -276,6 +279,7 @@
 			files = (
 				76BA2A5C2BE0162B0038E2AD /* Preview Assets.xcassets in Resources */,
 				76BA2A592BE0162B0038E2AD /* Assets.xcassets in Resources */,
+				76BA2A972BE15FA90038E2AD /* InfoPlantas in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
