@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2EF02FEA2BE042220023247F /* VMNotificationHandler in Frameworks */ = {isa = PBXBuildFile; productRef = 2EF02FE92BE042220023247F /* VMNotificationHandler */; };
 		76BA2A552BE0162A0038E2AD /* PlanTioApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76BA2A542BE0162A0038E2AD /* PlanTioApp.swift */; };
 		76BA2A572BE0162A0038E2AD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76BA2A562BE0162A0038E2AD /* ContentView.swift */; };
 		76BA2A592BE0162B0038E2AD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 76BA2A582BE0162B0038E2AD /* Assets.xcassets */; };
@@ -69,6 +70,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2EF02FEA2BE042220023247F /* VMNotificationHandler in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -186,6 +188,9 @@
 			dependencies = (
 			);
 			name = PlanTio;
+			packageProductDependencies = (
+				2EF02FE92BE042220023247F /* VMNotificationHandler */,
+			);
 			productName = PlanTio;
 			productReference = 76BA2A512BE0162A0038E2AD /* PlanTio.app */;
 			productType = "com.apple.product-type.application";
@@ -258,6 +263,9 @@
 				Base,
 			);
 			mainGroup = 76BA2A482BE0162A0038E2AD;
+			packageReferences = (
+				2EF02FE82BE042220023247F /* XCRemoteSwiftPackageReference "VMNotificationHandler" */,
+			);
 			productRefGroup = 76BA2A522BE0162A0038E2AD /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -640,6 +648,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		2EF02FE82BE042220023247F /* XCRemoteSwiftPackageReference "VMNotificationHandler" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Visckmart/VMNotificationHandler.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.2.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		2EF02FE92BE042220023247F /* VMNotificationHandler */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2EF02FE82BE042220023247F /* XCRemoteSwiftPackageReference "VMNotificationHandler" */;
+			productName = VMNotificationHandler;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 76BA2A492BE0162A0038E2AD /* Project object */;
 }
