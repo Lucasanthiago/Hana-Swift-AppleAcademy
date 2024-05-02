@@ -12,6 +12,7 @@ import VMNotificationHandler
 
 class PlantViewModel: ObservableObject {
     @Published var plants: [Plant] = []
+//    @EnvironmentObject var addPlant: [timesToWater]
     @AppStorage("plantData") var plantData: Data = Data() {
         didSet {
             plants = (try? JSONDecoder().decode([Plant].self, from: plantData)) ?? []
@@ -20,6 +21,7 @@ class PlantViewModel: ObservableObject {
 
     init() {
         plants = (try? JSONDecoder().decode([Plant].self, from: plantData)) ?? []
+        
     }
 
     func addPlant(name: String, type: String, wateringTime: Date, sunTime: Date, image: UIImage?) {
@@ -43,9 +45,10 @@ class PlantViewModel: ObservableObject {
         let timesToSunbathing = Date.getDaysUntil(date: Calendar.current.date(byAdding: .year, value: 1, to: Date())!, startDate: sunTime, weekdays: [1,2,3,4,5,6,7])
         
 //        Task {
+//            try await VMNotificationHandler.shared.requestAuthorization()
 //            try await VMNotificationHandler.shared.removeNotifications(withIdentifiers: <#T##[String]#>)
-//
-//            let x = try await VMNotificationHandler.shared.scheduleNotification(identifier:title:subtitle:body:silenced:triggerTime:repeats:userInfo:)
+//            
+////            let x = try await VMNotificationHandler.shared.scheduleNotification(identifier:title:subtitle:body:silenced:triggerTime:repeats:userInfo:)
 //        }
         
     }
