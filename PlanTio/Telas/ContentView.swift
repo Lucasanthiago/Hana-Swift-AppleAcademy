@@ -35,7 +35,7 @@ struct ContentView: View {
                 }
             )
             .sheet(isPresented: $showingAddPlant) {
-                AddPlantView(viewModel: viewModel)
+                AddPlantView(viewModel: viewModel,plant: Plant(name: "aaaa", type: "cacto", wateringTime: Date(), sunTime: Date()))
             }
         }
     }
@@ -45,3 +45,5 @@ struct ContentView: View {
 #Preview {
     ContentView(viewModel: PlantViewModel())
 }
+
+

@@ -27,6 +27,7 @@ struct TabBarView: View {
                     Label("Sunlight", systemImage: "sun.max.fill")
                 }
         }
+       
     }
 }
 

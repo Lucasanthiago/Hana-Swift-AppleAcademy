@@ -22,19 +22,6 @@ class PlantViewModel: ObservableObject {
         plants = (try? JSONDecoder().decode([Plant].self, from: plantData)) ?? []
     }
 
-    func addPlant(name: String, type: String, wateringTime: Date, sunTime: Date) {
-        let newPlant = Plant(name: name, type: type, wateringTime: wateringTime, sunTime: sunTime)
-        
-        
-        let timesToWater =  Date.getDaysUntil(date: Calendar.current.date(byAdding: .year, value: 1, to: Date())!, startDate: wateringTime, weekdays: [1,2,3,4,5,6,7])
-        let timesToSunbathing = Date.getDaysUntil(date: Calendar.current.date(byAdding: .year, value: 1, to: Date())!, startDate: sunTime, weekdays: [1,2,3,4,5,6,7])
-        
-//        Task {
-//            try await VMNotificationHandler.shared.removeNotifications(withIdentifiers: <#T##[String]#>)
-//
-//            let x = try await VMNotificationHandler.shared.scheduleNotification(identifier:title:subtitle:body:silenced:triggerTime:repeats:userInfo:)
-//        }
-
     func addPlant(name: String, type: String, wateringTime: Date, sunTime: Date, image: UIImage?) {
         var imageName: String? = nil
         if let image = image {
@@ -47,6 +34,20 @@ class PlantViewModel: ObservableObject {
         let newPlant = Plant(name: name, type: type, wateringTime: wateringTime, sunTime: sunTime, imageName: imageName)
         plants.append(newPlant)
         savePlants()
+        
+        
+        //notificacao kaua
+                
+        
+        let timesToWater =  Date.getDaysUntil(date: Calendar.current.date(byAdding: .year, value: 1, to: Date())!, startDate: wateringTime, weekdays: [1,2,3,4,5,6,7])
+        let timesToSunbathing = Date.getDaysUntil(date: Calendar.current.date(byAdding: .year, value: 1, to: Date())!, startDate: sunTime, weekdays: [1,2,3,4,5,6,7])
+        
+//        Task {
+//            try await VMNotificationHandler.shared.removeNotifications(withIdentifiers: <#T##[String]#>)
+//
+//            let x = try await VMNotificationHandler.shared.scheduleNotification(identifier:title:subtitle:body:silenced:triggerTime:repeats:userInfo:)
+//        }
+        
     }
 
 
