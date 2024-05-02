@@ -20,6 +20,7 @@ struct PlantDetailView: View {
                     Button("Salvar Alterações") {
                         viewModel.updatePlant(updatedPlant: plant)
                         presentationMode.wrappedValue.dismiss()
+                        print(plant.wateringTime.description)
                     }
                     Spacer()
                 }
@@ -30,3 +31,6 @@ struct PlantDetailView: View {
 }
 
 
+#Preview {
+    PlantDetailView(viewModel: PlantViewModel(), plant: Plant(name: "aaaa", type: "cacto", wateringTime: Date(), sunTime: Date()))
+}

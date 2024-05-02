@@ -14,4 +14,5 @@ struct Plant: Codable, Identifiable {
     var type: String
     var wateringTime: Date  // Horário específico para regar
     var sunTime: Date       // Horário específico para tomar sol
+    // criar um notificationId
 }

@@ -7,6 +7,7 @@
 
 import Foundation
 import SwiftUI
+import VMNotificationHandler
 
 
 class PlantViewModel: ObservableObject {
@@ -23,6 +24,17 @@ class PlantViewModel: ObservableObject {
 
     func addPlant(name: String, type: String, wateringTime: Date, sunTime: Date) {
         let newPlant = Plant(name: name, type: type, wateringTime: wateringTime, sunTime: sunTime)
+        
+        
+        let timesToWater =  Date.getDaysUntil(date: Calendar.current.date(byAdding: .year, value: 1, to: Date())!, startDate: wateringTime, weekdays: [1,2,3,4,5,6,7])
+        let timesToSunbathing = Date.getDaysUntil(date: Calendar.current.date(byAdding: .year, value: 1, to: Date())!, startDate: sunTime, weekdays: [1,2,3,4,5,6,7])
+        
+//        Task {
+//            try await VMNotificationHandler.shared.removeNotifications(withIdentifiers: <#T##[String]#>)
+//
+//            let x = try await VMNotificationHandler.shared.scheduleNotification(identifier:title:subtitle:body:silenced:triggerTime:repeats:userInfo:)
+//        }
+
         plants.append(newPlant)
         savePlants()
     }
@@ -42,4 +54,19 @@ class PlantViewModel: ObservableObject {
             plants.remove(atOffsets: offsets)
             savePlants()
         }
+}
+extension Date{
+    static func getDaysUntil(date endDate: Date, startDate: Date, weekdays:[Int]) -> [Date]{
+        var currentDate = startDate
+        var dates: [Date] = []
+        
+        while currentDate < endDate{
+            let weekday = Calendar.current.component(.weekday, from: currentDate)
+            if weekdays.contains(weekday) {
+                dates.append(currentDate)
+            }
+            currentDate = Calendar.current.date(byAdding: .day, value: 1, to: currentDate)!
+        }
+        return dates
+    }
 }
