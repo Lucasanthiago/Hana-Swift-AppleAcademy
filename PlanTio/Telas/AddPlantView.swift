@@ -1,10 +1,3 @@
-//
-//  AddPlantView.swift
-//  PlanTio
-//
-//  Created by Lucas Santos on 29/04/24.
-//
-
 import SwiftUI
 
 struct AddPlantView: View {
@@ -14,6 +7,8 @@ struct AddPlantView: View {
     @State private var type: String = ""
     @State private var wateringTime: Date = Date()
     @State private var sunTime: Date = Date()
+    @State private var showingImagePicker = false
+    @State private var inputImage: UIImage?
 
     var body: some View {
         NavigationView {
@@ -22,19 +17,31 @@ struct AddPlantView: View {
                 TextField("Tipo", text: $type)
                 DatePicker("Horário para Regar", selection: $wateringTime, displayedComponents: .hourAndMinute)
                 DatePicker("Horário para Tomar Sol", selection: $sunTime, displayedComponents: .hourAndMinute)
+                Button("Escolher Imagem") {
+                    self.showingImagePicker = true
+                }
+                if inputImage != nil {
+                    Image(uiImage: inputImage!)
+                        .resizable()
+                        .scaledToFit()
+                }
                 HStack {
                     Spacer()
                     Button("Salvar") {
-                        viewModel.addPlant(name: name, type: type, wateringTime: wateringTime, sunTime: sunTime)
+                        viewModel.addPlant(name: name, type: type, wateringTime: wateringTime, sunTime: sunTime, image: inputImage)
                         presentationMode.wrappedValue.dismiss()
                     }
                     Spacer()
-
                 }
-                
-            
             }
             .navigationBarTitle("Adicionar Planta", displayMode: .inline)
+            .sheet(isPresented: $showingImagePicker, onDismiss: loadImage) {
+                ImagePicker(selectedImage: self.$inputImage, sourceType: .photoLibrary)
+            }
         }
+    }
+
+    func loadImage() {
+        // A imagem já está no estado inputImage, pronta para ser salva com os detalhes da planta.
     }
 }
