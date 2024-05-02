@@ -1,0 +1,14 @@
+{
+  "pins" : [
+    {
+      "identity" : "vmnotificationhandler",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Visckmart/VMNotificationHandler.git",
+      "state" : {
+        "revision" : "4e4436cf8b16967679a116c9e43a748bba91f046",
+        "version" : "1.2.0"
+      }
+    }
+  ],
+  "version" : 2
+}
