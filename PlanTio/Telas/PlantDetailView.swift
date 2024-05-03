@@ -37,7 +37,7 @@ struct PlantDetailView: View {
                         saveImageIfNeeded()
                         viewModel.updatePlant(updatedPlant: plant)
                         presentationMode.wrappedValue.dismiss()
-                        print(plant.wateringTime.description)
+//                        print(plant.wateringTime.description)
                     }
                     Spacer()
                 }

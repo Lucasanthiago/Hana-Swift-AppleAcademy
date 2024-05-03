@@ -6,7 +6,7 @@
 //
 
 import Foundation
-
+import VMNotificationHandler
 
 struct Plant: Codable, Identifiable {
     let id = UUID()
@@ -15,4 +15,7 @@ struct Plant: Codable, Identifiable {
     var wateringTime: Date
     var sunTime: Date
     var imageName: String? // Nome do arquivo da imagem local
+    var notificationIDs : [VMNotificationHandler.NotificationIdentifier] = []
+    
+    //     adicionar um id de notificação para conseguir apagar aqls que forem adicionadas
 }
