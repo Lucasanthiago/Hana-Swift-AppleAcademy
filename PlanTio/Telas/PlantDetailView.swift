@@ -10,18 +10,19 @@ struct PlantDetailView: View {
     @State  var wateringTime: Date = Date()
     @State var sunTime: Date = Date()
 
-    @State private var selectedCommonName: String = ""
+    @State var selectedCommonName: String = ""
 
     
     var body: some View {
 //        NavigationView {
             Form {
                 TextField("Nome", text: $plant.name)
-                Picker("Tipo", selection: $selectedCommonName) {
-                                    ForEach(viewModel.commonNames, id: \.self) { commonName in
-                                        Text(commonName).tag(commonName)
-                                    }
-                                }                
+                Picker("Tipo", selection: $plant.type) {
+                    ForEach(viewModel.commonNames, id: \.self) { commonName in
+                        Text(commonName).tag(commonName)
+                    }
+                }
+
                 DatePicker("Horário para Regar", selection: $plant.wateringTime, displayedComponents: .hourAndMinute)
                 DatePicker("Horário para Tomar Sol", selection: $plant.sunTime, displayedComponents: .hourAndMinute)
                 

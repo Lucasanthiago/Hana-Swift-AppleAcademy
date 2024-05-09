@@ -18,11 +18,12 @@ struct AddPlantView: View {
 //        NavigationView {
             Form {
                 TextField("Nome", text: $name)
-                Picker("Tipo", selection: $selectedCommonName) {
-                                    ForEach(viewModel.commonNames, id: \.self) { commonName in
-                                        Text(commonName).tag(commonName)
-                                    }
-                                }
+                Picker("Tipo", selection: $plant.type) {
+                    ForEach(viewModel.commonNames, id: \.self) { commonName in
+                        Text(commonName).tag(commonName)
+                    }
+                }
+
                 DatePicker("Horário para Regar", selection: $wateringTime, displayedComponents: .hourAndMinute)
                 DatePicker("Horário para Tomar Sol", selection: $sunTime, displayedComponents: .hourAndMinute)
                 Button("Escolher Imagem") {
