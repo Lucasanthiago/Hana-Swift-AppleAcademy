@@ -6,13 +6,22 @@ struct PlantDetailView: View {
     @State var plant: Plant
     @State private var showingImagePicker = false
     @State private var inputImage: UIImage?  // Estado para a imagem temporariamente selecionada
-    @State private var currentDisplayImage: UIImage?  // Estado para exibição da imagem atual
+    @State private var currentDisplayImage: UIImage?
+    @State  var wateringTime: Date = Date()
+    @State var sunTime: Date = Date()
 
+    @State private var selectedCommonName: String = ""
+
+    
     var body: some View {
-        NavigationView {
+//        NavigationView {
             Form {
                 TextField("Nome", text: $plant.name)
-                TextField("Espécie", text: $plant.type)
+                Picker("Tipo", selection: $selectedCommonName) {
+                                    ForEach(viewModel.commonNames, id: \.self) { commonName in
+                                        Text(commonName).tag(commonName)
+                                    }
+                                }                
                 DatePicker("Horário para Regar", selection: $plant.wateringTime, displayedComponents: .hourAndMinute)
                 DatePicker("Horário para Tomar Sol", selection: $plant.sunTime, displayedComponents: .hourAndMinute)
                 
@@ -35,7 +44,7 @@ struct PlantDetailView: View {
                     Spacer()
                     Button("Salvar Alterações") {
                         saveImageIfNeeded()
-                        viewModel.updatePlant(updatedPlant: plant)
+                        viewModel.updatePlant(updatedPlant: plant, wateringTime: wateringTime, sunTime: sunTime)
                         presentationMode.wrappedValue.dismiss()
 //                        print(plant.wateringTime.description)
                     }
@@ -46,7 +55,7 @@ struct PlantDetailView: View {
             .sheet(isPresented: $showingImagePicker, onDismiss: loadImage) {
                 ImagePicker(selectedImage: self.$inputImage, sourceType: .photoLibrary)
             }
-        }
+//        }
     }
 
     func loadImage() {

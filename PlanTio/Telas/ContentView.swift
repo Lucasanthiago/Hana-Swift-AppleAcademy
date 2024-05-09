@@ -24,15 +24,10 @@ struct ContentView: View {
             .background(Color("Background"))
             .navigationBarTitle("My Plants")
             .navigationBarItems(
-                trailing: Button(action: {
-                    showingAddPlant = true
-                }) {
+                trailing: NavigationLink(destination: AddPlantView(viewModel: viewModel, plant: Plant(name: "", type: "", wateringTime: Date(), sunTime: Date()))) {
                     Image(systemName: "plus")
                 }
             )
-            .sheet(isPresented: $showingAddPlant) {
-                AddPlantView(viewModel: viewModel,plant: Plant(name: "aaaa", type: "cacto", wateringTime: Date(), sunTime: Date()))
-            }
         }
     }
     

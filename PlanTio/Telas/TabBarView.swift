@@ -28,6 +28,9 @@ struct TabBarView: View {
                     Label("Sunbathing", systemImage: "sun.horizon.fill")
                 }
         }
+        .onAppear{
+            viewModel.getCommons()
+        }
 //        .task{
 //            
 //            await VMNotificationHandler.shared.requestAuthorization()

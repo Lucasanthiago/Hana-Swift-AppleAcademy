@@ -5,17 +5,24 @@ struct AddPlantView: View {
     @Environment(\.presentationMode) var presentationMode
     @State private var name: String = ""
     @State private var type: String = ""
-    @State private var wateringTime: Date = Date()
-    @State private var sunTime: Date = Date()
+    @State  var wateringTime: Date = Date()
+    @State  var sunTime: Date = Date()
     @State private var showingImagePicker = false
     @State private var inputImage: UIImage?
     @State var plant: Plant
     
+    @State  var selectedCommonName: String = ""
+
+    
     var body: some View {
-        NavigationView {
+//        NavigationView {
             Form {
                 TextField("Nome", text: $name)
-                TextField("Tipo", text: $type)
+                Picker("Tipo", selection: $selectedCommonName) {
+                                    ForEach(viewModel.commonNames, id: \.self) { commonName in
+                                        Text(commonName).tag(commonName)
+                                    }
+                                }
                 DatePicker("Horário para Regar", selection: $wateringTime, displayedComponents: .hourAndMinute)
                 DatePicker("Horário para Tomar Sol", selection: $sunTime, displayedComponents: .hourAndMinute)
                 Button("Escolher Imagem") {
@@ -29,11 +36,8 @@ struct AddPlantView: View {
                 HStack {
                     Spacer()
                     Button("Salvar") {
-                        viewModel.addPlant(name: name, type: type, wateringTime: wateringTime, sunTime: sunTime, image: inputImage)
+                        viewModel.addPlant(name: name, type: selectedCommonName, wateringTime: wateringTime, sunTime: sunTime, image: inputImage)
                         presentationMode.wrappedValue.dismiss()
-//                        print(plant.wateringTime.description)
-//                        print(plant.sunTime.description)
-
                     }
                     Spacer()
                 }
@@ -42,7 +46,7 @@ struct AddPlantView: View {
             .sheet(isPresented: $showingImagePicker, onDismiss: loadImage) {
                 ImagePicker(selectedImage: self.$inputImage, sourceType: .photoLibrary)
             }
-        }
+//        }
     }
 
     func loadImage() {
