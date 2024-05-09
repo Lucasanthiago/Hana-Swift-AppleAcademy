@@ -7,11 +7,17 @@
 
 import SwiftUI
 
+
+
 struct ContentView: View {
+    @State private var navigateToAddPlant = false
+
     @ObservedObject var viewModel: PlantViewModel
     @State private var showingAddPlant = false
     @State var searchText = ""
     var filteredPlants:[Plant] {viewModel.fiteredPlants(by: searchText)}
+    
+    
     
     var body: some View {
         NavigationView {
@@ -24,7 +30,7 @@ struct ContentView: View {
             .background(Color("Background"))
             .navigationBarTitle("My Plants")
             .navigationBarItems(
-                trailing: NavigationLink(destination: AddPlantView(viewModel: viewModel, plant: Plant(name: "", type: "", wateringTime: Date(), sunTime: Date()))) {
+                trailing: NavigationLink(destination: AddPlantView(viewModel: viewModel, plant: Plant(name: "", type: "", wateringTime: Date(), sunTime: Date())), isActive: $showingAddPlant) {
                     Image(systemName: "plus")
                 }
             )
@@ -65,6 +71,9 @@ struct ContentView: View {
         
     @ViewBuilder
     var noPlants: some View {
+        
+      
+
         if viewModel.plants.isEmpty {
             CustomContentUnavailableView(iconName: "leaf",
                                          title: "No Plants Yet",
@@ -80,6 +89,7 @@ struct ContentView: View {
                                          action: {showingAddPlant = true})
         }
     }
+
     
 }
 
