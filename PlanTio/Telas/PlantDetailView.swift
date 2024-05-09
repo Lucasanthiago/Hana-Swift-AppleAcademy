@@ -12,7 +12,7 @@ struct PlantDetailView: View {
         NavigationView {
             Form {
                 TextField("Nome", text: $plant.name)
-                TextField("Tipo", text: $plant.type)
+                TextField("Espécie", text: $plant.type)
                 DatePicker("Horário para Regar", selection: $plant.wateringTime, displayedComponents: .hourAndMinute)
                 DatePicker("Horário para Tomar Sol", selection: $plant.sunTime, displayedComponents: .hourAndMinute)
                 

@@ -14,11 +14,13 @@ struct AlarmView: View {
     var body: some View {
         HStack {
             Image(systemName: type == .watering ? "drop.circle.fill" : "sun.max.fill")
-                .foregroundColor(type == .watering ? .blue : .yellow)
+                .foregroundColor(type == .watering ? .cyan : .orange)
+                .font(.title3)
             VStack(alignment: .leading) {
-                Text(type == .watering ? "Regar" : "Tomar Sol")
+//                Text(type == .watering ? "Regar" : "Tomar Sol")
+                Text(plant.name)
+                    .font(.title3).bold()
                 Text("\(type == .watering ? plant.wateringTime : plant.sunTime, formatter: dateFormatter)")
-                    .font(.subheadline)
             }
         }
     }

@@ -22,6 +22,11 @@ class PlantViewModel: ObservableObject {
         plants = (try? JSONDecoder().decode([Plant].self, from: plantData)) ?? []
         
     }
+    
+    func fiteredPlants(by searchText: String)-> [Plant] {
+        if searchText.count < 3 {return plants}
+        return plants.filter({$0.name.localizedCaseInsensitiveContains(searchText)})
+    }
 
     func addPlant(name: String, type: String, wateringTime: Date, sunTime: Date, image: UIImage?) {
         var imageName: String? = nil

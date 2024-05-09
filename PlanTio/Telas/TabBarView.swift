@@ -15,7 +15,7 @@ struct TabBarView: View {
         TabView {
             ContentView(viewModel: viewModel)
                 .tabItem {
-                    Label("Plantas", systemImage: "leaf")
+                    Label("My Plants", systemImage: "leaf")
                 }
             
             WateringView(viewModel: viewModel)
@@ -25,7 +25,7 @@ struct TabBarView: View {
             
             SunlightView(viewModel: viewModel)
                 .tabItem {
-                    Label("Sunlight", systemImage: "sun.max.fill")
+                    Label("Sunbathing", systemImage: "sun.horizon.fill")
                 }
         }
 //        .task{

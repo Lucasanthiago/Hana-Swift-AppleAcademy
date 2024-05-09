@@ -16,6 +16,7 @@ struct Plant: Codable, Identifiable {
     var sunTime: Date
     var imageName: String? // Nome do arquivo da imagem local
     var notificationIDs : [VMNotificationHandler.NotificationIdentifier] = []
-    
+    var watered: Bool = false
+    var sunbathed: Bool = false
     //     adicionar um id de notificação para conseguir apagar aqls que forem adicionadas
 }

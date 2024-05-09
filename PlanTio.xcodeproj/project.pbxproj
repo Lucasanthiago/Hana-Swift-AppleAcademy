@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		072CA12F2BEAC3150085CB94 /* SwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 072CA12E2BEAC3150085CB94 /* SwiftUIView.swift */; };
+		072CA1342BEC28CC0085CB94 /* CustomContentUnavailableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 072CA1332BEC28CC0085CB94 /* CustomContentUnavailableView.swift */; };
 		2EF02FEA2BE042220023247F /* VMNotificationHandler in Frameworks */ = {isa = PBXBuildFile; productRef = 2EF02FE92BE042220023247F /* VMNotificationHandler */; };
 		76BA2A552BE0162A0038E2AD /* PlanTioApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76BA2A542BE0162A0038E2AD /* PlanTioApp.swift */; };
 		76BA2A572BE0162A0038E2AD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76BA2A562BE0162A0038E2AD /* ContentView.swift */; };
@@ -46,6 +48,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		072CA12E2BEAC3150085CB94 /* SwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIView.swift; sourceTree = "<group>"; };
+		072CA1332BEC28CC0085CB94 /* CustomContentUnavailableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomContentUnavailableView.swift; sourceTree = "<group>"; };
 		2EF02FEB2BE16CF80023247F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		76BA2A512BE0162A0038E2AD /* PlanTio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PlanTio.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		76BA2A542BE0162A0038E2AD /* PlanTioApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanTioApp.swift; sourceTree = "<group>"; };
@@ -96,6 +100,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		072CA1302BEC288A0085CB94 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				072CA1332BEC28CC0085CB94 /* CustomContentUnavailableView.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
 		76BA2A482BE0162A0038E2AD = {
 			isa = PBXGroup;
 			children = (
@@ -163,10 +175,12 @@
 			children = (
 				76BA2A7E2BE016720038E2AD /* TabBarView.swift */,
 				76BA2A562BE0162A0038E2AD /* ContentView.swift */,
+				072CA12E2BEAC3150085CB94 /* SwiftUIView.swift */,
 				76BA2A8A2BE01C100038E2AD /* WateringView.swift */,
 				76BA2A8C2BE01C230038E2AD /* SunlightView.swift */,
 				76BA2A882BE01BDE0038E2AD /* PlantDetailView.swift */,
 				76BA2A802BE01B230038E2AD /* AddPlantView.swift */,
+				072CA1302BEC288A0085CB94 /* Components */,
 			);
 			path = Telas;
 			sourceTree = "<group>";
@@ -317,7 +331,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				072CA12F2BEAC3150085CB94 /* SwiftUIView.swift in Sources */,
 				76BA2A812BE01B230038E2AD /* AddPlantView.swift in Sources */,
+				072CA1342BEC28CC0085CB94 /* CustomContentUnavailableView.swift in Sources */,
 				76BA2A852BE01B5F0038E2AD /* Plant.swift in Sources */,
 				76BA2A8D2BE01C230038E2AD /* SunlightView.swift in Sources */,
 				76BA2A572BE0162A0038E2AD /* ContentView.swift in Sources */,
