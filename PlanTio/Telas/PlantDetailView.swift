@@ -8,11 +8,18 @@ struct PlantDetailView: View {
     @State private var inputImage: UIImage?  // Estado para a imagem temporariamente selecionada
     @State private var currentDisplayImage: UIImage?  // Estado para exibição da imagem atual
 
+    @State private var selectedCommonName: String = ""
+
+    
     var body: some View {
-        NavigationView {
+//        NavigationView {
             Form {
                 TextField("Nome", text: $plant.name)
-                TextField("Tipo", text: $plant.type)
+                Picker("Tipo", selection: $selectedCommonName) {
+                                    ForEach(viewModel.commonNames, id: \.self) { commonName in
+                                        Text(commonName).tag(commonName)
+                                    }
+                                }                
                 DatePicker("Horário para Regar", selection: $plant.wateringTime, displayedComponents: .hourAndMinute)
                 DatePicker("Horário para Tomar Sol", selection: $plant.sunTime, displayedComponents: .hourAndMinute)
                 
@@ -46,7 +53,7 @@ struct PlantDetailView: View {
             .sheet(isPresented: $showingImagePicker, onDismiss: loadImage) {
                 ImagePicker(selectedImage: self.$inputImage, sourceType: .photoLibrary)
             }
-        }
+//        }
     }
 
     func loadImage() {

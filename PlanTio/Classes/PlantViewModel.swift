@@ -12,6 +12,7 @@ import VMNotificationHandler
 
 class PlantViewModel: ObservableObject {
     @Published var plants: [Plant] = []
+    @Published var commonNames: [String] = [] 
     @AppStorage("plantData") var plantData: Data = Data() {
         didSet {
             plants = (try? JSONDecoder().decode([Plant].self, from: plantData)) ?? []
@@ -20,7 +21,27 @@ class PlantViewModel: ObservableObject {
 
     init() {
         plants = (try? JSONDecoder().decode([Plant].self, from: plantData)) ?? []
+        loadCommonNames()
         
+        
+    }
+    
+    
+    func loadCommonNames() {
+        guard let url = Bundle.main.url(forResource: "InfoPlants", withExtension: "json"),
+              let data = try? Data(contentsOf: url) else {
+            print("Failed to load JSON")
+            return
+        }
+
+        do {
+            let decodedData = try JSONDecoder().decode([Welcome].self, from: data)
+            // Flatten all common names and remove duplicates
+            let allCommonNames = decodedData.flatMap { $0.common }
+            self.commonNames = Set(allCommonNames).sorted()  // Convert to Set to remove duplicates, then back to Array
+        } catch {
+            print("Error decoding JSON: \(error)")
+        }
     }
 
     func addPlant(name: String, type: String, wateringTime: Date, sunTime: Date, image: UIImage?) {
@@ -130,6 +151,35 @@ class PlantViewModel: ObservableObject {
         let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
         return paths[0]
     }
+    
+    
+    
+    func loadPlants() {
+            guard let url = Bundle.main.url(forResource: "InfoPlants", withExtension: "json"),
+                  let data = try? Data(contentsOf: url) else {
+                print("Falha ao carregar o arquivo JSON")
+                return
+            }
+            
+            let decoder = JSONDecoder()
+            if let jsonData = try? decoder.decode([Plant].self, from: data) {
+                self.plants = jsonData
+            }
+        }
+        
+        func getCommons() {
+            guard let url = Bundle.main.url(forResource: "InfoPlants", withExtension: "json"),
+                  let data = try? Data(contentsOf: url) else {
+                print("Falha ao carregar o arquivo JSON")
+                return
+            }
+            
+            let decoder = JSONDecoder()
+            if let plants = try? decoder.decode([Welcome].self, from: data) {
+                print(plants.flatMap {$0.common})
+                
+            }
+        }
 
 }
 extension Date{

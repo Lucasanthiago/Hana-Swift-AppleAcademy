@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     @ObservedObject var viewModel: PlantViewModel
-    @State private var showingAddPlant = false
+    @State private var showingAddPlant = false  // No longer needed if using direct navigation
 
     var body: some View {
         NavigationView {
@@ -19,24 +19,17 @@ struct ContentView: View {
                         VStack(alignment: .leading) {
                             Text(plant.name).font(.headline)
                             Text(plant.type)
-                            
                         }
                     }
                 }
                 .onDelete(perform: viewModel.removePlant(at:))
-
             }
             .navigationBarTitle("Plantas")
             .navigationBarItems(
-                trailing: Button(action: {
-                    showingAddPlant = true
-                }) {
+                trailing: NavigationLink(destination: AddPlantView(viewModel: viewModel, plant: Plant(name: "", type: "", wateringTime: Date(), sunTime: Date()))) {
                     Image(systemName: "plus")
                 }
             )
-            .sheet(isPresented: $showingAddPlant) {
-                AddPlantView(viewModel: viewModel,plant: Plant(name: "aaaa", type: "cacto", wateringTime: Date(), sunTime: Date()))
-            }
         }
     }
 }

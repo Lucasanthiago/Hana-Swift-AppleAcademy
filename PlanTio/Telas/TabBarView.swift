@@ -28,6 +28,9 @@ struct TabBarView: View {
                     Label("Sunlight", systemImage: "sun.max.fill")
                 }
         }
+        .onAppear{
+            viewModel.getCommons()
+        }
 //        .task{
 //            
 //            await VMNotificationHandler.shared.requestAuthorization()
