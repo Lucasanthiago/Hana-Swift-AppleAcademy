@@ -5,8 +5,8 @@ struct AddPlantView: View {
     @Environment(\.presentationMode) var presentationMode
     @State private var name: String = ""
     @State private var type: String = ""
-    @State private var wateringTime: Date = Date()
-    @State private var sunTime: Date = Date()
+    @State  var wateringTime: Date = Date()
+    @State  var sunTime: Date = Date()
     @State private var showingImagePicker = false
     @State private var inputImage: UIImage?
     @State var plant: Plant

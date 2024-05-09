@@ -59,35 +59,47 @@ class PlantViewModel: ObservableObject {
         //notificacao kaua
                 
         
-        let timesToWater =  Date.getDaysUntil(date: Calendar.current.date(byAdding: .month, value: 1, to: Date())!, startDate: wateringTime, weekdays: [1,2,3,4,5,6,7])
-            .map {$0.addingTimeInterval(10)}
-        let timesToSunbathing = Date.getDaysUntil(date: Calendar.current.date(byAdding: .month, value: 1, to: Date())!, startDate: sunTime, weekdays: [1,2,3,4,5,6,7])
-            .map {$0.addingTimeInterval(10)}
-        
+        let timesToWater =  Date.getDaysUntil(date: Calendar.current.date(byAdding: .weekday, value: 1, to: Date())!, startDate: wateringTime, weekdays: [1,2,3,4,5,6,7])
+            .map {$0.addingTimeInterval(5)}
+        let timesToSunbathing = Date.getDaysUntil(date: Calendar.current.date(byAdding: .weekday, value: 1, to: Date())!, startDate: sunTime, weekdays: [1,2,3,4,5,6,7])
+            .map {$0.addingTimeInterval(5)}
         Task { [imageName] in
+            if await VMNotificationHandler.shared.authorizationStatus != .denied {
             
-            var ids : [VMNotificationHandler.NotificationIdentifier] = []
-            
-            for time in timesToWater {
-//                print(time.formatted(.dateTime.day().hour().minute().second()))
-//                print(time.timeIntervalSince1970 - Date().timeIntervalSince1970)
-                let notificationID = try await VMNotificationHandler.shared.scheduleNotification(title: "Hora de regar! 💧", body:"\(name) está com sede.", triggerTime:
-                        .at(time) /*.after(time.timeIntervalSince1970 - Date().timeIntervalSince1970)*/)
-                ids.append(notificationID)
-
+           
+                
+                var ids : [VMNotificationHandler.NotificationIdentifier] = []
+                
+                for time in timesToWater {
+                    //                print(time.formatted(.dateTime.day().hour().minute().second()))
+                    //                print(time.timeIntervalSince1970 - Date().timeIntervalSince1970)
+                    let notificationID = try await VMNotificationHandler.shared.scheduleNotification(title: "Hora de regar! 💧", body:"\(name) está com sede.", triggerTime:
+                            .at(time) /*.after(time.timeIntervalSince1970 - Date().timeIntervalSince1970)*/)
+                    ids.append(notificationID)
+                    
+                }
+                
+                for time in timesToSunbathing {
+                    let notificationID = try await VMNotificationHandler.shared.scheduleNotification(title: "Hora do sol! ☀️", body: "\(name) está precisando de vitamina D!", triggerTime: .at(time))
+                    ids.append(notificationID)
+                    
+                }
+                await MainActor.run { [ids] in
+                    let newPlant = Plant(name: name, type: type, wateringTime: wateringTime, sunTime: sunTime, imageName: imageName, notificationIDs: ids)
+                    plants.append(newPlant)
+                    savePlants()
+                }
             }
-            
-            for time in timesToSunbathing {
-                let notificationID = try await VMNotificationHandler.shared.scheduleNotification(title: "Hora do sol! ☀️", body: "\(name) está precisando de vitamina D!", triggerTime: .at(time))
-                ids.append(notificationID)
-
-            }
-            await MainActor.run { [ids] in
-                let newPlant = Plant(name: name, type: type, wateringTime: wateringTime, sunTime: sunTime, imageName: imageName, notificationIDs: ids)
-                plants.append(newPlant)
-                savePlants()
+            else {
+                let newPlant = Plant(name: name, type: type, wateringTime: wateringTime, sunTime: sunTime, imageName: imageName, notificationIDs: [])
+                await MainActor.run {
+                    plants.append(newPlant)
+                    savePlants()
+                }
             }
         }
+        
+        
     
         
     }
@@ -96,39 +108,45 @@ class PlantViewModel: ObservableObject {
     private func savePlants() {
         plantData = (try? JSONEncoder().encode(plants)) ?? Data()
     }
+    
+    func callMain(index: Int, ids: [VMNotificationHandler.NotificationIdentifier]) async {
+        await MainActor.run {
+            plants[index].notificationIDs = ids
+            savePlants()
+        }
+    }
 
-    func updatePlant(updatedPlant: Plant) {
-        
+    func updatePlant(updatedPlant: Plant, wateringTime: Date, sunTime: Date) {
+        //plants[index].name
         
         if let index = plants.firstIndex(where: { $0.id == updatedPlant.id }) {
             plants[index] = updatedPlant
             Task {
                 await VMNotificationHandler.shared.removeNotifications(withIdentifiers:plants[index].notificationIDs, evenIfPending: true)
-                plants[index].notificationIDs = []
-                let timesToWater =  Date.getDaysUntil(date: Calendar.current.date(byAdding: .year, value: 1, to: Date())!, startDate: plants[index].wateringTime, weekdays: [1,2,3,4,5,6,7])
-                let timesToSunbathing = Date.getDaysUntil(date: Calendar.current.date(byAdding: .year, value: 1, to: Date())!, startDate: plants[index].sunTime, weekdays: [1,2,3,4,5,6,7])
-                
+                await MainActor.run {
+                    plants[index].notificationIDs = []
+                }
                 var ids : [VMNotificationHandler.NotificationIdentifier] = []
                 
+                let timesToWater =  Date.getDaysUntil(date: Calendar.current.date(byAdding: .weekday, value: 1, to: Date())!, startDate: wateringTime, weekdays: [1,2,3,4,5,6,7])
+                    .map {$0.addingTimeInterval(5)}
+                let timesToSunbathing = Date.getDaysUntil(date: Calendar.current.date(byAdding: .weekday, value: 1, to: Date())!, startDate: sunTime, weekdays: [1,2,3,4,5,6,7])
+                    .map {$0.addingTimeInterval(5)}
+               
                 for time in timesToWater {
-                    let notificationID = try await VMNotificationHandler.shared.scheduleNotification(title: "Hora de regar! 💧", body:"\(plants[index].name) está com sede.", triggerTime: .after(time.timeIntervalSince1970 - Date().timeIntervalSince1970))
+                    let notificationID = try await VMNotificationHandler.shared.scheduleNotification(title: "Hora de regar! 💧", body:" \(plants[index].name) está com sede.", triggerTime: .at(time))
                     ids.append(notificationID)
                     
                 }
                 
                 for time in timesToSunbathing {
-                    let notificationID = try await VMNotificationHandler.shared.scheduleNotification(title: "Hora do sol! ☀️", body: "\(plants[index].name) está precisando de vitamina D!", triggerTime: .after(time.timeIntervalSince1970 - Date().timeIntervalSince1970))
+                    let notificationID = try await VMNotificationHandler.shared.scheduleNotification(title: "Hora do sol! ☀️", body: "\(plants[index].name) está precisando de vitamina D!", triggerTime: .at(time))
                     ids.append(notificationID)
                     
                 }
-                
-                plants[index].notificationIDs = ids
-                savePlants()
-                
+                await callMain(index: index, ids: ids)
+
             }
-            
-            
-            
         }
     }
     
@@ -141,8 +159,10 @@ class PlantViewModel: ObservableObject {
         let plantToRemove = plants[firstIndex]
         Task {
             await VMNotificationHandler.shared.removeNotifications(withIdentifiers:plantToRemove.notificationIDs, evenIfPending: true)
-            plants.remove(atOffsets: offsets)
-            savePlants()
+            await MainActor.run {
+                plants.remove(atOffsets: offsets)
+                savePlants()
+            }
         }
         
     }

@@ -17,5 +17,4 @@ struct Plant: Codable, Identifiable {
     var imageName: String? // Nome do arquivo da imagem local
     var notificationIDs : [VMNotificationHandler.NotificationIdentifier] = []
     
-    //     adicionar um id de notificação para conseguir apagar aqls que forem adicionadas
 }
