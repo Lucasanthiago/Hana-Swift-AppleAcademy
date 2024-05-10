@@ -31,7 +31,7 @@ struct PlantDetailView: View {
                     Image(uiImage: displayImage)
                         .resizable()
                         .scaledToFit()
-                } else if let imageName = plant.imageName, let uiImage = UIImage(contentsOfFile: getDocumentsDirectory().appendingPathComponent(imageName).path) {
+                } else if let imageData = plant.imageData, let uiImage = UIImage(data: imageData) {
                     Image(uiImage: uiImage)
                         .resizable()
                         .scaledToFit()
@@ -44,8 +44,7 @@ struct PlantDetailView: View {
                 HStack {
                     Spacer()
                     Button("Salvar Alterações") {
-                        saveImageIfNeeded()
-                        viewModel.updatePlant(updatedPlant: plant, wateringTime: wateringTime, sunTime: sunTime)
+                        updatePlant()
                         presentationMode.wrappedValue.dismiss()
 //                        print(plant.wateringTime.description)
                     }
@@ -58,6 +57,21 @@ struct PlantDetailView: View {
             }
 //        }
     }
+    
+    func updatePlant() {
+        plant.wateringTime = wateringTime
+        plant.sunTime = sunTime
+        plant.type = selectedCommonName
+        plant.imageData = inputImage?.data
+        Task {
+            do {
+                try await viewModel.save(plant: plant)
+            } catch {
+                print("*** Erro salvando Planta ***")
+                print(error)
+            }
+        }
+    }
 
     func loadImage() {
         if let inputImage = self.inputImage {
@@ -65,16 +79,16 @@ struct PlantDetailView: View {
         }
     }
 
-    func saveImageIfNeeded() {
-        if let inputImage = self.inputImage {
-            let imageName = UUID().uuidString + ".jpeg"
-            let imagePath = getDocumentsDirectory().appendingPathComponent(imageName)
-            if let jpegData = inputImage.jpegData(compressionQuality: 0.8) {
-                try? jpegData.write(to: imagePath)
-                plant.imageName = imageName  // Atualiza o nome da imagem somente ao salvar
-            }
-        }
-    }
+//    func saveImageIfNeeded() {
+//        if let inputImage = self.inputImage {
+//            let imageName = UUID().uuidString + ".jpeg"
+//            let imagePath = getDocumentsDirectory().appendingPathComponent(imageName)
+//            if let jpegData = inputImage.jpegData(compressionQuality: 0.8) {
+//                try? jpegData.write(to: imagePath)
+//                plant.imageName = imageName  // Atualiza o nome da imagem somente ao salvar
+//            }
+//        }
+//    }
     
     func getDocumentsDirectory() -> URL {
         let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)

@@ -68,7 +68,7 @@ struct ContentView: View {
         }
         .onDelete(perform: viewModel.removePlant(at:))
     }
-        
+    
     @ViewBuilder
     var noPlants: some View {
         

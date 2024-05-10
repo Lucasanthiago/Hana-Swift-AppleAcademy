@@ -37,7 +37,7 @@ struct AddPlantView: View {
                 HStack {
                     Spacer()
                     Button("Salvar") {
-                        viewModel.addPlant(name: name, type: selectedCommonName, wateringTime: wateringTime, sunTime: sunTime, image: inputImage)
+                        addPlant()
                         presentationMode.wrappedValue.dismiss()
                     }
                     Spacer()
@@ -48,6 +48,18 @@ struct AddPlantView: View {
                 ImagePicker(selectedImage: self.$inputImage, sourceType: .photoLibrary)
             }
 //        }
+    }
+    
+    func addPlant() {
+        let newPlant = Plant(name: name, type: selectedCommonName, wateringTime: wateringTime, sunTime: sunTime, imageData: inputImage?.data)
+        Task {
+            do {
+                try await viewModel.save(plant: newPlant)
+            } catch {
+                print("*** Erro salvando Planta ***")
+                print(error)
+            }
+        }
     }
 
     func loadImage() {
