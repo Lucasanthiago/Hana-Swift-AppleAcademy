@@ -16,8 +16,56 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "32"
             endingLineNumber = "32"
-            landmarkName = "addPlant(name:type:wateringTime:sunTime:image:)"
+            landmarkName = "loadCommonNames()"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "4094EA10-C037-42F2-9283-C5B96E36359C"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PlanTio/Classes/PlantViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "153"
+            endingLineNumber = "153"
+            landmarkName = "removePlant(at:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "4094EA10-C037-42F2-9283-C5B96E36359C - 15ffb851623fdc9"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(5) suspend resume partial function for closure #1 @Sendable () async -&gt; () in PlanTio.PlantViewModel.removePlant(at: Foundation.IndexSet) -&gt; ()"
+                  moduleName = "PlanTio"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kauatrindade/plantio/PlanTio/Classes/PlantViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "147"
+                  endingLineNumber = "147"
+                  offsetFromSymbolStart = "104">
+               </Location>
+               <Location
+                  uuid = "4094EA10-C037-42F2-9283-C5B96E36359C - 15ffb851623fc97"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(5) suspend resume partial function for closure #1 @Sendable () async -&gt; () in PlanTio.PlantViewModel.removePlant(at: Foundation.IndexSet) -&gt; ()"
+                  moduleName = "PlanTio"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kauatrindade/plantio/PlanTio/Classes/PlantViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "153"
+                  endingLineNumber = "153"
+                  offsetFromSymbolStart = "104">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

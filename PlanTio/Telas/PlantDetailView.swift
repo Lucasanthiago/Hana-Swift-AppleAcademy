@@ -7,11 +7,6 @@ struct PlantDetailView: View {
     @State private var showingImagePicker = false
     @State private var inputImage: UIImage?  // Estado para a imagem temporariamente selecionada
     @State private var currentDisplayImage: UIImage?
-    @State  var wateringTime: Date = Date()
-    @State var sunTime: Date = Date()
-
-    @State var selectedCommonName: String = ""
-
     
     var body: some View {
 //        NavigationView {
@@ -24,7 +19,9 @@ struct PlantDetailView: View {
                 }
 
                 DatePicker("Horário para Regar", selection: $plant.wateringTime, displayedComponents: .hourAndMinute)
+                    .tag(plant.id)
                 DatePicker("Horário para Tomar Sol", selection: $plant.sunTime, displayedComponents: .hourAndMinute)
+                    .tag(plant.id)
                 
                 // Exibe a imagem atualmente selecionada ou a imagem já salva
                 if let displayImage = currentDisplayImage {
@@ -59,9 +56,6 @@ struct PlantDetailView: View {
     }
     
     func updatePlant() {
-        plant.wateringTime = wateringTime
-        plant.sunTime = sunTime
-        plant.type = selectedCommonName
         plant.imageData = inputImage?.data
         Task {
             do {
@@ -97,6 +91,6 @@ struct PlantDetailView: View {
 }
 
 
-#Preview {
-    PlantDetailView(viewModel: PlantViewModel(), plant: Plant(name: "aaaa", type: "cacto", wateringTime: Date(), sunTime: Date()))
-}
+//#Preview {
+//    PlantDetailView(viewModel: PlantViewModel(), plant: Plant(name: "aaaa", type: "cacto", wateringTime: Date(), sunTime: Date()))
+//}

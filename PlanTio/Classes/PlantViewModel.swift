@@ -50,7 +50,7 @@ class PlantViewModel: ObservableObject {
     }
     
     func save(plant:Plant) async throws {
-        savePlants(appending: plant)
+        await savePlants(appending: plant)
         await clearNotification(for: plant)
 
         guard await VMNotificationHandler.shared.authorizationStatus != .denied else { return }
@@ -61,7 +61,7 @@ class PlantViewModel: ObservableObject {
         let sunbathTimeMsg = "Hora do sol! ☀️"
         let sunbathTimeBody = "\(plant.name) está precisando de vitamina D!"
 
-        for index in 0..<Plant.weekDays.count {
+        for index in 0..<plant.timesToWater.count {
             let _ = try await VMNotificationHandler.shared.scheduleNotification(
                 identifier: plant.waterNotificationIDs[index],
                 title: wateringTimeMsg,
@@ -77,12 +77,23 @@ class PlantViewModel: ObservableObject {
         }
     }
 
-    private func savePlants(appending plant:Plant? = nil) {
-        if let plant,
-           !plants.contains(where: {$0.id == plant.id}) {
-            plants.append(plant)
+    private func savePlants(appending plant:Plant? = nil) async {
+        
+        await MainActor.run{
+            if let plant {
+                
+                
+                if let index = plants.firstIndex(where: {$0.id == plant.id}) {
+                    plants[index] = plant
+                    
+                } else {
+                    plants.append(plant)
+                }
+            }
+            
+            plantData = (try? JSONEncoder().encode(plants)) ?? Data()
         }
-        plantData = (try? JSONEncoder().encode(plants)) ?? Data()
+        
     }
     
 //    func callMain(index: Int, ids: [VMNotificationHandler.NotificationIdentifier]) async {
@@ -135,7 +146,9 @@ class PlantViewModel: ObservableObject {
             await clearNotification(for: plantToRemove)
             await MainActor.run {
                 plants.remove(atOffsets: offsets)
-                savePlants()
+                Task {
+                    await savePlants()
+                }
             }
         }
     }
