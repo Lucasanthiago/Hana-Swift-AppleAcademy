@@ -24,7 +24,7 @@ struct ContentView: View {
             .background(Color("Background"))
             .navigationBarTitle("My Plants")
             .navigationBarItems(
-                trailing: NavigationLink(destination: AddPlantView(viewModel: viewModel, plant: Plant(name: "", type: "", wateringTime: Date(), sunTime: Date()))) {
+                trailing: NavigationLink(destination: AddPlantView(viewModel: viewModel, plant: Plant(name: "", type: "", wateringTime: Date(), sunTime: Date())), isActive: $showingAddPlant) {
                     Image(systemName: "plus")
                 }
             )
@@ -50,11 +50,11 @@ struct ContentView: View {
                     
                     HStack(spacing: 10){
                         Image(systemName: "drop.circle.fill")
-                            .foregroundStyle(Color.cyan)
+                            .foregroundStyle(Color.gray)
                             .font(.title)
                         
                         Image(systemName: "sun.max.fill")
-                            .foregroundStyle(Color.orange)
+                            .foregroundStyle(Color.gray)
                             .font(.title)
                     }
                 }
