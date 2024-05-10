@@ -7,11 +7,17 @@
 
 import SwiftUI
 
+
+
 struct ContentView: View {
+    @State private var navigateToAddPlant = false
+
     @ObservedObject var viewModel: PlantViewModel
     @State private var showingAddPlant = false
     @State var searchText = ""
     var filteredPlants:[Plant] {viewModel.fiteredPlants(by: searchText)}
+    
+    
     
     var body: some View {
         NavigationView {
@@ -62,9 +68,12 @@ struct ContentView: View {
         }
         .onDelete(perform: viewModel.removePlant(at:))
     }
-        
+    
     @ViewBuilder
     var noPlants: some View {
+        
+      
+
         if viewModel.plants.isEmpty {
             CustomContentUnavailableView(iconName: "leaf",
                                          title: "No Plants Yet",
@@ -80,6 +89,7 @@ struct ContentView: View {
                                          action: {showingAddPlant = true})
         }
     }
+
     
 }
 

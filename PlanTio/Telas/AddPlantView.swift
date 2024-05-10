@@ -18,11 +18,12 @@ struct AddPlantView: View {
 //        NavigationView {
             Form {
                 TextField("Nome", text: $name)
-                Picker("Tipo", selection: $selectedCommonName) {
-                                    ForEach(viewModel.commonNames, id: \.self) { commonName in
-                                        Text(commonName).tag(commonName)
-                                    }
-                                }
+                Picker("Tipo", selection: $plant.type) {
+                    ForEach(viewModel.commonNames, id: \.self) { commonName in
+                        Text(commonName).tag(commonName)
+                    }
+                }
+
                 DatePicker("Horário para Regar", selection: $wateringTime, displayedComponents: .hourAndMinute)
                 DatePicker("Horário para Tomar Sol", selection: $sunTime, displayedComponents: .hourAndMinute)
                 Button("Escolher Imagem") {
@@ -36,7 +37,7 @@ struct AddPlantView: View {
                 HStack {
                     Spacer()
                     Button("Salvar") {
-                        viewModel.addPlant(name: name, type: selectedCommonName, wateringTime: wateringTime, sunTime: sunTime, image: inputImage)
+                        addPlant()
                         presentationMode.wrappedValue.dismiss()
                     }
                     Spacer()
@@ -47,6 +48,18 @@ struct AddPlantView: View {
                 ImagePicker(selectedImage: self.$inputImage, sourceType: .photoLibrary)
             }
 //        }
+    }
+    
+    func addPlant() {
+        let newPlant = Plant(name: name, type: selectedCommonName, wateringTime: wateringTime, sunTime: sunTime, imageData: inputImage?.data)
+        Task {
+            do {
+                try await viewModel.save(plant: newPlant)
+            } catch {
+                print("*** Erro salvando Planta ***")
+                print(error)
+            }
+        }
     }
 
     func loadImage() {

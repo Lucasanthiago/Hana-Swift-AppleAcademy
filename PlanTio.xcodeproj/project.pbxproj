@@ -30,6 +30,7 @@
 		76BA2A8D2BE01C230038E2AD /* SunlightView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76BA2A8C2BE01C230038E2AD /* SunlightView.swift */; };
 		76BA2A8F2BE01C390038E2AD /* AlarmView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76BA2A8E2BE01C390038E2AD /* AlarmView.swift */; };
 		76BA2A992BE16B1A0038E2AD /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76BA2A982BE16B1A0038E2AD /* ImagePicker.swift */; };
+		BB715CBD2BEE6300005481A7 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB715CBC2BEE6300005481A7 /* Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,6 +77,7 @@
 		76BA2A8C2BE01C230038E2AD /* SunlightView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunlightView.swift; sourceTree = "<group>"; };
 		76BA2A8E2BE01C390038E2AD /* AlarmView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmView.swift; sourceTree = "<group>"; };
 		76BA2A982BE16B1A0038E2AD /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		BB715CBC2BEE6300005481A7 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -196,6 +198,7 @@
 			children = (
 				76BA2A842BE01B5F0038E2AD /* Plant.swift */,
 				76BA2A822BE01B490038E2AD /* PlantViewModel.swift */,
+				BB715CBC2BEE6300005481A7 /* Extensions.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -349,6 +352,7 @@
 				76BA2A892BE01BDE0038E2AD /* PlantDetailView.swift in Sources */,
 				76BA2A8F2BE01C390038E2AD /* AlarmView.swift in Sources */,
 				76BA2A832BE01B490038E2AD /* PlantViewModel.swift in Sources */,
+				BB715CBD2BEE6300005481A7 /* Extensions.swift in Sources */,
 				76BA2A992BE16B1A0038E2AD /* ImagePicker.swift in Sources */,
 				76BA2A552BE0162A0038E2AD /* PlanTioApp.swift in Sources */,
 				769580D12BEC10D800FDB377 /* InfoPlant.swift in Sources */,
