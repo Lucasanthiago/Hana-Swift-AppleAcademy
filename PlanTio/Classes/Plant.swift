@@ -19,4 +19,11 @@ struct Plant: Codable, Identifiable {
     var watered: Bool = false
     var sunbathed: Bool = false
     //     adicionar um id de notificação para conseguir apagar aqls que forem adicionadas
+    
+//    var wateringInstructions: String
+//    var idealLight: String
+//    var toleratedLight: String
+    var imageData:Data?
+    
+    
 }
