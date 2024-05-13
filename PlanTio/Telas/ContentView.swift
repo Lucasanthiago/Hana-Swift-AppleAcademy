@@ -56,11 +56,11 @@ struct ContentView: View {
                     
                     HStack(spacing: 10){
                         Image(systemName: "drop.circle.fill")
-                            .foregroundStyle(Color.cyan)
+                            .foregroundStyle(Color.gray)
                             .font(.title)
                         
                         Image(systemName: "sun.max.fill")
-                            .foregroundStyle(Color.orange)
+                            .foregroundStyle(Color.gray)
                             .font(.title)
                     }
                 }
@@ -68,7 +68,7 @@ struct ContentView: View {
         }
         .onDelete(perform: viewModel.removePlant(at:))
     }
-        
+    
     @ViewBuilder
     var noPlants: some View {
         

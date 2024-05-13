@@ -48,128 +48,114 @@ class PlantViewModel: ObservableObject {
         if searchText.count < 3 {return plants}
         return plants.filter({$0.name.localizedCaseInsensitiveContains(searchText)})
     }
+    
+    func save(plant:Plant) async throws {
+        await savePlants(appending: plant)
+        await clearNotification(for: plant)
 
-    func addPlant(name: String, type: String, wateringTime: Date, sunTime: Date, image: UIImage?) {
-        var imageName: String? = nil
-        if let image = image {
-            imageName = UUID().uuidString + ".jpeg"
-            let imagePath = getDocumentsDirectory().appendingPathComponent(imageName!)
-            if let jpegData = image.jpegData(compressionQuality: 0.8) {
-                try? jpegData.write(to: imagePath)
-            }
+        guard await VMNotificationHandler.shared.authorizationStatus != .denied else { return }
+        
+        let wateringTimeMsg = "Hora de regar! 💧"
+        let wateringTimeBody = "\(plant.name) está com sede."
+
+        let sunbathTimeMsg = "Hora do sol! ☀️"
+        let sunbathTimeBody = "\(plant.name) está precisando de vitamina D!"
+
+        for index in 0..<plant.timesToWater.count {
+            let _ = try await VMNotificationHandler.shared.scheduleNotification(
+                identifier: plant.waterNotificationIDs[index],
+                title: wateringTimeMsg,
+                body: wateringTimeBody,
+                triggerTime: .at(plant.timesToWater[index]))
+
+            let _ = try await VMNotificationHandler.shared.scheduleNotification(
+                identifier: plant.SunNotificationIDs[index],
+                title: sunbathTimeMsg,
+                body: sunbathTimeBody,
+                triggerTime: .at(plant.timesToSunbathing[index]))
+
         }
+    }
+
+    private func savePlants(appending plant:Plant? = nil) async {
         
-        
-        
-        //notificacao kaua
+        await MainActor.run{
+            if let plant {
                 
-        
-        let timesToWater =  Date.getDaysUntil(date: Calendar.current.date(byAdding: .weekday, value: 1, to: Date())!, startDate: wateringTime, weekdays: [1,2,3,4,5,6,7])
-            .map {$0.addingTimeInterval(5)}
-        let timesToSunbathing = Date.getDaysUntil(date: Calendar.current.date(byAdding: .weekday, value: 1, to: Date())!, startDate: sunTime, weekdays: [1,2,3,4,5,6,7])
-            .map {$0.addingTimeInterval(5)}
-        Task { [imageName] in
-            if await VMNotificationHandler.shared.authorizationStatus != .denied {
+                
+                if let index = plants.firstIndex(where: {$0.id == plant.id}) {
+                    plants[index] = plant
+                    
+                } else {
+                    plants.append(plant)
+                }
+            }
             
-           
-                
-                var ids : [VMNotificationHandler.NotificationIdentifier] = []
-                
-                for time in timesToWater {
-                    //                print(time.formatted(.dateTime.day().hour().minute().second()))
-                    //                print(time.timeIntervalSince1970 - Date().timeIntervalSince1970)
-                    let notificationID = try await VMNotificationHandler.shared.scheduleNotification(title: "Hora de regar! 💧", body:"\(name) está com sede.", triggerTime:
-                            .at(time) /*.after(time.timeIntervalSince1970 - Date().timeIntervalSince1970)*/)
-                    ids.append(notificationID)
-                    
-                }
-                
-                for time in timesToSunbathing {
-                    let notificationID = try await VMNotificationHandler.shared.scheduleNotification(title: "Hora do sol! ☀️", body: "\(name) está precisando de vitamina D!", triggerTime: .at(time))
-                    ids.append(notificationID)
-                    
-                }
-                await MainActor.run { [ids] in
-                    let newPlant = Plant(name: name, type: type, wateringTime: wateringTime, sunTime: sunTime, imageName: imageName, notificationIDs: ids)
-                    plants.append(newPlant)
-                    savePlants()
-                }
-            }
-            else {
-                let newPlant = Plant(name: name, type: type, wateringTime: wateringTime, sunTime: sunTime, imageName: imageName, notificationIDs: [])
-                await MainActor.run {
-                    plants.append(newPlant)
-                    savePlants()
-                }
-            }
+            plantData = (try? JSONEncoder().encode(plants)) ?? Data()
         }
         
-        
-    
-        
-    }
-
-
-    private func savePlants() {
-        plantData = (try? JSONEncoder().encode(plants)) ?? Data()
     }
     
-    func callMain(index: Int, ids: [VMNotificationHandler.NotificationIdentifier]) async {
-        await MainActor.run {
-            plants[index].notificationIDs = ids
-            savePlants()
-        }
-    }
+//    func callMain(index: Int, ids: [VMNotificationHandler.NotificationIdentifier]) async {
+//        await MainActor.run {
+//            
+//            savePlants()
+//        }
+//    }
 
-    func updatePlant(updatedPlant: Plant, wateringTime: Date, sunTime: Date) {
-        //plants[index].name
-        
-        if let index = plants.firstIndex(where: { $0.id == updatedPlant.id }) {
-            plants[index] = updatedPlant
-            Task {
-                await VMNotificationHandler.shared.removeNotifications(withIdentifiers:plants[index].notificationIDs, evenIfPending: true)
-                await MainActor.run {
-                    plants[index].notificationIDs = []
-                }
-                var ids : [VMNotificationHandler.NotificationIdentifier] = []
-                
-                let timesToWater =  Date.getDaysUntil(date: Calendar.current.date(byAdding: .weekday, value: 1, to: Date())!, startDate: wateringTime, weekdays: [1,2,3,4,5,6,7])
-                    .map {$0.addingTimeInterval(5)}
-                let timesToSunbathing = Date.getDaysUntil(date: Calendar.current.date(byAdding: .weekday, value: 1, to: Date())!, startDate: sunTime, weekdays: [1,2,3,4,5,6,7])
-                    .map {$0.addingTimeInterval(5)}
-               
-                for time in timesToWater {
-                    let notificationID = try await VMNotificationHandler.shared.scheduleNotification(title: "Hora de regar! 💧", body:" \(plants[index].name) está com sede.", triggerTime: .at(time))
-                    ids.append(notificationID)
-                    
-                }
-                
-                for time in timesToSunbathing {
-                    let notificationID = try await VMNotificationHandler.shared.scheduleNotification(title: "Hora do sol! ☀️", body: "\(plants[index].name) está precisando de vitamina D!", triggerTime: .at(time))
-                    ids.append(notificationID)
-                    
-                }
-                await callMain(index: index, ids: ids)
-
-            }
-        }
-    }
+//    func updatePlant(updatedPlant: Plant, wateringTime: Date, sunTime: Date) {
+//        //plants[index].name
+//        
+//        if let index = plants.firstIndex(where: { $0.id == updatedPlant.id }) {
+//            plants[index] = updatedPlant
+//            Task {
+//                await VMNotificationHandler.shared.removeNotifications(withIdentifiers:plants[index].notificationIDs, evenIfPending: true)
+//                await MainActor.run {
+//                    plants[index].notificationIDs = []
+//                }
+//                var ids : [VMNotificationHandler.NotificationIdentifier] = []
+//                
+//                let timesToWater =  Date.getDaysUntil(date: Calendar.current.date(byAdding: .weekday, value: 1, to: Date())!, startDate: wateringTime, weekdays: [1,2,3,4,5,6,7])
+//                    .map {$0.addingTimeInterval(5)}
+//                let timesToSunbathing = Date.getDaysUntil(date: Calendar.current.date(byAdding: .weekday, value: 1, to: Date())!, startDate: sunTime, weekdays: [1,2,3,4,5,6,7])
+//                    .map {$0.addingTimeInterval(5)}
+//               
+//                for time in timesToWater {
+//                    let notificationID = try await VMNotificationHandler.shared.scheduleNotification(title: "Hora de regar! 💧", body:" \(plants[index].name) está com sede.", triggerTime: .at(time))
+//                    ids.append(notificationID)
+//                    
+//                }
+//                
+//                for time in timesToSunbathing {
+//                    let notificationID = try await VMNotificationHandler.shared.scheduleNotification(title: "Hora do sol! ☀️", body: "\(plants[index].name) está precisando de vitamina D!", triggerTime: .at(time))
+//                    ids.append(notificationID)
+//                    
+//                }
+//                await callMain(index: index, ids: ids)
+//
+//            }
+//        }
+//    }
     
     func removePlant(at offsets: IndexSet) {
-        guard let firstIndex = offsets.first else {
-            return
-        }
+        guard let firstIndex = offsets.first else { return }
         
         // Acesse a planta antes de removê-la
         let plantToRemove = plants[firstIndex]
         Task {
-            await VMNotificationHandler.shared.removeNotifications(withIdentifiers:plantToRemove.notificationIDs, evenIfPending: true)
+            await clearNotification(for: plantToRemove)
             await MainActor.run {
                 plants.remove(atOffsets: offsets)
-                savePlants()
+                Task {
+                    await savePlants()
+                }
             }
         }
+    }
         
+    
+    func clearNotification(for plant:Plant) async {
+        await VMNotificationHandler.shared.removeNotifications(withIdentifiers:plant.notificationIDs, evenIfPending: true)
     }
     
     func getDocumentsDirectory() -> URL {
@@ -207,18 +193,4 @@ class PlantViewModel: ObservableObject {
         }
 
 }
-extension Date{
-    static func getDaysUntil(date endDate: Date, startDate: Date, weekdays:[Int]) -> [Date]{
-        var currentDate = startDate
-        var dates: [Date] = []
-        
-        while currentDate < endDate{
-            let weekday = Calendar.current.component(.weekday, from: currentDate)
-            if weekdays.contains(weekday) {
-                dates.append(currentDate)
-            }
-            currentDate = Calendar.current.date(byAdding: .day, value: 1, to: currentDate)!
-        }
-        return dates
-    }
-}
+
