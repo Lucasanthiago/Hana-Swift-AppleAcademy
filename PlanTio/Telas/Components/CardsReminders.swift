@@ -18,8 +18,8 @@ struct CardsReminders<Content: View>: View {
     var careType: String
     var checkColor: Color
     var toggleColor: Color
-    @State  var isToggled = false
-
+    @State var isToggled = false
+    @State var isDone = false
     
     
     var body: some View {
@@ -39,21 +39,29 @@ struct CardsReminders<Content: View>: View {
                             .bold()
                     }
                     Spacer()
-                    Toggle(isOn: $isToggled) {
-                                    Text("")
-                                }
-//                    Text("Status: \(isToggled ? "Ligado" : "Desligado")")
-            
+                    Toggle(isOn: $isToggled) {Text("")}
+                        .tint(Color(toggleColor))
+                    
+                    //                    Text("Status: \(isToggled ? "Ligado" : "Desligado")")
+                    
                 }
                 Divider()
                 HStack {
                     Text(careType)
                         .font(.title2)
                         .bold()
-                        .padding(.top)
+                    
                     Spacer()
-                    //Checkbox
+                    
+                    Button(action: {
+                        isDone.toggle()
+                    }) {
+                        Image(systemName: isDone ? "checkmark.circle.fill" : "circle")
+                            .font(.title)
+                            .foregroundColor(checkColor)
+                    }
                 }
+                .padding(.top)
             }
             .padding(30)
             .background(
@@ -66,6 +74,12 @@ struct CardsReminders<Content: View>: View {
 }
 
 #Preview {
-    CardsReminders (content: {
-    }, plantName: "PedroGomes", title: "Reminder", time: "07:00", careType: "Watering", checkColor: .cyan, toggleColor: .cyan)
+    VStack (spacing: 50) {
+        CardsReminders (content: {
+        }, plantName: "Pedro Gomes", title: "Reminder", time: "07:00", careType: "Watering", checkColor: .cyan, toggleColor: .cyan)
+        CardsReminders (content: {
+        }, plantName: "Ric", title: "Reminder", time: "10:00", careType: "Sunbathing", checkColor: .orange, toggleColor: .orange)
+    }
 }
+
+
