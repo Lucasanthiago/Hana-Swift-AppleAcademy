@@ -15,6 +15,7 @@
 		769580D72BF2803C00FDB377 /* CareInfos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 769580D62BF2803C00FDB377 /* CareInfos.swift */; };
 		769580D92BF2805D00FDB377 /* IdealAndToleratedLight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 769580D82BF2805D00FDB377 /* IdealAndToleratedLight.swift */; };
 		769580DB2BF2806A00FDB377 /* FrameImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 769580DA2BF2806A00FDB377 /* FrameImage.swift */; };
+		769580E42BF2908900FDB377 /* CardsReminders.swift in Sources */ = {isa = PBXBuildFile; fileRef = 769580E32BF2908900FDB377 /* CardsReminders.swift */; };
 		76BA2A552BE0162A0038E2AD /* PlanTioApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76BA2A542BE0162A0038E2AD /* PlanTioApp.swift */; };
 		76BA2A572BE0162A0038E2AD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76BA2A562BE0162A0038E2AD /* ContentView.swift */; };
 		76BA2A592BE0162B0038E2AD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 76BA2A582BE0162B0038E2AD /* Assets.xcassets */; };
@@ -60,6 +61,7 @@
 		769580D62BF2803C00FDB377 /* CareInfos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CareInfos.swift; sourceTree = "<group>"; };
 		769580D82BF2805D00FDB377 /* IdealAndToleratedLight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdealAndToleratedLight.swift; sourceTree = "<group>"; };
 		769580DA2BF2806A00FDB377 /* FrameImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrameImage.swift; sourceTree = "<group>"; };
+		769580E32BF2908900FDB377 /* CardsReminders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsReminders.swift; sourceTree = "<group>"; };
 		76BA2A512BE0162A0038E2AD /* PlanTio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PlanTio.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		76BA2A542BE0162A0038E2AD /* PlanTioApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanTioApp.swift; sourceTree = "<group>"; };
 		76BA2A562BE0162A0038E2AD /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -115,6 +117,7 @@
 				769580D62BF2803C00FDB377 /* CareInfos.swift */,
 				769580D82BF2805D00FDB377 /* IdealAndToleratedLight.swift */,
 				769580DA2BF2806A00FDB377 /* FrameImage.swift */,
+				769580E32BF2908900FDB377 /* CardsReminders.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -353,6 +356,7 @@
 				769580DB2BF2806A00FDB377 /* FrameImage.swift in Sources */,
 				76BA2A872BE01B770038E2AD /* DateFormatter.swift in Sources */,
 				769580D92BF2805D00FDB377 /* IdealAndToleratedLight.swift in Sources */,
+				769580E42BF2908900FDB377 /* CardsReminders.swift in Sources */,
 				76BA2A7F2BE016720038E2AD /* TabBarView.swift in Sources */,
 				76BA2A892BE01BDE0038E2AD /* PlantDetailView.swift in Sources */,
 				76BA2A8F2BE01C390038E2AD /* AlarmView.swift in Sources */,
