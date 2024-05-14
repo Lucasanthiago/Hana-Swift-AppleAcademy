@@ -54,15 +54,15 @@ struct ContentView: View {
                     
                     Spacer()
                     
-                    HStack(spacing: 10){
-                        Image(systemName: "drop.circle.fill")
-                            .foregroundStyle(Color.gray)
-                            .font(.title)
-                        
-                        Image(systemName: "sun.max.fill")
-                            .foregroundStyle(Color.gray)
-                            .font(.title)
-                    }
+//                    HStack(spacing: 10){
+//                        Image(systemName: "drop.circle.fill")
+//                            .foregroundStyle(Color.gray)
+//                            .font(.title)
+//                        
+//                        Image(systemName: "sun.max.fill")
+//                            .foregroundStyle(Color.gray)
+//                            .font(.title)
+//                    }
                 }
             }
         }
