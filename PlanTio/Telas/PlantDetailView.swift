@@ -134,16 +134,16 @@ struct PlantDetailView: View {
         }
     }
 
-//    func saveImageIfNeeded() {
-//        if let inputImage = self.inputImage {
-//            let imageName = UUID().uuidString + ".jpeg"
-//            let imagePath = getDocumentsDirectory().appendingPathComponent(imageName)
-//            if let jpegData = inputImage.jpegData(compressionQuality: 0.8) {
-//                try? jpegData.write(to: imagePath)
-//                plant.imageName = imageName  // Atualiza o nome da imagem somente ao salvar
-//            }
-//        }
-//    }
+    func saveImageIfNeeded() {
+        if let inputImage = self.inputImage {
+            let imageName = UUID().uuidString + ".jpeg"
+            let imagePath = getDocumentsDirectory().appendingPathComponent(imageName)
+            if let jpegData = inputImage.jpegData(compressionQuality: 0.8) {
+                try? jpegData.write(to: imagePath)
+                plant.imageName = imageName  // Atualiza o nome da imagem somente ao salvar
+            }
+        }
+    }
     
     func getDocumentsDirectory() -> URL {
         let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)

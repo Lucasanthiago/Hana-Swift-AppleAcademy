@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		072CA12F2BEAC3150085CB94 /* SwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 072CA12E2BEAC3150085CB94 /* SwiftUIView.swift */; };
 		072CA1342BEC28CC0085CB94 /* CustomContentUnavailableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 072CA1332BEC28CC0085CB94 /* CustomContentUnavailableView.swift */; };
-		072CA1362BEEA64C0085CB94 /* CardsReminders.swift in Sources */ = {isa = PBXBuildFile; fileRef = 072CA1352BEEA64C0085CB94 /* CardsReminders.swift */; };
 		2EF02FEA2BE042220023247F /* VMNotificationHandler in Frameworks */ = {isa = PBXBuildFile; productRef = 2EF02FE92BE042220023247F /* VMNotificationHandler */; };
 		769580D12BEC10D800FDB377 /* InfoPlant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 769580D02BEC10D800FDB377 /* InfoPlant.swift */; };
 		769580D32BEC111C00FDB377 /* InfoPlants.json in Resources */ = {isa = PBXBuildFile; fileRef = 769580D22BEC111C00FDB377 /* InfoPlants.json */; };
@@ -363,7 +362,6 @@
 				76BA2A852BE01B5F0038E2AD /* Plant.swift in Sources */,
 				769580D72BF2803C00FDB377 /* CareInfos.swift in Sources */,
 				76BA2A8D2BE01C230038E2AD /* SunlightView.swift in Sources */,
-				072CA1362BEEA64C0085CB94 /* CardsReminders.swift in Sources */,
 				76BA2A572BE0162A0038E2AD /* ContentView.swift in Sources */,
 				769580DB2BF2806A00FDB377 /* FrameImage.swift in Sources */,
 				76BA2A872BE01B770038E2AD /* DateFormatter.swift in Sources */,
@@ -540,7 +538,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"PlanTio/Preview Content\"";
-				DEVELOPMENT_TEAM = 67AYPRFZH8;
+				DEVELOPMENT_TEAM = 527TK29438;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PlanTio/Info.plist;
@@ -572,7 +570,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"PlanTio/Preview Content\"";
-				DEVELOPMENT_TEAM = 67AYPRFZH8;
+				DEVELOPMENT_TEAM = 527TK29438;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PlanTio/Info.plist;
