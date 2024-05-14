@@ -2,11 +2,15 @@ import SwiftUI
 
 struct PlantDetailView: View {
     @ObservedObject var viewModel: PlantViewModel
-    @Environment(\.presentationMode) var presentationMode
-    @State var plant: Plant
-    @State private var showingImagePicker = false
-    @State private var inputImage: UIImage?  // Estado para a imagem temporariamente selecionada
-    @State private var currentDisplayImage: UIImage?
+        @Environment(\.presentationMode) var presentationMode
+        @State var plant: Plant
+        @State private var showingImagePicker = false
+        @State private var inputImage: UIImage?  // Estado para a imagem temporariamente selecionada
+        @State private var currentDisplayImage: UIImage?
+        @State  var wateringTime: Date = Date()
+        @State var sunTime: Date = Date()
+
+        @State var selectedCommonName: String = ""
     
     var body: some View {
 
@@ -89,8 +93,8 @@ struct PlantDetailView: View {
                     }
         
                     Button(action: {
-                        saveImageIfNeeded()
-                        viewModel.updatePlant(updatedPlant: plant, wateringTime: wateringTime, sunTime: sunTime)
+//                        saveImageIfNeeded()
+                        $viewModel.updatePlant(updatedPlant: plant, wateringTime: wateringTime, sunTime: sunTime)
                         presentationMode.wrappedValue.dismiss()
                     }) {
         
@@ -134,16 +138,16 @@ struct PlantDetailView: View {
         }
     }
 
-    func saveImageIfNeeded() {
-        if let inputImage = self.inputImage {
-            let imageName = UUID().uuidString + ".jpeg"
-            let imagePath = getDocumentsDirectory().appendingPathComponent(imageName)
-            if let jpegData = inputImage.jpegData(compressionQuality: 0.8) {
-                try? jpegData.write(to: imagePath)
-                plant.imageName = imageName  // Atualiza o nome da imagem somente ao salvar
-            }
-        }
-    }
+//    func saveImageIfNeeded() {
+//        if let inputImage = self.inputImage {
+//            let imageName = UUID().uuidString + ".jpeg"
+//            let imagePath = getDocumentsDirectory().appendingPathComponent(imageName)
+//            if let jpegData = inputImage.jpegData(compressionQuality: 0.8) {
+//                try? jpegData.write(to: imagePath)
+//                plant.imageName = imageName  // Atualiza o nome da imagem somente ao salvar
+//            }
+//        }
+//    }
     
     func getDocumentsDirectory() -> URL {
         let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
