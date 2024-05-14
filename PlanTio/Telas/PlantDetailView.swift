@@ -61,7 +61,7 @@ struct PlantDetailView: View {
             do {
                 try await viewModel.save(plant: plant)
             } catch {
-                print("*** Erro salvando Planta ***")
+                print("* Erro salvando Planta *")
                 print(error)
             }
         }
