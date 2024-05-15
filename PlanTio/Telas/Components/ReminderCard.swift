@@ -36,7 +36,7 @@ struct ReminderCard<Content: View>: View {
                     VStack (alignment: .leading) {
                         Text(title)
                         Text("\(time, formatter: dateFormatter)")
-                          
+                            .font(.title)
                     }
                     Spacer()
                     Toggle(isOn: $isToggled) {Text("Toggle Notifications")}
