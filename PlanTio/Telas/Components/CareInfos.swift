@@ -23,17 +23,33 @@ struct CareInfos<Content: View>: View {
                     Image(systemName: icon)
                         .padding(.leading)
                         .foregroundStyle(iconColor)
-                    Text(title)
                     
+                    Text(title)
                         .font(.title3)
                         .bold()
+                    
                     Spacer()
                     
-                    DatePicker("", selection: Binding(get: {
-                        date
-                    }, set: { date in
-                        self.date = date
-                    }), displayedComponents: [.hourAndMinute])
+                    DatePicker("Watering Time", selection: $date, displayedComponents: [.hourAndMinute])
+                        .background {
+                            iconColor.opacity(1).saturation(1.8)
+                                .clipShape(.rect(cornerRadius: 8))
+                        }
+                        .environment(\.colorScheme, .dark)
+                        
+//                        .overlay {
+//                            Color.white
+//                                .clipShape(.rect(cornerRadius: 9))
+//                                .blendMode(.exclusion)
+//                            Color.white
+//                                .clipShape(.rect(cornerRadius: 9))
+//                                .blendMode(.colorDodge)
+//                        }
+//                        .colorInvert()
+                    
+                    .labelsHidden()
+                    .fixedSize()
+                    
                     
                 }
                 Divider()
@@ -44,7 +60,7 @@ struct CareInfos<Content: View>: View {
         .background(
         RoundedRectangle(cornerRadius: 20)
             .foregroundStyle(.white)
-            .shadow(radius: 20)
+            .shadow(color: Color(white: 0.2).opacity(0.5), radius: 8)
         )
     }
     
@@ -53,10 +69,10 @@ struct CareInfos<Content: View>: View {
 #Preview {
     VStack {
         CareInfos(content: {
-            Text("Keep moist between watering.\nCan be a bit dry between waterings.")
+            Text("Keep moist between watering. Can be a bit dry between waterings.")
                 .padding()
                    .font(.subheadline)
-                   .lineLimit(1)
+                   .lineLimit(2)
         }, title: "Watering", icon: "drop.circle.fill", iconColor: .cyan, date: Date())
         
         .padding(.vertical)

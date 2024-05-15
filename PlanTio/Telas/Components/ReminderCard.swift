@@ -15,7 +15,7 @@ struct ReminderCard<Content: View>: View {
     @ViewBuilder let content: Content
     var plantName: String
     var title: String
-    var time: String // CORRIGIR PARA HORÁRIO (DATE)
+    var time: Date // CORRIGIR PARA HORÁRIO (DATE)
     var careType: String
     var checkColor: Color
     var toggleColor: Color
@@ -35,15 +35,15 @@ struct ReminderCard<Content: View>: View {
                 HStack {
                     VStack (alignment: .leading) {
                         Text(title)
-                        Text(time)
-                            .font(.title)
-                            .bold()
+                        Text("\(time)")
+                          
                     }
                     Spacer()
-                    Toggle(isOn: $isToggled) {Text("")}
+                    Toggle(isOn: $isToggled) {Text("Toggle Notifications")}
                         .tint(Color(toggleColor))
+                        .labelsHidden()
                     
-                    //                    Text("Status: \(isToggled ? "Ligado" : "Desligado")")
+                                        
                     
                 }
                 Divider()
@@ -68,8 +68,7 @@ struct ReminderCard<Content: View>: View {
             .background(
                 RoundedRectangle(cornerRadius: 20)
                     .foregroundColor(.white)
-                    .shadow(radius: 8)
-                    .opacity(0.6))
+                    .shadow(color: Color(white: 0.2).opacity(0.5), radius: 8))
         }
     }
 }
@@ -77,9 +76,9 @@ struct ReminderCard<Content: View>: View {
 #Preview {
     VStack (spacing: 50) {
         ReminderCard (content: {
-        }, plantName: "Pedro Gomes", title: "Reminder", time: "07:00", careType: "Watering", checkColor: .cyan, toggleColor: .cyan)
+        }, plantName: "Pedro Gomes", title: "Reminder", time: Date(), careType: "Watering", checkColor: .cyan, toggleColor: .cyan)
         ReminderCard (content: {
-        }, plantName: "Ric", title: "Reminder", time: "10:00", careType: "Sunbathing", checkColor: .orange, toggleColor: .orange)
+        }, plantName: "Ric", title: "Reminder", time: Date(), careType: "Sunbathing", checkColor: .orange, toggleColor: .orange)
     }
 }
 
