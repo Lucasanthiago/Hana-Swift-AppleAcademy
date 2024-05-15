@@ -13,15 +13,17 @@ struct AlarmView: View {
 
     var body: some View {
         HStack {
-            Image(systemName: type == .watering ? "drop.circle.fill" : "sun.max.fill")
-                .foregroundColor(type == .watering ? .cyan : .orange)
-                .font(.title3)
-            VStack(alignment: .leading) {
-//                Text(type == .watering ? "Regar" : "Tomar Sol")
-                Text(plant.name)
-                    .font(.title3).bold()
-                Text("\(type == .watering ? plant.wateringTime : plant.sunTime, formatter: dateFormatter)")
-            }
+//            Image(systemName: type == .watering ? "drop.circle.fill" : "sun.max.fill")
+//                .foregroundColor(type == .watering ? .cyan : .orange)
+//                .font(.title3)
+//            VStack(alignment: .leading) {
+////                Text(type == .watering ? "Regar" : "Tomar Sol")
+//                Text(plant.name)
+//                    .font(.title3).bold()
+//                Text("\(type == .watering ? plant.wateringTime : plant.sunTime, formatter: dateFormatter)")
+//            }
+            ReminderCard (content: {
+            }, plantName: plant.name, title: "Reminder", time: type == .watering ? plant.wateringTime : plant.sunTime, careType: "Watering", checkColor: type == .watering ? .cyan : .orange, toggleColor: type == .watering ? .cyan : .orange)
         }
     }
 }

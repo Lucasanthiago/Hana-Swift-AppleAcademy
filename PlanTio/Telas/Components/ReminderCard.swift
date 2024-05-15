@@ -35,7 +35,7 @@ struct ReminderCard<Content: View>: View {
                 HStack {
                     VStack (alignment: .leading) {
                         Text(title)
-                        Text("\(time)")
+                        Text("\(time, formatter: dateFormatter)")
                           
                     }
                     Spacer()
