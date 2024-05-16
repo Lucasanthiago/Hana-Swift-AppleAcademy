@@ -3,7 +3,7 @@ import SwiftUI
 struct AddPlantView: View {
     @State var newPlant = Plant(name: "", type: "", wateringTime: .now, sunTime: .now, wateringInstructions: "", idealLight: "", toleratedLight: "")
     var body: some View {
-        PlantDetailView(plant: $newPlant)
+        PlantDetailView(plant: $newPlant, saveMode: true) 
     }
 //    @ObservedObject var viewModel: PlantViewModel
 //    @Environment(\.presentationMode) var presentationMode
