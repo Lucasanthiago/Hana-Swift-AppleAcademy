@@ -14,41 +14,49 @@ struct ContentView: View {
     var filteredPlants: [Plant] { viewModel.fiteredPlants(by: searchText) }
     
     var body: some View {
-        NavigationView {
+        NavigationStack {
             List {
                 if filteredPlants.isEmpty {
                     noPlants
                 } else {
                     ForEach(filteredPlants) { plant in
-                        Button(action: {
-                            selectedPlant = plant
-                        }) {
-                            HStack {
-                                ListPlantCard(content: {}, plantName: plant.name, plantSpecies: plant.type)
-                            }
+                        NavigationLink(value: plant) {
+                            ListPlantCard(content: {}, plantName: plant.name, plantSpecies: plant.type)
                         }
-                    }
+//
+                        }
+//                    }
                     .onDelete(perform: viewModel.removePlant(at:))
                 }
             }
             .padding(.top)
+            .navigationDestination(for: Plant.self, destination: { plant in
+                PlantDetailView(plant: .constant(plant))
+            })
             .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always))
             .listStyle(PlainListStyle())
             .background(Color("Background"))
             .navigationBarTitle("My Plants")
             .navigationBarItems(
-                trailing: NavigationLink(destination: AddPlantView(viewModel: viewModel, plant: Plant(name: "", type: "", wateringTime: Date(), sunTime: Date())), isActive: $showingAddPlant) {
+                trailing: NavigationLink(destination: AddPlantView()) {
                     Image(systemName: "plus")
                 }
             )
-            .background(
-                NavigationLink(destination: selectedPlant.map { PlantDetailView(viewModel: viewModel, plant: $0) }, isActive: Binding(
-                    get: { selectedPlant != nil },
-                    set: { if !$0 { selectedPlant = nil } }
-                )) {
-                    EmptyView()
-                }
-            )
+//            .background(
+//                VStack {
+//                    EmptyView()
+//                    if selectedPlant != nil {
+//                        NavigationLink(destination: PlantDetailView(viewModel: viewModel,
+//                                                                    plant: Binding<Plant>(self.$selectedPlant)!),
+//                                       isActive: Binding<Bool>(
+//                                        get: { self.selectedPlant != nil },
+//                                        set: { _ in self.selectedPlant = nil }
+//                                       )) {
+//                                           EmptyView()
+//                                       }
+//                    }
+//                }
+//            )
         }
     }
     

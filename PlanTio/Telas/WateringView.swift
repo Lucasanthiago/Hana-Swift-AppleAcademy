@@ -24,10 +24,10 @@ struct WateringView: View {
             .listStyle(PlainListStyle())
             .background(Color("Background"))
             .navigationBarTitle("Watering")
-            .navigationBarItems(
-                trailing: NavigationLink(destination: AddPlantView(viewModel: viewModel, plant: Plant(name: "", type: "", wateringTime: Date(), sunTime: Date())), isActive: $showingAddPlant) {
-                }
-            )
+//            .navigationBarItems(
+//                trailing: NavigationLink(destination: AddPlantView(viewModel: viewModel, plant: Plant(name: "", type: "", wateringTime: Date(), sunTime: Date())), isActive: $showingAddPlant) {
+//                }
+//            )
             
         }
         

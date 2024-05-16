@@ -1,96 +1,100 @@
 import SwiftUI
 
 struct PlantDetailView: View {
-    @ObservedObject var viewModel: PlantViewModel
-    @Environment(\.presentationMode) var presentationMode
-    @State var plant: Plant
-    @State private var showingImagePicker = false
-    @State private var inputImage: UIImage?  // Estado para a imagem temporariamente selecionada
-    @State private var currentDisplayImage: UIImage?
+    @State private var isEditing = false
+    @Binding var plant: Plant
     
     var body: some View {
-//        NavigationView {
-            Form {
-                TextField("Nome", text: $plant.name)
-                Picker("Tipo", selection: $plant.type) {
-                    ForEach(viewModel.commonNames, id: \.self) { commonName in
-                        Text(commonName).tag(commonName)
+            VStack {
+                FrameImage(imageData: $plant.imageData, aspectRatio: 21/9)
+                    .frame(maxWidth: .infinity, alignment: .center)
+                    .disabled(isEditing == false)
+                VStack {
+                    HStack{
+                        TextField("Nome", text: $plant.name)
+                            .padding(.top, -20)
+                            .font(.title2)
+                            .bold()
+                            .frame(maxWidth: .infinity)
+                            .padding()
+                            .disabled(isEditing == false)
+                        Button(action: {}, label: {
+                            
+                            HStack {
+                                Image(systemName:"arrow.counterclockwise.circle.fill")
+                                Text("Care History")
+                                
+                            }
+                            .foregroundColor(.white)
+                            .frame(width: 143,height: 38)
+                            .background(Color.green)
+                            .cornerRadius(13)
+                            .padding()
+                            .padding(.top, -10)
+                        })
+                    }
+                    
+                    Divider()
+                        .padding(.top, -10)
+                    
+                    ScrollView {
+                        VStack {
+                            CareInfos(content: {
+                                if plant.wateringInstructions.isEmpty == false {
+                                    Text(plant.wateringInstructions)
+                                        .padding()
+                                        .font(.subheadline)
+                                }
+                            }, title: "Watering", icon: "drop.circle.fill", iconColor: .cyan, date: Date())
+                            .padding(.vertical)
+                            .padding(.horizontal)
+                            
+                            CareInfos(content: {
+                                HStack {
+                                    if plant.idealLight.isEmpty == false{
+                                        IdealAndToleratedLight(content: {
+                                        }, title: "Ideal light", icon: "sun.min.fill", iconColor: .black, description: plant.idealLight)
+                                        .padding()
+                                        .fixedSize() // Impede a quebra de linha
+                                    }
+                                    IdealAndToleratedLight(content: {
+                                    }, title: "Tolerated light", icon: "sun.max.fill", iconColor: .black, description: plant.toleratedLight)
+                                    .padding(.horizontal, 20)
+                                    .padding(.vertical, 10)
+                                    .fixedSize() // Impede a quebra de linha
+                                }
+                                .padding(.leading, 10)
+                                .padding(.trailing, 10)
+                            }, title: "Sunbathing", icon: "sun.max.fill", iconColor: .orange, date: Date())
+                            .padding(.horizontal)
+                            
+                        }
+                        
+                        .disabled(isEditing == false)
                     }
                 }
-
-                DatePicker("Horário para Regar", selection: $plant.wateringTime, displayedComponents: .hourAndMinute)
-                    .tag(plant.id)
-                DatePicker("Horário para Tomar Sol", selection: $plant.sunTime, displayedComponents: .hourAndMinute)
-                    .tag(plant.id)
-                
-                // Exibe a imagem atualmente selecionada ou a imagem já salva
-                if let displayImage = currentDisplayImage {
-                    Image(uiImage: displayImage)
-                        .resizable()
-                        .scaledToFit()
-                } else if let imageData = plant.imageData, let uiImage = UIImage(data: imageData) {
-                    Image(uiImage: uiImage)
-                        .resizable()
-                        .scaledToFit()
-                }
-                
-                Button("Escolher Imagem") {
-                    self.showingImagePicker = true
-                }
-                
-                HStack {
-                    Spacer()
-                    Button("Salvar Alterações") {
-                        updatePlant()
-                        presentationMode.wrappedValue.dismiss()
-//                        print(plant.wateringTime.description)
-                    }
-                    Spacer()
-                }
             }
-            .navigationBarTitle("Detalhes da Planta", displayMode: .inline)
-            .sheet(isPresented: $showingImagePicker, onDismiss: loadImage) {
-                ImagePicker(selectedImage: self.$inputImage, sourceType: .photoLibrary)
-            }
-//        }
+            .navigationBarTitleDisplayMode(.inline)
+            .navigationBarItems(
+                trailing: Button(action: {
+                    isEditing.toggle()
+                }) {
+                    
+                    Text(isEditing ? "Done" : "Edit")
+                }
+            )
+        
     }
     
-    func updatePlant() {
-        plant.imageData = inputImage?.data
-        Task {
-            do {
-                try await viewModel.save(plant: plant)
-            } catch {
-                print("* Erro salvando Planta *")
-                print(error)
-            }
-        }
-    }
-
-    func loadImage() {
-        if let inputImage = self.inputImage {
-            self.currentDisplayImage = inputImage  // Atualiza a imagem para exibição imediata
-        }
-    }
-
-//    func saveImageIfNeeded() {
-//        if let inputImage = self.inputImage {
-//            let imageName = UUID().uuidString + ".jpeg"
-//            let imagePath = getDocumentsDirectory().appendingPathComponent(imageName)
-//            if let jpegData = inputImage.jpegData(compressionQuality: 0.8) {
-//                try? jpegData.write(to: imagePath)
-//                plant.imageName = imageName  // Atualiza o nome da imagem somente ao salvar
-//            }
-//        }
-//    }
-    
-    func getDocumentsDirectory() -> URL {
-        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
-        return paths[0]
-    }
 }
 
+//    struct TelaDetalhe_Previews: PreviewProvider {
+//        @State static var imageData: Data? = nil // Ligação para os dados da imagem
+//        
+//        static var previews: some View {
+//            let plantDetails = PlantDetails(name: "Plant Name", wateringInstructions: "Keep moist between watering.Can be a bit dry between waterings.", idealLight: "Bright light", toleratedLight: "Direct sunlight")
+//            return TelaDetalhe(plant: plantDetails)
+//        }
+//    }
 
-//#Preview {
-//    PlantDetailView(viewModel: PlantViewModel(), plant: Plant(name: "aaaa", type: "cacto", wateringTime: Date(), sunTime: Date()))
-//}
+
