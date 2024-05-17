@@ -2,9 +2,24 @@ import SwiftUI
 
 struct AddPlantView: View {
     @State var newPlant = Plant(name: "", type: "", wateringTime: .now, sunTime: .now, wateringInstructions: "", idealLight: "", toleratedLight: "")
+    @State var isEditing = true
     var body: some View {
-        PlantDetailView(plant: $newPlant, saveMode: true) 
-    }
+        VStack {
+                   if isEditing {
+                       PlantDetailView(isEditing: isEditing, plant: $newPlant, saveMode: true, onSave: {
+                           // Ação ao salvar
+                           isEditing = true// Desativa o modo de edição após salvar
+                       })
+                   } else {
+                       PlantDetailView(isEditing: isEditing, plant: $newPlant, saveMode: false, onSave: nil)
+                   }
+               }
+        
+           }
+    
+//        PlantDetailView(isEditing: true, plant: $newPlant, saveMode: true)
+//    }
+    // Assim que add o tipo  wateringInstructions, idealLight e toleratedLight
 //    @ObservedObject var viewModel: PlantViewModel
 //    @Environment(\.presentationMode) var presentationMode
 //    @State private var name: String = ""

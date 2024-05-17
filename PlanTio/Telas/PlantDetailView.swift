@@ -1,9 +1,10 @@
 import SwiftUI
 
 struct PlantDetailView: View {
-    @State private var isEditing = false
+    @State var isEditing = false
     @Binding var plant: Plant
     @State var saveMode : Bool
+    var onSave: (() -> Void)? // Callback para ação de salvar
     var body: some View {
         VStack {
             FrameImage(imageData: $plant.imageData, aspectRatio: 21/9)
@@ -36,11 +37,11 @@ struct PlantDetailView: View {
                 
                 Divider()
                     .padding(.top, -10)
-//                Picker("Tipo", selection: $plant.type) {
-//                                   ForEach(viewModel.commonNames, id: \.self) { commonName in // FIXME: resolver viewmodel
-//                                       Text(commonName).tag(commonName)
-//                                   }
-//                               }
+                //                Picker("Tipo", selection: $plant.type) {
+                //                                   ForEach(viewModel.commonNames, id: \.self) { commonName in // FIXME: resolver viewmodel
+                //                                       Text(commonName).tag(commonName)
+                //                                   }
+                //                               }
                 ScrollView {
                     VStack {
                         CareInfos(content: {
@@ -61,11 +62,13 @@ struct PlantDetailView: View {
                                     .padding()
                                     .fixedSize() // Impede a quebra de linha
                                 }
-                                IdealAndToleratedLight(content: {
-                                }, title: "Tolerated light", icon: "sun.max.fill", iconColor: .black, description: plant.toleratedLight)
-                                .padding(.horizontal, 20)
-                                .padding(.vertical, 10)
-                                .fixedSize() // Impede a quebra de linha
+                                if plant.idealLight.isEmpty == false{
+                                    IdealAndToleratedLight(content: {
+                                    }, title: "Tolerated light", icon: "sun.max.fill", iconColor: .black, description: plant.toleratedLight)
+                                    .padding(.horizontal, 20)
+                                    .padding(.vertical, 10)
+                                    .fixedSize() // Impede a quebra de linha
+                                }
                             }
                             .padding(.leading, 10)
                             .padding(.trailing, 10)
@@ -82,8 +85,17 @@ struct PlantDetailView: View {
             if saveMode == true {
                 Button(action: {
                     saveMode = false
-                }, label: { // TODO: resolver save
+                    onSave?()
+                    isEditing = false
+                }, label: { // TODO: resolver save verdadeiro, e aparecer na view
                     Text("Save")
+                        .font(.body)
+                        .bold()
+                        .foregroundColor(.white)
+                        .frame(maxWidth: .infinity, maxHeight: 56)
+                        .background(Color.green)
+                        .cornerRadius(13)
+                        .padding(.horizontal)
                 })
             }
         })
