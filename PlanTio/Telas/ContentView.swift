@@ -31,7 +31,7 @@ struct ContentView: View {
             }
             .padding(.top)
             .navigationDestination(for: Plant.self, destination: { plant in
-                PlantDetailView(plant: .constant(plant), saveMode: false) // FIXME: passar de .constant  para Binding, 
+                PlantDetailView(viewModel: PlantViewModel(), plant: .constant(plant), saveMode: false) // FIXME: passar de .constant  para Binding, 
             })
             .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always))
             .listStyle(PlainListStyle())

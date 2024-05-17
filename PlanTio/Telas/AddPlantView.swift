@@ -6,12 +6,12 @@ struct AddPlantView: View {
     var body: some View {
         VStack {
                    if isEditing {
-                       PlantDetailView(isEditing: isEditing, plant: $newPlant, saveMode: true, onSave: {
+                       PlantDetailView(viewModel: PlantViewModel(), isEditing: isEditing, plant: $newPlant, saveMode: true, onSave: {
                            // Ação ao salvar
                            isEditing = true// Desativa o modo de edição após salvar
                        })
                    } else {
-                       PlantDetailView(isEditing: isEditing, plant: $newPlant, saveMode: false, onSave: nil)
+                       PlantDetailView(viewModel: PlantViewModel(), isEditing: isEditing, plant: $newPlant, saveMode: false, onSave: nil)
                    }
                }
         

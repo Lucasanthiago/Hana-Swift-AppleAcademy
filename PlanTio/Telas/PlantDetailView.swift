@@ -1,6 +1,7 @@
 import SwiftUI
 
 struct PlantDetailView: View {
+    @ObservedObject var viewModel: PlantViewModel
     @State var isEditing = false
     @Binding var plant: Plant
     @State var saveMode : Bool
@@ -12,7 +13,7 @@ struct PlantDetailView: View {
                 .disabled(isEditing == false)
             VStack {
                 HStack{
-                    TextField("Nome", text: $plant.name)
+                    TextField("Name", text: $plant.name)
                         .padding(.top, -20)
                         .font(.title2)
                         .bold()
@@ -34,14 +35,23 @@ struct PlantDetailView: View {
                         .padding(.top, -10)
                     })
                 }
-                
                 Divider()
-                    .padding(.top, -10)
-                //                Picker("Tipo", selection: $plant.type) {
-                //                                   ForEach(viewModel.commonNames, id: \.self) { commonName in // FIXME: resolver viewmodel
-                //                                       Text(commonName).tag(commonName)
-                //                                   }
-                //                               }
+                    HStack {
+                        Text("Type")
+                            .foregroundColor(.gray)
+                        Spacer()
+                         Picker("Tipo", selection: $plant.type) {
+                        ForEach(viewModel.commonNames, id: \.self) { commonName in
+                            Text(commonName).tag(commonName)
+                              
+                        }
+                    }
+                         .disabled(isEditing == false)
+                         .pickerStyle(MenuPickerStyle())
+                    }
+                    .padding(.horizontal, 16)
+                .listStyle(PlainListStyle())
+                .padding(.top, 5)
                 ScrollView {
                     VStack {
                         CareInfos(content: {
