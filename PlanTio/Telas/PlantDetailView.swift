@@ -10,41 +10,87 @@ struct PlantDetailView: View {
     
     var body: some View {
 //        NavigationView {
-            Form {
+            VStack {
                 TextField("Nome", text: $plant.name)
-                Picker("Tipo", selection: $plant.type) {
+                    .padding(.top, -20)
+                    .font(.title2)
+                    .bold()
+                    .frame(maxWidth: .infinity)
+                    .padding()
+                
+                HStack {
+                    Text("Type")
+                        .foregroundColor(.gray)
+                    Spacer()
+                     Picker("Tipo", selection: $plant.type) {
                     ForEach(viewModel.commonNames, id: \.self) { commonName in
                         Text(commonName).tag(commonName)
+                          
                     }
                 }
+                     .pickerStyle(MenuPickerStyle())
+                }
 
-                DatePicker("Horário para Regar", selection: $plant.wateringTime, displayedComponents: .hourAndMinute)
-                    .tag(plant.id)
-                DatePicker("Horário para Tomar Sol", selection: $plant.sunTime, displayedComponents: .hourAndMinute)
-                    .tag(plant.id)
                 
+                
+                VStack {
+                    CareInfos(content: {
+                        Text("Keep moist between watering. Can be a bit dry between waterings.")
+                            .padding()
+                               .font(.subheadline)
+                               .lineLimit(2)
+                    }, title: "Watering", icon: "drop.circle.fill", iconColor: .cyan, date: $plant.wateringTime)
+                    
+                    .padding(.vertical)
+                    CareInfos(content: {
+                        HStack {
+                            IdealAndToleratedLight(content: {
+                            },title: "Ideal light", icon: "sun.min.fill", iconColor: .black, description: "Bright light")
+                            .padding()
+                            HStack {
+                                IdealAndToleratedLight(content: {
+                                },title: "Tolerated light", icon: "sun.max.fill", iconColor: .black, description: "Direct sunlight")
+                            }
+                            .padding(.trailing, 50)
+                            .padding(10)
+                        }
+                    }, title: "Sunbathing", icon: "sun.max.fill", iconColor: .orange, date: $plant.sunTime)
+                }
+                
+                
+                /// imagem antiga
                 // Exibe a imagem atualmente selecionada ou a imagem já salva
-                if let displayImage = currentDisplayImage {
-                    Image(uiImage: displayImage)
-                        .resizable()
-                        .scaledToFit()
-                } else if let imageData = plant.imageData, let uiImage = UIImage(data: imageData) {
-                    Image(uiImage: uiImage)
-                        .resizable()
-                        .scaledToFit()
-                }
-                
-                Button("Escolher Imagem") {
-                    self.showingImagePicker = true
-                }
+//                if let displayImage = currentDisplayImage {
+//                    Image(uiImage: displayImage)
+//                        .resizable()
+//                        .scaledToFit()
+//                } else if let imageData = plant.imageData, let uiImage = UIImage(data: imageData) {
+//                    Image(uiImage: uiImage)
+//                        .resizable()
+//                        .scaledToFit()
+//                }
+//                
+//                Button("Escolher Imagem") {
+//                    self.showingImagePicker = true
+//                }
                 
                 HStack {
                     Spacer()
-                    Button("Salvar Alterações") {
+                    Button("Salvar Alterações")
+                    {
                         updatePlant()
                         presentationMode.wrappedValue.dismiss()
+                        
+                        
 //                        print(plant.wateringTime.description)
                     }
+                    .font(.body)
+                    .bold()
+                    .foregroundColor(.white)
+                    .frame(maxWidth: .infinity, maxHeight: 56)
+                    .background(Color.green)
+                    .cornerRadius(13)
+                    .padding(.horizontal)
                     Spacer()
                 }
             }
