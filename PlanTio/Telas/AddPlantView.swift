@@ -1,21 +1,53 @@
 import SwiftUI
-
 struct AddPlantView: View {
+    @ObservedObject var viewModel: PlantViewModel
     @State var newPlant = Plant(name: "", type: "", wateringTime: .now, sunTime: .now, wateringInstructions: "", idealLight: "", toleratedLight: "")
     @State var isEditing = true
+
     var body: some View {
         VStack {
-                   if isEditing {
-                       PlantDetailView(viewModel: PlantViewModel(), isEditing: isEditing, plant: $newPlant, saveMode: true, onSave: {
-                           // Ação ao salvar
-                           isEditing = true// Desativa o modo de edição após salvar
-                       })
-                   } else {
-                       PlantDetailView(viewModel: PlantViewModel(), isEditing: isEditing, plant: $newPlant, saveMode: false, onSave: nil)
-                   }
-               }
-        
-           }
+            if isEditing {
+                PlantDetailView(
+                    viewModel: viewModel,
+                    isEditing: isEditing,
+                    plant: $newPlant,
+                    saveMode: true,
+                    onSave: {
+                        Task {
+                            await viewModel.addPlant(newPlant)
+                            isEditing = false // Desativa o modo de edição após salvar
+                        }
+                    }
+                )
+            } else {
+                PlantDetailView(
+                    viewModel: viewModel,
+                    isEditing: isEditing,
+                    plant: $newPlant,
+                    saveMode: false,
+                    onSave: nil
+                )
+            }
+        }
+    }
+}
+
+//struct AddPlantView: View {
+//    @State var newPlant = Plant(name: "", type: "", wateringTime: .now, sunTime: .now, wateringInstructions: "", idealLight: "", toleratedLight: "")
+//    @State var isEditing = true
+//    var body: some View {
+//        VStack {
+//                   if isEditing {
+//                       PlantDetailView(viewModel: PlantViewModel(), isEditing: isEditing, plant: $newPlant, saveMode: true, onSave: {
+//                           // Ação ao salvar
+//                           isEditing = true// Desativa o modo de edição após salvar
+//                       })
+//                   } else {
+//                       PlantDetailView(viewModel: PlantViewModel(), isEditing: isEditing, plant: $newPlant, saveMode: false, onSave: nil)
+//                   }
+//               }
+//        
+//           }
     
 //        PlantDetailView(isEditing: true, plant: $newPlant, saveMode: true)
 //    }
@@ -84,4 +116,4 @@ struct AddPlantView: View {
 //    func loadImage() {
 //        // A imagem já está no estado inputImage, pronta para ser salva com os detalhes da planta.
 //    }
-}
+

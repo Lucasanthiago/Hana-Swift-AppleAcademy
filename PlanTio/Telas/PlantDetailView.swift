@@ -4,8 +4,10 @@ struct PlantDetailView: View {
     @ObservedObject var viewModel: PlantViewModel
     @State var isEditing = false
     @Binding var plant: Plant
-    @State var saveMode : Bool
+    @State var saveMode: Bool
     var onSave: (() -> Void)? // Callback para ação de salvar
+    
+    
     var body: some View {
         VStack {
             FrameImage(imageData: $plant.imageData, aspectRatio: 21/9)
@@ -36,20 +38,20 @@ struct PlantDetailView: View {
                     })
                 }
                 Divider()
-                    HStack {
-                        Text("Type")
-                            .foregroundColor(.gray)
-                        Spacer()
-                         Picker("Tipo", selection: $plant.type) {
+                HStack {
+                    Text("Type")
+                        .foregroundColor(.gray)
+                    Spacer()
+                    Picker("Tipo", selection: $plant.type) {
                         ForEach(viewModel.commonNames, id: \.self) { commonName in
                             Text(commonName).tag(commonName)
-                              
+                            
                         }
                     }
-                         .disabled(isEditing == false)
-                         .pickerStyle(MenuPickerStyle())
-                    }
-                    .padding(.horizontal, 16)
+                    .disabled(isEditing == false)
+                    .pickerStyle(MenuPickerStyle())
+                }
+                .padding(.horizontal, 16)
                 .listStyle(PlainListStyle())
                 .padding(.top, 5)
                 ScrollView {
@@ -94,9 +96,12 @@ struct PlantDetailView: View {
         .safeAreaInset(edge: .bottom, content: {
             if saveMode == true {
                 Button(action: {
-                    saveMode = false
-                    onSave?()
-                    isEditing = false
+//                    Task {
+//                        await viewModel.addPlant(plant)
+                        saveMode = false
+                        onSave?()
+                        isEditing = false
+//                    }
                 }, label: { // TODO: resolver save verdadeiro, e aparecer na view
                     Text("Save")
                         .font(.body)
@@ -125,7 +130,31 @@ struct PlantDetailView: View {
         //
         
     }
+    //
     
+    //    func addPlant() {
+    //        let newPlant = Plant(
+    //            id: plant.id,
+    //            name: plant.name,
+    //            type: plant.type,
+    //            wateringTime: plant.wateringTime,
+    //            sunTime: plant.sunTime,
+    //            watered: plant.watered,
+    //            sunbathed: plant.sunbathed,
+    //            imageData: plant.imageData,
+    //            wateringInstructions: plant.wateringInstructions,
+    //            idealLight: plant.idealLight,
+    //            toleratedLight: plant.toleratedLight
+    //        )
+    //        Task {
+    //            do {
+    //                try await viewModel.save(plant: newPlant)
+    //            } catch {
+    //                print("*** Erro salvando Planta ***")
+    //                print(error)
+    //            }
+    //        }
+    //    }
 }
 
 //    struct TelaDetalhe_Previews: PreviewProvider {
