@@ -1,10 +1,3 @@
-//
-//  ImagePicker.swift
-//  PlanTio
-//
-//  Created by Lucas Santos on 30/04/24.
-//
-
 import Foundation
 import SwiftUI
 
@@ -20,8 +13,7 @@ struct ImagePicker: UIViewControllerRepresentable {
         return picker
     }
 
-    func updateUIViewController(_ uiViewController: UIImagePickerController, context: UIViewControllerRepresentableContext<ImagePicker>) {
-    }
+    func updateUIViewController(_ uiViewController: UIImagePickerController, context: UIViewControllerRepresentableContext<ImagePicker>) {}
 
     func makeCoordinator() -> Coordinator {
         Coordinator(self)

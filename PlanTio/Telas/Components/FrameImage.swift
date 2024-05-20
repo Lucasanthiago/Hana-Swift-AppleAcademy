@@ -1,14 +1,8 @@
-//
-//  FrameImage.swift
-//  PlanTio
-//
-//  Created by Lucas Santos on 13/05/24.
-//
-
 import SwiftUI
 import PhotosUI
+
 struct FrameImage: View {
-    @Binding var imageData:Data?
+    @Binding var imageData: Data?
     
     var screenImage: UIImage {
         if let data = imageData,
@@ -17,48 +11,48 @@ struct FrameImage: View {
         } else {
             return UIImage(named: "AddPicture")!
         }
-        
     }
-        
-    var aspectRatio:CGFloat
     
-    @State  var isShowingImagePicker = false
+    var aspectRatio: CGFloat
     
-    @State  var pickedImage:UIImage?
-    @State  var itemSelect:PhotosPickerItem?
+    @State private var isShowingImagePicker = false
+    @State private var isShowingCamera = false
+    @State private var showingActionSheet = false
+    
+    @State private var pickedImage: UIImage?
+    @State private var itemSelect: PhotosPickerItem?
+    
     var body: some View {
-//        Button {
-//            isShowingImagePicker = true
-//        } label: {
-        PhotosPicker(selection: $itemSelect, matching: .images) {
-            Image(uiImage: screenImage )
+        VStack {
+            Image(uiImage: screenImage)
                 .resizable()
                 .scaledToFill()
                 .frame(height: 250)
-//                .aspectRatio( 0.5, contentMode: .fit)
-//
                 .cornerRadius(13)
-//                .aspectRatio(aspectRatio, contentMode: .fill)
-        }
-        .onChange(of: itemSelect) { oldValue, newValue in
-            print(newValue)
-            Task{ @MainActor in
-                guard let newValue else{
-                    return
+                .onTapGesture {
+                    showingActionSheet = true
                 }
-                guard let data = try? await newValue.loadTransferable(type: Data.self) else{
-                    return
-                }
-                //            let image = UIImage(data: data)
-                self.imageData = data
-            }
         }
-//        }
-//        .sheet(isPresented: $isShowingImagePicker, onDismiss: convertImageToImageData) {
-//            ImagePicker(selectedImage: $pickedImage, sourceType: .photoLibrary)
-//        }
+        .actionSheet(isPresented: $showingActionSheet) {
+            ActionSheet(title: Text("Choose a photo"), buttons: [
+                .default(Text("Photo Library")) {
+                    isShowingImagePicker = true
+                },
+                .default(Text("Camera")) {
+                    isShowingCamera = true
+                },
+                .cancel()
+            ])
+        }
+        .sheet(isPresented: $isShowingImagePicker, onDismiss: convertImageToImageData) {
+            ImagePicker(selectedImage: $pickedImage, sourceType: .photoLibrary)
+        }
+        .sheet(isPresented: $isShowingCamera, onDismiss: convertImageToImageData) {
+            ImagePicker(selectedImage: $pickedImage, sourceType: .camera)
+        }
     }
+    
     func convertImageToImageData() {
-        imageData = pickedImage?.jpegData(compressionQuality: 70)
+        imageData = pickedImage?.jpegData(compressionQuality: 0.7)
     }
 }
