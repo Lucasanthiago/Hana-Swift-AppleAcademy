@@ -75,8 +75,11 @@ class PlantViewModel: ObservableObject {
                 triggerTime: .at(plant.timesToSunbathing[index]))
 
         }
+        
     }
-
+    func addPlant(_ newPlant: Plant) async {
+           await savePlants(appending: newPlant)
+       }
     private func savePlants(appending plant:Plant? = nil) async {
         
         await MainActor.run{
@@ -191,6 +194,5 @@ class PlantViewModel: ObservableObject {
                 
             }
         }
-
 }
 

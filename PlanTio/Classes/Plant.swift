@@ -8,7 +8,7 @@
 import Foundation
 import VMNotificationHandler
 
-struct Plant: Codable, Identifiable {
+struct Plant: Codable, Identifiable, Hashable {
     static let weekDays = [1,2,3,4,5,6,7]
     
     var id = UUID()
@@ -24,7 +24,9 @@ struct Plant: Codable, Identifiable {
     var sunbathed: Bool = false
     var imageData:Data?
     //     adicionar um id de notificação para conseguir apagar aqls que forem adicionadas
-    
+    var wateringInstructions: String // Precisar passar a API - Muda de acordo com o tipo
+    var idealLight: String // Precisar passar a API - Muda de acordo com o tipo
+    var toleratedLight: String// Precisar passar a API -  Muda de acordo com o tipo
     
     var timesToWater:[Date] { Date.weekTimes(for: wateringTime, weekdays: Self.weekDays) }
     var timesToSunbathing:[Date] { Date.weekTimes(for: sunTime, weekdays: Self.weekDays) }
