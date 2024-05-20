@@ -28,7 +28,7 @@ struct FrameImage: View {
                 .resizable()
                 .scaledToFill()
                 .frame(height: 250)
-                .cornerRadius(13)
+                .cornerRadius(0)
                 .onTapGesture {
                     showingActionSheet = true
                 }
@@ -44,12 +44,15 @@ struct FrameImage: View {
                 .cancel()
             ])
         }
-        .sheet(isPresented: $isShowingImagePicker, onDismiss: convertImageToImageData) {
+        .fullScreenCover(isPresented: $isShowingImagePicker, onDismiss: convertImageToImageData) {
             ImagePicker(selectedImage: $pickedImage, sourceType: .photoLibrary)
+                .edgesIgnoringSafeArea(.all)
         }
-        .sheet(isPresented: $isShowingCamera, onDismiss: convertImageToImageData) {
+        .fullScreenCover(isPresented: $isShowingCamera, onDismiss: convertImageToImageData) {
             ImagePicker(selectedImage: $pickedImage, sourceType: .camera)
+                .edgesIgnoringSafeArea(.all)
         }
+        
     }
     
     func convertImageToImageData() {
