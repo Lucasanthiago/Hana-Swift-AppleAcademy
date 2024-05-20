@@ -32,7 +32,7 @@ struct CareInfos<Content: View>: View {
                     
                     DatePicker("Watering Time", selection: $date, displayedComponents: [.hourAndMinute])
                         .background {
-                            iconColor.opacity(1).saturation(1.8)
+                            iconColor.opacity(1).saturation(1.0)
                                 .clipShape(.rect(cornerRadius: 8))
                         }
                         .environment(\.colorScheme, .dark)

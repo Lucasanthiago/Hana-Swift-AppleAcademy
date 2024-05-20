@@ -24,10 +24,16 @@ struct SunlightView: View {
             .listStyle(PlainListStyle())
             .background(Color("Background"))
             .navigationBarTitle("Sunbathing")
-            .navigationBarItems(
-                trailing: NavigationLink(destination: AddPlantView(viewModel: viewModel, plant: Plant(name: "", type: "", wateringTime: Date(), sunTime: Date())), isActive: $showingAddPlant) {
-                }
-            )
+            .background(
+                            NavigationLink(destination: AddPlantView(viewModel: viewModel), isActive: $showingAddPlant) {
+                                EmptyView()
+                            }
+                        )
+//            .navigationBarItems(
+//                trailing: NavigationLink(destination: AddPlantView(viewModel: viewModel, plant: Plant(name: "", type: "", wateringTime: Date(), sunTime: Date())), isActive: $showingAddPlant) {
+//                }
+//            )
+            // FIXME: precisa passar a view nova de add e desbilitar após existir alguma planta no card
             
         }
         
