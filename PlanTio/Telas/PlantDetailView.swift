@@ -62,7 +62,7 @@ struct PlantDetailView: View {
                                     .padding()
                                     .font(.subheadline)
                             }
-                        }, title: "Watering", icon: "drop.circle.fill", iconColor: .cyan, date: Date())
+                        }, title: "Watering", icon: "drop.circle.fill", iconColor: .cyan, date: $plant.wateringTime)
                         .padding(.vertical)
                         .padding(.horizontal)
                         
@@ -84,7 +84,7 @@ struct PlantDetailView: View {
                             }
                             .padding(.leading, 10)
                             .padding(.trailing, 10)
-                        }, title: "Sunbathing", icon: "sun.max.fill", iconColor: .orange, date: Date())
+                        }, title: "Sunbathing", icon: "sun.max.fill", iconColor: .orange, date: $plant.sunTime)
                         .padding(.horizontal)
                         
                     }
