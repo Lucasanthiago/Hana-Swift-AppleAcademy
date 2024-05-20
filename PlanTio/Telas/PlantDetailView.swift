@@ -96,8 +96,6 @@ struct PlantDetailView: View {
         .safeAreaInset(edge: .bottom, content: {
             if saveMode == true {
                 Button(action: {
-//                    Task {
-//                        await viewModel.addPlant(plant)
                         saveMode = false
                         onSave?()
                         isEditing = false
