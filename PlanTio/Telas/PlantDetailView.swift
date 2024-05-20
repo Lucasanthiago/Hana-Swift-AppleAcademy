@@ -124,9 +124,9 @@ struct PlantDetailView: View {
                     }
                     .font(.body)
                     .bold()
-                    .foregroundColor(.white)
+                    .foregroundStyle(Color.accentColor)
                     .frame(maxWidth: .infinity, maxHeight: 56)
-                    .background(Color.green)
+//                    .background(Color.green)
                     .cornerRadius(13)
                     .padding(.horizontal)
                     Spacer()
