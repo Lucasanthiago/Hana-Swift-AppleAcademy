@@ -8,8 +8,19 @@
 import SwiftUI
 
 struct SwiftUIView: View {
+    
+    
     var body: some View {
-        Image("NoPlant")
+        Text("NoPlant")
+            .font(.custom("Quicksand", size: 36))
+                  
+//                  Quicksand
+//                  Quicksand-Regular
+//                  Quicksand-Light
+//                  Quicksand-Medium
+//                  Quicksand-SemiBold
+//                  Quicksand-Bold
+          
     }
 }
 
