@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		072CA12F2BEAC3150085CB94 /* SwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 072CA12E2BEAC3150085CB94 /* SwiftUIView.swift */; };
 		072CA1342BEC28CC0085CB94 /* CustomContentUnavailableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 072CA1332BEC28CC0085CB94 /* CustomContentUnavailableView.swift */; };
+		2E68C0A32BFD12BE0002B3B4 /* PostHog in Frameworks */ = {isa = PBXBuildFile; productRef = 2E68C0A22BFD12BE0002B3B4 /* PostHog */; };
 		2EF02FEA2BE042220023247F /* VMNotificationHandler in Frameworks */ = {isa = PBXBuildFile; productRef = 2EF02FE92BE042220023247F /* VMNotificationHandler */; };
 		762189A92BF54E8800C80C62 /* ListPlantCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762189A82BF54E8800C80C62 /* ListPlantCard.swift */; };
 		769580D12BEC10D800FDB377 /* InfoPlant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 769580D02BEC10D800FDB377 /* InfoPlant.swift */; };
@@ -95,6 +96,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2EF02FEA2BE042220023247F /* VMNotificationHandler in Frameworks */,
+				2E68C0A32BFD12BE0002B3B4 /* PostHog in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -243,6 +245,7 @@
 			name = PlanTio;
 			packageProductDependencies = (
 				2EF02FE92BE042220023247F /* VMNotificationHandler */,
+				2E68C0A22BFD12BE0002B3B4 /* PostHog */,
 			);
 			productName = PlanTio;
 			productReference = 76BA2A512BE0162A0038E2AD /* PlanTio.app */;
@@ -318,6 +321,7 @@
 			mainGroup = 76BA2A482BE0162A0038E2AD;
 			packageReferences = (
 				2EF02FE82BE042220023247F /* XCRemoteSwiftPackageReference "VMNotificationHandler" */,
+				2E68C0A12BFD11B10002B3B4 /* XCRemoteSwiftPackageReference "posthog-ios" */,
 			);
 			productRefGroup = 76BA2A522BE0162A0038E2AD /* Products */;
 			projectDirPath = "";
@@ -728,6 +732,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		2E68C0A12BFD11B10002B3B4 /* XCRemoteSwiftPackageReference "posthog-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/PostHog/posthog-ios.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.3.0;
+			};
+		};
 		2EF02FE82BE042220023247F /* XCRemoteSwiftPackageReference "VMNotificationHandler" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Visckmart/VMNotificationHandler.git";
@@ -739,6 +751,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		2E68C0A22BFD12BE0002B3B4 /* PostHog */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2E68C0A12BFD11B10002B3B4 /* XCRemoteSwiftPackageReference "posthog-ios" */;
+			productName = PostHog;
+		};
 		2EF02FE92BE042220023247F /* VMNotificationHandler */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 2EF02FE82BE042220023247F /* XCRemoteSwiftPackageReference "VMNotificationHandler" */;

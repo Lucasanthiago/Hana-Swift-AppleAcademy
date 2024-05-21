@@ -1,4 +1,5 @@
 import SwiftUI
+import PostHog
 
 struct PlantDetailView: View {
     @ObservedObject var viewModel: PlantViewModel
@@ -96,6 +97,8 @@ struct PlantDetailView: View {
         .safeAreaInset(edge: .bottom, content: {
             if saveMode == true {
                 Button(action: {
+                    
+                        PostHogSDK.shared.capture("Newplant")
                         saveMode = false
                         onSave?()
                         isEditing = false
