@@ -68,21 +68,24 @@ struct PlantDetailView: View {
                         .padding(.horizontal)
                         
                         CareInfos(content: {
-                            HStack {
+                            HStack (alignment: .top) {
                                 if plant.idealLight.isEmpty == false{
                                     IdealAndToleratedLight(content: {
                                     }, title: "Ideal light", icon: "sun.min.fill", iconColor: .black, description: plant.idealLight)
                                     .padding()
-                                    .fixedSize() // Impede a quebra de linha
+//                                    .fixedSize() 
+                                    .fixedSize(horizontal: false, vertical: true)// Impede a quebra de linha
                                 }
                                 if plant.idealLight.isEmpty == false{
                                     IdealAndToleratedLight(content: {
                                     }, title: "Tolerated light", icon: "sun.max.fill", iconColor: .black, description: plant.toleratedLight)
                                     .padding(.horizontal, 20)
                                     .padding(.vertical, 10)
-                                    .fixedSize() // Impede a quebra de linha
+//                                    .fixedSize() // Impede a quebra de linha
+                                    .fixedSize(horizontal: false, vertical: true)
                                 }
                             }
+                            
                             .padding(.leading, 10)
                             .padding(.trailing, 10)
                         }, title: "Sunbathing", icon: "sun.max.fill", iconColor: .orange, date: $plant.sunTime)
@@ -102,6 +105,8 @@ struct PlantDetailView: View {
                         saveMode = false
                         onSave?()
                         isEditing = false
+                        randomInfos()
+                    
 //                    }
                 }, label: { // TODO: resolver save verdadeiro, e aparecer na view
                     Text("Save")
@@ -139,6 +144,30 @@ struct PlantDetailView: View {
         //
         
     }
+    
+    
+    func randomInfos() {
+        let wateringInstructionsOptions = [
+            "Keep moist between watering.\nMust not be dry between watering",
+            "Water only when the soil is dry.\nMust be dry between watering",
+            "Water when soil is half dry.\nChange water in the vase regularly."
+        ]
+        
+        let idealLightOptions = [
+            "Bright light.",
+            "6 or more hours\nof direct sunlight\nper day"
+        ]
+        
+        let toleratedLightOptions = [
+            "Diffused",
+            "Direct sunlight",
+        ]
+        
+        plant.wateringInstructions = wateringInstructionsOptions.randomElement() ?? ""
+        plant.idealLight = idealLightOptions.randomElement() ?? ""
+        plant.toleratedLight = toleratedLightOptions.randomElement() ?? ""
+    }
+    
     //
     
     //    func addPlant() {

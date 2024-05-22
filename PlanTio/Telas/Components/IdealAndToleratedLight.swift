@@ -29,6 +29,7 @@ struct IdealAndToleratedLight<Content: View>: View {
                 .padding(.leading, 30)
                        .font(.subheadline)
                }
+        
            }
        }
       
