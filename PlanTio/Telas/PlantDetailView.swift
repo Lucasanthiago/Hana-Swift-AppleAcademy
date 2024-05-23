@@ -106,6 +106,7 @@ struct PlantDetailView: View {
                         onSave?()
                         isEditing = false
                         randomInfos()
+                        
                     
 //                    }
                 }, label: { // TODO: resolver save verdadeiro, e aparecer na view

@@ -1,7 +1,7 @@
 import SwiftUI
 struct AddPlantView: View {
     @ObservedObject var viewModel: PlantViewModel
-    @State var newPlant = Plant(name: "", type: "", wateringTime: .now, sunTime: .now, wateringInstructions: "", idealLight: "", toleratedLight: "")
+    @State var newPlant = Plant(name: "", type: "", wateringTime: Date(), sunTime: Date(), wateringInstructions: "", idealLight: "", toleratedLight: "")
     @State var isEditing = true
 
     var body: some View {
