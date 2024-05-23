@@ -128,6 +128,7 @@ struct PlantDetailView: View {
                 if saveMode == false{
                     Button(action: {
                         isEditing.toggle()
+//                        updatePlant()
                     }) {
                         
                         Text(isEditing ? "Done" : "Edit")
@@ -171,6 +172,17 @@ struct PlantDetailView: View {
     }
     
     //
+        func updatePlant() {
+                plant.imageData = plant.imageData
+                Task {
+                    do {
+                        try await viewModel.save(plant: plant)
+                    } catch {
+                        print("* Erro salvando Planta *")
+                        print(error)
+                    }
+                }
+            }
     
         func addPlant() {
             let newPlant = Plant(
