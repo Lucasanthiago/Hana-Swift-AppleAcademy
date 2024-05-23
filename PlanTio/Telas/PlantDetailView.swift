@@ -106,6 +106,7 @@ struct PlantDetailView: View {
                         onSave?()
                         isEditing = false
                         randomInfos()
+                        addPlant()
                         
                     
 //                    }
@@ -171,29 +172,29 @@ struct PlantDetailView: View {
     
     //
     
-    //    func addPlant() {
-    //        let newPlant = Plant(
-    //            id: plant.id,
-    //            name: plant.name,
-    //            type: plant.type,
-    //            wateringTime: plant.wateringTime,
-    //            sunTime: plant.sunTime,
-    //            watered: plant.watered,
-    //            sunbathed: plant.sunbathed,
-    //            imageData: plant.imageData,
-    //            wateringInstructions: plant.wateringInstructions,
-    //            idealLight: plant.idealLight,
-    //            toleratedLight: plant.toleratedLight
-    //        )
-    //        Task {
-    //            do {
-    //                try await viewModel.save(plant: newPlant)
-    //            } catch {
-    //                print("*** Erro salvando Planta ***")
-    //                print(error)
-    //            }
-    //        }
-    //    }
+        func addPlant() {
+            let newPlant = Plant(
+                id: plant.id,
+                name: plant.name,
+                type: plant.type,
+                wateringTime: plant.wateringTime,
+                sunTime: plant.sunTime,
+                watered: plant.watered,
+                sunbathed: plant.sunbathed,
+                imageData: plant.imageData,
+                wateringInstructions: plant.wateringInstructions,
+                idealLight: plant.idealLight,
+                toleratedLight: plant.toleratedLight
+            )
+            Task {
+                do {
+                    try await viewModel.save(plant: newPlant)
+                } catch {
+                    print("*** Erro salvando Planta ***")
+                    print(error)
+                }
+            }
+        }
 }
 
 //    struct TelaDetalhe_Previews: PreviewProvider {
