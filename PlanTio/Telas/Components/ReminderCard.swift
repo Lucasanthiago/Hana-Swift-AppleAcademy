@@ -67,7 +67,7 @@ struct ReminderCard<Content: View>: View {
             .padding(30)
             .background(
                 RoundedRectangle(cornerRadius: 20)
-                    .foregroundColor(.white)
+                    .foregroundColor(Color("Cards"))
                     .shadow(color: Color(white: 0.2).opacity(0.5), radius: 8))
         }
     }
@@ -76,9 +76,9 @@ struct ReminderCard<Content: View>: View {
 #Preview {
     VStack (spacing: 50) {
         ReminderCard (content: {
-        }, plantName: "Pedro Gomes", title: "Reminder", time: Date(), careType: "Watering", checkColor: .cyan, toggleColor: .cyan)
+        }, plantName: "Pedro Gomes", title: "Reminder", time: Date(), careType: "Watering", checkColor: (Color("Water")), toggleColor: (Color("Water")))
         ReminderCard (content: {
-        }, plantName: "Ric", title: "Reminder", time: Date(), careType: "Sunbathing", checkColor: .orange, toggleColor: .orange)
+        }, plantName: "Ric", title: "Reminder", time: Date(), careType: "Sunbathing", checkColor: (Color("Sun")), toggleColor: (Color("Sun")))
     }
 }
 

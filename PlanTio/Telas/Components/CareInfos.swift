@@ -59,7 +59,7 @@ struct CareInfos<Content: View>: View {
         .padding()
         .background(
         RoundedRectangle(cornerRadius: 20)
-            .foregroundStyle(.white)
+            .foregroundStyle(Color("Cards"))
             .shadow(color: Color(white: 0.2).opacity(0.5), radius: 8)
         )
         .frame(maxWidth: .infinity, alignment: .leading) 

@@ -34,7 +34,7 @@ struct ListPlantCard<Content: View>: View {
         .padding(30)
         .background(
             RoundedRectangle(cornerRadius: 20)
-                .foregroundColor(.white)
+                .foregroundColor(Color("Cards"))
                 .shadow(color: Color(white: 0.2).opacity(0.5), radius: 8))
     }
 }
