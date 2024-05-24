@@ -2,6 +2,8 @@
 
 
 import SwiftUI
+import PostHog
+
 
 struct ContentView: View {
     @State private var navigateToAddPlant = false
@@ -50,6 +52,7 @@ struct ContentView: View {
                 }
             )
             .navigationDestination(isPresented: $showingAddPlant) {
+                
                             AddPlantView(viewModel: viewModel)
                         }
         }

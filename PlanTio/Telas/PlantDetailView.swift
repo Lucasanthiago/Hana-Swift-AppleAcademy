@@ -1,4 +1,5 @@
 import SwiftUI
+import PostHog
 
 struct PlantDetailView: View {
     @ObservedObject var viewModel: PlantViewModel
@@ -67,21 +68,24 @@ struct PlantDetailView: View {
                         .padding(.horizontal)
                         
                         CareInfos(content: {
-                            HStack {
+                            HStack (alignment: .top) {
                                 if plant.idealLight.isEmpty == false{
                                     IdealAndToleratedLight(content: {
                                     }, title: "Ideal light", icon: "sun.min.fill", iconColor: .black, description: plant.idealLight)
                                     .padding()
-                                    .fixedSize() // Impede a quebra de linha
+//                                    .fixedSize() 
+                                    .fixedSize(horizontal: false, vertical: true)// Impede a quebra de linha
                                 }
                                 if plant.idealLight.isEmpty == false{
                                     IdealAndToleratedLight(content: {
                                     }, title: "Tolerated light", icon: "sun.max.fill", iconColor: .black, description: plant.toleratedLight)
                                     .padding(.horizontal, 20)
                                     .padding(.vertical, 10)
-                                    .fixedSize() // Impede a quebra de linha
+//                                    .fixedSize() // Impede a quebra de linha
+                                    .fixedSize(horizontal: false, vertical: true)
                                 }
                             }
+                            
                             .padding(.leading, 10)
                             .padding(.trailing, 10)
                         }, title: "Sunbathing", icon: "sun.max.fill", iconColor: .orange, date: $plant.sunTime)
@@ -96,9 +100,15 @@ struct PlantDetailView: View {
         .safeAreaInset(edge: .bottom, content: {
             if saveMode == true {
                 Button(action: {
+                    
+                        PostHogSDK.shared.capture("Newplant")
                         saveMode = false
                         onSave?()
                         isEditing = false
+                        randomInfos()
+                        addPlant()
+                        
+                    
 //                    }
                 }, label: { // TODO: resolver save verdadeiro, e aparecer na view
                     Text("Save")
@@ -118,6 +128,7 @@ struct PlantDetailView: View {
                 if saveMode == false{
                     Button(action: {
                         isEditing.toggle()
+//                        updatePlant()
                     }) {
                         
                         Text(isEditing ? "Done" : "Edit")
@@ -136,31 +147,66 @@ struct PlantDetailView: View {
         //
         
     }
-    //
     
-    //    func addPlant() {
-    //        let newPlant = Plant(
-    //            id: plant.id,
-    //            name: plant.name,
-    //            type: plant.type,
-    //            wateringTime: plant.wateringTime,
-    //            sunTime: plant.sunTime,
-    //            watered: plant.watered,
-    //            sunbathed: plant.sunbathed,
-    //            imageData: plant.imageData,
-    //            wateringInstructions: plant.wateringInstructions,
-    //            idealLight: plant.idealLight,
-    //            toleratedLight: plant.toleratedLight
-    //        )
-    //        Task {
-    //            do {
-    //                try await viewModel.save(plant: newPlant)
-    //            } catch {
-    //                print("*** Erro salvando Planta ***")
-    //                print(error)
-    //            }
-    //        }
-    //    }
+    
+    func randomInfos() {
+        let wateringInstructionsOptions = [
+            "Keep moist between watering.\nMust not be dry between watering",
+            "Water only when the soil is dry.\nMust be dry between watering",
+            "Water when soil is half dry.\nChange water in the vase regularly."
+        ]
+        
+        let idealLightOptions = [
+            "Bright light.",
+            "6 or more hours\nof direct sunlight\nper day"
+        ]
+        
+        let toleratedLightOptions = [
+            "Diffused",
+            "Direct sunlight",
+        ]
+        
+        plant.wateringInstructions = wateringInstructionsOptions.randomElement() ?? ""
+        plant.idealLight = idealLightOptions.randomElement() ?? ""
+        plant.toleratedLight = toleratedLightOptions.randomElement() ?? ""
+    }
+    
+    //
+        func updatePlant() {
+                plant.imageData = plant.imageData
+                Task {
+                    do {
+                        try await viewModel.save(plant: plant)
+                    } catch {
+                        print("* Erro salvando Planta *")
+                        print(error)
+                    }
+                }
+            }
+    
+        func addPlant() {
+            let newPlant = Plant(
+                id: plant.id,
+                name: plant.name,
+                type: plant.type,
+                wateringTime: plant.wateringTime,
+                sunTime: plant.sunTime,
+                watered: plant.watered,
+                sunbathed: plant.sunbathed,
+                imageData: plant.imageData,
+                wateringInstructions: plant.wateringInstructions,
+                idealLight: plant.idealLight,
+                toleratedLight: plant.toleratedLight
+            )
+            Task {
+                do {
+                    try await viewModel.save(plant: newPlant)
+                } catch {
+                    print("*** Erro salvando Planta ***")
+                    print(error)
+                }
+            }
+        }
 }
 
 //    struct TelaDetalhe_Previews: PreviewProvider {
