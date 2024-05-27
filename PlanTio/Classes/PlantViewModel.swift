@@ -46,7 +46,6 @@ class PlantViewModel: ObservableObject {
     
     func fiteredPlants(by searchText: String)-> [Plant] {
         if searchText.count < 3 {return plants}
-        PostHogSDK.shared.capture("Newplant")
         return plants.filter({$0.name.localizedCaseInsensitiveContains(searchText)})
     }
     
