@@ -23,14 +23,22 @@ struct ContentView: View {
                 } else {
                     ForEach(filteredPlants) { plant in
                         NavigationLink(value: plant) {
-                            ListPlantCard(content: {}, plantName: plant.name, plantSpecies: plant.type)
+                            ZStack{
+                                RoundedRectangle(cornerRadius: 10)
+                                    .frame(width: 370)
+                                    .foregroundStyle(Color.clear)
+                                ListPlantCard(content: {}, plantName: plant.name, plantSpecies: plant.type)
+                            }
+                            .padding(.leading, 19.5)
                         }
+                        
                         //
                     }
                     //                    }
                     .onDelete(perform: viewModel.removePlant(at:))
                     .listRowBackground(Color.clear)
                     .listRowSeparator(.hidden)
+                    
                     
                 }
             }
@@ -45,7 +53,8 @@ struct ContentView: View {
                     )
                 }
             }
-            .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always))
+            .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always)).font(.custom("Quicksand", size: 17))
+            
             .listStyle(.plain)
             .background(Color("Background"))
             .navigationBarTitle("My Plants")
@@ -64,7 +73,7 @@ struct ContentView: View {
     @ViewBuilder
     var noPlants: some View {
         if viewModel.plants.isEmpty {
-            CustomContentUnavailableView(iconName: "leaf",
+            CustomContentUnavailableView(iconName: "hana.flower.fill",
                                          title: "No Plants Yet",
                                          desciption: "Your plants will appear here.",
                                          buttonName: "Add new plant",

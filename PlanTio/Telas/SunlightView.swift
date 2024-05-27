@@ -20,7 +20,8 @@ struct SunlightView: View {
                 if viewModel.plants.isEmpty { noPlantsToSunbathe }
                 else { sunbathingList }
             }
-            .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always))
+            .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always)).font(.custom("Quicksand", size: 17))
+            
             .listStyle(PlainListStyle())
             .background(Color("Background"))
             .navigationBarTitle("Sunbathing")
@@ -53,13 +54,14 @@ struct SunlightView: View {
 
         @ViewBuilder
         var noPlantsToSunbathe: some View {
-            CustomContentUnavailableView(iconName: "leaf",
+            CustomContentUnavailableView(iconName: "hana.flower.fill",
                                          title: "No Plants Yet",
                                          desciption: "Sunbathing reminders will appear here as you add your plants.",
                                          buttonName: "Add new plant",
                                          action: {showingAddPlant = true})
             .listRowBackground(Color.clear)
             .listRowSeparator(.hidden)
+            
         }
 
     

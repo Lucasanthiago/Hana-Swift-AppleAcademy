@@ -18,21 +18,21 @@ struct IdealAndToleratedLight<Content: View>: View {
     
     var body: some View {
         VStack(alignment: .leading) {
-                   HStack {
-                       Image(systemName: icon)
-                           .foregroundStyle(iconColor)
-                       Text(title)
-                           .font(.callout)
-                           .bold()
-                   }
-                   Text(description)
-                .padding(.leading, 30)
-                       .font(.subheadline)
-               }
+            HStack {
+                Image(systemName: icon)
+                    .foregroundStyle(iconColor)
+                Text(title)
+                    .font(.custom("Quicksand", size: 15))
+                    .bold()
+            }
+            Text(description)
+                .padding(.leading, 27.5)
+                .font(.custom("Quicksand", size: 15))
+        }
         
-           }
-       }
-      
+    }
+}
+
 #Preview {
     VStack {
         HStack {

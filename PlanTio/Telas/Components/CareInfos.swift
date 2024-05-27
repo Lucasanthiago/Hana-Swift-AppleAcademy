@@ -25,7 +25,7 @@ struct CareInfos<Content: View>: View {
                         .foregroundStyle(iconColor)
                     
                     Text(title)
-                        .font(.title3)
+                        .font(.custom("Quicksand", size: 20))
                         .bold()
                     
                     Spacer()
