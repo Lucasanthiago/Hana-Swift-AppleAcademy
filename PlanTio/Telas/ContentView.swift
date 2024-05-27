@@ -70,7 +70,8 @@ struct ContentView: View {
                                          buttonName: "Add new plant",
                                          action: { showingAddPlant = true }
             )
-            .background(Color("Background"))
+            .listRowBackground(Color.clear)
+            .listRowSeparator(.hidden)
         } else {
             CustomContentUnavailableView(iconName: "exclamationmark.triangle",
                                          title: "No plants named \"\(searchText)\"",
@@ -78,7 +79,8 @@ struct ContentView: View {
                                          buttonName: "Add new plant",
                                          action: { showingAddPlant = true }
             )
-            .background(Color("Background"))
+            .listRowBackground(Color.clear)
+            .listRowSeparator(.hidden)
         }
     }
 }

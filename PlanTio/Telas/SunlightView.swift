@@ -47,6 +47,8 @@ struct SunlightView: View {
             AlarmView(plant: plant, type: .sunlight)
             
         }
+        .listRowBackground(Color.clear)
+        .listRowSeparator(.hidden)
     }
 
         @ViewBuilder
@@ -56,6 +58,8 @@ struct SunlightView: View {
                                          desciption: "Sunbathing reminders will appear here as you add your plants.",
                                          buttonName: "Add new plant",
                                          action: {showingAddPlant = true})
+            .listRowBackground(Color.clear)
+            .listRowSeparator(.hidden)
         }
 
     

@@ -46,6 +46,8 @@ struct WateringView: View {
             AlarmView(plant: plant, type: .watering)
             
         }
+        .listRowBackground(Color.clear)
+        .listRowSeparator(.hidden)
     }
 
     @ViewBuilder
@@ -55,6 +57,8 @@ struct WateringView: View {
                                         desciption: "Watering reminders will appear here as you add your plants.",
                                         buttonName: "Add new plant",
                                         action: {showingAddPlant = true})
+        .listRowBackground(Color.clear)
+        .listRowSeparator(.hidden)
         }
 
     
