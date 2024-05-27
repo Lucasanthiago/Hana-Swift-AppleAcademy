@@ -7,7 +7,7 @@
 
 
 import SwiftUI
-
+import PostHog
 
 
 
@@ -19,9 +19,8 @@ struct ReminderCard<Content: View>: View {
     var careType: String
     var checkColor: Color
     var toggleColor: Color
-    @State var isToggled = false
+    @State var isToggled = true
     @State var isDone = false
-    
     
     var body: some View {
         VStack(alignment: .leading){
@@ -30,6 +29,7 @@ struct ReminderCard<Content: View>: View {
                 .bold()
                 .foregroundStyle(Color.gray)
                 .padding(.leading)
+            
             
             VStack{
                 HStack {
@@ -41,7 +41,8 @@ struct ReminderCard<Content: View>: View {
                             .fontWeight(.medium)
                     }
                     Spacer()
-                    Toggle(isOn: $isToggled) {Text("Toggle Notifications")}
+                    Toggle(isOn: $isToggled) {
+                        Text("Toggle Notifications")}
                         .tint(Color(toggleColor))
                         .labelsHidden()
                     
@@ -58,6 +59,7 @@ struct ReminderCard<Content: View>: View {
                     
                     Button(action: {
                         isDone.toggle()
+                        PostHogSDK.shared.capture("CheckUsed")
                     }) {
                         Image(systemName: isDone ? "checkmark.circle.fill" : "circle")
                             .font(.title)
@@ -65,6 +67,9 @@ struct ReminderCard<Content: View>: View {
                     }
                 }
                 .padding(.top)
+            }
+            .onChange(of: isToggled) { oldValue, newValue in
+                PostHogSDK.shared.capture("ToggleUsed")
             }
             .padding(30)
             .background(
