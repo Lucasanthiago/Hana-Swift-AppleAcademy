@@ -10,90 +10,95 @@ struct PlantDetailView: View {
     
     
     var body: some View {
-        VStack {
-            FrameImage(imageData: $plant.imageData, aspectRatio: 21/9)
-                .frame(maxWidth: .infinity, alignment: .center)
-                .disabled(isEditing == false)
+        ZStack{
+            Color("Background")
             VStack {
-                HStack{
-                    TextField("Name", text: $plant.name)
-                        .padding(.top, -20)
-                        .font(.title2)
-                        .bold()
-                        .frame(maxWidth: .infinity)
-                        .padding()
+                FrameImage(imageData: $plant.imageData, aspectRatio: 21/9)
+                    .frame(maxWidth: .infinity, alignment: .center)
+                    .disabled(isEditing == false)
+                VStack {
+                    HStack{
+                        TextField("Name", text: $plant.name)
+                            .padding(.top, -20)
+                            .font(.custom("Quicksand", size: 22))
+                            .bold()
+                            .frame(maxWidth: .infinity)
+                            .padding()
+                            .disabled(isEditing == false)
+                        Button(action: {}, label: {
+                            
+                            HStack {
+                                Image(systemName:"arrow.counterclockwise.circle.fill")
+                                Text("Care History")
+                                    .font(.custom("Quicksand", size: 17))
+                                    .fontWeight(.bold)
+                            }
+                            .foregroundColor(Color(.white))
+                            .frame(width: 150,height: 38)
+                            .background(Color("PinkButton"))
+                            .cornerRadius(13)
+                            .padding()
+                        })
+                    }
+                    Divider()
+                    HStack {
+                        Text("Species")
+                            .foregroundColor(.gray)
+                            .font(.custom("Quicksand", size: 17))
+                            .fontWeight(.medium)
+                        Spacer()
+                        Picker("Tipo", selection: $plant.type) {
+                            ForEach(viewModel.commonNames, id: \.self) { commonName in
+                                Text(commonName).tag(commonName)
+                            }
+                        }
                         .disabled(isEditing == false)
-                    Button(action: {}, label: {
-                        
-                        HStack {
-                            Image(systemName:"arrow.counterclockwise.circle.fill")
-                            Text("Care History")
+                        .pickerStyle(MenuPickerStyle())
+                    }
+                    .padding(.horizontal, 16)
+                    .listStyle(PlainListStyle())
+                    .padding(.top, 5)
+                    ScrollView {
+                        VStack {
+                            CareInfos(content: {
+                                if plant.wateringInstructions.isEmpty == false {
+                                    Text(plant.wateringInstructions)
+                                        .padding()
+                                        .font(.custom("Quicksand", size: 15))
+                                        .fontWeight(.medium)
+                                }
+                            }, title: "Watering", icon: "drop.circle.fill", iconColor: (Color("Water")), date: $plant.wateringTime)
+                            .padding(.vertical)
+                            .padding(.horizontal)
+                            
+                            CareInfos(content: {
+                                HStack (alignment: .top) {
+                                    if plant.idealLight.isEmpty == false{
+                                        IdealAndToleratedLight(content: {
+                                        }, title: "Ideal light", icon: "sun.min.fill", iconColor: (Color("NormalText")), description: plant.idealLight)
+                                        .padding()
+                                        //                                    .fixedSize()
+                                        .fixedSize(horizontal: false, vertical: true)// Impede a quebra de linha
+                                    }
+                                    if plant.idealLight.isEmpty == false{
+                                        IdealAndToleratedLight(content: {
+                                        }, title: "Tolerated light", icon: "sun.max.fill", iconColor: (Color("NormalText")), description: plant.toleratedLight)
+                                        .padding(.horizontal, 18)
+                                        .padding(.vertical, 10)
+                                        //                                    .fixedSize() // Impede a quebra de linha
+                                        .fixedSize(horizontal: false, vertical: true)
+                                    }
+                                }
+                                
+                                .padding(.leading, 10)
+                                .padding(.trailing, 10)
+                            }, title: "Sunbathing", icon: "sun.max.fill", iconColor: Color("Sun"), date: $plant.sunTime)
+                            .padding(.horizontal)
                             
                         }
-                        .foregroundColor(.white)
-                        .frame(width: 143,height: 38)
-                        .background(Color("PinkButton"))
-                        .cornerRadius(0)
-                        .padding()
-                        .padding(.top, -10)
-                    })
-                }
-                Divider()
-                HStack {
-                    Text("Type")
-                        .foregroundColor(.gray)
-                    Spacer()
-                    Picker("Tipo", selection: $plant.type) {
-                        ForEach(viewModel.commonNames, id: \.self) { commonName in
-                            Text(commonName).tag(commonName)
-                            
-                        }
-                    }
-                    .disabled(isEditing == false)
-                    .pickerStyle(MenuPickerStyle())
-                }
-                .padding(.horizontal, 16)
-                .listStyle(PlainListStyle())
-                .padding(.top, 5)
-                ScrollView {
-                    VStack {
-                        CareInfos(content: {
-                            if plant.wateringInstructions.isEmpty == false {
-                                Text(plant.wateringInstructions)
-                                    .padding()
-                                    .font(.subheadline)
-                            }
-                        }, title: "Watering", icon: "drop.circle.fill", iconColor: (Color("Water")), date: $plant.wateringTime)
-                        .padding(.vertical)
-                        .padding(.horizontal)
                         
-                        CareInfos(content: {
-                            HStack (alignment: .top) {
-                                if plant.idealLight.isEmpty == false{
-                                    IdealAndToleratedLight(content: {
-                                    }, title: "Ideal light", icon: "sun.min.fill", iconColor: .black, description: plant.idealLight)
-                                    .padding()
-//                                    .fixedSize() 
-                                    .fixedSize(horizontal: false, vertical: true)// Impede a quebra de linha
-                                }
-                                if plant.idealLight.isEmpty == false{
-                                    IdealAndToleratedLight(content: {
-                                    }, title: "Tolerated light", icon: "sun.max.fill", iconColor: .black, description: plant.toleratedLight)
-                                    .padding(.horizontal, 20)
-                                    .padding(.vertical, 10)
-//                                    .fixedSize() // Impede a quebra de linha
-                                    .fixedSize(horizontal: false, vertical: true)
-                                }
-                            }
-                            
-                            .padding(.leading, 10)
-                            .padding(.trailing, 10)
-                        }, title: "Sunbathing", icon: "sun.max.fill", iconColor: Color("Sun"), date: $plant.sunTime)
-                        .padding(.horizontal)
-                        
+                        .disabled(isEditing == false)
                     }
-                    
-                    .disabled(isEditing == false)
                 }
             }
         }
@@ -114,9 +119,9 @@ struct PlantDetailView: View {
                     Text("Save")
                         .font(.body)
                         .bold()
-                        .foregroundColor(.white)
+                        .foregroundStyle(Color.white)
                         .frame(maxWidth: .infinity, maxHeight: 56)
-                        .background(Color.green)
+                        .background(Color("PinkButton"))
                         .cornerRadius(13)
                         .padding(.horizontal)
                 })
@@ -138,12 +143,13 @@ struct PlantDetailView: View {
                     .foregroundStyle(Color.accentColor)
                     .frame(maxWidth: .infinity, maxHeight: 56)
 //                    .background(Color.green)
-                    .cornerRadius(13)
+                    .cornerRadius(0)
                     .padding(.horizontal)
                     Spacer()
                 }
             }
         })
+        .background(Color("Background"))
         //
         
     }
@@ -157,8 +163,8 @@ struct PlantDetailView: View {
         ]
         
         let idealLightOptions = [
-            "Bright light.",
-            "6 or more hours\nof direct sunlight\nper day"
+            "Bright light",
+            "6 or more hours of direct sunlight per day"
         ]
         
         let toleratedLightOptions = [

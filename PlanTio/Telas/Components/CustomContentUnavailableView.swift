@@ -16,8 +16,8 @@ struct CustomContentUnavailableView: View {
     
     var body: some View {
         ContentUnavailableView {
-            ContentUnavailableView(title, systemImage: iconName,
-                                   description: Text("\n"+desciption))
+            ContentUnavailableView(title, image: iconName,
+                                   description: Text("\n"+desciption).font(.custom("Quicksand", size: 17)))
             .padding(.bottom, -20)
             .padding(.horizontal, -15)
         } actions: {
@@ -26,6 +26,7 @@ struct CustomContentUnavailableView: View {
             } label: {
                 Text(buttonName)
                     .foregroundStyle(Color.accentColor)
+                    .bold()
             }
 
         }

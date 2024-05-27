@@ -25,7 +25,7 @@ struct ReminderCard<Content: View>: View {
     var body: some View {
         VStack(alignment: .leading){
             Text(plantName)
-                .font(.title3)
+                .font(.custom("Quicksand", size: 20))
                 .bold()
                 .foregroundStyle(Color.gray)
                 .padding(.leading)
@@ -35,8 +35,10 @@ struct ReminderCard<Content: View>: View {
                 HStack {
                     VStack (alignment: .leading) {
                         Text(title)
+                            .font(.custom("Quicksand", size: 15))
                         Text("\(time, formatter: dateFormatter)")
-                            .font(.title)
+                            .font(.custom("Quicksand", size: 28))
+                            .fontWeight(.medium)
                     }
                     Spacer()
                     Toggle(isOn: $isToggled) {
@@ -50,7 +52,7 @@ struct ReminderCard<Content: View>: View {
                 Divider()
                 HStack {
                     Text(careType)
-                        .font(.title2)
+                        .font(.custom("Quicksand", size: 22))
                         .bold()
                     
                     Spacer()
@@ -81,9 +83,9 @@ struct ReminderCard<Content: View>: View {
 #Preview {
     VStack (spacing: 50) {
         ReminderCard (content: {
-        }, plantName: "Pedro Gomes", title: "Reminder", time: Date(), careType: "Watering", checkColor: (Color("Water")), toggleColor: (Color("Water")))
+        }, plantName: "Pedro Gomes", title: "Reminder", time: Date(), careType: "Watered", checkColor: (Color("Water")), toggleColor: (Color("Water")))
         ReminderCard (content: {
-        }, plantName: "Ric", title: "Reminder", time: Date(), careType: "Sunbathing", checkColor: (Color("Sun")), toggleColor: (Color("Sun")))
+        }, plantName: "Ric", title: "Reminder", time: Date(), careType: "Sunbathed", checkColor: (Color("Sun")), toggleColor: (Color("Sun")))
     }
 }
 

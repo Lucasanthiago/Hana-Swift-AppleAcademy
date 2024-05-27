@@ -15,7 +15,7 @@ struct TabBarView: View {
         TabView {
             ContentView(viewModel: viewModel)
                 .tabItem {
-                    Label("My Plants", systemImage: "leaf")
+                    Label("My Plants", image: "hana.flower.fill")
                 }
             
             WateringView(viewModel: viewModel)
