@@ -22,14 +22,15 @@ struct ContentView: View {
                     noPlants
                 } else {
                     ForEach(filteredPlants) { plant in
-                        NavigationLink(value: plant) {
-                            ZStack{
-                                RoundedRectangle(cornerRadius: 10)
-                                    .frame(width: 370)
-                                    .foregroundStyle(Color.clear)
-                                ListPlantCard(content: {}, plantName: plant.name, plantSpecies: plant.type)
+                        ZStack{
+                            ListPlantCard(content: {}, plantName: plant.name, plantSpecies: plant.type)
+                                
+                        NavigationLink(value:  plant) {
+                                
+                               EmptyView()
                             }
-                            .padding(.leading, 19.5)
+                        .opacity(0.0)
+                        .contentShape(Rectangle())
                         }
                         
                         //
