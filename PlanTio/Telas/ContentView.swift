@@ -29,8 +29,12 @@ struct ContentView: View {
                     }
                     //                    }
                     .onDelete(perform: viewModel.removePlant(at:))
+                    .listRowBackground(Color.clear)
+                    .listRowSeparator(.hidden)
+                    
                 }
             }
+            
             .padding(.top)
             .navigationDestination(for: Plant.self) { plant in
                 if let index = viewModel.plants.firstIndex(where: { $0.id == plant.id }) {
@@ -41,9 +45,8 @@ struct ContentView: View {
                     )
                 }
             }
-       
             .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always))
-            .listStyle(PlainListStyle())
+            .listStyle(.plain)
             .background(Color("Background"))
             .navigationBarTitle("My Plants")
             .navigationBarItems(
@@ -67,6 +70,7 @@ struct ContentView: View {
                                          buttonName: "Add new plant",
                                          action: { showingAddPlant = true }
             )
+            .background(Color("Background"))
         } else {
             CustomContentUnavailableView(iconName: "exclamationmark.triangle",
                                          title: "No plants named \"\(searchText)\"",
@@ -74,6 +78,7 @@ struct ContentView: View {
                                          buttonName: "Add new plant",
                                          action: { showingAddPlant = true }
             )
+            .background(Color("Background"))
         }
     }
 }

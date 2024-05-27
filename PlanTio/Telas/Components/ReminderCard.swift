@@ -68,7 +68,7 @@ struct ReminderCard<Content: View>: View {
             .background(
                 RoundedRectangle(cornerRadius: 20)
                     .foregroundColor(Color("Cards"))
-                    .shadow(color: Color(white: 0.2).opacity(0.5), radius: 8))
+                    .shadow(color: .shadow.opacity(0.3), radius: 5, x: 0, y: 4))
         }
     }
 }

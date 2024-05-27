@@ -32,8 +32,8 @@ struct PlantDetailView: View {
                         }
                         .foregroundColor(.white)
                         .frame(width: 143,height: 38)
-                        .background(Color.green)
-                        .cornerRadius(13)
+                        .background(Color("PinkButton"))
+                        .cornerRadius(0)
                         .padding()
                         .padding(.top, -10)
                     })
@@ -63,7 +63,7 @@ struct PlantDetailView: View {
                                     .padding()
                                     .font(.subheadline)
                             }
-                        }, title: "Watering", icon: "drop.circle.fill", iconColor: .cyan, date: $plant.wateringTime)
+                        }, title: "Watering", icon: "drop.circle.fill", iconColor: (Color("Water")), date: $plant.wateringTime)
                         .padding(.vertical)
                         .padding(.horizontal)
                         
@@ -88,7 +88,7 @@ struct PlantDetailView: View {
                             
                             .padding(.leading, 10)
                             .padding(.trailing, 10)
-                        }, title: "Sunbathing", icon: "sun.max.fill", iconColor: .orange, date: $plant.sunTime)
+                        }, title: "Sunbathing", icon: "sun.max.fill", iconColor: Color("Sun"), date: $plant.sunTime)
                         .padding(.horizontal)
                         
                     }
