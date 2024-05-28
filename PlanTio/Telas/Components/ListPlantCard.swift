@@ -25,9 +25,12 @@ struct ListPlantCard<Content: View>: View {
         HStack {
             VStack (alignment: .leading){
                 Text(plantName)
-                    .font(.title2)
+                    .font(.custom("Quicksand", size: 22))
                     .bold()
+                    .foregroundStyle(Color("NormalText"))
                 Text(plantSpecies)
+                    .font(.custom("Quicksand", size: 17))
+                    .foregroundStyle(Color("NormalText"))
             }
             Spacer()
         }

@@ -22,15 +22,24 @@ struct ContentView: View {
                     noPlants
                 } else {
                     ForEach(filteredPlants) { plant in
-                        NavigationLink(value: plant) {
+                        ZStack{
                             ListPlantCard(content: {}, plantName: plant.name, plantSpecies: plant.type)
+                                
+                        NavigationLink(value:  plant) {
+                                
+                               EmptyView()
+                            }
+                        .opacity(0.0)
+                        .contentShape(Rectangle())
                         }
+                        
                         //
                     }
                     //                    }
                     .onDelete(perform: viewModel.removePlant(at:))
                     .listRowBackground(Color.clear)
                     .listRowSeparator(.hidden)
+                    
                     
                 }
             }
@@ -45,13 +54,15 @@ struct ContentView: View {
                     )
                 }
             }
-            .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always))
+            .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always)).font(.custom("Quicksand", size: 17))
+            
             .listStyle(.plain)
             .background(Color("Background"))
             .navigationBarTitle("My Plants")
             .navigationBarItems(
                 trailing: NavigationLink(destination: AddPlantView(viewModel: viewModel)) {
-                    Image(systemName: "plus")
+                    Image(systemName: "plus.circle.fill")
+                        .bold()
                 }
             )
             .navigationDestination(isPresented: $showingAddPlant) {
@@ -64,7 +75,7 @@ struct ContentView: View {
     @ViewBuilder
     var noPlants: some View {
         if viewModel.plants.isEmpty {
-            CustomContentUnavailableView(iconName: "leaf",
+            CustomContentUnavailableView(iconName: "hana.flower.fill",
                                          title: "No Plants Yet",
                                          desciption: "Your plants will appear here.",
                                          buttonName: "Add new plant",

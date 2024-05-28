@@ -20,7 +20,7 @@ struct WateringView: View {
                 if viewModel.plants.isEmpty { noPlantsToWater }
                 else { wateringList }
             }
-            .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always))
+            .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always)).font(.custom("Quicksand", size: 17))
             .listStyle(PlainListStyle())
             .background(Color("Background"))
             .navigationBarTitle("Watering")
@@ -52,7 +52,7 @@ struct WateringView: View {
 
     @ViewBuilder
     var noPlantsToWater: some View {
-        CustomContentUnavailableView(iconName: "leaf",
+        CustomContentUnavailableView(iconName: "hana.flower.fill",
                                         title: "No Plants Yet",
                                         desciption: "Watering reminders will appear here as you add your plants.",
                                         buttonName: "Add new plant",

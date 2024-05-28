@@ -12,7 +12,7 @@ struct SwiftUIView: View {
     
     var body: some View {
         Text("NoPlant")
-            .font(.custom("Quicksand", size: 36))
+            .font(.custom("Quicksand", size: 34))
                   
 //                  Quicksand
 //                  Quicksand-Regular
