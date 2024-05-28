@@ -146,30 +146,6 @@ struct PlantDetailView: View {
             }
         })
         .navigationBarTitleDisplayMode(.inline)
-<<<<<<< refs/remotes/origin/main
-        .toolbar(content: {
-            ToolbarItem(placement: .topBarTrailing) {
-                if saveMode == false{
-                    Button(action: {
-                        isEditing.toggle()
-                        updatePlant()
-                    }) {
-                        
-                        Text(isEditing ? "Done" : "Edit")
-                    }
-                    .font(.body)
-                    .bold()
-                    .foregroundStyle(Color.accentColor)
-                    .frame(maxWidth: .infinity, maxHeight: 56)
-//                    .background(Color.green)
-                    .cornerRadius(0)
-                    .padding(.horizontal)
-                    Spacer()
-                }
-            }
-        })
-=======
->>>>>>> add new button edit
         .background(Color("Background"))
 //        if saveMode == false{
 //            Button(action: {
