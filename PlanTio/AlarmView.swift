@@ -23,7 +23,10 @@ struct AlarmView: View {
 //                Text("\(type == .watering ? plant.wateringTime : plant.sunTime, formatter: dateFormatter)")
 //            }
             ReminderCard (content: {
-            }, plantName: plant.name, title: "Reminder", time: type == .watering ? plant.wateringTime : plant.sunTime, careType: "Watering", checkColor: type == .watering ? Color("Water") : Color("Sun"), toggleColor: type == .watering ? Color("Water") : Color("Sun"))
+            }, plantName: plant.name, title: "Reminder", time: type == .watering ? plant.wateringTime : plant.sunTime, 
+                          careType: type == .watering ? "Watered" : "Sunbathed",
+                          checkColor: type == .watering ? Color("Water") : Color("Sun"),
+                          toggleColor: type == .watering ? Color("Water") : Color("Sun"))
         }
     }
 }
