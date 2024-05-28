@@ -63,6 +63,9 @@ struct ContentView: View {
                     Image(systemName: "plus")
                 }
             )
+            .onChange(of: searchText, { oldValue, newValue in
+                PostHogSDK.shared.capture("searchUsed")
+            })
             .navigationDestination(isPresented: $showingAddPlant) {
                 
                             AddPlantView(viewModel: viewModel)

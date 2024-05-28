@@ -70,6 +70,7 @@ struct ReminderCard<Content: View>: View {
             }
             .onChange(of: isToggled) { oldValue, newValue in
                 PostHogSDK.shared.capture("ToggleUsed")
+                
             }
             .padding(30)
             .background(
