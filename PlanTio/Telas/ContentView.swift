@@ -17,17 +17,24 @@ struct ContentView: View {
     
     var body: some View {
         NavigationStack {
-            List {
-                if filteredPlants.isEmpty {
-                    noPlants
-                } else {
-                    ForEach(filteredPlants) { plant in
-                        ZStack{
-                            ListPlantCard(content: {}, plantName: plant.name, plantSpecies: plant.type)
-                                
-                        NavigationLink(value:  plant) {
-                                
-                               EmptyView()
+                List {
+                    RiveAnimationView(primaryFileName: "hana", secondaryFileName: "sad")
+                        .shadow(color: .shadow.opacity(0.3), radius: 5, x: 0, y: 4)
+                        .listRowBackground(Color.clear)
+                        .listRowSeparator(.hidden)
+                        
+                    if filteredPlants.isEmpty {
+                        noPlants
+                    } else {
+                        ForEach(filteredPlants) { plant in
+                            NavigationLink(value: plant) {
+                                ZStack{
+                                    RoundedRectangle(cornerRadius: 10)
+                                        .frame(width: 370)
+                                        .foregroundStyle(Color.clear)
+                                    ListPlantCard(content: {}, plantName: plant.name, plantSpecies: plant.type)
+                                }
+                                .padding(.leading, 19.5)
                             }
                         .opacity(0.0)
                         .contentShape(Rectangle())
@@ -74,7 +81,6 @@ struct ContentView: View {
                         }
         }
     }
-    
     @ViewBuilder
     var noPlants: some View {
         if viewModel.plants.isEmpty {

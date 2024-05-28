@@ -39,6 +39,15 @@
 		76BA2A8F2BE01C390038E2AD /* AlarmView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76BA2A8E2BE01C390038E2AD /* AlarmView.swift */; };
 		76BA2A992BE16B1A0038E2AD /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76BA2A982BE16B1A0038E2AD /* ImagePicker.swift */; };
 		BB715CBD2BEE6300005481A7 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB715CBC2BEE6300005481A7 /* Extensions.swift */; };
+		C4A47CA42C052B4F004D6FB8 /* RiveRuntime in Frameworks */ = {isa = PBXBuildFile; productRef = C4A47CA32C052B4F004D6FB8 /* RiveRuntime */; };
+		C4A47CBD2C0620DA004D6FB8 /* RiveAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A47CBC2C0620DA004D6FB8 /* RiveAnimationView.swift */; };
+		C4A47CC62C0624AD004D6FB8 /* hana-mix.riv in Resources */ = {isa = PBXBuildFile; fileRef = C4A47CBE2C0624AD004D6FB8 /* hana-mix.riv */; };
+		C4A47CC72C0624AD004D6FB8 /* hana.riv in Resources */ = {isa = PBXBuildFile; fileRef = C4A47CBF2C0624AD004D6FB8 /* hana.riv */; };
+		C4A47CC82C0624AD004D6FB8 /* hana4.riv in Resources */ = {isa = PBXBuildFile; fileRef = C4A47CC02C0624AD004D6FB8 /* hana4.riv */; };
+		C4A47CC92C0624AD004D6FB8 /* hanasad.riv in Resources */ = {isa = PBXBuildFile; fileRef = C4A47CC12C0624AD004D6FB8 /* hanasad.riv */; };
+		C4A47CCA2C0624AD004D6FB8 /* hanatry.riv in Resources */ = {isa = PBXBuildFile; fileRef = C4A47CC22C0624AD004D6FB8 /* hanatry.riv */; };
+		C4A47CCB2C0624AD004D6FB8 /* sad.riv in Resources */ = {isa = PBXBuildFile; fileRef = C4A47CC32C0624AD004D6FB8 /* sad.riv */; };
+		C4A47CCC2C0624AD004D6FB8 /* Test-longpress.riv in Resources */ = {isa = PBXBuildFile; fileRef = C4A47CC42C0624AD004D6FB8 /* Test-longpress.riv */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -92,6 +101,14 @@
 		76BA2A8E2BE01C390038E2AD /* AlarmView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmView.swift; sourceTree = "<group>"; };
 		76BA2A982BE16B1A0038E2AD /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		BB715CBC2BEE6300005481A7 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		C4A47CBC2C0620DA004D6FB8 /* RiveAnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RiveAnimationView.swift; sourceTree = "<group>"; };
+		C4A47CBE2C0624AD004D6FB8 /* hana-mix.riv */ = {isa = PBXFileReference; lastKnownFileType = file; path = "hana-mix.riv"; sourceTree = "<group>"; };
+		C4A47CBF2C0624AD004D6FB8 /* hana.riv */ = {isa = PBXFileReference; lastKnownFileType = file; path = hana.riv; sourceTree = "<group>"; };
+		C4A47CC02C0624AD004D6FB8 /* hana4.riv */ = {isa = PBXFileReference; lastKnownFileType = file; path = hana4.riv; sourceTree = "<group>"; };
+		C4A47CC12C0624AD004D6FB8 /* hanasad.riv */ = {isa = PBXFileReference; lastKnownFileType = file; path = hanasad.riv; sourceTree = "<group>"; };
+		C4A47CC22C0624AD004D6FB8 /* hanatry.riv */ = {isa = PBXFileReference; lastKnownFileType = file; path = hanatry.riv; sourceTree = "<group>"; };
+		C4A47CC32C0624AD004D6FB8 /* sad.riv */ = {isa = PBXFileReference; lastKnownFileType = file; path = sad.riv; sourceTree = "<group>"; };
+		C4A47CC42C0624AD004D6FB8 /* Test-longpress.riv */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Test-longpress.riv"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +118,7 @@
 			files = (
 				2EF02FEA2BE042220023247F /* VMNotificationHandler in Frameworks */,
 				2E68C0A32BFD12BE0002B3B4 /* PostHog in Frameworks */,
+				C4A47CA42C052B4F004D6FB8 /* RiveRuntime in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -129,6 +147,7 @@
 				769580D82BF2805D00FDB377 /* IdealAndToleratedLight.swift */,
 				769580DA2BF2806A00FDB377 /* FrameImage.swift */,
 				769580E52BF3E84500FDB377 /* ReminderCard.swift */,
+				C4A47CBC2C0620DA004D6FB8 /* RiveAnimationView.swift */,
 				762189A82BF54E8800C80C62 /* ListPlantCard.swift */,
 			);
 			path = Components;
@@ -192,6 +211,7 @@
 		76BA2A5A2BE0162B0038E2AD /* Preview Content */ = {
 			isa = PBXGroup;
 			children = (
+				C4A47CC52C0624AD004D6FB8 /* hana-mix */,
 				76BA2A5B2BE0162B0038E2AD /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
@@ -240,6 +260,21 @@
 			path = Classes;
 			sourceTree = "<group>";
 		};
+		C4A47CC52C0624AD004D6FB8 /* hana-mix */ = {
+			isa = PBXGroup;
+			children = (
+				C4A47CBE2C0624AD004D6FB8 /* hana-mix.riv */,
+				C4A47CBF2C0624AD004D6FB8 /* hana.riv */,
+				C4A47CC02C0624AD004D6FB8 /* hana4.riv */,
+				C4A47CC12C0624AD004D6FB8 /* hanasad.riv */,
+				C4A47CC22C0624AD004D6FB8 /* hanatry.riv */,
+				C4A47CC32C0624AD004D6FB8 /* sad.riv */,
+				C4A47CC42C0624AD004D6FB8 /* Test-longpress.riv */,
+			);
+			name = "hana-mix";
+			path = "../../../../Downloads/PlanTioViews/hana-mix";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -259,6 +294,7 @@
 			packageProductDependencies = (
 				2EF02FE92BE042220023247F /* VMNotificationHandler */,
 				2E68C0A22BFD12BE0002B3B4 /* PostHog */,
+				C4A47CA32C052B4F004D6FB8 /* RiveRuntime */,
 			);
 			productName = PlanTio;
 			productReference = 76BA2A512BE0162A0038E2AD /* PlanTio.app */;
@@ -335,6 +371,7 @@
 			packageReferences = (
 				2EF02FE82BE042220023247F /* XCRemoteSwiftPackageReference "VMNotificationHandler" */,
 				2E68C0A12BFD11B10002B3B4 /* XCRemoteSwiftPackageReference "posthog-ios" */,
+				C4A47C912C05288E004D6FB8 /* XCRemoteSwiftPackageReference "rive-ios" */,
 			);
 			productRefGroup = 76BA2A522BE0162A0038E2AD /* Products */;
 			projectDirPath = "";
@@ -353,7 +390,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				76BA2A5C2BE0162B0038E2AD /* Preview Assets.xcassets in Resources */,
+				C4A47CC72C0624AD004D6FB8 /* hana.riv in Resources */,
+				C4A47CCA2C0624AD004D6FB8 /* hanatry.riv in Resources */,
+				C4A47CC92C0624AD004D6FB8 /* hanasad.riv in Resources */,
+				C4A47CCC2C0624AD004D6FB8 /* Test-longpress.riv in Resources */,
+				C4A47CCB2C0624AD004D6FB8 /* sad.riv in Resources */,
+				C4A47CC82C0624AD004D6FB8 /* hana4.riv in Resources */,
 				7654490D2BFD0E050089F7F3 /* Quicksand-VariableFont_wght.ttf in Resources */,
+				C4A47CC62C0624AD004D6FB8 /* hana-mix.riv in Resources */,
 				769580D32BEC111C00FDB377 /* InfoPlants.json in Resources */,
 				76BA2A592BE0162B0038E2AD /* Assets.xcassets in Resources */,
 			);
@@ -385,6 +429,7 @@
 				072CA12F2BEAC3150085CB94 /* SwiftUIView.swift in Sources */,
 				76BA2A812BE01B230038E2AD /* AddPlantView.swift in Sources */,
 				072CA1342BEC28CC0085CB94 /* CustomContentUnavailableView.swift in Sources */,
+				C4A47CBD2C0620DA004D6FB8 /* RiveAnimationView.swift in Sources */,
 				76BA2A852BE01B5F0038E2AD /* Plant.swift in Sources */,
 				769580D72BF2803C00FDB377 /* CareInfos.swift in Sources */,
 				76BA2A8D2BE01C230038E2AD /* SunlightView.swift in Sources */,
@@ -766,6 +811,14 @@
 				minimumVersion = 1.2.0;
 			};
 		};
+		C4A47C912C05288E004D6FB8 /* XCRemoteSwiftPackageReference "rive-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/rive-app/rive-ios";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.11.6;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -778,6 +831,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 2EF02FE82BE042220023247F /* XCRemoteSwiftPackageReference "VMNotificationHandler" */;
 			productName = VMNotificationHandler;
+		};
+		C4A47CA32C052B4F004D6FB8 /* RiveRuntime */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C4A47C912C05288E004D6FB8 /* XCRemoteSwiftPackageReference "rive-ios" */;
+			productName = RiveRuntime;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

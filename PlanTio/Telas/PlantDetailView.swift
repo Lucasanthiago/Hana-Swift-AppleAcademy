@@ -11,11 +11,15 @@ struct PlantDetailView: View {
     
     var body: some View {
         ZStack{
-            Color("Background")
             VStack {
                 FrameImage(imageData: $plant.imageData, aspectRatio: 21/9)
                     .frame(maxWidth: .infinity, alignment: .center)
                     .disabled(isEditing == false)
+                
+                
+                
+               
+                
                 VStack {
                     HStack{
                         TextField("Name", text: $plant.name)
@@ -101,20 +105,34 @@ struct PlantDetailView: View {
                     }
                 }
             }
+            VStack{
+                Spacer()
+                HStack{
+                    Spacer()
+                    if saveMode == false {
+                        Button(action: {
+                            isEditing.toggle()
+                        }) {
+                            Image( isEditing ? "Done" : "Edit")
+                            
+                        }
+                        }
+                }
+            }.padding()
         }
         .safeAreaInset(edge: .bottom, content: {
             if saveMode == true {
                 Button(action: {
                     
-                        PostHogSDK.shared.capture("Newplant")
-                        saveMode = false
-                        onSave?()
-                        isEditing = false
-                        randomInfos()
-                        addPlant()
-                        
+                    PostHogSDK.shared.capture("Newplant")
+                    saveMode = false
+                    onSave?()
+                    isEditing = false
+                    randomInfos()
+                    addPlant()
                     
-//                    }
+                    
+                    //                    }
                 }, label: { // TODO: resolver save verdadeiro, e aparecer na view
                     Text("Save")
                         .font(.body)
@@ -128,6 +146,7 @@ struct PlantDetailView: View {
             }
         })
         .navigationBarTitleDisplayMode(.inline)
+<<<<<<< refs/remotes/origin/main
         .toolbar(content: {
             ToolbarItem(placement: .topBarTrailing) {
                 if saveMode == false{
@@ -149,9 +168,19 @@ struct PlantDetailView: View {
                 }
             }
         })
+=======
+>>>>>>> add new button edit
         .background(Color("Background"))
-        //
-        
+//        if saveMode == false{
+//            Button(action: {
+//                isEditing.toggle()
+//                //                        updatePlant()
+//            }) {
+//                Image( isEditing ? "Done" : "Edit")
+//                    .background(Color("Background"))
+//            }
+//        }
+
     }
     
     
@@ -178,41 +207,41 @@ struct PlantDetailView: View {
     }
     
     //
-        func updatePlant() {
-                plant.imageData = plant.imageData
-                Task {
-                    do {
-                        try await viewModel.save(plant: plant)
-                    } catch {
-                        print("* Erro salvando Planta *")
-                        print(error)
-                    }
-                }
-            }
-    
-        func addPlant() {
-            let newPlant = Plant(
-                id: plant.id,
-                name: plant.name,
-                type: plant.type,
-                wateringTime: plant.wateringTime,
-                sunTime: plant.sunTime,
-                watered: plant.watered,
-                sunbathed: plant.sunbathed,
-                imageData: plant.imageData,
-                wateringInstructions: plant.wateringInstructions,
-                idealLight: plant.idealLight,
-                toleratedLight: plant.toleratedLight
-            )
-            Task {
-                do {
-                    try await viewModel.save(plant: newPlant)
-                } catch {
-                    print("*** Erro salvando Planta ***")
-                    print(error)
-                }
+    func updatePlant() {
+        plant.imageData = plant.imageData
+        Task {
+            do {
+                try await viewModel.save(plant: plant)
+            } catch {
+                print("* Erro salvando Planta *")
+                print(error)
             }
         }
+    }
+    
+    func addPlant() {
+        let newPlant = Plant(
+            id: plant.id,
+            name: plant.name,
+            type: plant.type,
+            wateringTime: plant.wateringTime,
+            sunTime: plant.sunTime,
+            watered: plant.watered,
+            sunbathed: plant.sunbathed,
+            imageData: plant.imageData,
+            wateringInstructions: plant.wateringInstructions,
+            idealLight: plant.idealLight,
+            toleratedLight: plant.toleratedLight
+        )
+        Task {
+            do {
+                try await viewModel.save(plant: newPlant)
+            } catch {
+                print("*** Erro salvando Planta ***")
+                print(error)
+            }
+        }
+    }
 }
 
 //    struct TelaDetalhe_Previews: PreviewProvider {

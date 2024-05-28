@@ -1,13 +1,22 @@
 {
-  "originHash" : "2136060288c4956e4d797f84657e6ba844a71ce6fe42869c7f35f6c64e8f593c",
+  "originHash" : "f6791693c46128b7b3b11bdd047e3facca37c61148ec06f3eadf5ba532ee4a34",
   "pins" : [
     {
       "identity" : "posthog-ios",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/PostHog/posthog-ios.git",
       "state" : {
-        "revision" : "6d3406b60a8af25401a1723b418b57f245ab6808",
-        "version" : "3.3.0"
+        "revision" : "b378bd66aaa41162ea4dc1b1ced5433c2af65c48",
+        "version" : "3.4.0"
+      }
+    },
+    {
+      "identity" : "rive-ios",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/rive-app/rive-ios",
+      "state" : {
+        "revision" : "df1e3f2e3be22afe8418e3b29ddc161bc7785e1c",
+        "version" : "5.11.6"
       }
     },
     {
@@ -15,8 +24,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/Visckmart/VMNotificationHandler.git",
       "state" : {
-        "revision" : "4e4436cf8b16967679a116c9e43a748bba91f046",
-        "version" : "1.2.0"
+        "revision" : "c4c16a1d1dd7b76db8c7d02c0ec9094668704bdb",
+        "version" : "1.2.3"
       }
     }
   ],
