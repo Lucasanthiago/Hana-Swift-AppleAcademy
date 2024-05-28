@@ -61,7 +61,8 @@ struct ContentView: View {
             .navigationBarTitle("My Plants")
             .navigationBarItems(
                 trailing: NavigationLink(destination: AddPlantView(viewModel: viewModel)) {
-                    Image(systemName: "plus")
+                    Image(systemName: "plus.circle.fill")
+                        .bold()
                 }
             )
             .navigationDestination(isPresented: $showingAddPlant) {
