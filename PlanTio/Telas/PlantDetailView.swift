@@ -128,7 +128,7 @@ struct PlantDetailView: View {
                 if saveMode == false{
                     Button(action: {
                         isEditing.toggle()
-//                        updatePlant()
+                        updatePlant()
                     }) {
                         
                         Text(isEditing ? "Done" : "Edit")
