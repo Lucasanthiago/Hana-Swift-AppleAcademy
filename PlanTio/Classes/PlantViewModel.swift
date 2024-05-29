@@ -113,15 +113,73 @@ class PlantViewModel: ObservableObject {
         await VMNotificationHandler.shared.removeNotifications(withIdentifiers: plant.notificationIDs, evenIfPending: true)
     }
 
-    func toggleNotifications(for plant: Plant, isEnabled: Bool) async {
+    func toggleWateringNotifications(for plant: Plant, isEnabled: Bool) async {
         if isEnabled {
             do {
-                try await save(plant: plant) // Reagendar notificações
+                await clearWateringNotifications(for: plant)
+                try await scheduleWateringNotifications(for: plant)
             } catch {
-                print("Error enabling notifications: \(error)")
+                print("Error enabling watering notifications: \(error)")
             }
         } else {
-            await clearNotification(for: plant)
+            await clearWateringNotifications(for: plant)
+        }
+    }
+
+    func toggleSunbathingNotifications(for plant: Plant, isEnabled: Bool) async {
+        if isEnabled {
+            do {
+                await clearSunbathingNotifications(for: plant)
+                try await scheduleSunbathingNotifications(for: plant)
+            } catch {
+                print("Error enabling sunbathing notifications: \(error)")
+            }
+        } else {
+            await clearSunbathingNotifications(for: plant)
+        }
+    }
+    
+    private func clearWateringNotifications(for plant: Plant) async {
+        await VMNotificationHandler.shared.removeNotifications(withIdentifiers: plant.waterNotificationIDs, evenIfPending: true)
+    }
+
+    private func clearSunbathingNotifications(for plant: Plant) async {
+        await VMNotificationHandler.shared.removeNotifications(withIdentifiers: plant.SunNotificationIDs, evenIfPending: true)
+    }
+
+    private func scheduleWateringNotifications(for plant: Plant) async throws {
+        guard await VMNotificationHandler.shared.authorizationStatus != .denied else { return }
+        
+        let wateringTimeMsg = "Hora de regar! 💧"
+        let wateringTimeBody = "\(plant.name) está com sede."
+        
+        for index in 0..<plant.timesToWater.count {
+            if index < plant.waterNotificationIDs.count {
+                let _ = try await VMNotificationHandler.shared.scheduleNotification(
+                    identifier: plant.waterNotificationIDs[index],
+                    title: wateringTimeMsg,
+                    body: wateringTimeBody,
+                    triggerTime: .at(plant.timesToWater[index])
+                )
+            }
+        }
+    }
+
+    private func scheduleSunbathingNotifications(for plant: Plant) async throws {
+        guard await VMNotificationHandler.shared.authorizationStatus != .denied else { return }
+        
+        let sunbathTimeMsg = "Hora do sol! ☀️"
+        let sunbathTimeBody = "\(plant.name) está precisando de vitamina D!"
+        
+        for index in 0..<plant.timesToSunbathing.count {
+            if index < plant.SunNotificationIDs.count {
+                let _ = try await VMNotificationHandler.shared.scheduleNotification(
+                    identifier: plant.SunNotificationIDs[index],
+                    title: sunbathTimeMsg,
+                    body: sunbathTimeBody,
+                    triggerTime: .at(plant.timesToSunbathing[index])
+                )
+            }
         }
     }
 

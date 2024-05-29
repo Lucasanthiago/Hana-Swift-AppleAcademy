@@ -10,6 +10,7 @@ struct ReminderCard<Content: View>: View {
     var careType: String
     var checkColor: Color
     var toggleColor: Color
+    var alarmType: AlarmType
     @State var isToggled = true
     @State var isDone = false
     
@@ -38,7 +39,11 @@ struct ReminderCard<Content: View>: View {
                     .labelsHidden()
                     .onChange(of: isToggled) { newValue in
                         Task {
-                            await viewModel.toggleNotifications(for: plant, isEnabled: newValue)
+                            if alarmType == .watering {
+                                await viewModel.toggleWateringNotifications(for: plant, isEnabled: newValue)
+                            } else {
+                                await viewModel.toggleSunbathingNotifications(for: plant, isEnabled: newValue)
+                            }
                         }
                         PostHogSDK.shared.capture("ToggleUsed")
                     }
