@@ -113,6 +113,18 @@ class PlantViewModel: ObservableObject {
         await VMNotificationHandler.shared.removeNotifications(withIdentifiers: plant.notificationIDs, evenIfPending: true)
     }
 
+    func toggleNotifications(for plant: Plant, isEnabled: Bool) async {
+        if isEnabled {
+            do {
+                try await save(plant: plant) // Reagendar notificações
+            } catch {
+                print("Error enabling notifications: \(error)")
+            }
+        } else {
+            await clearNotification(for: plant)
+        }
+    }
+
     func getDocumentsDirectory() -> URL {
         let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
         return paths[0]

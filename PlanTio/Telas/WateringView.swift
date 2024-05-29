@@ -38,7 +38,7 @@ struct WateringView: View {
     @ViewBuilder
     var wateringList: some View {
         ForEach(filteredPlants) { plant in
-            AlarmView(plant: plant, type: .watering)
+            AlarmView(viewModel: viewModel, plant: plant, type: .watering)
         }
         .listRowBackground(Color.clear)
         .listRowSeparator(.hidden)

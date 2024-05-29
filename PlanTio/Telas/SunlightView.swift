@@ -38,7 +38,7 @@ struct SunlightView: View {
     @ViewBuilder
     var sunbathingList: some View {
         ForEach(filteredPlants) { plant in
-            AlarmView(plant: plant, type: .sunlight)
+            AlarmView(viewModel: viewModel, plant: plant, type: .sunlight)
         }
         .listRowBackground(Color.clear)
         .listRowSeparator(.hidden)

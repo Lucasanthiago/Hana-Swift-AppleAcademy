@@ -15,11 +15,12 @@ struct ContentView: View {
     
     var body: some View {
         NavigationStack {
+            RiveAnimationView(primaryFileName: "hana", secondaryFileName: "sad")
+                .shadow(color: .shadow.opacity(0.3), radius: 5, x: 0, y: 4)
+                .listRowBackground(Color.clear)
+                .listRowSeparator(.hidden)
+            
             List {
-                RiveAnimationView(primaryFileName: "hana", secondaryFileName: "sad")
-                    .shadow(color: .shadow.opacity(0.3), radius: 5, x: 0, y: 4)
-                    .listRowBackground(Color.clear)
-                    .listRowSeparator(.hidden)
                 
                 if filteredPlants.isEmpty {
                     noPlants
