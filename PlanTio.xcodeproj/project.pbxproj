@@ -48,13 +48,6 @@
 		BB715CBD2BEE6300005481A7 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB715CBC2BEE6300005481A7 /* Extensions.swift */; };
 		C4A47CA42C052B4F004D6FB8 /* RiveRuntime in Frameworks */ = {isa = PBXBuildFile; productRef = C4A47CA32C052B4F004D6FB8 /* RiveRuntime */; };
 		C4A47CBD2C0620DA004D6FB8 /* RiveAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A47CBC2C0620DA004D6FB8 /* RiveAnimationView.swift */; };
-		C4A47CC62C0624AD004D6FB8 /* hana-mix.riv in Resources */ = {isa = PBXBuildFile; fileRef = C4A47CBE2C0624AD004D6FB8 /* hana-mix.riv */; };
-		C4A47CC82C0624AD004D6FB8 /* hana4.riv in Resources */ = {isa = PBXBuildFile; fileRef = C4A47CC02C0624AD004D6FB8 /* hana4.riv */; };
-		C4A47CC92C0624AD004D6FB8 /* hanasad.riv in Resources */ = {isa = PBXBuildFile; fileRef = C4A47CC12C0624AD004D6FB8 /* hanasad.riv */; };
-		C4A47CCA2C0624AD004D6FB8 /* hanatry.riv in Resources */ = {isa = PBXBuildFile; fileRef = C4A47CC22C0624AD004D6FB8 /* hanatry.riv */; };
-		C4A47CCC2C0624AD004D6FB8 /* Test-longpress.riv in Resources */ = {isa = PBXBuildFile; fileRef = C4A47CC42C0624AD004D6FB8 /* Test-longpress.riv */; };
-		C4A47CD02C07A08C004D6FB8 /* hana.riv in Resources */ = {isa = PBXBuildFile; fileRef = C4A47CCD2C07A08C004D6FB8 /* hana.riv */; };
-		C4A47CD12C07A08C004D6FB8 /* sad.riv in Resources */ = {isa = PBXBuildFile; fileRef = C4A47CCE2C07A08C004D6FB8 /* sad.riv */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -116,13 +109,6 @@
 		76D4FD8D2C078326008E611F /* Test-longpress.riv */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Test-longpress.riv"; sourceTree = "<group>"; };
 		BB715CBC2BEE6300005481A7 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		C4A47CBC2C0620DA004D6FB8 /* RiveAnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RiveAnimationView.swift; sourceTree = "<group>"; };
-		C4A47CBE2C0624AD004D6FB8 /* hana-mix.riv */ = {isa = PBXFileReference; lastKnownFileType = file; path = "hana-mix.riv"; sourceTree = "<group>"; };
-		C4A47CC02C0624AD004D6FB8 /* hana4.riv */ = {isa = PBXFileReference; lastKnownFileType = file; path = hana4.riv; sourceTree = "<group>"; };
-		C4A47CC12C0624AD004D6FB8 /* hanasad.riv */ = {isa = PBXFileReference; lastKnownFileType = file; path = hanasad.riv; sourceTree = "<group>"; };
-		C4A47CC22C0624AD004D6FB8 /* hanatry.riv */ = {isa = PBXFileReference; lastKnownFileType = file; path = hanatry.riv; sourceTree = "<group>"; };
-		C4A47CC42C0624AD004D6FB8 /* Test-longpress.riv */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Test-longpress.riv"; sourceTree = "<group>"; };
-		C4A47CCD2C07A08C004D6FB8 /* hana.riv */ = {isa = PBXFileReference; lastKnownFileType = file; path = hana.riv; sourceTree = "<group>"; };
-		C4A47CCE2C07A08C004D6FB8 /* sad.riv */ = {isa = PBXFileReference; lastKnownFileType = file; path = sad.riv; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -286,15 +272,6 @@
 				76D4FD8D2C078326008E611F /* Test-longpress.riv */,
 			);
 			path = "hana-mix";
-			sourceTree = "<group>";
-		};
-		C4A47CCF2C07A08C004D6FB8 /* hana */ = {
-			isa = PBXGroup;
-			children = (
-				C4A47CCD2C07A08C004D6FB8 /* hana.riv */,
-				C4A47CCE2C07A08C004D6FB8 /* sad.riv */,
-			);
-			path = hana;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -633,7 +610,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"PlanTio/Preview Content\"";
-				DEVELOPMENT_TEAM = 9JY494SP3M;
+				DEVELOPMENT_TEAM = 67AYPRFZH8;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PlanTio/Info.plist;
@@ -650,7 +627,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.1;
-				PRODUCT_BUNDLE_IDENTIFIER = challenge2.PlanTioo;
+				PRODUCT_BUNDLE_IDENTIFIER = challenge2.PlanTio;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -670,7 +647,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"PlanTio/Preview Content\"";
-				DEVELOPMENT_TEAM = 9JY494SP3M;
+				DEVELOPMENT_TEAM = 67AYPRFZH8;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PlanTio/Info.plist;
@@ -687,7 +664,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.1;
-				PRODUCT_BUNDLE_IDENTIFIER = challenge2.PlanTioo;
+				PRODUCT_BUNDLE_IDENTIFIER = challenge2.PlanTio;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;

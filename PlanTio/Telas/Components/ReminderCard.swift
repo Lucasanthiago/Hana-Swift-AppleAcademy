@@ -64,6 +64,7 @@ struct ReminderCard<Content: View>: View {
                             .font(.title)
                             .foregroundColor(checkColor)
                     }
+                    .buttonStyle(PlainButtonStyle())
                 }
                 .padding(.top)
             }
