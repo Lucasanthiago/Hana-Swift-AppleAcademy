@@ -114,12 +114,13 @@ struct PlantDetailView: View {
                             isEditing.toggle()
                         }) {
                             Image( isEditing ? "Done" : "Edit")
-                            
+                                .shadow(color: .shadow.opacity(0.3), radius: 5, x: 0, y: 4)
                         }
                         }
                 }
             }.padding()
         }
+        
         .safeAreaInset(edge: .bottom, content: {
             if saveMode == true {
                 Button(action: {

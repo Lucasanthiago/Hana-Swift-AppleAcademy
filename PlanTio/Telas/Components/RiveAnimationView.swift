@@ -78,7 +78,7 @@ struct RiveAnimationView: View {
             }
         } else {
             // Adjust the delay before returning to the primary animation
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
                 withAnimation(.easeInOut(duration: 2.0)) {
                     resetPrimaryAnimation()
                     showPrimaryAnimation = true
@@ -96,7 +96,7 @@ struct RiveAnimationView: View {
 
 struct RiveViewContainer: UIViewRepresentable {
     var viewModel: RiveViewModel
-
+    
     func makeUIView(context: Context) -> UIView {
         let view = UIView(frame: .zero)
         let riveView = RiveView()
@@ -116,6 +116,6 @@ struct RiveViewContainer: UIViewRepresentable {
         
         return view
     }
-
+    
     func updateUIView(_ uiView: UIView, context: Context) {}
 }

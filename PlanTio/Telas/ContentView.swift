@@ -15,11 +15,13 @@ struct ContentView: View {
     
     var body: some View {
         NavigationStack {
-            List {
+            
                 RiveAnimationView(primaryFileName: "hana", secondaryFileName: "sad")
                     .shadow(color: .shadow.opacity(0.3), radius: 5, x: 0, y: 4)
-                    .listRowBackground(Color.clear)
-                    .listRowSeparator(.hidden)
+                    .background(Color("Background"))
+                
+            
+            List {
                 
                 if filteredPlants.isEmpty {
                     noPlants
@@ -76,6 +78,7 @@ struct ContentView: View {
                             AddPlantView(viewModel: viewModel)
                         }
         }
+        
     }
     
     @ViewBuilder
