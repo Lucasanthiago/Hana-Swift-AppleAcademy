@@ -15,10 +15,11 @@ struct ContentView: View {
     
     var body: some View {
         NavigationStack {
-            RiveAnimationView(primaryFileName: "hana", secondaryFileName: "sad")
-                .shadow(color: .shadow.opacity(0.3), radius: 5, x: 0, y: 4)
-                .listRowBackground(Color.clear)
-                .listRowSeparator(.hidden)
+            
+                RiveAnimationView(primaryFileName: "hana", secondaryFileName: "sad")
+                    .shadow(color: .shadow.opacity(0.3), radius: 5, x: 0, y: 4)
+                    .background(Color("Background"))
+                
             
             List {
                 
@@ -77,6 +78,7 @@ struct ContentView: View {
                             AddPlantView(viewModel: viewModel)
                         }
         }
+        
     }
     
     @ViewBuilder
