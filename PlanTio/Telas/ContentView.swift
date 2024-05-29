@@ -1,7 +1,5 @@
-
 import SwiftUI
 import PostHog
-
 
 struct ContentView: View {
     @State private var navigateToAddPlant = false
@@ -15,41 +13,42 @@ struct ContentView: View {
     
     var body: some View {
         NavigationStack {
-            
+            VStack {
                 RiveAnimationView(primaryFileName: "hana", secondaryFileName: "sad")
                     .shadow(color: .shadow.opacity(0.3), radius: 5, x: 0, y: 4)
-                    .background(Color("Background"))
                 
-            
-            List {
-                
-                if filteredPlants.isEmpty {
-                    noPlants
-                } else {
-                    ForEach(filteredPlants) { plant in
-                        ZStack{
-                            ListPlantCard(content: {}, plantName: plant.name, plantSpecies: plant.type)
-                                
-                        NavigationLink(value:  plant) {
-                                
-                               EmptyView()
+                List {
+                    if filteredPlants.isEmpty {
+                        noPlants
+                    } else {
+                        ForEach(filteredPlants) { plant in
+                            ZStack {
+                                ListPlantCard(content: {}, plantName: plant.name, plantSpecies: plant.type)
+                                NavigationLink(value: plant) {
+                                    EmptyView()
+                                }
+                                .opacity(0.0)
+                                .contentShape(Rectangle())
                             }
-                        .opacity(0.0)
-                        .contentShape(Rectangle())
                         }
-                        
-                        //
+                        .onDelete(perform: viewModel.removePlant(at:))
+                        .listRowBackground(Color.clear)
+                        .listRowSeparator(.hidden)
                     }
-                    //                    }
-                    .onDelete(perform: viewModel.removePlant(at:))
-                    .listRowBackground(Color.clear)
-                    .listRowSeparator(.hidden)
-                    
-                    
                 }
+                .padding(.top)
+                .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always))
+                .font(.custom("Quicksand", size: 17))
+                .listStyle(.plain)
             }
-            
-            .padding(.top)
+            .background(Color("Background").ignoresSafeArea()) // Garantir que o fundo seja aplicado a toda a área segura
+            .navigationBarTitle("My Plants")
+            .navigationBarItems(
+                trailing: NavigationLink(destination: AddPlantView(viewModel: viewModel)) {
+                    Image(systemName: "plus.circle.fill")
+                        .bold()
+                }
+            )
             .navigationDestination(for: Plant.self) { plant in
                 if let index = viewModel.plants.firstIndex(where: { $0.id == plant.id }) {
                     PlantDetailView(
@@ -59,26 +58,13 @@ struct ContentView: View {
                     )
                 }
             }
-            .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always)).font(.custom("Quicksand", size: 17))
-            
-            .listStyle(.plain)
-            .background(Color("Background"))
-            .navigationBarTitle("My Plants")
-            .navigationBarItems(
-                trailing: NavigationLink(destination: AddPlantView(viewModel: viewModel)) {
-                    Image(systemName: "plus.circle.fill")
-                        .bold()
-                }
-            )
             .onChange(of: searchText, { oldValue, newValue in
                 PostHogSDK.shared.capture("searchUsed")
             })
             .navigationDestination(isPresented: $showingAddPlant) {
-                
-                            AddPlantView(viewModel: viewModel)
-                        }
+                AddPlantView(viewModel: viewModel)
+            }
         }
-        
     }
     
     @ViewBuilder
@@ -108,18 +94,3 @@ struct ContentView: View {
 #Preview {
     ContentView(viewModel: PlantViewModel())
 }
-//            .background(
-//                VStack {
-//                    EmptyView()
-//                    if selectedPlant != nil {
-//                        NavigationLink(destination: PlantDetailView(viewModel: viewModel,
-//                                                                    plant: Binding<Plant>(self.$selectedPlant)!),
-//                                       isActive: Binding<Bool>(
-//                                        get: { self.selectedPlant != nil },
-//                                        set: { _ in self.selectedPlant = nil }
-//                                       )) {
-//                                           EmptyView()
-//                                       }
-//                    }
-//                }
-//            )
