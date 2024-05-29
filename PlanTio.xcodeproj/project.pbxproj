@@ -10,6 +10,16 @@
 		072CA12F2BEAC3150085CB94 /* SwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 072CA12E2BEAC3150085CB94 /* SwiftUIView.swift */; };
 		072CA1342BEC28CC0085CB94 /* CustomContentUnavailableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 072CA1332BEC28CC0085CB94 /* CustomContentUnavailableView.swift */; };
 		07C14B592C07C14D00931DAE /* WidgetPlantView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07C14B582C07C14D00931DAE /* WidgetPlantView.swift */; };
+		07C14B612C07C2C400931DAE /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07C14B602C07C2C400931DAE /* WidgetKit.framework */; };
+		07C14B632C07C2C400931DAE /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07C14B622C07C2C400931DAE /* SwiftUI.framework */; };
+		07C14B662C07C2C400931DAE /* HanaWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07C14B652C07C2C400931DAE /* HanaWidgetBundle.swift */; };
+		07C14B682C07C2C400931DAE /* HanaWidgetLiveActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07C14B672C07C2C400931DAE /* HanaWidgetLiveActivity.swift */; };
+		07C14B6A2C07C2C400931DAE /* HanaWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07C14B692C07C2C400931DAE /* HanaWidget.swift */; };
+		07C14B6C2C07C2C400931DAE /* AppIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07C14B6B2C07C2C400931DAE /* AppIntent.swift */; };
+		07C14B6E2C07C2C600931DAE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 07C14B6D2C07C2C600931DAE /* Assets.xcassets */; };
+		07C14B722C07C2C600931DAE /* HanaWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 07C14B5E2C07C2C400931DAE /* HanaWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		07C14B772C07C2DC00931DAE /* WidgetPlantView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07C14B582C07C14D00931DAE /* WidgetPlantView.swift */; };
+		07C14B792C07D03A00931DAE /* Quicksand-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7654490C2BFD0E050089F7F3 /* Quicksand-VariableFont_wght.ttf */; };
 		2E68C0A32BFD12BE0002B3B4 /* PostHog in Frameworks */ = {isa = PBXBuildFile; productRef = 2E68C0A22BFD12BE0002B3B4 /* PostHog */; };
 		2EF02FEA2BE042220023247F /* VMNotificationHandler in Frameworks */ = {isa = PBXBuildFile; productRef = 2EF02FE92BE042220023247F /* VMNotificationHandler */; };
 		762189A92BF54E8800C80C62 /* ListPlantCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762189A82BF54E8800C80C62 /* ListPlantCard.swift */; };
@@ -52,6 +62,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		07C14B702C07C2C600931DAE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 76BA2A492BE0162A0038E2AD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 07C14B5D2C07C2C400931DAE;
+			remoteInfo = HanaWidgetExtension;
+		};
 		76BA2A622BE0162B0038E2AD /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 76BA2A492BE0162A0038E2AD /* Project object */;
@@ -68,11 +85,35 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		07C14B732C07C2C600931DAE /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				07C14B722C07C2C600931DAE /* HanaWidgetExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		072CA12E2BEAC3150085CB94 /* SwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIView.swift; sourceTree = "<group>"; };
 		072CA1332BEC28CC0085CB94 /* CustomContentUnavailableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomContentUnavailableView.swift; sourceTree = "<group>"; };
 		072CA1352BEEA64C0085CB94 /* CardsReminders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsReminders.swift; sourceTree = "<group>"; };
 		07C14B582C07C14D00931DAE /* WidgetPlantView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WidgetPlantView.swift; sourceTree = "<group>"; };
+		07C14B5E2C07C2C400931DAE /* HanaWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = HanaWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		07C14B602C07C2C400931DAE /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		07C14B622C07C2C400931DAE /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		07C14B652C07C2C400931DAE /* HanaWidgetBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HanaWidgetBundle.swift; sourceTree = "<group>"; };
+		07C14B672C07C2C400931DAE /* HanaWidgetLiveActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HanaWidgetLiveActivity.swift; sourceTree = "<group>"; };
+		07C14B692C07C2C400931DAE /* HanaWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HanaWidget.swift; sourceTree = "<group>"; };
+		07C14B6B2C07C2C400931DAE /* AppIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIntent.swift; sourceTree = "<group>"; };
+		07C14B6D2C07C2C600931DAE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		07C14B6F2C07C2C600931DAE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		07C14B782C07C41900931DAE /* HanaWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = HanaWidgetExtension.entitlements; sourceTree = "<group>"; };
 		2EF02FEB2BE16CF80023247F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		762189A82BF54E8800C80C62 /* ListPlantCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListPlantCard.swift; sourceTree = "<group>"; };
 		7654490C2BFD0E050089F7F3 /* Quicksand-VariableFont_wght.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Quicksand-VariableFont_wght.ttf"; sourceTree = "<group>"; };
@@ -114,6 +155,15 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		07C14B5B2C07C2C400931DAE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				07C14B632C07C2C400931DAE /* SwiftUI.framework in Frameworks */,
+				07C14B612C07C2C400931DAE /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		76BA2A4E2BE0162A0038E2AD /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -156,6 +206,28 @@
 			path = Components;
 			sourceTree = "<group>";
 		};
+		07C14B5F2C07C2C400931DAE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				07C14B602C07C2C400931DAE /* WidgetKit.framework */,
+				07C14B622C07C2C400931DAE /* SwiftUI.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		07C14B642C07C2C400931DAE /* HanaWidget */ = {
+			isa = PBXGroup;
+			children = (
+				07C14B652C07C2C400931DAE /* HanaWidgetBundle.swift */,
+				07C14B672C07C2C400931DAE /* HanaWidgetLiveActivity.swift */,
+				07C14B692C07C2C400931DAE /* HanaWidget.swift */,
+				07C14B6B2C07C2C400931DAE /* AppIntent.swift */,
+				07C14B6D2C07C2C600931DAE /* Assets.xcassets */,
+				07C14B6F2C07C2C600931DAE /* Info.plist */,
+			);
+			path = HanaWidget;
+			sourceTree = "<group>";
+		};
 		7654490B2BFD0DE30089F7F3 /* Fontes */ = {
 			isa = PBXGroup;
 			children = (
@@ -175,9 +247,12 @@
 		76BA2A482BE0162A0038E2AD = {
 			isa = PBXGroup;
 			children = (
+				07C14B782C07C41900931DAE /* HanaWidgetExtension.entitlements */,
 				76BA2A532BE0162A0038E2AD /* PlanTio */,
 				76BA2A642BE0162B0038E2AD /* PlanTioTests */,
 				76BA2A6E2BE0162B0038E2AD /* PlanTioUITests */,
+				07C14B642C07C2C400931DAE /* HanaWidget */,
+				07C14B5F2C07C2C400931DAE /* Frameworks */,
 				76BA2A522BE0162A0038E2AD /* Products */,
 				769580DC2BF288F400FDB377 /* Recovered References */,
 			);
@@ -189,6 +264,7 @@
 				76BA2A512BE0162A0038E2AD /* PlanTio.app */,
 				76BA2A612BE0162B0038E2AD /* PlanTioTests.xctest */,
 				76BA2A6B2BE0162B0038E2AD /* PlanTioUITests.xctest */,
+				07C14B5E2C07C2C400931DAE /* HanaWidgetExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -280,6 +356,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		07C14B5D2C07C2C400931DAE /* HanaWidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 07C14B762C07C2C600931DAE /* Build configuration list for PBXNativeTarget "HanaWidgetExtension" */;
+			buildPhases = (
+				07C14B5A2C07C2C400931DAE /* Sources */,
+				07C14B5B2C07C2C400931DAE /* Frameworks */,
+				07C14B5C2C07C2C400931DAE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = HanaWidgetExtension;
+			productName = HanaWidgetExtension;
+			productReference = 07C14B5E2C07C2C400931DAE /* HanaWidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		76BA2A502BE0162A0038E2AD /* PlanTio */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 76BA2A752BE0162B0038E2AD /* Build configuration list for PBXNativeTarget "PlanTio" */;
@@ -287,10 +380,12 @@
 				76BA2A4D2BE0162A0038E2AD /* Sources */,
 				76BA2A4E2BE0162A0038E2AD /* Frameworks */,
 				76BA2A4F2BE0162A0038E2AD /* Resources */,
+				07C14B732C07C2C600931DAE /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				07C14B712C07C2C600931DAE /* PBXTargetDependency */,
 			);
 			name = PlanTio;
 			packageProductDependencies = (
@@ -345,9 +440,12 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1520;
+				LastSwiftUpdateCheck = 1540;
 				LastUpgradeCheck = 1520;
 				TargetAttributes = {
+					07C14B5D2C07C2C400931DAE = {
+						CreatedOnToolsVersion = 15.4;
+					};
 					76BA2A502BE0162A0038E2AD = {
 						CreatedOnToolsVersion = 15.2;
 					};
@@ -382,11 +480,21 @@
 				76BA2A502BE0162A0038E2AD /* PlanTio */,
 				76BA2A602BE0162B0038E2AD /* PlanTioTests */,
 				76BA2A6A2BE0162B0038E2AD /* PlanTioUITests */,
+				07C14B5D2C07C2C400931DAE /* HanaWidgetExtension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		07C14B5C2C07C2C400931DAE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				07C14B6E2C07C2C600931DAE /* Assets.xcassets in Resources */,
+				07C14B792C07D03A00931DAE /* Quicksand-VariableFont_wght.ttf in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		76BA2A4F2BE0162A0038E2AD /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -424,6 +532,18 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		07C14B5A2C07C2C400931DAE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				07C14B682C07C2C400931DAE /* HanaWidgetLiveActivity.swift in Sources */,
+				07C14B6C2C07C2C400931DAE /* AppIntent.swift in Sources */,
+				07C14B662C07C2C400931DAE /* HanaWidgetBundle.swift in Sources */,
+				07C14B772C07C2DC00931DAE /* WidgetPlantView.swift in Sources */,
+				07C14B6A2C07C2C400931DAE /* HanaWidget.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		76BA2A4D2BE0162A0038E2AD /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -474,6 +594,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		07C14B712C07C2C600931DAE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 07C14B5D2C07C2C400931DAE /* HanaWidgetExtension */;
+			targetProxy = 07C14B702C07C2C600931DAE /* PBXContainerItemProxy */;
+		};
 		76BA2A632BE0162B0038E2AD /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 76BA2A502BE0162A0038E2AD /* PlanTio */;
@@ -487,6 +612,64 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		07C14B742C07C2C600931DAE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = HanaWidgetExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 527TK29438;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = HanaWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = HanaWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = challenge2.PlanTioo.HanaWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		07C14B752C07C2C600931DAE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = HanaWidgetExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 527TK29438;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = HanaWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = HanaWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = challenge2.PlanTioo.HanaWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		76BA2A732BE0162B0038E2AD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -609,6 +792,7 @@
 		76BA2A762BE0162B0038E2AD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -646,6 +830,7 @@
 		76BA2A772BE0162B0038E2AD /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -759,6 +944,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		07C14B762C07C2C600931DAE /* Build configuration list for PBXNativeTarget "HanaWidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				07C14B742C07C2C600931DAE /* Debug */,
+				07C14B752C07C2C600931DAE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		76BA2A4C2BE0162A0038E2AD /* Build configuration list for PBXProject "PlanTio" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
