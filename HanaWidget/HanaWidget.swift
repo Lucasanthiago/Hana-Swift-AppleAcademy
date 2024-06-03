@@ -2,88 +2,86 @@
 //  HanaWidget.swift
 //  HanaWidget
 //
-//  Created by Gabriela Azulay Lewin on 29/05/24.
+//  Created by Gabriela Azulay Lewin on 03/06/24.
 //
 
 import WidgetKit
 import SwiftUI
 
-struct Provider: AppIntentTimelineProvider {
+struct Provider: TimelineProvider {
     func placeholder(in context: Context) -> SimpleEntry {
-        SimpleEntry(date: Date(), configuration: ConfigurationAppIntent())
+        
+        SimpleEntry(date: Date(), season: .spring, dayPeriod: .evening, text: "Testando")
     }
 
-    func snapshot(for configuration: ConfigurationAppIntent, in context: Context) async -> SimpleEntry {
-        SimpleEntry(date: Date(), configuration: configuration)
+    func getSnapshot(in context: Context, completion: @escaping (SimpleEntry) -> ()) {
+        let entry = SimpleEntry(date: Date(), season: .spring, dayPeriod: .evening, text: "Testando")
+        completion(entry)
     }
-    
-    func timeline(for configuration: ConfigurationAppIntent, in context: Context) async -> Timeline<SimpleEntry> {
+
+    func getTimeline(in context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
         var entries: [SimpleEntry] = []
 
         // Generate a timeline consisting of five entries an hour apart, starting from the current date.
         let currentDate = Date()
         for hourOffset in 0 ..< 5 {
             let entryDate = Calendar.current.date(byAdding: .hour, value: hourOffset, to: currentDate)!
-            let entry = SimpleEntry(date: entryDate, configuration: configuration)
+            let entry = SimpleEntry(date: entryDate, season: .spring, dayPeriod: .evening, text: "Testando")
             entries.append(entry)
         }
 
-        return Timeline(entries: entries, policy: .atEnd)
+        let timeline = Timeline(entries: entries, policy: .atEnd)
+        completion(timeline)
     }
+}
+
+enum Season: String {
+    case winter = "Winter"
+    case spring = "Spring"
+    case summer = "Summer"
+    case autumn = "Autumn"
+}
+
+enum DayPeriod: String {
+    case morning = "Morning"
+    case afteroon = "Afteroon"
+    case evening = "Evening"
+    case night = "Night"
 }
 
 struct SimpleEntry: TimelineEntry {
     let date: Date
-    let configuration: ConfigurationAppIntent
+    let season: Season
+    let dayPeriod: DayPeriod
+    let text: String
 }
 
 struct HanaWidgetEntryView: View {
-//    var entry: Provider.Entry
     
-    let imageHana: String
-    let text: String
-    let sky: String
-//    @State var gradientList = [morningGradient,afternoonGradient,eveningGradient,nightGradient]
-//
+    let entry: SimpleEntry
     
-    let morningGradient = LinearGradient(
-            stops: [
-                Gradient.Stop(color: .morningCloudsGradient1, location: 0),
-                Gradient.Stop(color: .morningCloudsGradient2, location: 1)
-            ],
-            startPoint: .top,
-            endPoint: .bottom
-        )
+    var imageHana: String {
+        "Hana\(entry.season.rawValue)\(entry.dayPeriod == .night ? "Sleeping" : "")"
+    }
     
-    let   afternoonGradient = LinearGradient(
-            stops: [
-                Gradient.Stop(color: .afternoonSkyGradient1, location: 0),
-                Gradient.Stop(color: .afternoonSkyGradient2, location: 1)
-            ],
-            startPoint: .top,
-            endPoint: .bottom
-        )
+    var text: String { entry.text }
     
+    var sky: String {
+        "\(entry.dayPeriod.rawValue)Background"
+    }
     
-    let   eveningGradient = LinearGradient(
-            stops: [
-                Gradient.Stop(color: .eveningCloudsGradient1, location: 0),
-                Gradient.Stop(color: .eveningCloudsGradient2, location: 0.5),
-                Gradient.Stop(color: .eveningCloudsGradient3, location: 1),
-            ],
-            startPoint: .top,
-            endPoint: .bottom
-        )
-    
-    let   nightGradient = LinearGradient(
-            stops: [
-                Gradient.Stop(color: .nightSkyGradient1, location: 0),
-                Gradient.Stop(color: .nightSkyGradient2, location: 1)
-            ],
-            startPoint: .top,
-            endPoint: .bottom
-        )
-    
+    var backgroundGradient: LinearGradient {
+        switch entry.dayPeriod {
+        case .morning:
+            morningGradient
+        case .afteroon:
+            afternoonGradient
+        case .evening:
+            eveningGradient
+        case .night:
+            nightGradient
+        }
+    }
     
     var body: some View {
         HStack {
@@ -122,41 +120,72 @@ struct HanaWidgetEntryView: View {
                 .scaledToFill()
         }
         .background {
-            eveningGradient
-                }
-       }
+            backgroundGradient
+        }
     }
-
+    
+    let morningGradient = LinearGradient(
+        stops: [
+            Gradient.Stop(color: .morningCloudsGradient1, location: 0),
+            Gradient.Stop(color: .morningCloudsGradient2, location: 1)
+        ],
+        startPoint: .top,
+        endPoint: .bottom
+    )
+    
+    let afternoonGradient = LinearGradient(
+        stops: [
+            Gradient.Stop(color: .afternoonSkyGradient1, location: 0),
+            Gradient.Stop(color: .afternoonSkyGradient2, location: 1)
+        ],
+        startPoint: .top,
+        endPoint: .bottom
+    )
+    
+    
+    let eveningGradient = LinearGradient(
+        stops: [
+            Gradient.Stop(color: .eveningCloudsGradient1, location: 0),
+            Gradient.Stop(color: .eveningCloudsGradient2, location: 0.5),
+            Gradient.Stop(color: .eveningCloudsGradient3, location: 1),
+        ],
+        startPoint: .top,
+        endPoint: .bottom
+    )
+    
+    let nightGradient = LinearGradient(
+        stops: [
+            Gradient.Stop(color: .nightSkyGradient1, location: 0),
+            Gradient.Stop(color: .nightSkyGradient2, location: 1)
+        ],
+        startPoint: .top,
+        endPoint: .bottom
+    )
+}
 
 struct HanaWidget: Widget {
     let kind: String = "HanaWidget"
 
     var body: some WidgetConfiguration {
-        AppIntentConfiguration(kind: kind, intent: ConfigurationAppIntent.self, provider: Provider()) { entry in
-            HanaWidgetEntryView(imageHana: "HanaSpring", text: "Have you checked your plants today?", sky: "EveningClouds")
-                .containerBackground(.black, for: .widget)
+        StaticConfiguration(kind: kind, provider: Provider()) { entry in
+            if #available(iOS 17.0, *) {
+                HanaWidgetEntryView(entry: entry)
+                    .containerBackground(.fill.tertiary, for: .widget)
+            } else {
+                HanaWidgetEntryView(entry: entry)
+                    .padding()
+                    .background()
+            }
         }
+        .configurationDisplayName("My Widget")
+        .description("This is an example widget.")
         .contentMarginsDisabled()
-    }
-}
-
-extension ConfigurationAppIntent {
-    fileprivate static var smiley: ConfigurationAppIntent {
-        let intent = ConfigurationAppIntent()
-        intent.favoriteEmoji = "😀"
-        return intent
-    }
-    
-    fileprivate static var starEyes: ConfigurationAppIntent {
-        let intent = ConfigurationAppIntent()
-        intent.favoriteEmoji = "🤩"
-        return intent
     }
 }
 
 #Preview(as: .systemMedium) {
     HanaWidget()
 } timeline: {
-    SimpleEntry(date: .now, configuration: .smiley)
-    SimpleEntry(date: .now, configuration: .starEyes)
+    SimpleEntry(date: .now, season: .spring, dayPeriod: .evening, text: "Testando")
+    SimpleEntry(date: .now, season: .winter, dayPeriod: .night, text: "Testando")
 }
