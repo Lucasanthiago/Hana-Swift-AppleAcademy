@@ -15,40 +15,40 @@ struct ContentView: View {
     
     var body: some View {
         NavigationStack {
-            
+            VStack{
                 RiveAnimationView(primaryFileName: "hana", secondaryFileName: "sad")
                     .shadow(color: .shadow.opacity(0.3), radius: 5, x: 0, y: 4)
                     .background(Color("Background"))
                 
-            
-            List {
                 
-                if filteredPlants.isEmpty {
-                    noPlants
-                } else {
-                    ForEach(filteredPlants) { plant in
-                        ZStack{
-                            ListPlantCard(content: {}, plantName: plant.name, plantSpecies: plant.type)
+                List {
+                    
+                    if filteredPlants.isEmpty {
+                        noPlants
+                    } else {
+                        ForEach(filteredPlants) { plant in
+                            ZStack{
+                                ListPlantCard(content: {}, plantName: plant.name, plantSpecies: plant.type)
                                 
-                        NavigationLink(value:  plant) {
-                                
-                               EmptyView()
+                                NavigationLink(value:  plant) {
+                                    
+                                    EmptyView()
+                                }
+                                .opacity(0.0)
+                                .contentShape(Rectangle())
                             }
-                        .opacity(0.0)
-                        .contentShape(Rectangle())
+                            
+                            //
                         }
+                        //                    }
+                        .onDelete(perform: viewModel.removePlant(at:))
+                        .listRowBackground(Color.clear)
+                        .listRowSeparator(.hidden)
                         
-                        //
+                        
                     }
-                    //                    }
-                    .onDelete(perform: viewModel.removePlant(at:))
-                    .listRowBackground(Color.clear)
-                    .listRowSeparator(.hidden)
-                    
-                    
                 }
             }
-            
             .padding(.top)
             .navigationDestination(for: Plant.self) { plant in
                 if let index = viewModel.plants.firstIndex(where: { $0.id == plant.id }) {
@@ -72,6 +72,7 @@ struct ContentView: View {
             )
             .onChange(of: searchText, { oldValue, newValue in
                 PostHogSDK.shared.capture("searchUsed")
+                
             })
             .navigationDestination(isPresented: $showingAddPlant) {
                 
