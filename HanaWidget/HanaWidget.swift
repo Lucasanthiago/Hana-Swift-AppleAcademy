@@ -11,11 +11,11 @@ import SwiftUI
 struct Provider: TimelineProvider {
     func placeholder(in context: Context) -> SimpleEntry {
         
-        SimpleEntry(date: Date(), season: .spring, dayPeriod: .evening, text: "Have you checked your plants today?")
+        SimpleEntry(date: Date(), season: .spring, dayPeriod: .afternoon, text: "Have you checked your plants today?")
     }
 
     func getSnapshot(in context: Context, completion: @escaping (SimpleEntry) -> ()) {
-        let entry = SimpleEntry(date: Date(), season: .spring, dayPeriod: .evening, text: "Have you checked your plants today?")
+        let entry = SimpleEntry(date: Date(), season: .spring, dayPeriod: .afternoon, text: "Have you checked your plants today?")
         completion(entry)
     }
     
@@ -232,8 +232,8 @@ struct HanaWidget: Widget {
                     .background()
             }
         }
-        .configurationDisplayName("My Widget")
-        .description("This is an example widget.")
+        .configurationDisplayName("Hana")
+        .description("Hana will remind you to take care of your plants.")
         .supportedFamilies([.systemMedium])
         .contentMarginsDisabled()
     }
