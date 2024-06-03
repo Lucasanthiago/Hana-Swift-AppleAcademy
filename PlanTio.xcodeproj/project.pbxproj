@@ -15,6 +15,7 @@
 		0738DF672C0E3DF400E39A3F /* HanaWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0738DF662C0E3DF400E39A3F /* HanaWidget.swift */; };
 		0738DF692C0E3DF500E39A3F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0738DF682C0E3DF500E39A3F /* Assets.xcassets */; };
 		0738DF6D2C0E3DF500E39A3F /* HanaWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 0738DF602C0E3DF400E39A3F /* HanaWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		0738DF712C0E471800E39A3F /* Quicksand-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7654490C2BFD0E050089F7F3 /* Quicksand-VariableFont_wght.ttf */; };
 		07C14B592C07C14D00931DAE /* WidgetPlantView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07C14B582C07C14D00931DAE /* WidgetPlantView.swift */; };
 		2E68C0A32BFD12BE0002B3B4 /* PostHog in Frameworks */ = {isa = PBXBuildFile; productRef = 2E68C0A22BFD12BE0002B3B4 /* PostHog */; };
 		2EF02FEA2BE042220023247F /* VMNotificationHandler in Frameworks */ = {isa = PBXBuildFile; productRef = 2EF02FE92BE042220023247F /* VMNotificationHandler */; };
@@ -482,6 +483,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0738DF712C0E471800E39A3F /* Quicksand-VariableFont_wght.ttf in Resources */,
 				0738DF692C0E3DF500E39A3F /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

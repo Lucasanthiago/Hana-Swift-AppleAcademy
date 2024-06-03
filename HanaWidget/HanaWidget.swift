@@ -11,23 +11,68 @@ import SwiftUI
 struct Provider: TimelineProvider {
     func placeholder(in context: Context) -> SimpleEntry {
         
-        SimpleEntry(date: Date(), season: .spring, dayPeriod: .evening, text: "Testando")
+        SimpleEntry(date: Date(), season: .spring, dayPeriod: .evening, text: "Have you checked your plants today?")
     }
 
     func getSnapshot(in context: Context, completion: @escaping (SimpleEntry) -> ()) {
-        let entry = SimpleEntry(date: Date(), season: .spring, dayPeriod: .evening, text: "Testando")
+        let entry = SimpleEntry(date: Date(), season: .spring, dayPeriod: .evening, text: "Have you checked your plants today?")
         completion(entry)
     }
+    
+    let seasons = [
+        (
+            name: Season.summer,
+            start: Calendar.current.date(from: DateComponents(year: 2023, month: 12, day: 21))!,
+            end:   Calendar.current.date(from: DateComponents(year: 2024, month: 3,  day: 20))!
+        ),
+        (
+            name: Season.spring,
+            start: Calendar.current.date(from: DateComponents(year: 2024, month: 9, day: 22))!,
+            end:   Calendar.current.date(from: DateComponents(year: 2024, month: 12,  day: 20))!
+        ),
+        (
+            name: Season.autumn,
+            start: Calendar.current.date(from: DateComponents(year: 2024, month: 3, day: 21))!,
+            end:   Calendar.current.date(from: DateComponents(year: 2024, month: 6,  day: 21))!
+        ),
+        (
+            name: Season.winter,
+            start: Calendar.current.date(from: DateComponents(year: 2024, month: 6, day: 22))!,
+            end:   Calendar.current.date(from: DateComponents(year: 2024, month: 9,  day: 21))!
+        )
+    ]
+    let relevantHours: [(dayPeriod: DayPeriod, hour: Int)] = [
+        (.morning, 5), 
+        (.afternoon, 11),
+        (.evening, 17),
+        (.night, 19)
+    ]
 
     func getTimeline(in context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
+        let today = Calendar.current.startOfDay(for: .now)
+        guard let tomorrow = Calendar.current.date(byAdding: .day, value: 1, to: today) else { return }
+        
+        var currentSeason: Season = .spring
+        for season in seasons {
+            if season.start < .now && season.end > .now {
+                currentSeason = season.name
+            }
+        }
+        
         var entries: [SimpleEntry] = []
-
-        // Generate a timeline consisting of five entries an hour apart, starting from the current date.
-        let currentDate = Date()
-        for hourOffset in 0 ..< 5 {
-            let entryDate = Calendar.current.date(byAdding: .hour, value: hourOffset, to: currentDate)!
-            let entry = SimpleEntry(date: entryDate, season: .spring, dayPeriod: .evening, text: "Testando")
-            entries.append(entry)
+        for day in [today, tomorrow] {
+            for relevantHour in relevantHours {
+                guard let newRelevantDate = Calendar.current.date(bySettingHour: relevantHour.hour, minute: 0, second: 0, of: day) else {
+                    continue
+                }
+                let newEntry = SimpleEntry(
+                    date: newRelevantDate,
+                    season: currentSeason,
+                    dayPeriod: relevantHour.dayPeriod,
+                    text: "Have you checked your plants today?"
+                )
+                entries.append(newEntry)
+            }
         }
 
         let timeline = Timeline(entries: entries, policy: .atEnd)
@@ -44,7 +89,7 @@ enum Season: String {
 
 enum DayPeriod: String {
     case morning = "Morning"
-    case afteroon = "Afteroon"
+    case afternoon = "Afternoon"
     case evening = "Evening"
     case night = "Night"
 }
@@ -64,7 +109,18 @@ struct HanaWidgetEntryView: View {
         "Hana\(entry.season.rawValue)\(entry.dayPeriod == .night ? "Sleeping" : "")"
     }
     
-    var text: String { entry.text }
+    var text: String {
+        switch entry.dayPeriod {
+        case .morning:
+            "Time to water your plants!"
+        case .afternoon:
+            "Watered your plants already?"
+        case .evening:
+            "Have you checked your plants today?"
+        case .night:
+            "See you again tomorrow!"
+        }
+    }
     
     var sky: String {
         "\(entry.dayPeriod.rawValue)Background"
@@ -74,7 +130,7 @@ struct HanaWidgetEntryView: View {
         switch entry.dayPeriod {
         case .morning:
             morningGradient
-        case .afteroon:
+        case .afternoon:
             afternoonGradient
         case .evening:
             eveningGradient
@@ -86,13 +142,12 @@ struct HanaWidgetEntryView: View {
     var body: some View {
         HStack {
             Text(text)
-            
                 .font(
                     .custom("Quicksand", size: 20, relativeTo: .title3).weight(.bold)
                 )
                 .foregroundStyle(.white)
             
-            Spacer(minLength: 12)
+            Spacer(minLength: 4)
             
             Image(imageHana)
                 .resizable()
@@ -186,6 +241,8 @@ struct HanaWidget: Widget {
 #Preview(as: .systemMedium) {
     HanaWidget()
 } timeline: {
-    SimpleEntry(date: .now, season: .spring, dayPeriod: .evening, text: "Testando")
-    SimpleEntry(date: .now, season: .winter, dayPeriod: .night, text: "Testando")
+    SimpleEntry(date: .now, season: .spring, dayPeriod: .evening, text: "Have you checked your plants today?")
+    SimpleEntry(date: .now, season: .winter, dayPeriod: .night, text: "Have you checked your plants today?")
+    SimpleEntry(date: .now, season: .summer, dayPeriod: .morning, text: "Have you checked your plants today?")
+    SimpleEntry(date: .now, season: .autumn, dayPeriod: .afternoon, text: "Have you checked your plants today?")
 }
