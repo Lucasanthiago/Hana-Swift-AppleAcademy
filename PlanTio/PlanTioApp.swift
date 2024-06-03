@@ -23,13 +23,21 @@ struct PlanTioApp: App {
     
     var body: some Scene {
         WindowGroup {
-            TabBarView()
-        
+            //            TabBarView()
+            WidgetPlantView(imageHana: "HanaSpring", text: "Time to water your plants!", sky: "MorningClouds")
+                .frame(width: 338, height: 158)
             
+            WidgetPlantView(imageHana: "HanaSpring", text: "Time to water your plants!", sky: "AfternoonSky")
+                .frame(width: 338, height: 158)
             
+            WidgetPlantView(imageHana: "HanaSpring", text: "Have you checked your plants today?", sky: "EveningClouds")
+                .frame(width: 338, height: 158)
+            
+            WidgetPlantView(imageHana: "HanaSpringSleeping", text: "See you again tomorrow!", sky: "NightSky")
+                .frame(width: 338, height: 158)
         }
     }
+    
+    
+    //testando commit
 }
-
-
-//testando commit

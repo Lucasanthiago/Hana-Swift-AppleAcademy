@@ -56,6 +56,7 @@ struct RiveAnimationView: View {
                     )
             }
         }
+        
     }
 
     private func setupRive() {
