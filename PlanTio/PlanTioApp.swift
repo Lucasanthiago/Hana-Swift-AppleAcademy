@@ -20,10 +20,15 @@ struct PlanTioApp: App {
         PostHogSDK.shared.setup(config)
         
     }
-    
-    var body: some Scene {
-        WindowGroup {
-                        TabBarView()
+    var body : some Scene {
+        WindowGroup{
+            TabBarView()
+        }
+        
+    }
+//    var body: some Scene {
+//        WindowGroup {
+//            //            TabBarView()
 //            WidgetPlantView(imageHana: "HanaSpring", text: "Time to water your plants!", sky: "MorningClouds")
 //                .frame(width: 338, height: 158)
 //            
@@ -35,8 +40,8 @@ struct PlanTioApp: App {
 //            
 //            WidgetPlantView(imageHana: "HanaSpringSleeping", text: "See you again tomorrow!", sky: "NightSky")
 //                .frame(width: 338, height: 158)
-        }
-    }
+//        }
+//    }
     
     
     //testando commit
