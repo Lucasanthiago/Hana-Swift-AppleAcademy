@@ -1,11 +1,18 @@
 import SwiftUI
 import PostHog
 
+
+let maxPlantCount = 5
+
+
 struct ContentView: View {
+
+    
     @State private var navigateToAddPlant = false
     
     @ObservedObject var viewModel: PlantViewModel
     @State private var showingAddPlant = false
+    @State private var navigateToLimitReached = false
     @State var searchText = ""
     @State private var selectedPlant: Plant? = nil
     
@@ -18,9 +25,7 @@ struct ContentView: View {
                     .shadow(color: .shadow.opacity(0.3), radius: 5, x: 0, y: 4)
                     .background(Color("Background"))
                 
-                
                 List {
-                    
                     if filteredPlants.isEmpty {
                         noPlants
                     } else {
@@ -29,21 +34,15 @@ struct ContentView: View {
                                 ListPlantCard(content: {}, plantName: plant.name, plantSpecies: plant.type)
                                 
                                 NavigationLink(value:  plant) {
-                                    
                                     EmptyView()
                                 }
                                 .opacity(0.0)
                                 .contentShape(Rectangle())
                             }
-                            
-                            //
                         }
-                        //                    }
                         .onDelete(perform: viewModel.removePlant(at:))
                         .listRowBackground(Color.clear)
                         .listRowSeparator(.hidden)
-                        
-                        
                     }
                 }
                 .padding(.top)
@@ -51,10 +50,16 @@ struct ContentView: View {
                 .font(.custom("Quicksand", size: 17))
                 .listStyle(.plain)
             }
-            .background(Color("Background").ignoresSafeArea()) // Garantir que o fundo seja aplicado a toda a área segura
+            .background(Color("Background").ignoresSafeArea())
             .navigationBarTitle("My Plants")
             .navigationBarItems(
-                trailing: NavigationLink(destination: AddPlantView(viewModel: viewModel)) {
+                trailing: Button(action: {
+                    if viewModel.plants.count < maxPlantCount {
+                        showingAddPlant = true
+                    } else {
+                        navigateToLimitReached = true
+                    }
+                }) {
                     Image(systemName: "plus.circle.fill")
                         .bold()
                 }
@@ -70,10 +75,12 @@ struct ContentView: View {
             }
             .onChange(of: searchText, { oldValue, newValue in
                 PostHogSDK.shared.capture("searchUsed")
-                
             })
             .navigationDestination(isPresented: $showingAddPlant) {
                 AddPlantView(viewModel: viewModel)
+            }
+            .navigationDestination(isPresented: $navigateToLimitReached) {
+                LimitReachedView()
             }
         }
     }
@@ -99,6 +106,20 @@ struct ContentView: View {
             .listRowBackground(Color.clear)
             .listRowSeparator(.hidden)
         }
+    }
+}
+
+struct LimitReachedView: View {
+    var body: some View {
+        VStack {
+            Text("Plant Limit Reached")
+                .font(.title)
+                .padding()
+            Text("You can only create up to \(maxPlantCount) plants.")
+                .font(.body)
+                .padding()
+        }
+        .navigationTitle("Limit Reached")
     }
 }
 
