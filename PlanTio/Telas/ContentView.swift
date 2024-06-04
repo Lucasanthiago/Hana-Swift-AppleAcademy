@@ -108,57 +108,155 @@ struct ContentView: View {
     }
 }
 
-#Preview {
-    ContentView(viewModel: PlantViewModel())
-}
-
+//#Preview {
+//    ContentView(viewModel: PlantViewModel())
+//}
 
 
 
 struct MaxLimitReachedView: View {
     var body: some View {
         ZStack {
-            Color("Background")
+            LinearGradient(
+                stops: [
+                    Gradient.Stop(color: .afternoonSkyGradient1, location: 0),
+                    Gradient.Stop(color: .afternoonSkyGradient2, location: 0.3)
+                ],
+                startPoint: .top,
+                endPoint: .bottom
+            )
+            .ignoresSafeArea()
+            
+            Image("SunClouds")
+                .resizable()
+                .scaledToFit()
+                .frame(width:210)
+                .padding(.bottom, 580)
+                .padding(.leading, 100)
+            
+            
+            RoundedRectangle(cornerRadius: 20.0)
+                .foregroundStyle(
+                    LinearGradient(
+                        stops: [
+                            Gradient.Stop(color: .grassGradient1, location: 0),
+                            Gradient.Stop(color: .grassGradient2, location: 1)
+                        ],
+                        startPoint: .top,
+                        endPoint: .bottom
+                    )
+                )
+                .padding(.top, 270)
                 .ignoresSafeArea()
-            VStack {
-                ZStack {
-                    Rectangle()
-                        .fill(Color("Cards"))
-                        .frame(width: 400, height: 300)
-                        .cornerRadius(10)
-                    
-                    HStack {
-                        VStack(alignment: .leading) {
-                            Text("Maximum Limit Reached")
-                                .font(.custom("Quicksand", size: 25))
-                                .bold()
-                                .padding(.bottom, 15)
-                            
-                            Text("You have reached the maximum limit of 17 plants.")
-                                .font(.custom("Quicksand", size: 15))
-                                .padding(.bottom, 5)
-                            Text("Consider removing some plants to add new ones.")
-                                .font(.custom("Quicksand", size: 15))
-                                .padding(.bottom, 2)
-                        }
-                        .padding()
-                        Spacer()
-                        
-                        Image(systemName: "exclamationmark.triangle")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 50, height: 50)
-                            .foregroundColor(.yellow)
+            
+            VStack(alignment: .leading) {
+                
+                Image("SadHana")
+                    .background(alignment: .bottom) {
+                        Ellipse()
+                            .frame(width: 120, height: 25.0)
+                            .foregroundStyle(Color.blue.blendMode(.multiply).opacity(0.3))
+                            .alignmentGuide(.bottom, computeValue: { _ in 18 })
                     }
-                    .frame(width: 380)
+                
+                    .padding(.leading, 20)
+                VStack{
+                    VStack(alignment: .leading, spacing: 20) {
+                        Text("Maximum Limit Reached")
+                            .font(.custom("Quicksand", size: 34, relativeTo: .largeTitle))
+                            .bold()
+                            .foregroundStyle(Color.darkGreen)
+                        
+                        
+                        Text("You have reached the maximum limit of 17 plants. Consider removing some plants to add new ones.")
+                            .font(.custom("Quicksand", size: 22, relativeTo: .title2))
+                            .foregroundStyle(Color.darkGreen)
+                            .fontWeight(.medium)
+                        
+                    }
+                    .padding(25)
+                    .background(
+                        RoundedRectangle(cornerRadius: 25.0)
+                            .foregroundStyle(Color.cards)
+                    )
+                    .padding(30)
+                    
+                    
+                    
+                    Button(action: {
+                        
+                    }, label: {
+                        Text("Go back to My Plants")
+                            .font(.custom("Quicksand", size: 22, relativeTo: .title2))
+                            .bold()
+                            .foregroundStyle(Color.white)
+                            .padding(20)
+                            .padding(.horizontal, 35)
+                            .background(
+                                RoundedRectangle(cornerRadius: 20)
+                                    .foregroundStyle(Color.pinkButton)
+                            )
+                    })
+                    
                 }
+                .padding(.top, 20)
             }
-            .navigationTitle("Limit Reached")
+            
         }
-        .background(Color("Background").ignoresSafeArea())
+        
     }
+    
 }
+        
 
 #Preview {
     MaxLimitReachedView()
 }
+
+//struct MaxLimitReachedView: View {
+//    var body: some View {
+//        ZStack {
+//            Color("Background")
+//                .ignoresSafeArea()
+//            VStack {
+//                ZStack {
+//                    Rectangle()
+//                        .fill(Color("Cards"))
+//                        .frame(width: 400, height: 300)
+//                        .cornerRadius(10)
+//
+//                    HStack {
+//                        VStack(alignment: .leading) {
+//                            Text("Maximum Limit Reached")
+//                                .font(.custom("Quicksand", size: 25))
+//                                .bold()
+//                                .padding(.bottom, 15)
+//
+//                            Text("You have reached the maximum limit of 17 plants.")
+//                                .font(.custom("Quicksand", size: 15))
+//                                .padding(.bottom, 5)
+//                            Text("Consider removing some plants to add new ones.")
+//                                .font(.custom("Quicksand", size: 15))
+//                                .padding(.bottom, 2)
+//                        }
+//                        .padding()
+//                        Spacer()
+//
+//                        Image(systemName: "exclamationmark.triangle")
+//                            .resizable()
+//                            .scaledToFit()
+//                            .frame(width: 50, height: 50)
+//                            .foregroundColor(.yellow)
+//                    }
+//                    .frame(width: 380)
+//                }
+//            }
+//            .navigationTitle("Limit Reached")
+//        }
+//        .background(Color("Background").ignoresSafeArea())
+//    }
+//}
+//
+//#Preview {
+//    MaxLimitReachedView()
+//}
