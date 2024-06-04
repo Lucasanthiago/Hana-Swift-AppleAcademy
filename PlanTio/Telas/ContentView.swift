@@ -1,15 +1,8 @@
 import SwiftUI
 import PostHog
 
-
-let maxPlantCount = 5
-
-
 struct ContentView: View {
-
-    
     @State private var navigateToAddPlant = false
-    
     @ObservedObject var viewModel: PlantViewModel
     @State private var showingAddPlant = false
     @State private var navigateToLimitReached = false
@@ -54,7 +47,7 @@ struct ContentView: View {
             .navigationBarTitle("My Plants")
             .navigationBarItems(
                 trailing: Button(action: {
-                    if viewModel.plants.count < maxPlantCount {
+                    if viewModel.plants.count < viewModel.maxPlantCount {
                         showingAddPlant = true
                     } else {
                         navigateToLimitReached = true
@@ -106,20 +99,6 @@ struct ContentView: View {
             .listRowBackground(Color.clear)
             .listRowSeparator(.hidden)
         }
-    }
-}
-
-struct LimitReachedView: View {
-    var body: some View {
-        VStack {
-            Text("Plant Limit Reached")
-                .font(.title)
-                .padding()
-            Text("You can only create up to \(maxPlantCount) plants.")
-                .font(.body)
-                .padding()
-        }
-        .navigationTitle("Limit Reached")
     }
 }
 

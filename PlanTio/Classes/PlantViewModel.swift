@@ -13,6 +13,7 @@ import PostHog
 class PlantViewModel: ObservableObject {
     @Published var plants: [Plant] = []
     @Published var commonNames: [String] = []
+    @Published var maxPlantCount = 5
     @AppStorage("plantData") var plantData: Data = Data() {
         didSet {
             plants = (try? JSONDecoder().decode([Plant].self, from: plantData)) ?? []
@@ -213,4 +214,8 @@ class PlantViewModel: ObservableObject {
             print(plants.flatMap { $0.common })
         }
     }
-}
+    func updateMaxPlantCount(to newLimit: Int) {
+            maxPlantCount = newLimit
+        }
+    }
+

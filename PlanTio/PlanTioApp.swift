@@ -11,7 +11,8 @@ import PostHog
 
 @main
 struct PlanTioApp: App {
-    
+    @StateObject private var store = Store()
+    @StateObject private var viewModel = PlantViewModel()
     init(){
         let POSTHOG_API_KEY = "***CHAVE-REMOVIDA***"
         let POSTHOG_HOST = "https://us.i.posthog.com"
@@ -23,6 +24,8 @@ struct PlanTioApp: App {
     var body : some Scene {
         WindowGroup{
             TabBarView()
+                .environmentObject(store)
+                .environmentObject(viewModel)
         }
         
     }
