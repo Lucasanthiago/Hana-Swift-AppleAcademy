@@ -119,6 +119,7 @@ struct PlantDetailView: View {
                             isEditing.toggle()
                             if plant.type == "Other" {
                                 plant.type = "Other: \(customType)"
+                                
                             }
                         }) {
                             Image( isEditing ? "Done" : "Edit")
@@ -138,7 +139,13 @@ struct PlantDetailView: View {
                     saveMode = false
                     onSave?()
                     isEditing = false
-                    randomInfos()
+                    if plant.type == "Other: \(customType)" {
+                        print("eu")
+                    } else{
+                        randomInfos()
+
+                    }
+                        
                     addPlant()
                 }, label: {
                     Text("Save")
