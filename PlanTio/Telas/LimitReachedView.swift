@@ -1,15 +1,8 @@
-//
-//  LimitReachedView.swift
-//  PlanTio
-//
-//  Created by Kaua Trindade on 04/06/24.
-//
-
 import SwiftUI
 
 struct LimitReachedView: View {
     @EnvironmentObject var store: Store
-    @EnvironmentObject var viewModel: PlantViewModel
+    @ObservedObject var viewModel: PlantViewModel
 
     var body: some View {
         ZStack {
@@ -32,7 +25,7 @@ struct LimitReachedView: View {
                             Text("You have reached your limit.")
                                 .font(.custom("Quicksand", size: 15))
                                 .padding(.bottom, 5)
-                            Text("You will add 12 plants.")
+                            Text("You can now add up to 17 plants.")
                                 .font(.custom("Quicksand", size: 15))
                                 .padding(.bottom, 2)
                     
@@ -79,7 +72,7 @@ struct LimitReachedView: View {
             let transaction = try await store.purchase(product)
             if let transaction = transaction {
                 print("Purchased successfully: \(transaction)")
-                viewModel.updateMaxPlantCount(to: 17) // Atualiza o limite para 22 após a compra
+                viewModel.updateMaxPlantCount(to: 17) // Atualiza o limite para 17 após a compra
             } else {
                 print("Purchase failed or cancelled")
             }
@@ -89,8 +82,8 @@ struct LimitReachedView: View {
     }
 }
 
-#Preview {
-    LimitReachedView()
-        .environmentObject(Store())
-        .environmentObject(PlantViewModel())
-}
+//#Preview {
+//    LimitReachedView()
+//        .environmentObject(Store())
+//        .environmentObject(PlantViewModel())
+//}

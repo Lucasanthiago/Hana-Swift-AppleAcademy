@@ -73,7 +73,7 @@ struct ContentView: View {
                 AddPlantView(viewModel: viewModel)
             }
             .navigationDestination(isPresented: $navigateToLimitReached) {
-                LimitReachedView()
+                LimitReachedView(viewModel: viewModel)
             }
         }
     }
