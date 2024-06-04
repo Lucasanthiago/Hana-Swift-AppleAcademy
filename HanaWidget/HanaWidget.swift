@@ -21,32 +21,34 @@ struct Provider: TimelineProvider {
     
     let seasons = [
         (
-            name: Season.summer,
+            name: Season.summer.localized,
             start: Calendar.current.date(from: DateComponents(year: 2023, month: 12, day: 21))!,
             end:   Calendar.current.date(from: DateComponents(year: 2024, month: 3,  day: 20))!
         ),
         (
-            name: Season.spring,
+            name: Season.spring.localized,
             start: Calendar.current.date(from: DateComponents(year: 2024, month: 9, day: 22))!,
             end:   Calendar.current.date(from: DateComponents(year: 2024, month: 12,  day: 20))!
         ),
         (
-            name: Season.autumn,
+            name: Season.autumn.localized,
             start: Calendar.current.date(from: DateComponents(year: 2024, month: 3, day: 21))!,
             end:   Calendar.current.date(from: DateComponents(year: 2024, month: 6,  day: 21))!
         ),
         (
-            name: Season.winter,
+            name: Season.winter.localized,
             start: Calendar.current.date(from: DateComponents(year: 2024, month: 6, day: 22))!,
             end:   Calendar.current.date(from: DateComponents(year: 2024, month: 9,  day: 21))!
         )
     ]
+    
     let relevantHours: [(dayPeriod: DayPeriod, hour: Int)] = [
         (.morning, 5), 
         (.afternoon, 11),
         (.evening, 17),
         (.night, 19)
     ]
+    
 
     func getTimeline(in context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
         let today = Calendar.current.startOfDay(for: .now)
@@ -85,6 +87,31 @@ enum Season: String {
     case spring = "Spring"
     case summer = "Summer"
     case autumn = "Autumn"
+    
+    var north:Season {
+        switch self {
+            
+        case .winter:
+            return .summer
+        case .spring:
+            return .autumn
+        case .summer:
+            return .winter
+        case .autumn:
+            return .spring
+        }
+    }
+    
+    var localized:Season {
+        print(Locale.current.region?.identifier)
+        switch Locale.current.region?.identifier ?? "" {
+        case 
+            "US","CA","FR","DE","CN","JP","KR","RU","ES","IT","NL","SE","FI","DK","NO","PL","TR","PT","SA","IL","TH","VN":
+            return self.north
+        default:
+            return self
+        }
+    }
 }
 
 enum DayPeriod: String {
