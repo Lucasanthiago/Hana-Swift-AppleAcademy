@@ -6,6 +6,7 @@ struct ContentView: View {
     @ObservedObject var viewModel: PlantViewModel
     @State private var showingAddPlant = false
     @State private var navigateToLimitReached = false
+    @State private var navigateToMaxLimitReached = false
     @State var searchText = ""
     @State private var selectedPlant: Plant? = nil
     
@@ -26,7 +27,7 @@ struct ContentView: View {
                             ZStack{
                                 ListPlantCard(content: {}, plantName: plant.name, plantSpecies: plant.type)
                                 
-                                NavigationLink(value:  plant) {
+                                NavigationLink(value: plant) {
                                     EmptyView()
                                 }
                                 .opacity(0.0)
@@ -49,8 +50,10 @@ struct ContentView: View {
                 trailing: Button(action: {
                     if viewModel.plants.count < viewModel.maxPlantCount {
                         showingAddPlant = true
-                    } else {
+                    } else if viewModel.maxPlantCount == 5 {
                         navigateToLimitReached = true
+                    } else if viewModel.plants.count >= 17 {
+                        navigateToMaxLimitReached = true
                     }
                 }) {
                     Image(systemName: "plus.circle.fill")
@@ -74,6 +77,9 @@ struct ContentView: View {
             }
             .navigationDestination(isPresented: $navigateToLimitReached) {
                 LimitReachedView(viewModel: viewModel)
+            }
+            .navigationDestination(isPresented: $navigateToMaxLimitReached) {
+                MaxLimitReachedView()
             }
         }
     }
@@ -104,4 +110,55 @@ struct ContentView: View {
 
 #Preview {
     ContentView(viewModel: PlantViewModel())
+}
+
+
+
+
+struct MaxLimitReachedView: View {
+    var body: some View {
+        ZStack {
+            Color("Background")
+                .ignoresSafeArea()
+            VStack {
+                ZStack {
+                    Rectangle()
+                        .fill(Color("Cards"))
+                        .frame(width: 400, height: 300)
+                        .cornerRadius(10)
+                    
+                    HStack {
+                        VStack(alignment: .leading) {
+                            Text("Maximum Limit Reached")
+                                .font(.custom("Quicksand", size: 25))
+                                .bold()
+                                .padding(.bottom, 15)
+                            
+                            Text("You have reached the maximum limit of 17 plants.")
+                                .font(.custom("Quicksand", size: 15))
+                                .padding(.bottom, 5)
+                            Text("Consider removing some plants to add new ones.")
+                                .font(.custom("Quicksand", size: 15))
+                                .padding(.bottom, 2)
+                        }
+                        .padding()
+                        Spacer()
+                        
+                        Image(systemName: "exclamationmark.triangle")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 50, height: 50)
+                            .foregroundColor(.yellow)
+                    }
+                    .frame(width: 380)
+                }
+            }
+            .navigationTitle("Limit Reached")
+        }
+        .background(Color("Background").ignoresSafeArea())
+    }
+}
+
+#Preview {
+    MaxLimitReachedView()
 }
