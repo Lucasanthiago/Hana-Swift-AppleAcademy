@@ -68,6 +68,7 @@ struct CareInfos<Content: View>: View {
     
 }
 
+
 //#Preview {
 //    VStack {
 //        CareInfos(content: {

@@ -18,6 +18,8 @@
 		0738DF712C0E471800E39A3F /* Quicksand-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7654490C2BFD0E050089F7F3 /* Quicksand-VariableFont_wght.ttf */; };
 		07C14B592C07C14D00931DAE /* WidgetPlantView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07C14B582C07C14D00931DAE /* WidgetPlantView.swift */; };
 		2E68C0A32BFD12BE0002B3B4 /* PostHog in Frameworks */ = {isa = PBXBuildFile; productRef = 2E68C0A22BFD12BE0002B3B4 /* PostHog */; };
+		2E68C0A72C0E63540002B3B4 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E68C0A62C0E63540002B3B4 /* Store.swift */; };
+		2E68C0AD2C0EDD2E0002B3B4 /* LimitReachedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E68C0AC2C0EDD2E0002B3B4 /* LimitReachedView.swift */; };
 		2EF02FEA2BE042220023247F /* VMNotificationHandler in Frameworks */ = {isa = PBXBuildFile; productRef = 2EF02FE92BE042220023247F /* VMNotificationHandler */; };
 		762189A92BF54E8800C80C62 /* ListPlantCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762189A82BF54E8800C80C62 /* ListPlantCard.swift */; };
 		7654490D2BFD0E050089F7F3 /* Quicksand-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7654490C2BFD0E050089F7F3 /* Quicksand-VariableFont_wght.ttf */; };
@@ -109,6 +111,8 @@
 		07C14B602C07C2C400931DAE /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		07C14B622C07C2C400931DAE /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 		07C14B782C07C41900931DAE /* HanaWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = HanaWidgetExtension.entitlements; sourceTree = "<group>"; };
+		2E68C0A62C0E63540002B3B4 /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
+		2E68C0AC2C0EDD2E0002B3B4 /* LimitReachedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LimitReachedView.swift; sourceTree = "<group>"; };
 		2EF02FEB2BE16CF80023247F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		762189A82BF54E8800C80C62 /* ListPlantCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListPlantCard.swift; sourceTree = "<group>"; };
 		7654490C2BFD0E050089F7F3 /* Quicksand-VariableFont_wght.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Quicksand-VariableFont_wght.ttf"; sourceTree = "<group>"; };
@@ -314,10 +318,12 @@
 				072CA12E2BEAC3150085CB94 /* SwiftUIView.swift */,
 				76BA2A8A2BE01C100038E2AD /* WateringView.swift */,
 				76BA2A8C2BE01C230038E2AD /* SunlightView.swift */,
+				2E68C0AC2C0EDD2E0002B3B4 /* LimitReachedView.swift */,
 				76BA2A882BE01BDE0038E2AD /* PlantDetailView.swift */,
 				76BA2A802BE01B230038E2AD /* AddPlantView.swift */,
 				072CA1302BEC288A0085CB94 /* Components */,
 				769580D02BEC10D800FDB377 /* InfoPlant.swift */,
+				2E68C0A62C0E63540002B3B4 /* Store.swift */,
 			);
 			path = Telas;
 			sourceTree = "<group>";
@@ -542,6 +548,7 @@
 				76BA2A812BE01B230038E2AD /* AddPlantView.swift in Sources */,
 				072CA1342BEC28CC0085CB94 /* CustomContentUnavailableView.swift in Sources */,
 				C4A47CBD2C0620DA004D6FB8 /* RiveAnimationView.swift in Sources */,
+				2E68C0A72C0E63540002B3B4 /* Store.swift in Sources */,
 				76BA2A852BE01B5F0038E2AD /* Plant.swift in Sources */,
 				769580D72BF2803C00FDB377 /* CareInfos.swift in Sources */,
 				76BA2A8D2BE01C230038E2AD /* SunlightView.swift in Sources */,
@@ -558,6 +565,7 @@
 				BB715CBD2BEE6300005481A7 /* Extensions.swift in Sources */,
 				76BA2A992BE16B1A0038E2AD /* ImagePicker.swift in Sources */,
 				07C14B592C07C14D00931DAE /* WidgetPlantView.swift in Sources */,
+				2E68C0AD2C0EDD2E0002B3B4 /* LimitReachedView.swift in Sources */,
 				76BA2A552BE0162A0038E2AD /* PlanTioApp.swift in Sources */,
 				769580D12BEC10D800FDB377 /* InfoPlant.swift in Sources */,
 				76BA2A8B2BE01C100038E2AD /* WateringView.swift in Sources */,
@@ -803,7 +811,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.1;
-				PRODUCT_BUNDLE_IDENTIFIER = challenge2.PlanTioo;
+				PRODUCT_BUNDLE_IDENTIFIER = challenge2.PlanTio;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -841,7 +849,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.1;
-				PRODUCT_BUNDLE_IDENTIFIER = challenge2.PlanTioo;
+				PRODUCT_BUNDLE_IDENTIFIER = challenge2.PlanTio;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;

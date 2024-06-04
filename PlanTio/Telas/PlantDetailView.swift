@@ -6,8 +6,8 @@ struct PlantDetailView: View {
     @State var isEditing = false
     @Binding var plant: Plant
     @State var saveMode: Bool
-    var onSave: (() -> Void)? // Callback para ação de salvar
-    
+    @State private var customType: String = ""
+    var onSave: (() -> Void)? // Callback for save action
     
     var body: some View {
         ZStack{
@@ -15,10 +15,6 @@ struct PlantDetailView: View {
                 FrameImage(imageData: $plant.imageData, aspectRatio: 21/9)
                     .frame(maxWidth: .infinity, alignment: .center)
                     .disabled(isEditing == false)
-                
-                
-                
-               
                 
                 VStack {
                     HStack{
@@ -30,7 +26,6 @@ struct PlantDetailView: View {
                             .padding()
                             .disabled(isEditing == false)
                         Button(action: {}, label: {
-                            
                             HStack {
                                 Image(systemName:"arrow.counterclockwise.circle.fill")
                                 Text("Care History")
@@ -51,8 +46,8 @@ struct PlantDetailView: View {
                             .font(.custom("Quicksand", size: 17))
                             .fontWeight(.medium)
                         Spacer()
-                        Picker("Tipo", selection: $plant.type) {
-                            ForEach(viewModel.commonNames, id: \.self) { commonName in
+                        Picker("Type", selection: $plant.type) {
+                            ForEach(viewModel.commonNames + ["Other"], id: \.self) { commonName in
                                 Text(commonName).tag(commonName)
                             }
                         }
@@ -62,6 +57,21 @@ struct PlantDetailView: View {
                     .padding(.horizontal, 16)
                     .listStyle(PlainListStyle())
                     .padding(.top, 5)
+                    
+                    if plant.type.starts(with: "Other") {
+                        TextField("Enter custom type", text: $customType)
+                            .padding()
+                            .background(Color(.systemGray6))
+                            .cornerRadius(8)
+                            .padding(.horizontal, 16)
+                            .disabled(isEditing == false)
+                            .onChange(of: customType) { newValue in
+                                if plant.type.starts(with: "Other:") {
+                                    plant.type = "Other: \(newValue)"
+                                }
+                            }
+                    }
+                    
                     ScrollView {
                         VStack {
                             CareInfos(content: {
@@ -81,26 +91,21 @@ struct PlantDetailView: View {
                                         IdealAndToleratedLight(content: {
                                         }, title: "Ideal light", icon: "sun.min.fill", iconColor: (Color("NormalText")), description: plant.idealLight)
                                         .padding()
-                                        //                                    .fixedSize()
-                                        .fixedSize(horizontal: false, vertical: true)// Impede a quebra de linha
+                                        .fixedSize(horizontal: false, vertical: true)
                                     }
                                     if plant.idealLight.isEmpty == false{
                                         IdealAndToleratedLight(content: {
                                         }, title: "Tolerated light", icon: "sun.max.fill", iconColor: (Color("NormalText")), description: plant.toleratedLight)
                                         .padding(.horizontal, 18)
                                         .padding(.vertical, 10)
-                                        //                                    .fixedSize() // Impede a quebra de linha
                                         .fixedSize(horizontal: false, vertical: true)
                                     }
                                 }
-                                
                                 .padding(.leading, 10)
                                 .padding(.trailing, 10)
                             }, title: "Sunbathing", icon: "sun.max.fill", iconColor: Color("Sun"), date: $plant.sunTime)
                             .padding(.horizontal)
-                            
                         }
-                        
                         .disabled(isEditing == false)
                     }
                 }
@@ -112,29 +117,37 @@ struct PlantDetailView: View {
                     if saveMode == false {
                         Button(action: {
                             isEditing.toggle()
+                            if plant.type == "Other" {
+                                plant.type = "Other: \(customType)"
+                                
+                            }
                         }) {
                             Image( isEditing ? "Done" : "Edit")
                                 .shadow(color: .shadow.opacity(0.3), radius: 5, x: 0, y: 4)
                         }
-                        }
+                    }
                 }
             }.padding()
         }
-        
         .safeAreaInset(edge: .bottom, content: {
             if saveMode == true {
                 Button(action: {
-                    
                     PostHogSDK.shared.capture("Newplant")
+                    if plant.type == "Other" {
+                        plant.type = "Other: \(customType)"
+                    }
                     saveMode = false
                     onSave?()
                     isEditing = false
-                    randomInfos()
+                    if plant.type == "Other: \(customType)" {
+                        print("eu")
+                    } else{
+                        randomInfos()
+
+                    }
+                        
                     addPlant()
-                    
-                    
-                    //                    }
-                }, label: { // TODO: resolver save verdadeiro, e aparecer na view
+                }, label: {
                     Text("Save")
                         .font(.body)
                         .bold()
@@ -148,18 +161,19 @@ struct PlantDetailView: View {
         })
         .navigationBarTitleDisplayMode(.inline)
         .background(Color("Background"))
-//        if saveMode == false{
-//            Button(action: {
-//                isEditing.toggle()
-//                //                        updatePlant()
-//            }) {
-//                Image( isEditing ? "Done" : "Edit")
-//                    .background(Color("Background"))
-//            }
-//        }
-
+        .onAppear {
+            if plant.type.starts(with: "Other:") {
+                customType = String(plant.type.dropFirst(7))
+            }
+        }
+        .onChange(of: plant.type) { newValue in
+            if newValue.starts(with: "Other:") {
+                customType = String(newValue.dropFirst(7))
+            } else {
+                customType = ""
+            }
+        }
     }
-    
     
     func randomInfos() {
         let wateringInstructionsOptions = [
@@ -183,7 +197,6 @@ struct PlantDetailView: View {
         plant.toleratedLight = toleratedLightOptions.randomElement() ?? ""
     }
     
-    //
     func updatePlant() {
         plant.imageData = plant.imageData
         Task {
@@ -220,14 +233,4 @@ struct PlantDetailView: View {
         }
     }
 }
-
-//    struct TelaDetalhe_Previews: PreviewProvider {
-//        @State static var imageData: Data? = nil // Ligação para os dados da imagem
-//
-//        static var previews: some View {
-//            let plantDetails = PlantDetails(name: "Plant Name", wateringInstructions: "Keep moist between watering.Can be a bit dry between waterings.", idealLight: "Bright light", toleratedLight: "Direct sunlight")
-//            return TelaDetalhe(plant: plantDetails)
-//        }
-//    }
-
 
