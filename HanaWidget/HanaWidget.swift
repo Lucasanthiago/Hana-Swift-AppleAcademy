@@ -239,11 +239,11 @@ struct HanaWidget: Widget {
     }
 }
 
-#Preview(as: .systemMedium) {
-    HanaWidget()
-} timeline: {
-    SimpleEntry(date: .now, season: .spring, dayPeriod: .evening, text: "Have you checked your plants today?")
-    SimpleEntry(date: .now, season: .winter, dayPeriod: .night, text: "Have you checked your plants today?")
-    SimpleEntry(date: .now, season: .summer, dayPeriod: .morning, text: "Have you checked your plants today?")
-    SimpleEntry(date: .now, season: .autumn, dayPeriod: .afternoon, text: "Have you checked your plants today?")
-}
+//#Preview(as: .systemMedium) {
+//    HanaWidget()
+//} timeline: {
+//    SimpleEntry(date: .now, season: .spring, dayPeriod: .evening, text: "Have you checked your plants today?")
+//    SimpleEntry(date: .now, season: .winter, dayPeriod: .night, text: "Have you checked your plants today?")
+//    SimpleEntry(date: .now, season: .summer, dayPeriod: .morning, text: "Have you checked your plants today?")
+//    SimpleEntry(date: .now, season: .autumn, dayPeriod: .afternoon, text: "Have you checked your plants today?")
+//}
