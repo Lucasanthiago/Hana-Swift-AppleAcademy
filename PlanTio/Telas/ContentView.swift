@@ -1,5 +1,6 @@
 import SwiftUI
 import PostHog
+import RiveRuntime
 
 struct ContentView: View {
     @State private var navigateToAddPlant = false
@@ -15,9 +16,9 @@ struct ContentView: View {
     var body: some View {
         NavigationStack {
             VStack{
-                RiveAnimationView(primaryFileName: "hana", secondaryFileName: "sad")
-                    .shadow(color: .shadow.opacity(0.3), radius: 5, x: 0, y: 4)
-                    .background(Color("Background"))
+                TimelineView(.everyMinute) { _ in
+                    RiveAnimationView(primaryFileName: "Mix_", secondaryFileName: "Sadly_")
+                }
                 
                 List {
                     if filteredPlants.isEmpty {
@@ -141,3 +142,6 @@ struct ContentView: View {
 #Preview {
     ContentView(viewModel: PlantViewModel())
 }
+
+
+

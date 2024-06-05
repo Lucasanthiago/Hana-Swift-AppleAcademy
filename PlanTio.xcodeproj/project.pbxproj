@@ -59,6 +59,14 @@
 		76D4FD952C078326008E611F /* Test-longpress.riv in Resources */ = {isa = PBXBuildFile; fileRef = 76D4FD8D2C078326008E611F /* Test-longpress.riv */; };
 		76D4FD972C10DF57008E611F /* MaxLimitReachedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D4FD962C10DF57008E611F /* MaxLimitReachedView.swift */; };
 		BB715CBD2BEE6300005481A7 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB715CBC2BEE6300005481A7 /* Extensions.swift */; };
+		C4511E782C10DFE80043F011 /* Mix_Afternoon.riv in Resources */ = {isa = PBXBuildFile; fileRef = C4511E6F2C10DFE80043F011 /* Mix_Afternoon.riv */; };
+		C4511E792C10DFE80043F011 /* Mix_Evening.riv in Resources */ = {isa = PBXBuildFile; fileRef = C4511E702C10DFE80043F011 /* Mix_Evening.riv */; };
+		C4511E7A2C10DFE80043F011 /* Mix_Morning.riv in Resources */ = {isa = PBXBuildFile; fileRef = C4511E712C10DFE80043F011 /* Mix_Morning.riv */; };
+		C4511E7B2C10DFE80043F011 /* Mix_Night.riv in Resources */ = {isa = PBXBuildFile; fileRef = C4511E722C10DFE80043F011 /* Mix_Night.riv */; };
+		C4511E7C2C10DFE80043F011 /* Sadly_Afternoon.riv in Resources */ = {isa = PBXBuildFile; fileRef = C4511E732C10DFE80043F011 /* Sadly_Afternoon.riv */; };
+		C4511E7D2C10DFE80043F011 /* Sadly_Evening.riv in Resources */ = {isa = PBXBuildFile; fileRef = C4511E742C10DFE80043F011 /* Sadly_Evening.riv */; };
+		C4511E7E2C10DFE80043F011 /* Sadly_Morning.riv in Resources */ = {isa = PBXBuildFile; fileRef = C4511E752C10DFE80043F011 /* Sadly_Morning.riv */; };
+		C4511E7F2C10DFE80043F011 /* Sadly_Night.riv in Resources */ = {isa = PBXBuildFile; fileRef = C4511E762C10DFE80043F011 /* Sadly_Night.riv */; };
 		C4A47CA42C052B4F004D6FB8 /* RiveRuntime in Frameworks */ = {isa = PBXBuildFile; productRef = C4A47CA32C052B4F004D6FB8 /* RiveRuntime */; };
 		C4A47CBD2C0620DA004D6FB8 /* RiveAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A47CBC2C0620DA004D6FB8 /* RiveAnimationView.swift */; };
 /* End PBXBuildFile section */
@@ -155,6 +163,14 @@
 		76D4FD8D2C078326008E611F /* Test-longpress.riv */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Test-longpress.riv"; sourceTree = "<group>"; };
 		76D4FD962C10DF57008E611F /* MaxLimitReachedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaxLimitReachedView.swift; sourceTree = "<group>"; };
 		BB715CBC2BEE6300005481A7 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		C4511E6F2C10DFE80043F011 /* Mix_Afternoon.riv */ = {isa = PBXFileReference; lastKnownFileType = file; path = Mix_Afternoon.riv; sourceTree = "<group>"; };
+		C4511E702C10DFE80043F011 /* Mix_Evening.riv */ = {isa = PBXFileReference; lastKnownFileType = file; path = Mix_Evening.riv; sourceTree = "<group>"; };
+		C4511E712C10DFE80043F011 /* Mix_Morning.riv */ = {isa = PBXFileReference; lastKnownFileType = file; path = Mix_Morning.riv; sourceTree = "<group>"; };
+		C4511E722C10DFE80043F011 /* Mix_Night.riv */ = {isa = PBXFileReference; lastKnownFileType = file; path = Mix_Night.riv; sourceTree = "<group>"; };
+		C4511E732C10DFE80043F011 /* Sadly_Afternoon.riv */ = {isa = PBXFileReference; lastKnownFileType = file; path = Sadly_Afternoon.riv; sourceTree = "<group>"; };
+		C4511E742C10DFE80043F011 /* Sadly_Evening.riv */ = {isa = PBXFileReference; lastKnownFileType = file; path = Sadly_Evening.riv; sourceTree = "<group>"; };
+		C4511E752C10DFE80043F011 /* Sadly_Morning.riv */ = {isa = PBXFileReference; lastKnownFileType = file; path = Sadly_Morning.riv; sourceTree = "<group>"; };
+		C4511E762C10DFE80043F011 /* Sadly_Night.riv */ = {isa = PBXFileReference; lastKnownFileType = file; path = Sadly_Night.riv; sourceTree = "<group>"; };
 		C4A47CBC2C0620DA004D6FB8 /* RiveAnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RiveAnimationView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -283,6 +299,7 @@
 				76BA2A862BE01B770038E2AD /* DateFormatter.swift */,
 				76BA2A8E2BE01C390038E2AD /* AlarmView.swift */,
 				76BA2A582BE0162B0038E2AD /* Assets.xcassets */,
+				C4511E772C10DFE80043F011 /* dayNight */,
 				76D4FD8E2C078326008E611F /* hana-mix */,
 				76BA2A5A2BE0162B0038E2AD /* Preview Content */,
 				76BA2A982BE16B1A0038E2AD /* ImagePicker.swift */,
@@ -357,6 +374,22 @@
 				76D4FD8D2C078326008E611F /* Test-longpress.riv */,
 			);
 			path = "hana-mix";
+			sourceTree = "<group>";
+		};
+		C4511E772C10DFE80043F011 /* dayNight */ = {
+			isa = PBXGroup;
+			children = (
+				C4511E6F2C10DFE80043F011 /* Mix_Afternoon.riv */,
+				C4511E702C10DFE80043F011 /* Mix_Evening.riv */,
+				C4511E712C10DFE80043F011 /* Mix_Morning.riv */,
+				C4511E722C10DFE80043F011 /* Mix_Night.riv */,
+				C4511E732C10DFE80043F011 /* Sadly_Afternoon.riv */,
+				C4511E742C10DFE80043F011 /* Sadly_Evening.riv */,
+				C4511E752C10DFE80043F011 /* Sadly_Morning.riv */,
+				C4511E762C10DFE80043F011 /* Sadly_Night.riv */,
+			);
+			name = dayNight;
+			path = ../../dayNight;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -506,15 +539,23 @@
 			buildActionMask = 2147483647;
 			files = (
 				76BA2A5C2BE0162B0038E2AD /* Preview Assets.xcassets in Resources */,
+				C4511E7A2C10DFE80043F011 /* Mix_Morning.riv in Resources */,
+				C4511E7E2C10DFE80043F011 /* Sadly_Morning.riv in Resources */,
+				C4511E782C10DFE80043F011 /* Mix_Afternoon.riv in Resources */,
 				76D4FD932C078326008E611F /* hanatry.riv in Resources */,
+				C4511E7F2C10DFE80043F011 /* Sadly_Night.riv in Resources */,
 				76D4FD912C078326008E611F /* hana4.riv in Resources */,
 				76D4FD942C078326008E611F /* sad.riv in Resources */,
 				76D4FD902C078326008E611F /* hana.riv in Resources */,
 				76D4FD952C078326008E611F /* Test-longpress.riv in Resources */,
+				C4511E7B2C10DFE80043F011 /* Mix_Night.riv in Resources */,
+				C4511E792C10DFE80043F011 /* Mix_Evening.riv in Resources */,
+				C4511E7C2C10DFE80043F011 /* Sadly_Afternoon.riv in Resources */,
 				7654490D2BFD0E050089F7F3 /* Quicksand-VariableFont_wght.ttf in Resources */,
 				76D4FD922C078326008E611F /* hanasad.riv in Resources */,
 				769580D32BEC111C00FDB377 /* InfoPlants.json in Resources */,
 				76D4FD8F2C078326008E611F /* hana-mix.riv in Resources */,
+				C4511E7D2C10DFE80043F011 /* Sadly_Evening.riv in Resources */,
 				76BA2A592BE0162B0038E2AD /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
