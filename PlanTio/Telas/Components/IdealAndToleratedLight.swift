@@ -22,12 +22,12 @@ struct IdealAndToleratedLight<Content: View>: View {
                 Image(systemName: icon)
                     .foregroundStyle(iconColor)
                 Text(title)
-                    .font(.custom("Quicksand", size: 15))
+                    .font(.custom("Quicksand", size: 15, relativeTo: .subheadline))
                     .bold()
             }
             Text(description)
                 .padding(.leading, 27.5)
-                .font(.custom("Quicksand", size: 15))
+                .font(.custom("Quicksand", size: 15, relativeTo: .subheadline))
         }
         
     }

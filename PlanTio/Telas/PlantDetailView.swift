@@ -20,7 +20,7 @@ struct PlantDetailView: View {
                     HStack{
                         TextField("Name", text: $plant.name)
                             .padding(.top, -20)
-                            .font(.custom("Quicksand", size: 22))
+                            .font(.custom("Quicksand", size: 22, relativeTo: .title2))
                             .bold()
                             .frame(maxWidth: .infinity)
                             .padding()
@@ -29,7 +29,7 @@ struct PlantDetailView: View {
                             HStack {
                                 Image(systemName:"arrow.counterclockwise.circle.fill")
                                 Text("Care History")
-                                    .font(.custom("Quicksand", size: 17))
+                                    .font(.custom("Quicksand", size: 17, relativeTo: .body))
                                     .fontWeight(.bold)
                             }
                             .foregroundColor(Color(.white))
@@ -43,7 +43,7 @@ struct PlantDetailView: View {
                     HStack {
                         Text("Species")
                             .foregroundColor(.gray)
-                            .font(.custom("Quicksand", size: 17))
+                            .font(.custom("Quicksand", size: 17, relativeTo: .body))
                             .fontWeight(.medium)
                         Spacer()
                         Picker("Type", selection: $plant.type) {
@@ -78,7 +78,7 @@ struct PlantDetailView: View {
                                 if plant.wateringInstructions.isEmpty == false {
                                     Text(plant.wateringInstructions)
                                         .padding()
-                                        .font(.custom("Quicksand", size: 15))
+                                        .font(.custom("Quicksand", size: 15, relativeTo: .subheadline))
                                         .fontWeight(.medium)
                                 }
                             }, title: "Watering", icon: "drop.circle.fill", iconColor: (Color("Water")), date: $plant.wateringTime)

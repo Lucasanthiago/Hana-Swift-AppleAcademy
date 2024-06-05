@@ -17,7 +17,7 @@ struct ReminderCard<Content: View>: View {
     var body: some View {
         VStack(alignment: .leading) {
             Text(plant.name)
-                .font(.custom("Quicksand", size: 20))
+                .font(.custom("Quicksand", size: 20, relativeTo: .title3))
                 .bold()
                 .foregroundStyle(Color.gray)
                 .padding(.leading)
@@ -26,9 +26,9 @@ struct ReminderCard<Content: View>: View {
                 HStack {
                     VStack(alignment: .leading) {
                         Text(title)
-                            .font(.custom("Quicksand", size: 15))
+                            .font(.custom("Quicksand", size: 15, relativeTo: .subheadline))
                         Text("\(time, formatter: dateFormatter)")
-                            .font(.custom("Quicksand", size: 28))
+                            .font(.custom("Quicksand", size: 28, relativeTo: .title))
                             .fontWeight(.medium)
                     }
                     Spacer()
@@ -51,7 +51,7 @@ struct ReminderCard<Content: View>: View {
                 Divider()
                 HStack {
                     Text(careType)
-                        .font(.custom("Quicksand", size: 22))
+                        .font(.custom("Quicksand", size: 22, relativeTo: .title2))
                         .bold()
                     
                     Spacer()

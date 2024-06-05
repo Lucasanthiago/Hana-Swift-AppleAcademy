@@ -15,7 +15,7 @@ struct SunlightView: View {
                 }
             }
             .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always))
-            .font(.custom("Quicksand", size: 17))
+            .font(.custom("Quicksand", size: 17, relativeTo: .body))
             .listStyle(PlainListStyle())
             .background(Color("Background"))
             .navigationBarTitle("Sunbathing")

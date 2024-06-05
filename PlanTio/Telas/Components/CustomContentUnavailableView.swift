@@ -17,7 +17,7 @@ struct CustomContentUnavailableView: View {
     var body: some View {
         ContentUnavailableView {
             ContentUnavailableView(title, image: iconName,
-                                   description: Text("\n"+desciption).font(.custom("Quicksand", size: 17)))
+                                   description: Text("\n"+desciption).font(.custom("Quicksand", size: 17, relativeTo: .body)))
             .padding(.bottom, -20)
             .padding(.horizontal, -15)
         } actions: {

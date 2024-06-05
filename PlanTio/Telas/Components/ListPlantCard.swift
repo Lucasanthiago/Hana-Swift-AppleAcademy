@@ -25,11 +25,11 @@ struct ListPlantCard<Content: View>: View {
         HStack {
             VStack (alignment: .leading){
                 Text(plantName)
-                    .font(.custom("Quicksand", size: 22))
+                    .font(.custom("Quicksand", size: 22, relativeTo: .title2))
                     .bold()
                     .foregroundStyle(Color("NormalText"))
                 Text(plantSpecies)
-                    .font(.custom("Quicksand", size: 17))
+                    .font(.custom("Quicksand", size: 17, relativeTo: .body))
                     .foregroundStyle(Color("NormalText"))
             }
             Spacer()
