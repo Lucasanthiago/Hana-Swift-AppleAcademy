@@ -129,6 +129,7 @@ struct PlantDetailView: View {
                 }
             }.padding()
         }
+        .toolbar(.hidden, for: .tabBar)
         .safeAreaInset(edge: .bottom, content: {
             if saveMode == true {
                 Button(action: {
