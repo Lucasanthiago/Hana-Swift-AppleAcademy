@@ -58,15 +58,15 @@
 		76D4FD942C078326008E611F /* sad.riv in Resources */ = {isa = PBXBuildFile; fileRef = 76D4FD8C2C078326008E611F /* sad.riv */; };
 		76D4FD952C078326008E611F /* Test-longpress.riv in Resources */ = {isa = PBXBuildFile; fileRef = 76D4FD8D2C078326008E611F /* Test-longpress.riv */; };
 		76D4FD972C10DF57008E611F /* MaxLimitReachedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D4FD962C10DF57008E611F /* MaxLimitReachedView.swift */; };
-		76D4FDB42C10EB9C008E611F /* Mix_Afternoon.riv in Resources */ = {isa = PBXBuildFile; fileRef = 76D4FDAA2C10EB9C008E611F /* Mix_Afternoon.riv */; };
-		76D4FDB52C10EB9C008E611F /* Mix_Evening.riv in Resources */ = {isa = PBXBuildFile; fileRef = 76D4FDAB2C10EB9C008E611F /* Mix_Evening.riv */; };
-		76D4FDB62C10EB9C008E611F /* Mix_Morning.riv in Resources */ = {isa = PBXBuildFile; fileRef = 76D4FDAC2C10EB9C008E611F /* Mix_Morning.riv */; };
-		76D4FDB72C10EB9C008E611F /* Mix_Night.riv in Resources */ = {isa = PBXBuildFile; fileRef = 76D4FDAD2C10EB9C008E611F /* Mix_Night.riv */; };
-		76D4FDB82C10EB9C008E611F /* Sadly_Afternoon.riv in Resources */ = {isa = PBXBuildFile; fileRef = 76D4FDAE2C10EB9C008E611F /* Sadly_Afternoon.riv */; };
-		76D4FDB92C10EB9C008E611F /* Sadly_Evening.riv in Resources */ = {isa = PBXBuildFile; fileRef = 76D4FDAF2C10EB9C008E611F /* Sadly_Evening.riv */; };
-		76D4FDBA2C10EB9C008E611F /* Sadly_Morning.riv in Resources */ = {isa = PBXBuildFile; fileRef = 76D4FDB02C10EB9C008E611F /* Sadly_Morning.riv */; };
-		76D4FDBB2C10EB9C008E611F /* Sadly_Night in Resources */ = {isa = PBXBuildFile; fileRef = 76D4FDB12C10EB9C008E611F /* Sadly_Night */; };
-		76D4FDBC2C10EB9C008E611F /* Sadly_Night.riv in Resources */ = {isa = PBXBuildFile; fileRef = 76D4FDB22C10EB9C008E611F /* Sadly_Night.riv */; };
+		76D4FDC72C10EBF1008E611F /* Mix_Afternoon.riv in Resources */ = {isa = PBXBuildFile; fileRef = 76D4FDBD2C10EBF1008E611F /* Mix_Afternoon.riv */; };
+		76D4FDC82C10EBF1008E611F /* Mix_Evening.riv in Resources */ = {isa = PBXBuildFile; fileRef = 76D4FDBE2C10EBF1008E611F /* Mix_Evening.riv */; };
+		76D4FDC92C10EBF1008E611F /* Mix_Morning.riv in Resources */ = {isa = PBXBuildFile; fileRef = 76D4FDBF2C10EBF1008E611F /* Mix_Morning.riv */; };
+		76D4FDCA2C10EBF1008E611F /* Mix_Night.riv in Resources */ = {isa = PBXBuildFile; fileRef = 76D4FDC02C10EBF1008E611F /* Mix_Night.riv */; };
+		76D4FDCB2C10EBF1008E611F /* Sadly_Afternoon.riv in Resources */ = {isa = PBXBuildFile; fileRef = 76D4FDC12C10EBF1008E611F /* Sadly_Afternoon.riv */; };
+		76D4FDCC2C10EBF1008E611F /* Sadly_Evening.riv in Resources */ = {isa = PBXBuildFile; fileRef = 76D4FDC22C10EBF1008E611F /* Sadly_Evening.riv */; };
+		76D4FDCD2C10EBF1008E611F /* Sadly_Morning.riv in Resources */ = {isa = PBXBuildFile; fileRef = 76D4FDC32C10EBF1008E611F /* Sadly_Morning.riv */; };
+		76D4FDCE2C10EBF1008E611F /* Sadly_Night in Resources */ = {isa = PBXBuildFile; fileRef = 76D4FDC42C10EBF1008E611F /* Sadly_Night */; };
+		76D4FDCF2C10EBF1008E611F /* Sadly_Night.riv in Resources */ = {isa = PBXBuildFile; fileRef = 76D4FDC52C10EBF1008E611F /* Sadly_Night.riv */; };
 		BB715CBD2BEE6300005481A7 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB715CBC2BEE6300005481A7 /* Extensions.swift */; };
 		C4A47CA42C052B4F004D6FB8 /* RiveRuntime in Frameworks */ = {isa = PBXBuildFile; productRef = C4A47CA32C052B4F004D6FB8 /* RiveRuntime */; };
 		C4A47CBD2C0620DA004D6FB8 /* RiveAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A47CBC2C0620DA004D6FB8 /* RiveAnimationView.swift */; };
@@ -163,15 +163,15 @@
 		76D4FD8C2C078326008E611F /* sad.riv */ = {isa = PBXFileReference; lastKnownFileType = file; path = sad.riv; sourceTree = "<group>"; };
 		76D4FD8D2C078326008E611F /* Test-longpress.riv */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Test-longpress.riv"; sourceTree = "<group>"; };
 		76D4FD962C10DF57008E611F /* MaxLimitReachedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaxLimitReachedView.swift; sourceTree = "<group>"; };
-		76D4FDAA2C10EB9C008E611F /* Mix_Afternoon.riv */ = {isa = PBXFileReference; lastKnownFileType = file; path = Mix_Afternoon.riv; sourceTree = "<group>"; };
-		76D4FDAB2C10EB9C008E611F /* Mix_Evening.riv */ = {isa = PBXFileReference; lastKnownFileType = file; path = Mix_Evening.riv; sourceTree = "<group>"; };
-		76D4FDAC2C10EB9C008E611F /* Mix_Morning.riv */ = {isa = PBXFileReference; lastKnownFileType = file; path = Mix_Morning.riv; sourceTree = "<group>"; };
-		76D4FDAD2C10EB9C008E611F /* Mix_Night.riv */ = {isa = PBXFileReference; lastKnownFileType = file; path = Mix_Night.riv; sourceTree = "<group>"; };
-		76D4FDAE2C10EB9C008E611F /* Sadly_Afternoon.riv */ = {isa = PBXFileReference; lastKnownFileType = file; path = Sadly_Afternoon.riv; sourceTree = "<group>"; };
-		76D4FDAF2C10EB9C008E611F /* Sadly_Evening.riv */ = {isa = PBXFileReference; lastKnownFileType = file; path = Sadly_Evening.riv; sourceTree = "<group>"; };
-		76D4FDB02C10EB9C008E611F /* Sadly_Morning.riv */ = {isa = PBXFileReference; lastKnownFileType = file; path = Sadly_Morning.riv; sourceTree = "<group>"; };
-		76D4FDB12C10EB9C008E611F /* Sadly_Night */ = {isa = PBXFileReference; lastKnownFileType = file; path = Sadly_Night; sourceTree = "<group>"; };
-		76D4FDB22C10EB9C008E611F /* Sadly_Night.riv */ = {isa = PBXFileReference; lastKnownFileType = file; path = Sadly_Night.riv; sourceTree = "<group>"; };
+		76D4FDBD2C10EBF1008E611F /* Mix_Afternoon.riv */ = {isa = PBXFileReference; lastKnownFileType = file; path = Mix_Afternoon.riv; sourceTree = "<group>"; };
+		76D4FDBE2C10EBF1008E611F /* Mix_Evening.riv */ = {isa = PBXFileReference; lastKnownFileType = file; path = Mix_Evening.riv; sourceTree = "<group>"; };
+		76D4FDBF2C10EBF1008E611F /* Mix_Morning.riv */ = {isa = PBXFileReference; lastKnownFileType = file; path = Mix_Morning.riv; sourceTree = "<group>"; };
+		76D4FDC02C10EBF1008E611F /* Mix_Night.riv */ = {isa = PBXFileReference; lastKnownFileType = file; path = Mix_Night.riv; sourceTree = "<group>"; };
+		76D4FDC12C10EBF1008E611F /* Sadly_Afternoon.riv */ = {isa = PBXFileReference; lastKnownFileType = file; path = Sadly_Afternoon.riv; sourceTree = "<group>"; };
+		76D4FDC22C10EBF1008E611F /* Sadly_Evening.riv */ = {isa = PBXFileReference; lastKnownFileType = file; path = Sadly_Evening.riv; sourceTree = "<group>"; };
+		76D4FDC32C10EBF1008E611F /* Sadly_Morning.riv */ = {isa = PBXFileReference; lastKnownFileType = file; path = Sadly_Morning.riv; sourceTree = "<group>"; };
+		76D4FDC42C10EBF1008E611F /* Sadly_Night */ = {isa = PBXFileReference; lastKnownFileType = file; path = Sadly_Night; sourceTree = "<group>"; };
+		76D4FDC52C10EBF1008E611F /* Sadly_Night.riv */ = {isa = PBXFileReference; lastKnownFileType = file; path = Sadly_Night.riv; sourceTree = "<group>"; };
 		BB715CBC2BEE6300005481A7 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		C4A47CBC2C0620DA004D6FB8 /* RiveAnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RiveAnimationView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -301,7 +301,7 @@
 				76BA2A862BE01B770038E2AD /* DateFormatter.swift */,
 				76BA2A8E2BE01C390038E2AD /* AlarmView.swift */,
 				76BA2A582BE0162B0038E2AD /* Assets.xcassets */,
-				76D4FDB32C10EB9C008E611F /* dayNight */,
+				76D4FDC62C10EBF1008E611F /* NightDay */,
 				76D4FD8E2C078326008E611F /* hana-mix */,
 				76BA2A5A2BE0162B0038E2AD /* Preview Content */,
 				76BA2A982BE16B1A0038E2AD /* ImagePicker.swift */,
@@ -378,21 +378,20 @@
 			path = "hana-mix";
 			sourceTree = "<group>";
 		};
-		76D4FDB32C10EB9C008E611F /* dayNight */ = {
+		76D4FDC62C10EBF1008E611F /* NightDay */ = {
 			isa = PBXGroup;
 			children = (
-				76D4FDAA2C10EB9C008E611F /* Mix_Afternoon.riv */,
-				76D4FDAB2C10EB9C008E611F /* Mix_Evening.riv */,
-				76D4FDAC2C10EB9C008E611F /* Mix_Morning.riv */,
-				76D4FDAD2C10EB9C008E611F /* Mix_Night.riv */,
-				76D4FDAE2C10EB9C008E611F /* Sadly_Afternoon.riv */,
-				76D4FDAF2C10EB9C008E611F /* Sadly_Evening.riv */,
-				76D4FDB02C10EB9C008E611F /* Sadly_Morning.riv */,
-				76D4FDB12C10EB9C008E611F /* Sadly_Night */,
-				76D4FDB22C10EB9C008E611F /* Sadly_Night.riv */,
+				76D4FDBD2C10EBF1008E611F /* Mix_Afternoon.riv */,
+				76D4FDBE2C10EBF1008E611F /* Mix_Evening.riv */,
+				76D4FDBF2C10EBF1008E611F /* Mix_Morning.riv */,
+				76D4FDC02C10EBF1008E611F /* Mix_Night.riv */,
+				76D4FDC12C10EBF1008E611F /* Sadly_Afternoon.riv */,
+				76D4FDC22C10EBF1008E611F /* Sadly_Evening.riv */,
+				76D4FDC32C10EBF1008E611F /* Sadly_Morning.riv */,
+				76D4FDC42C10EBF1008E611F /* Sadly_Night */,
+				76D4FDC52C10EBF1008E611F /* Sadly_Night.riv */,
 			);
-			name = dayNight;
-			path = ../../../Downloads/dayNight;
+			path = NightDay;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -541,25 +540,25 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				76D4FDBC2C10EB9C008E611F /* Sadly_Night.riv in Resources */,
+				76D4FDCF2C10EBF1008E611F /* Sadly_Night.riv in Resources */,
 				76BA2A5C2BE0162B0038E2AD /* Preview Assets.xcassets in Resources */,
-				76D4FDBB2C10EB9C008E611F /* Sadly_Night in Resources */,
-				76D4FDB62C10EB9C008E611F /* Mix_Morning.riv in Resources */,
-				76D4FDBA2C10EB9C008E611F /* Sadly_Morning.riv in Resources */,
-				76D4FDB42C10EB9C008E611F /* Mix_Afternoon.riv in Resources */,
+				76D4FDCE2C10EBF1008E611F /* Sadly_Night in Resources */,
+				76D4FDC92C10EBF1008E611F /* Mix_Morning.riv in Resources */,
+				76D4FDCD2C10EBF1008E611F /* Sadly_Morning.riv in Resources */,
+				76D4FDC72C10EBF1008E611F /* Mix_Afternoon.riv in Resources */,
 				76D4FD932C078326008E611F /* hanatry.riv in Resources */,
 				76D4FD912C078326008E611F /* hana4.riv in Resources */,
 				76D4FD942C078326008E611F /* sad.riv in Resources */,
 				76D4FD902C078326008E611F /* hana.riv in Resources */,
 				76D4FD952C078326008E611F /* Test-longpress.riv in Resources */,
-				76D4FDB72C10EB9C008E611F /* Mix_Night.riv in Resources */,
-				76D4FDB52C10EB9C008E611F /* Mix_Evening.riv in Resources */,
-				76D4FDB82C10EB9C008E611F /* Sadly_Afternoon.riv in Resources */,
+				76D4FDCA2C10EBF1008E611F /* Mix_Night.riv in Resources */,
+				76D4FDC82C10EBF1008E611F /* Mix_Evening.riv in Resources */,
+				76D4FDCB2C10EBF1008E611F /* Sadly_Afternoon.riv in Resources */,
 				7654490D2BFD0E050089F7F3 /* Quicksand-VariableFont_wght.ttf in Resources */,
 				76D4FD922C078326008E611F /* hanasad.riv in Resources */,
 				769580D32BEC111C00FDB377 /* InfoPlants.json in Resources */,
 				76D4FD8F2C078326008E611F /* hana-mix.riv in Resources */,
-				76D4FDB92C10EB9C008E611F /* Sadly_Evening.riv in Resources */,
+				76D4FDCC2C10EBF1008E611F /* Sadly_Evening.riv in Resources */,
 				76BA2A592BE0162B0038E2AD /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
