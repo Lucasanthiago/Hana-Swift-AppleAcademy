@@ -47,18 +47,51 @@ struct ContentView: View {
             .background(Color("Background").ignoresSafeArea())
             .navigationBarTitle("My Plants")
             .navigationBarItems(
-                trailing: Button(action: {
-                    if viewModel.plants.count < viewModel.maxPlantCount {
-                        showingAddPlant = true
-                    } else if viewModel.maxPlantCount == 5 {
-                        navigateToLimitReached = true
-                    } else if viewModel.plants.count >= 17 {
-                        navigateToMaxLimitReached = true
+                trailing:
+                    
+                    HStack{
+                        
+                        Button(action: {
+                            
+                        }, label: {
+                            Text("upgrade")
+                                .font(.custom("Quicksand", size: 15, relativeTo: .subheadline))
+                                .bold()
+                                .foregroundStyle(Color.white)
+                                .padding(.vertical, 5)
+                                .padding(.horizontal)
+                                .background(
+                                RoundedRectangle(cornerRadius: 20)
+                                    .foregroundStyle(Color.pinkButton)
+                                    .overlay (alignment: .topLeading) {
+                                        Image("Sparkle")
+                                            .alignmentGuide(.top, computeValue: { dimension in
+                                                dimension[.bottom] - 12})
+                                    }
+                                    .overlay (alignment: .bottomTrailing) {
+                                        Image("SparkleSmall")
+                                            .alignmentGuide(.bottom, computeValue: { dimension in
+                                                dimension[.top] + 12})
+                                    }
+                                )
+                        })
+                        
+                        Button(action: {
+                            if viewModel.plants.count < viewModel.maxPlantCount {
+                                showingAddPlant = true
+                            } else if viewModel.maxPlantCount == 5 {
+                                navigateToLimitReached = true
+                            } else if viewModel.plants.count >= 17 {
+                                navigateToMaxLimitReached = true
+                            }
+                        }) {
+                            Image(systemName: "plus.circle.fill")
+                                .font(.title3)
+                                .bold()
+                        }
                     }
-                }) {
-                    Image(systemName: "plus.circle.fill")
-                        .bold()
-                }
+                
+                
             )
             .navigationDestination(for: Plant.self) { plant in
                 if let index = viewModel.plants.firstIndex(where: { $0.id == plant.id }) {
@@ -108,9 +141,9 @@ struct ContentView: View {
     }
 }
 
-//#Preview {
-//    ContentView(viewModel: PlantViewModel())
-//}
+#Preview {
+    ContentView(viewModel: PlantViewModel())
+}
 
 
 
@@ -220,10 +253,10 @@ struct MaxLimitReachedView: View {
     
 }
         
-
-#Preview {
-    MaxLimitReachedView()
-}
+//
+//#Preview {
+//    MaxLimitReachedView()
+//}
 
 //struct MaxLimitReachedView: View {
 //    var body: some View {
