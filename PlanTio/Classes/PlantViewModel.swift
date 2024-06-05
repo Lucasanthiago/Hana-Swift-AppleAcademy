@@ -53,11 +53,11 @@ class PlantViewModel: ObservableObject {
 
         guard await VMNotificationHandler.shared.authorizationStatus != .denied else { return }
         
-        let wateringTimeMsg = "Hora de regar! 💧"
-        let wateringTimeBody = "\(plant.name) está com sede."
+        let wateringTimeMsg = "Watering time! 💧"
+        let wateringTimeBody = "\(plant.name) is thirsty."
 
-        let sunbathTimeMsg = "Hora do sol! ☀️"
-        let sunbathTimeBody = "\(plant.name) está precisando de vitamina D!"
+        let sunbathTimeMsg = "Time to sunbathe! ☀️"
+        let sunbathTimeBody = "\(plant.name) needs some vitamin D!"
 
         for index in 0..<plant.timesToWater.count {
             if index < plant.waterNotificationIDs.count && index < plant.timesToSunbathing.count && index < plant.SunNotificationIDs.count {
