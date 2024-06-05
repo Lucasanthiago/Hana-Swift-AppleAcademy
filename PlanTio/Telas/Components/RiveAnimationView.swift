@@ -11,52 +11,72 @@ import RiveRuntime
 struct RiveAnimationView: View {
     @StateObject private var riveViewModel: RiveViewModel
     @StateObject private var secondaryRiveViewModel: RiveViewModel
-    @State private var showPrimaryAnimation = true
+    @State  var showPrimaryAnimation = true
     @State private var tapCount = 0
 
-    init(primaryFileName: String, secondaryFileName: String) {
-        _riveViewModel = StateObject(wrappedValue: RiveViewModel(fileName: primaryFileName))
-        _secondaryRiveViewModel = StateObject(wrappedValue: RiveViewModel(fileName: secondaryFileName))
+    init(primaryFileName: String, secondaryFileName: String, currentDayPeriod: DayPeriod? = nil) {
+        let currentHour = Calendar.current.component(.hour, from: .now)
+        var currentCalculatedPeriod = DayPeriod.night
+        for relevantHour in relevantHours {
+            if relevantHour.hour <= currentHour {
+                currentCalculatedPeriod = relevantHour.dayPeriod
+            }
+        }
+        let primary = primaryFileName + (currentDayPeriod ?? currentCalculatedPeriod).rawValue
+        let secondary = secondaryFileName + (currentDayPeriod ?? currentCalculatedPeriod).rawValue
+        print(primary, secondary)
+        _riveViewModel = StateObject(wrappedValue: RiveViewModel(fileName: primary))
+        _secondaryRiveViewModel = StateObject(wrappedValue: RiveViewModel(fileName: secondary))
+    }
+
+    let relevantHours: [(dayPeriod: DayPeriod, hour: Int)] = [
+        (.morning, 5),
+        (.afternoon, 11),
+        (.evening, 17),
+        (.night, 19)
+    ]
+
+    enum DayPeriod: String {
+        case morning = "Morning"
+        case afternoon = "Afternoon"
+        case evening = "Evening"
+        case night = "Night"
     }
 
     var body: some View {
         VStack {
-            if showPrimaryAnimation {
-                RiveViewContainer(viewModel: riveViewModel)
-                    .frame(width: 360, height: 136)
-                    .onAppear {
-                        setupRive()
-                    }
-                    .gesture(
-                        TapGesture()
-                            .onEnded {
-                                handlePrimaryAnimationTap()
-                            }
-                    )
-                    .gesture(
-                        LongPressGesture(minimumDuration: 1.0)
-                            .onChanged { _ in
+            RiveViewContainer(viewModel: showPrimaryAnimation ? riveViewModel : secondaryRiveViewModel)
+                .frame(width: 360, height: 136)
+                .onAppear {
+                    setupRive()
+                }
+                .gesture(
+                    TapGesture()
+                        .onEnded {
+                            handlePrimaryAnimationTap()
+                        }
+                )
+                .gesture(
+                    LongPressGesture(minimumDuration: 1.5)
+                        .onChanged { _ in
+                            print("Long press started")
+                            if showPrimaryAnimation {
                                 handleLongPress(isPressing: true)
                             }
-                            .onEnded { _ in
+                        }
+                        .onEnded { _ in
+                            print("Long press ended")
+                            if showPrimaryAnimation {
                                 handleLongPress(isPressing: false)
-                            }
-                    )
-            } else {
-                RiveViewContainer(viewModel: secondaryRiveViewModel)
-                    .frame(width: 360, height: 136)
-                    .gesture(
-                        LongPressGesture(minimumDuration: 1.0)
-                            .onEnded { _ in
+                            } else {
                                 withAnimation(.easeInOut(duration: 2.0)) {
                                     resetPrimaryAnimation()
                                     showPrimaryAnimation = true
                                 }
                             }
-                    )
-            }
+                        }
+                )
         }
-        
     }
 
     private func setupRive() {
@@ -66,6 +86,7 @@ struct RiveAnimationView: View {
 
     private func handlePrimaryAnimationTap() {
         tapCount += 1
+        print("Tap count: \(tapCount)")
         riveViewModel.triggerInput("click")
         if tapCount == 3 {
             tapCount = 0 // Reset tap count after third click
@@ -97,26 +118,35 @@ struct RiveAnimationView: View {
 
 struct RiveViewContainer: UIViewRepresentable {
     var viewModel: RiveViewModel
-    
+
     func makeUIView(context: Context) -> UIView {
         let view = UIView(frame: .zero)
         let riveView = RiveView()
         riveView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(riveView)
-        
+
         NSLayoutConstraint.activate([
             riveView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             riveView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             riveView.topAnchor.constraint(equalTo: view.topAnchor),
             riveView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
-        
+
         // Carregar e configurar a animação
         viewModel.setView(riveView)
         viewModel.play()
-        
+
         return view
     }
-    
+
     func updateUIView(_ uiView: UIView, context: Context) {}
+}
+
+#Preview {
+    VStack {
+        RiveAnimationView(primaryFileName: "Mix_", secondaryFileName: "Sadly_", currentDayPeriod: .morning)
+        RiveAnimationView(primaryFileName: "Mix_", secondaryFileName: "Sadly_", currentDayPeriod: .afternoon)
+        RiveAnimationView(primaryFileName: "Mix_", secondaryFileName: "Sadly_", currentDayPeriod: .evening)
+        RiveAnimationView(primaryFileName: "Mix_", secondaryFileName: "Sadly_", currentDayPeriod: .night)
+    }
 }
