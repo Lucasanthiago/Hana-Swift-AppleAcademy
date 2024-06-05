@@ -4,6 +4,7 @@ struct LimitReachedView: View {
     @EnvironmentObject var store: Store
     @ObservedObject var viewModel: PlantViewModel
     @Environment(\.presentationMode) var presentationMode
+    @Binding var hasUpgraded: Bool
     
     var body: some View {
         ZStack {
@@ -137,6 +138,7 @@ struct LimitReachedView: View {
             if let transaction = transaction {
                 print("Purchased successfully: \(transaction)")
                 viewModel.updateMaxPlantCount(to: 17) // Atualiza o limite para 17 após a compra
+                hasUpgraded = true // Atualiza o estado de upgrade
                 presentationMode.wrappedValue.dismiss() // Fecha a sheet após a compra
             } else {
                 print("Purchase failed or cancelled")
@@ -148,7 +150,7 @@ struct LimitReachedView: View {
 }
 
 #Preview {
-    LimitReachedView(viewModel: PlantViewModel())
+    LimitReachedView(viewModel: PlantViewModel(), hasUpgraded: .constant(false))
         .environmentObject(Store())
         .environmentObject(PlantViewModel())
 }

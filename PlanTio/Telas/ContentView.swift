@@ -10,16 +10,18 @@ struct ContentView: View {
     @State private var navigateToMaxLimitReached = false
     @State var searchText = ""
     @State private var selectedPlant: Plant? = nil
-    
+    @State private var showingUpgrade = false
+    @State private var hasUpgraded = false
+
     var filteredPlants: [Plant] { viewModel.fiteredPlants(by: searchText) }
-    
+
     var body: some View {
         NavigationStack {
             VStack{
                 TimelineView(.everyMinute) { _ in
                     RiveAnimationView(primaryFileName: "Mix_", secondaryFileName: "Sadly_")
                 }
-                
+
                 List {
                     if filteredPlants.isEmpty {
                         noPlants
@@ -27,7 +29,7 @@ struct ContentView: View {
                         ForEach(filteredPlants) { plant in
                             ZStack{
                                 ListPlantCard(content: {}, plantName: plant.name, plantSpecies: plant.type)
-                                
+
                                 NavigationLink(value: plant) {
                                     EmptyView()
                                 }
@@ -50,32 +52,33 @@ struct ContentView: View {
             .navigationBarItems(
                 trailing:
                     HStack{
-                        Button(action: {
-                            // Your upgrade action here
-                            
-                        }, label: {
-                            Text("upgrade")
-                                .font(.custom("Quicksand", size: 15, relativeTo: .subheadline))
-                                .bold()
-                                .foregroundStyle(Color.white)
-                                .padding(.vertical, 5)
-                                .padding(.horizontal)
-                                .background(
-                                RoundedRectangle(cornerRadius: 20)
-                                    .foregroundStyle(Color.pinkButton)
-                                    .overlay (alignment: .topLeading) {
-                                        Image("Sparkle")
-                                            .alignmentGuide(.top, computeValue: { dimension in
-                                                dimension[.bottom] - 12})
-                                    }
-                                    .overlay (alignment: .bottomTrailing) {
-                                        Image("SparkleSmall")
-                                            .alignmentGuide(.bottom, computeValue: { dimension in
-                                                dimension[.top] + 12})
-                                    }
-                                )
-                        })
-                        
+                        if !hasUpgraded {
+                            Button(action: {
+                                showingUpgrade = true
+                            }, label: {
+                                Text("upgrade")
+                                    .font(.custom("Quicksand", size: 15, relativeTo: .subheadline))
+                                    .bold()
+                                    .foregroundStyle(Color.white)
+                                    .padding(.vertical, 5)
+                                    .padding(.horizontal)
+                                    .background(
+                                        RoundedRectangle(cornerRadius: 20)
+                                            .foregroundStyle(Color.pinkButton)
+                                            .overlay (alignment: .topLeading) {
+                                                Image("Sparkle")
+                                                    .alignmentGuide(.top, computeValue: { dimension in
+                                                        dimension[.bottom] - 12})
+                                            }
+                                            .overlay (alignment: .bottomTrailing) {
+                                                Image("SparkleSmall")
+                                                    .alignmentGuide(.bottom, computeValue: { dimension in
+                                                        dimension[.top] + 12})
+                                            }
+                                    )
+                            })
+                        }
+
                         Button(action: {
                             if viewModel.plants.count < viewModel.maxPlantCount {
                                 showingAddPlant = true
@@ -103,18 +106,21 @@ struct ContentView: View {
             .onChange(of: searchText, { oldValue, newValue in
                 PostHogSDK.shared.capture("searchUsed")
             })
-            .navigationDestination(isPresented: $showingAddPlant) {
-                            AddPlantView(viewModel: viewModel)
+            .sheet(isPresented: $showingAddPlant) {
+                AddPlantView(viewModel: viewModel)
             }
             .sheet(isPresented: $navigateToLimitReached) {
-                LimitReachedView(viewModel: viewModel)
+                LimitReachedView(viewModel: viewModel, hasUpgraded: $hasUpgraded)
             }
             .sheet(isPresented: $navigateToMaxLimitReached) {
                 MaxLimitReachedView()
             }
+            .sheet(isPresented: $showingUpgrade) {
+                UpgradeView(viewModel: viewModel, hasUpgraded: $hasUpgraded)
+            }
         }
     }
-    
+
     @ViewBuilder
     var noPlants: some View {
         if viewModel.plants.isEmpty {
@@ -142,6 +148,3 @@ struct ContentView: View {
 #Preview {
     ContentView(viewModel: PlantViewModel())
 }
-
-
-
