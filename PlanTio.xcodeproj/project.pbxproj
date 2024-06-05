@@ -58,15 +58,15 @@
 		76D4FD942C078326008E611F /* sad.riv in Resources */ = {isa = PBXBuildFile; fileRef = 76D4FD8C2C078326008E611F /* sad.riv */; };
 		76D4FD952C078326008E611F /* Test-longpress.riv in Resources */ = {isa = PBXBuildFile; fileRef = 76D4FD8D2C078326008E611F /* Test-longpress.riv */; };
 		76D4FD972C10DF57008E611F /* MaxLimitReachedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D4FD962C10DF57008E611F /* MaxLimitReachedView.swift */; };
+		76D4FDA22C10EB26008E611F /* Mix_afternoon.riv in Resources */ = {isa = PBXBuildFile; fileRef = 76D4FD992C10EB26008E611F /* Mix_afternoon.riv */; };
+		76D4FDA32C10EB26008E611F /* Mix_evening.riv in Resources */ = {isa = PBXBuildFile; fileRef = 76D4FD9A2C10EB26008E611F /* Mix_evening.riv */; };
+		76D4FDA42C10EB26008E611F /* Mix_morning.riv in Resources */ = {isa = PBXBuildFile; fileRef = 76D4FD9B2C10EB26008E611F /* Mix_morning.riv */; };
+		76D4FDA52C10EB26008E611F /* Mix_night.riv in Resources */ = {isa = PBXBuildFile; fileRef = 76D4FD9C2C10EB26008E611F /* Mix_night.riv */; };
+		76D4FDA62C10EB26008E611F /* Sadly_afternoon in Resources */ = {isa = PBXBuildFile; fileRef = 76D4FD9D2C10EB26008E611F /* Sadly_afternoon */; };
+		76D4FDA72C10EB26008E611F /* Sadly_evening.riv in Resources */ = {isa = PBXBuildFile; fileRef = 76D4FD9E2C10EB26008E611F /* Sadly_evening.riv */; };
+		76D4FDA82C10EB26008E611F /* Sadly_morning.riv in Resources */ = {isa = PBXBuildFile; fileRef = 76D4FD9F2C10EB26008E611F /* Sadly_morning.riv */; };
+		76D4FDA92C10EB26008E611F /* Sadly_night.riv in Resources */ = {isa = PBXBuildFile; fileRef = 76D4FDA02C10EB26008E611F /* Sadly_night.riv */; };
 		BB715CBD2BEE6300005481A7 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB715CBC2BEE6300005481A7 /* Extensions.swift */; };
-		C4511E782C10DFE80043F011 /* Mix_Afternoon.riv in Resources */ = {isa = PBXBuildFile; fileRef = C4511E6F2C10DFE80043F011 /* Mix_Afternoon.riv */; };
-		C4511E792C10DFE80043F011 /* Mix_Evening.riv in Resources */ = {isa = PBXBuildFile; fileRef = C4511E702C10DFE80043F011 /* Mix_Evening.riv */; };
-		C4511E7A2C10DFE80043F011 /* Mix_Morning.riv in Resources */ = {isa = PBXBuildFile; fileRef = C4511E712C10DFE80043F011 /* Mix_Morning.riv */; };
-		C4511E7B2C10DFE80043F011 /* Mix_Night.riv in Resources */ = {isa = PBXBuildFile; fileRef = C4511E722C10DFE80043F011 /* Mix_Night.riv */; };
-		C4511E7C2C10DFE80043F011 /* Sadly_Afternoon.riv in Resources */ = {isa = PBXBuildFile; fileRef = C4511E732C10DFE80043F011 /* Sadly_Afternoon.riv */; };
-		C4511E7D2C10DFE80043F011 /* Sadly_Evening.riv in Resources */ = {isa = PBXBuildFile; fileRef = C4511E742C10DFE80043F011 /* Sadly_Evening.riv */; };
-		C4511E7E2C10DFE80043F011 /* Sadly_Morning.riv in Resources */ = {isa = PBXBuildFile; fileRef = C4511E752C10DFE80043F011 /* Sadly_Morning.riv */; };
-		C4511E7F2C10DFE80043F011 /* Sadly_Night.riv in Resources */ = {isa = PBXBuildFile; fileRef = C4511E762C10DFE80043F011 /* Sadly_Night.riv */; };
 		C4A47CA42C052B4F004D6FB8 /* RiveRuntime in Frameworks */ = {isa = PBXBuildFile; productRef = C4A47CA32C052B4F004D6FB8 /* RiveRuntime */; };
 		C4A47CBD2C0620DA004D6FB8 /* RiveAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A47CBC2C0620DA004D6FB8 /* RiveAnimationView.swift */; };
 /* End PBXBuildFile section */
@@ -162,15 +162,15 @@
 		76D4FD8C2C078326008E611F /* sad.riv */ = {isa = PBXFileReference; lastKnownFileType = file; path = sad.riv; sourceTree = "<group>"; };
 		76D4FD8D2C078326008E611F /* Test-longpress.riv */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Test-longpress.riv"; sourceTree = "<group>"; };
 		76D4FD962C10DF57008E611F /* MaxLimitReachedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaxLimitReachedView.swift; sourceTree = "<group>"; };
+		76D4FD992C10EB26008E611F /* Mix_afternoon.riv */ = {isa = PBXFileReference; lastKnownFileType = file; path = Mix_afternoon.riv; sourceTree = "<group>"; };
+		76D4FD9A2C10EB26008E611F /* Mix_evening.riv */ = {isa = PBXFileReference; lastKnownFileType = file; path = Mix_evening.riv; sourceTree = "<group>"; };
+		76D4FD9B2C10EB26008E611F /* Mix_morning.riv */ = {isa = PBXFileReference; lastKnownFileType = file; path = Mix_morning.riv; sourceTree = "<group>"; };
+		76D4FD9C2C10EB26008E611F /* Mix_night.riv */ = {isa = PBXFileReference; lastKnownFileType = file; path = Mix_night.riv; sourceTree = "<group>"; };
+		76D4FD9D2C10EB26008E611F /* Sadly_afternoon */ = {isa = PBXFileReference; lastKnownFileType = file; path = Sadly_afternoon; sourceTree = "<group>"; };
+		76D4FD9E2C10EB26008E611F /* Sadly_evening.riv */ = {isa = PBXFileReference; lastKnownFileType = file; path = Sadly_evening.riv; sourceTree = "<group>"; };
+		76D4FD9F2C10EB26008E611F /* Sadly_morning.riv */ = {isa = PBXFileReference; lastKnownFileType = file; path = Sadly_morning.riv; sourceTree = "<group>"; };
+		76D4FDA02C10EB26008E611F /* Sadly_night.riv */ = {isa = PBXFileReference; lastKnownFileType = file; path = Sadly_night.riv; sourceTree = "<group>"; };
 		BB715CBC2BEE6300005481A7 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
-		C4511E6F2C10DFE80043F011 /* Mix_Afternoon.riv */ = {isa = PBXFileReference; lastKnownFileType = file; path = Mix_Afternoon.riv; sourceTree = "<group>"; };
-		C4511E702C10DFE80043F011 /* Mix_Evening.riv */ = {isa = PBXFileReference; lastKnownFileType = file; path = Mix_Evening.riv; sourceTree = "<group>"; };
-		C4511E712C10DFE80043F011 /* Mix_Morning.riv */ = {isa = PBXFileReference; lastKnownFileType = file; path = Mix_Morning.riv; sourceTree = "<group>"; };
-		C4511E722C10DFE80043F011 /* Mix_Night.riv */ = {isa = PBXFileReference; lastKnownFileType = file; path = Mix_Night.riv; sourceTree = "<group>"; };
-		C4511E732C10DFE80043F011 /* Sadly_Afternoon.riv */ = {isa = PBXFileReference; lastKnownFileType = file; path = Sadly_Afternoon.riv; sourceTree = "<group>"; };
-		C4511E742C10DFE80043F011 /* Sadly_Evening.riv */ = {isa = PBXFileReference; lastKnownFileType = file; path = Sadly_Evening.riv; sourceTree = "<group>"; };
-		C4511E752C10DFE80043F011 /* Sadly_Morning.riv */ = {isa = PBXFileReference; lastKnownFileType = file; path = Sadly_Morning.riv; sourceTree = "<group>"; };
-		C4511E762C10DFE80043F011 /* Sadly_Night.riv */ = {isa = PBXFileReference; lastKnownFileType = file; path = Sadly_Night.riv; sourceTree = "<group>"; };
 		C4A47CBC2C0620DA004D6FB8 /* RiveAnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RiveAnimationView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -299,7 +299,7 @@
 				76BA2A862BE01B770038E2AD /* DateFormatter.swift */,
 				76BA2A8E2BE01C390038E2AD /* AlarmView.swift */,
 				76BA2A582BE0162B0038E2AD /* Assets.xcassets */,
-				C4511E772C10DFE80043F011 /* dayNight */,
+				76D4FDA12C10EB26008E611F /* dayNight */,
 				76D4FD8E2C078326008E611F /* hana-mix */,
 				76BA2A5A2BE0162B0038E2AD /* Preview Content */,
 				76BA2A982BE16B1A0038E2AD /* ImagePicker.swift */,
@@ -376,20 +376,19 @@
 			path = "hana-mix";
 			sourceTree = "<group>";
 		};
-		C4511E772C10DFE80043F011 /* dayNight */ = {
+		76D4FDA12C10EB26008E611F /* dayNight */ = {
 			isa = PBXGroup;
 			children = (
-				C4511E6F2C10DFE80043F011 /* Mix_Afternoon.riv */,
-				C4511E702C10DFE80043F011 /* Mix_Evening.riv */,
-				C4511E712C10DFE80043F011 /* Mix_Morning.riv */,
-				C4511E722C10DFE80043F011 /* Mix_Night.riv */,
-				C4511E732C10DFE80043F011 /* Sadly_Afternoon.riv */,
-				C4511E742C10DFE80043F011 /* Sadly_Evening.riv */,
-				C4511E752C10DFE80043F011 /* Sadly_Morning.riv */,
-				C4511E762C10DFE80043F011 /* Sadly_Night.riv */,
+				76D4FD992C10EB26008E611F /* Mix_afternoon.riv */,
+				76D4FD9A2C10EB26008E611F /* Mix_evening.riv */,
+				76D4FD9B2C10EB26008E611F /* Mix_morning.riv */,
+				76D4FD9C2C10EB26008E611F /* Mix_night.riv */,
+				76D4FD9D2C10EB26008E611F /* Sadly_afternoon */,
+				76D4FD9E2C10EB26008E611F /* Sadly_evening.riv */,
+				76D4FD9F2C10EB26008E611F /* Sadly_morning.riv */,
+				76D4FDA02C10EB26008E611F /* Sadly_night.riv */,
 			);
-			name = dayNight;
-			path = ../../dayNight;
+			path = dayNight;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -539,24 +538,24 @@
 			buildActionMask = 2147483647;
 			files = (
 				76BA2A5C2BE0162B0038E2AD /* Preview Assets.xcassets in Resources */,
-				C4511E7A2C10DFE80043F011 /* Mix_Morning.riv in Resources */,
-				C4511E7E2C10DFE80043F011 /* Sadly_Morning.riv in Resources */,
-				C4511E782C10DFE80043F011 /* Mix_Afternoon.riv in Resources */,
 				76D4FD932C078326008E611F /* hanatry.riv in Resources */,
-				C4511E7F2C10DFE80043F011 /* Sadly_Night.riv in Resources */,
 				76D4FD912C078326008E611F /* hana4.riv in Resources */,
 				76D4FD942C078326008E611F /* sad.riv in Resources */,
 				76D4FD902C078326008E611F /* hana.riv in Resources */,
+				76D4FDA42C10EB26008E611F /* Mix_morning.riv in Resources */,
 				76D4FD952C078326008E611F /* Test-longpress.riv in Resources */,
-				C4511E7B2C10DFE80043F011 /* Mix_Night.riv in Resources */,
-				C4511E792C10DFE80043F011 /* Mix_Evening.riv in Resources */,
-				C4511E7C2C10DFE80043F011 /* Sadly_Afternoon.riv in Resources */,
+				76D4FDA92C10EB26008E611F /* Sadly_night.riv in Resources */,
+				76D4FDA62C10EB26008E611F /* Sadly_afternoon in Resources */,
 				7654490D2BFD0E050089F7F3 /* Quicksand-VariableFont_wght.ttf in Resources */,
+				76D4FDA52C10EB26008E611F /* Mix_night.riv in Resources */,
 				76D4FD922C078326008E611F /* hanasad.riv in Resources */,
+				76D4FDA32C10EB26008E611F /* Mix_evening.riv in Resources */,
 				769580D32BEC111C00FDB377 /* InfoPlants.json in Resources */,
+				76D4FDA22C10EB26008E611F /* Mix_afternoon.riv in Resources */,
+				76D4FDA82C10EB26008E611F /* Sadly_morning.riv in Resources */,
 				76D4FD8F2C078326008E611F /* hana-mix.riv in Resources */,
-				C4511E7D2C10DFE80043F011 /* Sadly_Evening.riv in Resources */,
 				76BA2A592BE0162B0038E2AD /* Assets.xcassets in Resources */,
+				76D4FDA72C10EB26008E611F /* Sadly_evening.riv in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
