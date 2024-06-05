@@ -76,19 +76,6 @@ struct LimitReachedView: View {
                                         .fontWeight(.medium)
                                         .foregroundStyle(Color.lightGreen)
                                     
-                                    Text("R$ 4,90")
-                                        .font(.custom("Quicksand", size: 28, relativeTo: .title))
-                                        .bold()
-                                        .foregroundStyle(Color.white)
-                                        .padding(.vertical, 10)
-                                        .padding(.horizontal, 25)
-                                        .background(
-                                            RoundedRectangle(cornerRadius: 25.0)
-                                                .foregroundStyle(Color.pinkButton)
-                                                .colorScheme(.light)
-                                        )
-                                        .padding(.top, 20)
-                                    
                                 }
                                 .padding(.leading, 30)
                                 .padding(.trailing, 150)
@@ -104,7 +91,7 @@ struct LimitReachedView: View {
                                         .resizable()
                                         .scaledToFit()
                                         .frame(maxWidth: 300)
-                                        .padding(.top,150)
+                                        .padding(.top, 100)
                                 }
                                 
                                 Button(action: {
@@ -112,21 +99,35 @@ struct LimitReachedView: View {
                                         await purchaseHanaPlus()
                                     }
                                 }) {
-                                    Text("Upgrade Now")
-                                        .font(.custom("Quicksand", size: 22, relativeTo: .title3))
+                                    Text("R$ 4,90")
+                                        .font(.custom("Quicksand", size: 28, relativeTo: .title3))
                                         .bold()
-                                        .padding(.horizontal, 100)
+                                        .padding(.horizontal, 125)
                                         .padding(.vertical, 20)
                                         .foregroundColor(.white)
                                         .background(
                                             RoundedRectangle(cornerRadius: 30)
-                                                .foregroundStyle(Color.lightGreen)
+                                                .foregroundStyle(Color.pinkButton)
+                                                .colorScheme(.light)
                                         )
                                     
                                     
                                 }
+                                
+                                Button(action: {
+                                    
+                                    
+                                }, label: {
+                                    Text("Restore Purchase")
+                                        .font(.custom("Quicksand", size: 22, relativeTo: .title2))
+                                        .bold()
+                                        .underline()
+                                        .foregroundStyle(Color.darkGreen)
+                                })
                             }
                             .padding(.top, 40)
+                            
+                            
                             
                             
                         }

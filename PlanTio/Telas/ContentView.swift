@@ -171,6 +171,7 @@ struct MaxLimitReachedView: View {
                                 .font(.custom("Quicksand", size: 28, relativeTo: .title))
                                 .bold()
                                 .foregroundStyle(Color.darkGreen)
+                                .colorScheme(.light)
                             
                             
                             Text("You have reached the maximum limit of 17 plants. Consider removing some plants to add new ones.")
