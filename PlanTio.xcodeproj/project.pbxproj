@@ -17,8 +17,7 @@
 		0738DF6D2C0E3DF500E39A3F /* HanaWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 0738DF602C0E3DF400E39A3F /* HanaWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		0738DF712C0E471800E39A3F /* Quicksand-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7654490C2BFD0E050089F7F3 /* Quicksand-VariableFont_wght.ttf */; };
 		0738DF722C10DCB200E39A3F /* HanaWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0738DF662C0E3DF400E39A3F /* HanaWidget.swift */; };
-		0738DF782C10DD9A00E39A3F /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07C14B602C07C2C400931DAE /* WidgetKit.framework */; };
-		0738DF792C10DD9A00E39A3F /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07C14B622C07C2C400931DAE /* SwiftUI.framework */; };
+		0738DF892C10E70100E39A3F /* UpgradeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0738DF882C10E70100E39A3F /* UpgradeView.swift */; };
 		07C14B592C07C14D00931DAE /* WidgetPlantView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07C14B582C07C14D00931DAE /* WidgetPlantView.swift */; };
 		2E68C0A32BFD12BE0002B3B4 /* PostHog in Frameworks */ = {isa = PBXBuildFile; productRef = 2E68C0A22BFD12BE0002B3B4 /* PostHog */; };
 		2E68C0A72C0E63540002B3B4 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E68C0A62C0E63540002B3B4 /* Store.swift */; };
@@ -59,6 +58,15 @@
 		76D4FD942C078326008E611F /* sad.riv in Resources */ = {isa = PBXBuildFile; fileRef = 76D4FD8C2C078326008E611F /* sad.riv */; };
 		76D4FD952C078326008E611F /* Test-longpress.riv in Resources */ = {isa = PBXBuildFile; fileRef = 76D4FD8D2C078326008E611F /* Test-longpress.riv */; };
 		76D4FD972C10DF57008E611F /* MaxLimitReachedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D4FD962C10DF57008E611F /* MaxLimitReachedView.swift */; };
+		76D4FDC72C10EBF1008E611F /* Mix_Afternoon.riv in Resources */ = {isa = PBXBuildFile; fileRef = 76D4FDBD2C10EBF1008E611F /* Mix_Afternoon.riv */; };
+		76D4FDC82C10EBF1008E611F /* Mix_Evening.riv in Resources */ = {isa = PBXBuildFile; fileRef = 76D4FDBE2C10EBF1008E611F /* Mix_Evening.riv */; };
+		76D4FDC92C10EBF1008E611F /* Mix_Morning.riv in Resources */ = {isa = PBXBuildFile; fileRef = 76D4FDBF2C10EBF1008E611F /* Mix_Morning.riv */; };
+		76D4FDCA2C10EBF1008E611F /* Mix_Night.riv in Resources */ = {isa = PBXBuildFile; fileRef = 76D4FDC02C10EBF1008E611F /* Mix_Night.riv */; };
+		76D4FDCB2C10EBF1008E611F /* Sadly_Afternoon.riv in Resources */ = {isa = PBXBuildFile; fileRef = 76D4FDC12C10EBF1008E611F /* Sadly_Afternoon.riv */; };
+		76D4FDCC2C10EBF1008E611F /* Sadly_Evening.riv in Resources */ = {isa = PBXBuildFile; fileRef = 76D4FDC22C10EBF1008E611F /* Sadly_Evening.riv */; };
+		76D4FDCD2C10EBF1008E611F /* Sadly_Morning.riv in Resources */ = {isa = PBXBuildFile; fileRef = 76D4FDC32C10EBF1008E611F /* Sadly_Morning.riv */; };
+		76D4FDCE2C10EBF1008E611F /* Sadly_Night in Resources */ = {isa = PBXBuildFile; fileRef = 76D4FDC42C10EBF1008E611F /* Sadly_Night */; };
+		76D4FDCF2C10EBF1008E611F /* Sadly_Night.riv in Resources */ = {isa = PBXBuildFile; fileRef = 76D4FDC52C10EBF1008E611F /* Sadly_Night.riv */; };
 		BB715CBD2BEE6300005481A7 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB715CBC2BEE6300005481A7 /* Extensions.swift */; };
 		C4A47CA42C052B4F004D6FB8 /* RiveRuntime in Frameworks */ = {isa = PBXBuildFile; productRef = C4A47CA32C052B4F004D6FB8 /* RiveRuntime */; };
 		C4A47CBD2C0620DA004D6FB8 /* RiveAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A47CBC2C0620DA004D6FB8 /* RiveAnimationView.swift */; };
@@ -71,13 +79,6 @@
 			proxyType = 1;
 			remoteGlobalIDString = 0738DF5F2C0E3DF400E39A3F;
 			remoteInfo = HanaWidgetExtension;
-		};
-		0738DF822C10DD9B00E39A3F /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 76BA2A492BE0162A0038E2AD /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 0738DF762C10DD9A00E39A3F;
-			remoteInfo = HanaWidgetNewExtension;
 		};
 		76BA2A622BE0162B0038E2AD /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -118,7 +119,7 @@
 		0738DF662C0E3DF400E39A3F /* HanaWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HanaWidget.swift; sourceTree = "<group>"; };
 		0738DF682C0E3DF500E39A3F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0738DF6A2C0E3DF500E39A3F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		0738DF772C10DD9A00E39A3F /* HanaWidgetNewExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = HanaWidgetNewExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		0738DF882C10E70100E39A3F /* UpgradeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpgradeView.swift; sourceTree = "<group>"; };
 		07C14B582C07C14D00931DAE /* WidgetPlantView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WidgetPlantView.swift; sourceTree = "<group>"; };
 		07C14B602C07C2C400931DAE /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		07C14B622C07C2C400931DAE /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
@@ -162,6 +163,15 @@
 		76D4FD8C2C078326008E611F /* sad.riv */ = {isa = PBXFileReference; lastKnownFileType = file; path = sad.riv; sourceTree = "<group>"; };
 		76D4FD8D2C078326008E611F /* Test-longpress.riv */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Test-longpress.riv"; sourceTree = "<group>"; };
 		76D4FD962C10DF57008E611F /* MaxLimitReachedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaxLimitReachedView.swift; sourceTree = "<group>"; };
+		76D4FDBD2C10EBF1008E611F /* Mix_Afternoon.riv */ = {isa = PBXFileReference; lastKnownFileType = file; path = Mix_Afternoon.riv; sourceTree = "<group>"; };
+		76D4FDBE2C10EBF1008E611F /* Mix_Evening.riv */ = {isa = PBXFileReference; lastKnownFileType = file; path = Mix_Evening.riv; sourceTree = "<group>"; };
+		76D4FDBF2C10EBF1008E611F /* Mix_Morning.riv */ = {isa = PBXFileReference; lastKnownFileType = file; path = Mix_Morning.riv; sourceTree = "<group>"; };
+		76D4FDC02C10EBF1008E611F /* Mix_Night.riv */ = {isa = PBXFileReference; lastKnownFileType = file; path = Mix_Night.riv; sourceTree = "<group>"; };
+		76D4FDC12C10EBF1008E611F /* Sadly_Afternoon.riv */ = {isa = PBXFileReference; lastKnownFileType = file; path = Sadly_Afternoon.riv; sourceTree = "<group>"; };
+		76D4FDC22C10EBF1008E611F /* Sadly_Evening.riv */ = {isa = PBXFileReference; lastKnownFileType = file; path = Sadly_Evening.riv; sourceTree = "<group>"; };
+		76D4FDC32C10EBF1008E611F /* Sadly_Morning.riv */ = {isa = PBXFileReference; lastKnownFileType = file; path = Sadly_Morning.riv; sourceTree = "<group>"; };
+		76D4FDC42C10EBF1008E611F /* Sadly_Night */ = {isa = PBXFileReference; lastKnownFileType = file; path = Sadly_Night; sourceTree = "<group>"; };
+		76D4FDC52C10EBF1008E611F /* Sadly_Night.riv */ = {isa = PBXFileReference; lastKnownFileType = file; path = Sadly_Night.riv; sourceTree = "<group>"; };
 		BB715CBC2BEE6300005481A7 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		C4A47CBC2C0620DA004D6FB8 /* RiveAnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RiveAnimationView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -173,15 +183,6 @@
 			files = (
 				0738DF622C0E3DF400E39A3F /* SwiftUI.framework in Frameworks */,
 				0738DF612C0E3DF400E39A3F /* WidgetKit.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		0738DF742C10DD9A00E39A3F /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				0738DF792C10DD9A00E39A3F /* SwiftUI.framework in Frameworks */,
-				0738DF782C10DD9A00E39A3F /* WidgetKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -284,7 +285,6 @@
 				76BA2A612BE0162B0038E2AD /* PlanTioTests.xctest */,
 				76BA2A6B2BE0162B0038E2AD /* PlanTioUITests.xctest */,
 				0738DF602C0E3DF400E39A3F /* HanaWidgetExtension.appex */,
-				0738DF772C10DD9A00E39A3F /* HanaWidgetNewExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -301,6 +301,7 @@
 				76BA2A862BE01B770038E2AD /* DateFormatter.swift */,
 				76BA2A8E2BE01C390038E2AD /* AlarmView.swift */,
 				76BA2A582BE0162B0038E2AD /* Assets.xcassets */,
+				76D4FDC62C10EBF1008E611F /* NightDay */,
 				76D4FD8E2C078326008E611F /* hana-mix */,
 				76BA2A5A2BE0162B0038E2AD /* Preview Content */,
 				76BA2A982BE16B1A0038E2AD /* ImagePicker.swift */,
@@ -343,6 +344,7 @@
 				76BA2A8A2BE01C100038E2AD /* WateringView.swift */,
 				76BA2A8C2BE01C230038E2AD /* SunlightView.swift */,
 				2E68C0AC2C0EDD2E0002B3B4 /* LimitReachedView.swift */,
+				0738DF882C10E70100E39A3F /* UpgradeView.swift */,
 				76BA2A882BE01BDE0038E2AD /* PlantDetailView.swift */,
 				76BA2A802BE01B230038E2AD /* AddPlantView.swift */,
 				072CA1302BEC288A0085CB94 /* Components */,
@@ -376,6 +378,22 @@
 			path = "hana-mix";
 			sourceTree = "<group>";
 		};
+		76D4FDC62C10EBF1008E611F /* NightDay */ = {
+			isa = PBXGroup;
+			children = (
+				76D4FDBD2C10EBF1008E611F /* Mix_Afternoon.riv */,
+				76D4FDBE2C10EBF1008E611F /* Mix_Evening.riv */,
+				76D4FDBF2C10EBF1008E611F /* Mix_Morning.riv */,
+				76D4FDC02C10EBF1008E611F /* Mix_Night.riv */,
+				76D4FDC12C10EBF1008E611F /* Sadly_Afternoon.riv */,
+				76D4FDC22C10EBF1008E611F /* Sadly_Evening.riv */,
+				76D4FDC32C10EBF1008E611F /* Sadly_Morning.riv */,
+				76D4FDC42C10EBF1008E611F /* Sadly_Night */,
+				76D4FDC52C10EBF1008E611F /* Sadly_Night.riv */,
+			);
+			path = NightDay;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -396,23 +414,6 @@
 			productReference = 0738DF602C0E3DF400E39A3F /* HanaWidgetExtension.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
-		0738DF762C10DD9A00E39A3F /* HanaWidgetNewExtension */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 0738DF852C10DD9B00E39A3F /* Build configuration list for PBXNativeTarget "HanaWidgetNewExtension" */;
-			buildPhases = (
-				0738DF732C10DD9A00E39A3F /* Sources */,
-				0738DF742C10DD9A00E39A3F /* Frameworks */,
-				0738DF752C10DD9A00E39A3F /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = HanaWidgetNewExtension;
-			productName = HanaWidgetNewExtension;
-			productReference = 0738DF772C10DD9A00E39A3F /* HanaWidgetNewExtension.appex */;
-			productType = "com.apple.product-type.app-extension";
-		};
 		76BA2A502BE0162A0038E2AD /* PlanTio */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 76BA2A752BE0162B0038E2AD /* Build configuration list for PBXNativeTarget "PlanTio" */;
@@ -426,7 +427,6 @@
 			);
 			dependencies = (
 				0738DF6C2C0E3DF500E39A3F /* PBXTargetDependency */,
-				0738DF832C10DD9B00E39A3F /* PBXTargetDependency */,
 			);
 			name = PlanTio;
 			packageProductDependencies = (
@@ -487,9 +487,6 @@
 					0738DF5F2C0E3DF400E39A3F = {
 						CreatedOnToolsVersion = 15.4;
 					};
-					0738DF762C10DD9A00E39A3F = {
-						CreatedOnToolsVersion = 15.4;
-					};
 					76BA2A502BE0162A0038E2AD = {
 						CreatedOnToolsVersion = 15.2;
 					};
@@ -525,7 +522,6 @@
 				76BA2A602BE0162B0038E2AD /* PlanTioTests */,
 				76BA2A6A2BE0162B0038E2AD /* PlanTioUITests */,
 				0738DF5F2C0E3DF400E39A3F /* HanaWidgetExtension */,
-				0738DF762C10DD9A00E39A3F /* HanaWidgetNewExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -540,27 +536,29 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		0738DF752C10DD9A00E39A3F /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		76BA2A4F2BE0162A0038E2AD /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				76D4FDCF2C10EBF1008E611F /* Sadly_Night.riv in Resources */,
 				76BA2A5C2BE0162B0038E2AD /* Preview Assets.xcassets in Resources */,
+				76D4FDCE2C10EBF1008E611F /* Sadly_Night in Resources */,
+				76D4FDC92C10EBF1008E611F /* Mix_Morning.riv in Resources */,
+				76D4FDCD2C10EBF1008E611F /* Sadly_Morning.riv in Resources */,
+				76D4FDC72C10EBF1008E611F /* Mix_Afternoon.riv in Resources */,
 				76D4FD932C078326008E611F /* hanatry.riv in Resources */,
 				76D4FD912C078326008E611F /* hana4.riv in Resources */,
 				76D4FD942C078326008E611F /* sad.riv in Resources */,
 				76D4FD902C078326008E611F /* hana.riv in Resources */,
 				76D4FD952C078326008E611F /* Test-longpress.riv in Resources */,
+				76D4FDCA2C10EBF1008E611F /* Mix_Night.riv in Resources */,
+				76D4FDC82C10EBF1008E611F /* Mix_Evening.riv in Resources */,
+				76D4FDCB2C10EBF1008E611F /* Sadly_Afternoon.riv in Resources */,
 				7654490D2BFD0E050089F7F3 /* Quicksand-VariableFont_wght.ttf in Resources */,
 				76D4FD922C078326008E611F /* hanasad.riv in Resources */,
 				769580D32BEC111C00FDB377 /* InfoPlants.json in Resources */,
 				76D4FD8F2C078326008E611F /* hana-mix.riv in Resources */,
+				76D4FDCC2C10EBF1008E611F /* Sadly_Evening.riv in Resources */,
 				76BA2A592BE0162B0038E2AD /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -593,13 +591,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		0738DF732C10DD9A00E39A3F /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		76BA2A4D2BE0162A0038E2AD /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -611,6 +602,7 @@
 				2E68C0A72C0E63540002B3B4 /* Store.swift in Sources */,
 				76BA2A852BE01B5F0038E2AD /* Plant.swift in Sources */,
 				769580D72BF2803C00FDB377 /* CareInfos.swift in Sources */,
+				0738DF892C10E70100E39A3F /* UpgradeView.swift in Sources */,
 				76BA2A8D2BE01C230038E2AD /* SunlightView.swift in Sources */,
 				76BA2A572BE0162A0038E2AD /* ContentView.swift in Sources */,
 				769580DB2BF2806A00FDB377 /* FrameImage.swift in Sources */,
@@ -658,11 +650,6 @@
 			isa = PBXTargetDependency;
 			target = 0738DF5F2C0E3DF400E39A3F /* HanaWidgetExtension */;
 			targetProxy = 0738DF6B2C0E3DF500E39A3F /* PBXContainerItemProxy */;
-		};
-		0738DF832C10DD9B00E39A3F /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 0738DF762C10DD9A00E39A3F /* HanaWidgetNewExtension */;
-			targetProxy = 0738DF822C10DD9B00E39A3F /* PBXContainerItemProxy */;
 		};
 		76BA2A632BE0162B0038E2AD /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -725,62 +712,6 @@
 				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = challenge2.PlanTio.HanaWidget;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Release;
-		};
-		0738DF862C10DD9B00E39A3F /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 67AYPRFZH8;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = HanaWidgetNew/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = HanaWidgetNew;
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@executable_path/../../Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = challenge2.PlanTio.HanaWidgetNew;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		0738DF872C10DD9B00E39A3F /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 67AYPRFZH8;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = HanaWidgetNew/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = HanaWidgetNew;
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@executable_path/../../Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = challenge2.PlanTio.HanaWidgetNew;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -1068,15 +999,6 @@
 			buildConfigurations = (
 				0738DF6F2C0E3DF500E39A3F /* Debug */,
 				0738DF702C0E3DF500E39A3F /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		0738DF852C10DD9B00E39A3F /* Build configuration list for PBXNativeTarget "HanaWidgetNewExtension" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				0738DF862C10DD9B00E39A3F /* Debug */,
-				0738DF872C10DD9B00E39A3F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

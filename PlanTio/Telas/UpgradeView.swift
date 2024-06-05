@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct LimitReachedView: View {
+struct UpgradeView: View {
     @EnvironmentObject var store: Store
     @ObservedObject var viewModel: PlantViewModel
     @Environment(\.presentationMode) var presentationMode
@@ -28,12 +28,12 @@ struct LimitReachedView: View {
             VStack (alignment: .leading, spacing: 50){
                 
                 VStack (alignment: .leading, spacing: 15){
-                    Text("It seems that you've\nreached your garden's limit.")
+                    Text("You can add up to\n5 plants for free.")
                         .font(.custom("Quicksand", size: 20, relativeTo: .title3))
                         .foregroundStyle(Color.white)
                         .fontWeight(.medium)
                     
-                    Text("Buy slots to keep\nyour garden growing.")
+                    Text("Upgrade to keep\nyour garden growing.")
                         .font(.custom("Quicksand", size: 28, relativeTo: .title))
                         .foregroundStyle(Color.white)
                         .bold()
@@ -109,16 +109,7 @@ struct LimitReachedView: View {
                                 }
                                 
                                 Button(action: {
-                                    Task{
-                                        await store.restorePurchases()
-                                        if store.hasPurchasedHanaPlus == true {
-                                            viewModel.updateMaxPlantCount(to: 17)
-                                            
-                                        }
-                        
-                                        
-                                    }
-                                    
+                                    // Your restore purchase action here
                                 }, label: {
                                     Text("Restore Purchase")
                                         .font(.custom("Quicksand", size: 22, relativeTo: .title2))
@@ -159,7 +150,7 @@ struct LimitReachedView: View {
 }
 
 #Preview {
-    LimitReachedView(viewModel: PlantViewModel(), hasUpgraded: .constant(false))
+    UpgradeView(viewModel: PlantViewModel(), hasUpgraded: .constant(false))
         .environmentObject(Store())
         .environmentObject(PlantViewModel())
 }
