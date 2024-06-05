@@ -119,8 +119,8 @@ struct MaxLimitReachedView: View {
         ZStack {
             LinearGradient(
                 stops: [
-                    Gradient.Stop(color: .afternoonSkyGradient1, location: 0),
-                    Gradient.Stop(color: .afternoonSkyGradient2, location: 0.3)
+                    Gradient.Stop(color: .skyGradient1, location: 0),
+                    Gradient.Stop(color: .skyGradient2, location: 0.3)
                 ],
                 startPoint: .top,
                 endPoint: .bottom
@@ -175,7 +175,7 @@ struct MaxLimitReachedView: View {
                             
                             Text("You have reached the maximum limit of 17 plants. Consider removing some plants to add new ones.")
                                 .font(.custom("Quicksand", size: 20, relativeTo: .title3))
-                                .foregroundStyle(Color.accentColor)
+                                .foregroundStyle(Color.lightGreen)
                                 .fontWeight(.medium)
                             
                         }
@@ -183,6 +183,7 @@ struct MaxLimitReachedView: View {
                         .background(
                             RoundedRectangle(cornerRadius: 36)
                                 .foregroundStyle(Color.cards)
+                                .colorScheme(.light)
                         )
                         .padding(30)
                         
@@ -200,6 +201,7 @@ struct MaxLimitReachedView: View {
                                 .background(
                                     RoundedRectangle(cornerRadius: 30)
                                         .foregroundStyle(Color.pinkButton)
+                                        .colorScheme(.light)
                                 )
                         })
                         

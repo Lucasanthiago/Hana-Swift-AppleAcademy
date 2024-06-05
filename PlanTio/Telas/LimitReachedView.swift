@@ -9,20 +9,20 @@ struct LimitReachedView: View {
             
             LinearGradient(
                 stops: [
-                    Gradient.Stop(color: .afternoonSkyGradient1, location: 0),
-                    Gradient.Stop(color: .afternoonSkyGradient2, location: 0.7)
+                    Gradient.Stop(color: .skyGradient1, location: 0),
+                    Gradient.Stop(color: .skyGradient2, location: 0.7)
                 ],
                 startPoint: .top,
                 endPoint: .bottom
             )
             .ignoresSafeArea()
-            
+           
             Image("SunSmall")
                 .resizable()
                 .scaledToFit()
-                .frame(width:110)
+                .frame(maxWidth:160)
                 .padding(.bottom, 690)
-                .padding(.leading, 200)
+                .padding(.leading, 240)
             
             VStack (alignment: .leading, spacing: 50){
                 
@@ -67,7 +67,9 @@ struct LimitReachedView: View {
                                     Text("Hana Plus+")
                                         .font(.custom("Quicksand", size: 34, relativeTo: .largeTitle))
                                         .bold()
+                                        .foregroundStyle(Color.normalText)
                                         .padding(.bottom, 1)
+                                        .colorScheme(.light)
                                     
                                     Text("+12 plant slots")
                                         .font(.custom("Quicksand", size: 22, relativeTo: .title2))
@@ -83,6 +85,7 @@ struct LimitReachedView: View {
                                         .background(
                                             RoundedRectangle(cornerRadius: 25.0)
                                                 .foregroundStyle(Color.pinkButton)
+                                                .colorScheme(.light)
                                         )
                                         .padding(.top, 20)
                                     
@@ -94,6 +97,7 @@ struct LimitReachedView: View {
                                 .background(
                                     RoundedRectangle(cornerRadius: 36)
                                         .foregroundStyle(Color.cards)
+                                        .colorScheme(.light)
                                 )
                                 .overlay {
                                     Image("HanaPremium")
@@ -116,8 +120,9 @@ struct LimitReachedView: View {
                                         .foregroundColor(.white)
                                         .background(
                                             RoundedRectangle(cornerRadius: 30)
-                                                .foregroundStyle(Color.accentColor)
+                                                .foregroundStyle(Color.lightGreen)
                                         )
+                                    
                                     
                                 }
                             }
