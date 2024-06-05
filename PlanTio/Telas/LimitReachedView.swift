@@ -6,7 +6,6 @@ struct LimitReachedView: View {
     
     var body: some View {
         ZStack {
-            
             LinearGradient(
                 stops: [
                     Gradient.Stop(color: .skyGradient1, location: 0),
@@ -40,7 +39,6 @@ struct LimitReachedView: View {
                 .padding(.top, 55)
                 .padding(.leading, 25)
                 
-                
                 RoundedRectangle(cornerRadius: 20.0)
                     .ignoresSafeArea()
                     .foregroundStyle(
@@ -53,13 +51,10 @@ struct LimitReachedView: View {
                             endPoint: .bottom
                         )
                     )
-                
                     .overlay (alignment: .top){
                         Image("Grass")
                             .alignmentGuide(.top, computeValue: {dimension in dimension[.bottom] - 20})
-                        
                     }
-                
                     .overlay (alignment: .top) {
                         ScrollView {
                             VStack (spacing: 30) {
@@ -75,7 +70,6 @@ struct LimitReachedView: View {
                                         .font(.custom("Quicksand", size: 22, relativeTo: .title2))
                                         .fontWeight(.medium)
                                         .foregroundStyle(Color.lightGreen)
-                                    
                                 }
                                 .padding(.leading, 30)
                                 .padding(.trailing, 150)
@@ -110,8 +104,6 @@ struct LimitReachedView: View {
                                                 .foregroundStyle(Color.pinkButton)
                                                 .colorScheme(.light)
                                         )
-                                    
-                                    
                                 }
                                 
                                 Button(action: {
@@ -128,14 +120,9 @@ struct LimitReachedView: View {
                                 })
                             }
                             .padding(.top, 40)
-                            
-                            
-                            
-                            
                         }
                         .scrollBounceBehavior(.basedOnSize)
                         .navigationTitle("Limit Reached")
-                        
                     }
             }
         }

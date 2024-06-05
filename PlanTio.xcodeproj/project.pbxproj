@@ -59,6 +59,7 @@
 		76D4FD932C078326008E611F /* hanatry.riv in Resources */ = {isa = PBXBuildFile; fileRef = 76D4FD8B2C078326008E611F /* hanatry.riv */; };
 		76D4FD942C078326008E611F /* sad.riv in Resources */ = {isa = PBXBuildFile; fileRef = 76D4FD8C2C078326008E611F /* sad.riv */; };
 		76D4FD952C078326008E611F /* Test-longpress.riv in Resources */ = {isa = PBXBuildFile; fileRef = 76D4FD8D2C078326008E611F /* Test-longpress.riv */; };
+		76D4FD972C10DF57008E611F /* MaxLimitReachedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D4FD962C10DF57008E611F /* MaxLimitReachedView.swift */; };
 		BB715CBD2BEE6300005481A7 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB715CBC2BEE6300005481A7 /* Extensions.swift */; };
 		C4A47CA42C052B4F004D6FB8 /* RiveRuntime in Frameworks */ = {isa = PBXBuildFile; productRef = C4A47CA32C052B4F004D6FB8 /* RiveRuntime */; };
 		C4A47CBD2C0620DA004D6FB8 /* RiveAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A47CBC2C0620DA004D6FB8 /* RiveAnimationView.swift */; };
@@ -162,6 +163,7 @@
 		76D4FD8B2C078326008E611F /* hanatry.riv */ = {isa = PBXFileReference; lastKnownFileType = file; path = hanatry.riv; sourceTree = "<group>"; };
 		76D4FD8C2C078326008E611F /* sad.riv */ = {isa = PBXFileReference; lastKnownFileType = file; path = sad.riv; sourceTree = "<group>"; };
 		76D4FD8D2C078326008E611F /* Test-longpress.riv */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Test-longpress.riv"; sourceTree = "<group>"; };
+		76D4FD962C10DF57008E611F /* MaxLimitReachedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaxLimitReachedView.swift; sourceTree = "<group>"; };
 		BB715CBC2BEE6300005481A7 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		C4A47CBC2C0620DA004D6FB8 /* RiveAnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RiveAnimationView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -338,6 +340,7 @@
 			children = (
 				76BA2A7E2BE016720038E2AD /* TabBarView.swift */,
 				76BA2A562BE0162A0038E2AD /* ContentView.swift */,
+				76D4FD962C10DF57008E611F /* MaxLimitReachedView.swift */,
 				072CA12E2BEAC3150085CB94 /* SwiftUIView.swift */,
 				76BA2A8A2BE01C100038E2AD /* WateringView.swift */,
 				76BA2A8C2BE01C230038E2AD /* SunlightView.swift */,
@@ -625,6 +628,7 @@
 				76BA2A992BE16B1A0038E2AD /* ImagePicker.swift in Sources */,
 				07C14B592C07C14D00931DAE /* WidgetPlantView.swift in Sources */,
 				2E68C0AD2C0EDD2E0002B3B4 /* LimitReachedView.swift in Sources */,
+				76D4FD972C10DF57008E611F /* MaxLimitReachedView.swift in Sources */,
 				76BA2A552BE0162A0038E2AD /* PlanTioApp.swift in Sources */,
 				769580D12BEC10D800FDB377 /* InfoPlant.swift in Sources */,
 				76BA2A8B2BE01C100038E2AD /* WateringView.swift in Sources */,
