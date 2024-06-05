@@ -115,7 +115,9 @@ struct LimitReachedView: View {
                                 }
                                 
                                 Button(action: {
-                                    
+                                    Task{
+                                        await store.restorePurchases()
+                                    }
                                     
                                 }, label: {
                                     Text("Restore Purchase")

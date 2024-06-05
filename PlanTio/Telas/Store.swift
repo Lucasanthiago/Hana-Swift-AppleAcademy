@@ -182,6 +182,17 @@ class Store: NSObject, ObservableObject  {
 //        subscriptionGroupStatus = try? await subscriptions.first?.subscription?.status.first?.state
     }
 
+    func restorePurchases() async {
+        do {
+            try await AppStore.sync()
+            print("Restoration completed ")
+            await refreshPurchasedProducts()
+            
+        }catch{
+            print("Failed to restore purchase: \(error)")
+        }
+        
+    }
 
     func sortByPrice(_ products: [Product]) -> [Product] {
         products.sorted(by: { return $0.price < $1.price })
