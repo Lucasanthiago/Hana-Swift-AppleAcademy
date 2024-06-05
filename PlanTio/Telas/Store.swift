@@ -7,6 +7,7 @@
 
 import Foundation
 import StoreKit
+import SwiftUI
 
 typealias Transaction = StoreKit.Transaction
 typealias RenewalInfo = StoreKit.Product.SubscriptionInfo.RenewalInfo
@@ -23,6 +24,8 @@ class Store: NSObject, ObservableObject  {
     @Published private(set) var products: [Product]
     @Published private(set) var nonConsumableProducts: [Product] = []
     @Published private(set) var subscriptionGroupStatus: RenewalState?
+    @Published var hasPurchasedHanaPlus = false
+    
     
     var updateListenerTask: Task<Void, Error>? = nil
 
@@ -103,7 +106,7 @@ class Store: NSObject, ObservableObject  {
 
         switch result {
         case .success(let verification):
-                
+            hasPurchasedHanaPlus = true
             switch verification {
                 case .unverified(let transaction, let verificationError):
                     return nil
@@ -130,6 +133,7 @@ class Store: NSObject, ObservableObject  {
         switch product.type {
         case .nonConsumable:
             return nonConsumableProducts.contains(product)
+            
         default:
             return false
         }
@@ -165,12 +169,57 @@ class Store: NSObject, ObservableObject  {
                     default:
                         break
                     }
+                switch transaction.productID{
+                    case "hanaplus":
+                    hasPurchasedHanaPlus = true
+                default :
+                    break
+                }
                 
-                case .unverified(let transaction, let error):
+                case .unverified(_, let error):
                     print(error)
             }
+            self.nonConsumableProducts = nonConsumables
             
         }
+        
+        
+        
+//        func refreshPurchasedProducts() async {
+//                var nonConsumables: [Product] = []
+//                
+//                // Iterate through all of the user's purchased products.
+//                for await result in Transaction.currentEntitlements {
+//                    switch result {
+//                    case .verified(let transaction):
+//                        switch transaction.productType {
+//                        case .nonConsumable:
+//                            if let coin = products.first(where: { $0.id == transaction.productID }) {
+//                                nonConsumables.append(coin)
+//                            }
+//                        default:
+//                            break
+//                        }
+//                        
+//                        switch transaction.productID {
+//                        case "advancedplan":
+//                            hasPurchasedAdvanced = true
+//                        case "superplan":
+//                            hasPurchasedSuperPlan = true
+//                        case "slangpremium":
+//                            hasPurchasedPremium = true
+//                        default:
+//                            break
+//                        }
+//                        
+//                    case .unverified(_, let error):
+//                        print(error)
+//                    }
+//                }
+//
+//                // Update the store information with the purchased products.
+//                self.nonConsumableProducts = nonConsumables
+//            }
 
         //Update the store information with the purchased products.
         self.nonConsumableProducts = nonConsumables
@@ -182,6 +231,18 @@ class Store: NSObject, ObservableObject  {
 //        subscriptionGroupStatus = try? await subscriptions.first?.subscription?.status.first?.state
     }
 
+    func restorePurchases() async {
+        do {
+            try await AppStore.sync()
+            print("Restoration completed ")
+            await refreshPurchasedProducts()
+            
+            
+        }catch{
+            print("Failed to restore purchase: \(error)")
+        }
+        
+    }
 
     func sortByPrice(_ products: [Product]) -> [Product] {
         products.sorted(by: { return $0.price < $1.price })

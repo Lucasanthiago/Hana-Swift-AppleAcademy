@@ -109,7 +109,16 @@ struct LimitReachedView: View {
                                 }
                                 
                                 Button(action: {
-                                    // Your restore purchase action here
+                                    Task{
+                                        await store.restorePurchases()
+                                        if store.hasPurchasedHanaPlus == true {
+                                            viewModel.updateMaxPlantCount(to: 17)
+                                            
+                                        }
+                        
+                                        
+                                    }
+                                    
                                 }, label: {
                                     Text("Restore Purchase")
                                         .font(.custom("Quicksand", size: 22, relativeTo: .title2))
