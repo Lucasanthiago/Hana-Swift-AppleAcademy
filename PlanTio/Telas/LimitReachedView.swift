@@ -109,6 +109,12 @@ struct LimitReachedView: View {
                                 Button(action: {
                                     Task{
                                         await store.restorePurchases()
+                                        if store.hasPurchasedHanaPlus == true {
+                                            viewModel.updateMaxPlantCount(to: 17)
+                                            
+                                        }
+                        
+                                        
                                     }
                                     
                                 }, label: {
