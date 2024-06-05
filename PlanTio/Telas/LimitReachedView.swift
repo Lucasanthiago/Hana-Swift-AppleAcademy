@@ -3,6 +3,7 @@ import SwiftUI
 struct LimitReachedView: View {
     @EnvironmentObject var store: Store
     @ObservedObject var viewModel: PlantViewModel
+    @Environment(\.presentationMode) var presentationMode
     
     var body: some View {
         ZStack {
@@ -136,6 +137,7 @@ struct LimitReachedView: View {
             if let transaction = transaction {
                 print("Purchased successfully: \(transaction)")
                 viewModel.updateMaxPlantCount(to: 17) // Atualiza o limite para 17 após a compra
+                presentationMode.wrappedValue.dismiss() // Fecha a sheet após a compra
             } else {
                 print("Purchase failed or cancelled")
             }
