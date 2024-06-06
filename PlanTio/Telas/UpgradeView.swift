@@ -59,7 +59,7 @@ struct UpgradeView: View {
                     }
                     .overlay (alignment: .top) {
                         ScrollView {
-                            VStack (spacing: 30) {
+                            VStack (spacing: 20) {
                                 VStack(alignment: .leading) {
                                     Text("Hana Plus+")
                                         .font(.custom("Quicksand", size: 34, relativeTo: .largeTitle))
@@ -99,10 +99,10 @@ struct UpgradeView: View {
                                         .font(.custom("Quicksand", size: 28, relativeTo: .title3))
                                         .bold()
                                         .padding(.horizontal, 125)
-                                        .padding(.vertical, 20)
+                                        .padding(.vertical, 12)
                                         .foregroundColor(.white)
                                         .background(
-                                            RoundedRectangle(cornerRadius: 30)
+                                            RoundedRectangle(cornerRadius: 20)
                                                 .foregroundStyle(Color.pinkButton)
                                                 .colorScheme(.light)
                                         )
@@ -117,8 +117,9 @@ struct UpgradeView: View {
                                         .underline()
                                         .foregroundStyle(Color.darkGreen)
                                 })
+                                .padding(.top, -5)
                             }
-                            .padding(.top, 40)
+                            .padding(.top, 30)
                         }
                         .scrollBounceBehavior(.basedOnSize)
                         .navigationTitle("Limit Reached")

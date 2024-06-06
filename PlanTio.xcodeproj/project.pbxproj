@@ -68,6 +68,7 @@
 		76D4FDCE2C10EBF1008E611F /* Sadly_Night in Resources */ = {isa = PBXBuildFile; fileRef = 76D4FDC42C10EBF1008E611F /* Sadly_Night */; };
 		76D4FDCF2C10EBF1008E611F /* Sadly_Night.riv in Resources */ = {isa = PBXBuildFile; fileRef = 76D4FDC52C10EBF1008E611F /* Sadly_Night.riv */; };
 		76D4FDD22C11F17A008E611F /* Opening.riv in Resources */ = {isa = PBXBuildFile; fileRef = 76D4FDD02C11F17A008E611F /* Opening.riv */; };
+		76D4FDD42C11F313008E611F /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76D4FDD32C11F313008E611F /* StoreKit.framework */; };
 		BB715CBD2BEE6300005481A7 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB715CBC2BEE6300005481A7 /* Extensions.swift */; };
 		C4A47CA42C052B4F004D6FB8 /* RiveRuntime in Frameworks */ = {isa = PBXBuildFile; productRef = C4A47CA32C052B4F004D6FB8 /* RiveRuntime */; };
 		C4A47CBD2C0620DA004D6FB8 /* RiveAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A47CBC2C0620DA004D6FB8 /* RiveAnimationView.swift */; };
@@ -175,6 +176,7 @@
 		76D4FDC42C10EBF1008E611F /* Sadly_Night */ = {isa = PBXFileReference; lastKnownFileType = file; path = Sadly_Night; sourceTree = "<group>"; };
 		76D4FDC52C10EBF1008E611F /* Sadly_Night.riv */ = {isa = PBXFileReference; lastKnownFileType = file; path = Sadly_Night.riv; sourceTree = "<group>"; };
 		76D4FDD02C11F17A008E611F /* Opening.riv */ = {isa = PBXFileReference; lastKnownFileType = file; path = Opening.riv; sourceTree = "<group>"; };
+		76D4FDD32C11F313008E611F /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		BB715CBC2BEE6300005481A7 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		C4A47CBC2C0620DA004D6FB8 /* RiveAnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RiveAnimationView.swift; sourceTree = "<group>"; };
 		C4FD0CCC2C110623002CF955 /* SplashArt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashArt.swift; sourceTree = "<group>"; };
@@ -197,6 +199,7 @@
 				2EF02FEA2BE042220023247F /* VMNotificationHandler in Frameworks */,
 				2E68C0A32BFD12BE0002B3B4 /* PostHog in Frameworks */,
 				C4A47CA42C052B4F004D6FB8 /* RiveRuntime in Frameworks */,
+				76D4FDD42C11F313008E611F /* StoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -246,6 +249,7 @@
 		07C14B5F2C07C2C400931DAE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				76D4FDD32C11F313008E611F /* StoreKit.framework */,
 				07C14B602C07C2C400931DAE /* WidgetKit.framework */,
 				07C14B622C07C2C400931DAE /* SwiftUI.framework */,
 			);
@@ -880,7 +884,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1;
+				MARKETING_VERSION = 1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = challenge2.PlanTio;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -918,7 +922,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1;
+				MARKETING_VERSION = 1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = challenge2.PlanTio;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";

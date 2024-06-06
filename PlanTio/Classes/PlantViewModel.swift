@@ -151,8 +151,8 @@ class PlantViewModel: ObservableObject {
     private func scheduleWateringNotifications(for plant: Plant) async throws {
         guard await VMNotificationHandler.shared.authorizationStatus != .denied else { return }
         
-        let wateringTimeMsg = "Hora de regar! 💧"
-        let wateringTimeBody = "\(plant.name) está com sede."
+        let wateringTimeMsg = "Watering tima! 💧"
+        let wateringTimeBody = "\(plant.name) is thirsty."
         
         for index in 0..<plant.timesToWater.count {
             if index < plant.waterNotificationIDs.count {
@@ -169,8 +169,8 @@ class PlantViewModel: ObservableObject {
     private func scheduleSunbathingNotifications(for plant: Plant) async throws {
         guard await VMNotificationHandler.shared.authorizationStatus != .denied else { return }
         
-        let sunbathTimeMsg = "Hora do sol! ☀️"
-        let sunbathTimeBody = "\(plant.name) está precisando de vitamina D!"
+        let sunbathTimeMsg = "Time to sunbathe! ☀️"
+        let sunbathTimeBody = "\(plant.name) needs some vitamin D!"
         
         for index in 0..<plant.timesToSunbathing.count {
             if index < plant.SunNotificationIDs.count {
