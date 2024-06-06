@@ -13,8 +13,11 @@ struct RiveAnimationView: View {
     @StateObject private var secondaryRiveViewModel: RiveViewModel
     @State  var showPrimaryAnimation = true
     @State private var tapCount = 0
+    let openingViewModel: RiveViewModel
 
-    init(primaryFileName: String, secondaryFileName: String, currentDayPeriod: DayPeriod? = nil) {
+    init(primaryFileName: String, secondaryFileName: String, openingViewModel: RiveViewModel, currentDayPeriod: DayPeriod? = nil) {
+       
+        self.openingViewModel = openingViewModel
         let currentHour = Calendar.current.component(.hour, from: .now)
         var currentCalculatedPeriod = DayPeriod.night
         for relevantHour in relevantHours {
@@ -45,40 +48,47 @@ struct RiveAnimationView: View {
 
     var body: some View {
         VStack {
-            RiveViewContainer(viewModel: showPrimaryAnimation ? riveViewModel : secondaryRiveViewModel)
-                .frame(width: 360, height: 136)
-                .onAppear {
-                    setupRive()
-                }
-                .gesture(
-                    TapGesture()
-                        .onEnded {
-                            handlePrimaryAnimationTap()
-                        }
-                )
-                .gesture(
-                    LongPressGesture(minimumDuration: 1.5)
-                        .onChanged { _ in
-                            print("Long press started")
-                            if showPrimaryAnimation {
-                                handleLongPress(isPressing: true)
-                            }
-                        }
-                        .onEnded { _ in
-                            print("Long press ended")
-                            if showPrimaryAnimation {
-                                handleLongPress(isPressing: false)
-                            } else {
-                                withAnimation(.easeInOut(duration: 2.0)) {
-                                    resetPrimaryAnimation()
-                                    showPrimaryAnimation = true
-                                }
-                            }
-                        }
-                )
-        }
-    }
+               // Seu código existente para a nova animação "opening"
+               if !showPrimaryAnimation {
+                   RiveViewContainer(viewModel: openingViewModel)
+                       .frame(width: 100, height: 100)
+                       .opacity(showPrimaryAnimation ? 0 : 1)
+               }
 
+               // Seus códigos existentes...
+               RiveViewContainer(viewModel: showPrimaryAnimation ? riveViewModel : secondaryRiveViewModel)
+                   .frame(width: 360, height: 136)
+                   .onAppear {
+                       setupRive()
+                   }
+                   .gesture(
+                       TapGesture()
+                           .onEnded {
+                               handlePrimaryAnimationTap()
+                           }
+                   )
+                   .gesture(
+                       LongPressGesture(minimumDuration: 1.5)
+                           .onChanged { _ in
+                               print("Long press started")
+                               if showPrimaryAnimation {
+                                   handleLongPress(isPressing: true)
+                               }
+                           }
+                           .onEnded { _ in
+                               print("Long press ended")
+                               if showPrimaryAnimation {
+                                   handleLongPress(isPressing: false)
+                               } else {
+                                   withAnimation(.easeInOut(duration: 2.0)) {
+                                       resetPrimaryAnimation()
+                                       showPrimaryAnimation = true
+                                   }
+                               }
+                           }
+                   )
+           }
+       }
     private func setupRive() {
         riveViewModel.setInput("hover", value: false)
         riveViewModel.setInput("reset", value: false)
@@ -95,12 +105,12 @@ struct RiveAnimationView: View {
 
     private func handleLongPress(isPressing: Bool) {
         if isPressing {
-            withAnimation(.easeInOut(duration: 1.5)) {
+            withAnimation(.easeInOut(duration: 3.5)) {
                 showPrimaryAnimation = false
             }
         } else {
             // Adjust the delay before returning to the primary animation
-            DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
                 withAnimation(.easeInOut(duration: 2.0)) {
                     resetPrimaryAnimation()
                     showPrimaryAnimation = true
@@ -131,6 +141,7 @@ struct RiveViewContainer: UIViewRepresentable {
             riveView.topAnchor.constraint(equalTo: view.topAnchor),
             riveView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
+    
 
         // Carregar e configurar a animação
         viewModel.setView(riveView)
@@ -144,9 +155,10 @@ struct RiveViewContainer: UIViewRepresentable {
 
 #Preview {
     VStack {
-        RiveAnimationView(primaryFileName: "Mix_", secondaryFileName: "Sadly_", currentDayPeriod: .morning)
-        RiveAnimationView(primaryFileName: "Mix_", secondaryFileName: "Sadly_", currentDayPeriod: .afternoon)
-        RiveAnimationView(primaryFileName: "Mix_", secondaryFileName: "Sadly_", currentDayPeriod: .evening)
-        RiveAnimationView(primaryFileName: "Mix_", secondaryFileName: "Sadly_", currentDayPeriod: .night)
+        let openingViewModel = RiveViewModel(fileName: "Opening")
+        RiveAnimationView(primaryFileName: "Mix_", secondaryFileName: "Sadly_", openingViewModel: openingViewModel, currentDayPeriod: .morning)
+        RiveAnimationView(primaryFileName: "Mix_", secondaryFileName: "Sadly_", openingViewModel: openingViewModel, currentDayPeriod: .afternoon)
+        RiveAnimationView(primaryFileName: "Mix_", secondaryFileName: "Sadly_", openingViewModel: openingViewModel, currentDayPeriod: .evening)
+        RiveAnimationView(primaryFileName: "Mix_", secondaryFileName: "Sadly_", openingViewModel: openingViewModel, currentDayPeriod: .night)
     }
 }

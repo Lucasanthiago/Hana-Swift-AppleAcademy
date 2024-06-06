@@ -70,6 +70,8 @@
 		BB715CBD2BEE6300005481A7 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB715CBC2BEE6300005481A7 /* Extensions.swift */; };
 		C4A47CA42C052B4F004D6FB8 /* RiveRuntime in Frameworks */ = {isa = PBXBuildFile; productRef = C4A47CA32C052B4F004D6FB8 /* RiveRuntime */; };
 		C4A47CBD2C0620DA004D6FB8 /* RiveAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A47CBC2C0620DA004D6FB8 /* RiveAnimationView.swift */; };
+		C4FD0CCD2C110623002CF955 /* SplashArt.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4FD0CCC2C110623002CF955 /* SplashArt.swift */; };
+		C4FD0CED2C115A96002CF955 /* Opening.riv in Resources */ = {isa = PBXBuildFile; fileRef = C4FD0CEB2C115A96002CF955 /* Opening.riv */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -174,6 +176,8 @@
 		76D4FDC52C10EBF1008E611F /* Sadly_Night.riv */ = {isa = PBXFileReference; lastKnownFileType = file; path = Sadly_Night.riv; sourceTree = "<group>"; };
 		BB715CBC2BEE6300005481A7 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		C4A47CBC2C0620DA004D6FB8 /* RiveAnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RiveAnimationView.swift; sourceTree = "<group>"; };
+		C4FD0CCC2C110623002CF955 /* SplashArt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashArt.swift; sourceTree = "<group>"; };
+		C4FD0CEB2C115A96002CF955 /* Opening.riv */ = {isa = PBXFileReference; lastKnownFileType = file; path = Opening.riv; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -338,6 +342,7 @@
 			isa = PBXGroup;
 			children = (
 				76BA2A7E2BE016720038E2AD /* TabBarView.swift */,
+				C4FD0CCC2C110623002CF955 /* SplashArt.swift */,
 				76BA2A562BE0162A0038E2AD /* ContentView.swift */,
 				76D4FD962C10DF57008E611F /* MaxLimitReachedView.swift */,
 				072CA12E2BEAC3150085CB94 /* SwiftUIView.swift */,
@@ -347,6 +352,7 @@
 				0738DF882C10E70100E39A3F /* UpgradeView.swift */,
 				76BA2A882BE01BDE0038E2AD /* PlantDetailView.swift */,
 				76BA2A802BE01B230038E2AD /* AddPlantView.swift */,
+				C4FD0CEC2C115A96002CF955 /* Opening */,
 				072CA1302BEC288A0085CB94 /* Components */,
 				769580D02BEC10D800FDB377 /* InfoPlant.swift */,
 				2E68C0A62C0E63540002B3B4 /* Store.swift */,
@@ -392,6 +398,15 @@
 				76D4FDC52C10EBF1008E611F /* Sadly_Night.riv */,
 			);
 			path = NightDay;
+			sourceTree = "<group>";
+		};
+		C4FD0CEC2C115A96002CF955 /* Opening */ = {
+			isa = PBXGroup;
+			children = (
+				C4FD0CEB2C115A96002CF955 /* Opening.riv */,
+			);
+			name = Opening;
+			path = ../../../../Desktop/Opening;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -540,6 +555,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C4FD0CED2C115A96002CF955 /* Opening.riv in Resources */,
 				76D4FDCF2C10EBF1008E611F /* Sadly_Night.riv in Resources */,
 				76BA2A5C2BE0162B0038E2AD /* Preview Assets.xcassets in Resources */,
 				76D4FDCE2C10EBF1008E611F /* Sadly_Night in Resources */,
@@ -621,6 +637,7 @@
 				76D4FD972C10DF57008E611F /* MaxLimitReachedView.swift in Sources */,
 				76BA2A552BE0162A0038E2AD /* PlanTioApp.swift in Sources */,
 				769580D12BEC10D800FDB377 /* InfoPlant.swift in Sources */,
+				C4FD0CCD2C110623002CF955 /* SplashArt.swift in Sources */,
 				76BA2A8B2BE01C100038E2AD /* WateringView.swift in Sources */,
 				0738DF722C10DCB200E39A3F /* HanaWidget.swift in Sources */,
 			);

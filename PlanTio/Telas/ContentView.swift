@@ -18,10 +18,12 @@ struct ContentView: View {
     var body: some View {
         NavigationStack {
             VStack{
+                
                 TimelineView(.everyMinute) { _ in
-                    RiveAnimationView(primaryFileName: "Mix_", secondaryFileName: "Sadly_")
+                    let openingViewModel = RiveViewModel(fileName: "Opening")
+                    RiveAnimationView(primaryFileName: "Mix_", secondaryFileName: "Sadly_", openingViewModel: openingViewModel)
                 }
-
+                .padding()
                 List {
                     if filteredPlants.isEmpty {
                         noPlants
