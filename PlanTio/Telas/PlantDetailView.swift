@@ -19,25 +19,13 @@ struct PlantDetailView: View {
                 VStack {
                     HStack{
                         TextField("Name", text: $plant.name)
-                            .padding(.top, -20)
+                            .padding(.top, 0)
                             .font(.custom("Quicksand", size: 22, relativeTo: .title2))
                             .bold()
                             .frame(maxWidth: .infinity)
                             .padding()
                             .disabled(isEditing == false)
-                        Button(action: {}, label: {
-                            HStack {
-                                Image(systemName:"arrow.counterclockwise.circle.fill")
-                                Text("Care History")
-                                    .font(.custom("Quicksand", size: 17, relativeTo: .body))
-                                    .fontWeight(.bold)
-                            }
-                            .foregroundColor(Color(.white))
-                            .frame(width: 150,height: 38)
-                            .background(Color("PinkButton"))
-                            .cornerRadius(13)
-                            .padding()
-                        })
+                       
                     }
                     Divider()
                     HStack {
