@@ -1,10 +1,3 @@
-//
-//  PlanTioApp.swift
-//  PlanTio
-//
-//  Created by Lucas Santos on 29/04/24.
-//
-
 import SwiftUI
 import VMNotificationHandler
 import PostHog
@@ -13,39 +6,32 @@ import PostHog
 struct PlanTioApp: App {
     @StateObject private var store = Store()
     @StateObject private var viewModel = PlantViewModel()
+    @State private var showSplashArt = true
+
     init(){
         let POSTHOG_API_KEY = "***CHAVE-REMOVIDA***"
         let POSTHOG_HOST = "https://us.i.posthog.com"
         
         let config = PostHogConfig(apiKey: POSTHOG_API_KEY, host: POSTHOG_HOST)
         PostHogSDK.shared.setup(config)
-        
     }
-    var body : some Scene {
-        WindowGroup{
-            TabBarView()
-                .environmentObject(store)
-                .environmentObject(viewModel)
+
+    var body: some Scene {
+        WindowGroup {
+            if showSplashArt {
+                SplashArtView()
+                    .onAppear {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
+                            withAnimation {
+                                showSplashArt = false
+                            }
+                        }
+                    }
+            } else {
+                TabBarView()
+                    .environmentObject(store)
+                    .environmentObject(viewModel)
+            }
         }
-        
     }
-//    var body: some Scene {
-//        WindowGroup {
-//            //            TabBarView()
-//            WidgetPlantView(imageHana: "HanaSpring", text: "Time to water your plants!", sky: "MorningClouds")
-//                .frame(width: 338, height: 158)
-//            
-//            WidgetPlantView(imageHana: "HanaSpring", text: "Time to water your plants!", sky: "AfternoonSky")
-//                .frame(width: 338, height: 158)
-//            
-//            WidgetPlantView(imageHana: "HanaSpring", text: "Have you checked your plants today?", sky: "EveningClouds")
-//                .frame(width: 338, height: 158)
-//            
-//            WidgetPlantView(imageHana: "HanaSpringSleeping", text: "See you again tomorrow!", sky: "NightSky")
-//                .frame(width: 338, height: 158)
-//        }
-//    }
-    
-    
-    //testando commit
 }
