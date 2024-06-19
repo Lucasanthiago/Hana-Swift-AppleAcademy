@@ -2,96 +2,6 @@ import SwiftUI
 import PostHog
 import RiveRuntime
 
-//struct Host<Content: View>: UIViewControllerRepresentable {
-//
-//    let contentView: Content
-//    @State var vc = UINavigationController()
-//    func makeUIViewController(context: Context) -> UIViewController {
-//
-//      print("oi?")
-////        vc =
-//        let n = UIHostingController(rootView: contentView)
-//        vc.addChild(n)
-//        vc.navigationBar.topItem?.title = "oi?!"
-//        vc.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.blue]
-//        vc.navigationItem.largeTitleDisplayMode = .always
-////        vc.title = "oi"
-//        vc.navigationBar.prefersLargeTitles = true
-////        vc.navigationBar.barTintColor = .green
-//        vc.isNavigationBarHidden = false
-//        vc.setNavigationBarHidden(false, animated: false)
-//        let l = UILabel()
-//        l.text = "abcd"
-//        l.sizeToFit()
-//        vc.navigationBar.barTintColor = .red
-//        vc.navigationItem.titleView = l
-//        let color = Color.green
-//        let size = 24.0
-//        let fontName = "Arial"
-//        var uiFont: UIFont = UIFont(name: fontName, size: size ) ?? UIFont.systemFont(ofSize: 12)
-//        let uiColor = UIColor(color)
-//
-//        var paragraphStyle = NSMutableParagraphStyle()
-//        paragraphStyle.alignment = .left
-//        uiFont = UIFont(descriptor: uiFont.fontDescriptor.withSymbolicTraits(.traitBold)!, size: size)
-//
-//        UINavigationBar.appearance().titleTextAttributes = [
-//            .paragraphStyle: paragraphStyle
-//            //            .font: uiFont, .foregroundColor: uiColor
-//        ]
-//        UINavigationBar.appearance().largeTitleTextAttributes = [.font: uiFont, .foregroundColor: uiColor ]
-//        return vc
-//    }
-//
-//    func updateUIViewController(_ uiViewController: UIViewController, context: Context) {
-//
-//    }
-//}
-extension View {
-    
-    func navigationBarTitleTextFont(fontName: String, size: CGFloat, color: Color) -> some View {
-        var uiFont: UIFont = UIFont(name: fontName, size: size ) ?? UIFont.systemFont(ofSize: 12)
-        let uiColor = UIColor(color)
-        
-        //        var paragraphStyle = NSMutableParagraphStyle()
-        //        paragraphStyle.alignment = .left
-        uiFont = UIFont(descriptor: uiFont.fontDescriptor.withSymbolicTraits(.traitBold)!, size: size)
-        
-        UINavigationBar.appearance().titleTextAttributes = [
-            //            .paragraphStyle: paragraphStyle
-            .font: uiFont, .foregroundColor: UIColor.clear
-        ]
-        UINavigationBar.appearance().largeTitleTextAttributes = [.font: uiFont, .foregroundColor: uiColor ]
-        ////        UINavigationBar.appearance().prefersLargeTitles = false
-        //        let titleLabel = UILabel()
-        ////                titleLabel.textColor = color
-        //                titleLabel.text = "abcd"
-        //                titleLabel.textAlignment = .left
-        //                titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        //
-        //        let top = UIApplication.shared.topViewController()!
-        //            top.navigationItem.titleView = titleLabel
-        //        let l = UILabel()
-        //        l.text = "a"
-        //        print(UIApplication.shared.topViewController()!.parent)
-        //        UIApplication.shared.topViewController()!.presentedViewController!.navigationController!.navigationBar.barTintColor = .red
-        //                guard let containerView = UIApplication.shared.topViewController()!.navigationItem.titleView!.superview else {
-        //                    print("a")
-        //                    return self }
-        //
-        //                // NOTE: This always seems to be 0. Huh??
-        //                let leftBarItemWidth = UIApplication.shared.topViewController()!.navigationItem.leftBarButtonItems!.reduce(0, { $0 + $1.width })
-        //
-        //                NSLayoutConstraint.activate([
-        //                    titleLabel.topAnchor.constraint(equalTo: containerView.topAnchor),
-        //                    titleLabel.bottomAnchor.constraint(equalTo: containerView.bottomAnchor),
-        //                    titleLabel.leftAnchor.constraint(equalTo: containerView.leftAnchor,
-        //                                                     constant: (leftBarItemWidth ?? 0) + 10),
-        //                    titleLabel.rightAnchor.constraint(equalTo: containerView.rightAnchor)
-        //                ])
-        return self
-    }
-}
 
 struct ContentView: View {
     
@@ -270,38 +180,24 @@ struct UpgradeButton: View {
 }
 
 
+extension View {
+    
+    func navigationBarTitleTextFont(fontName: String, size: CGFloat, color: Color) -> some View {
+        var uiFont: UIFont = UIFont(name: fontName, size: size ) ?? UIFont.systemFont(ofSize: 12)
+        let uiColor = UIColor(color)
+        uiFont = UIFont(descriptor: uiFont.fontDescriptor.withSymbolicTraits(.traitBold)!, size: size)
+        
+        UINavigationBar.appearance().titleTextAttributes = [
+            .font: uiFont, .foregroundColor: UIColor.clear
+        ]
+        UINavigationBar.appearance().largeTitleTextAttributes = [.font: uiFont, .foregroundColor: uiColor ]
+        return self
+    }
+}
+
+
+
 #Preview {
     UpgradeButton(showingUpgrade: .constant(true))
-    //        .scaleEffect(3)
 }
-//extension UIApplication {
-//    func topViewController() -> UIViewController? {
-//        var topViewController: UIViewController? = nil
-//        if #available(iOS 13, *) {
-//            for scene in connectedScenes {
-//                if let windowScene = scene as? UIWindowScene {
-//                    for window in windowScene.windows {
-//                        if window.isKeyWindow {
-//                            topViewController = window.rootViewController
-//                        }
-//                    }
-//                }
-//            }
-//        } else {
-//            topViewController = keyWindow?.rootViewController
-//        }
-//        while true {
-//            if let presented = topViewController?.presentedViewController {
-//                topViewController = presented
-//            } else if let navController = topViewController as? UINavigationController {
-//                topViewController = navController.topViewController
-//            } else if let tabBarController = topViewController as? UITabBarController {
-//                topViewController = tabBarController.selectedViewController
-//            } else {
-//                // Handle any other third party container in `else if` if required
-//                break
-//            }
-//        }
-//        return topViewController
-//    }
-//}
+
