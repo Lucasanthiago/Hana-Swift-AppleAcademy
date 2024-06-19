@@ -14,7 +14,6 @@ struct WateringView: View {
                     wateringList
                 }
             }
-            .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always))
             .font(.custom("Quicksand", size: 17, relativeTo: .body))
             .listStyle(PlainListStyle())
             .background(Color("Background"))
