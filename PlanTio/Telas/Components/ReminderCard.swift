@@ -8,7 +8,6 @@ struct ReminderCard<Content: View>: View {
     var title: String
     var time: Date
     var careType: String
-    var checkColor: Color
     var toggleColor: Color
     var alarmType: AlarmType
     @State var isToggled = true
@@ -48,25 +47,7 @@ struct ReminderCard<Content: View>: View {
                         PostHogSDK.shared.capture("ToggleUsed")
                     }
                 }
-                Divider()
-                HStack {
-                    Text(careType)
-                        .font(.custom("Quicksand", size: 22, relativeTo: .title2))
-                        .bold()
-                    
-                    Spacer()
-                    
-                    Button(action: {
-                        isDone.toggle()
-                        PostHogSDK.shared.capture("CheckUsed")
-                    }) {
-                        Image(systemName: isDone ? "checkmark.circle.fill" : "circle")
-                            .font(.title)
-                            .foregroundColor(checkColor)
-                    }
-                    .buttonStyle(PlainButtonStyle())
-                }
-                .padding(.top)
+    
             }
             .padding(30)
             .background(

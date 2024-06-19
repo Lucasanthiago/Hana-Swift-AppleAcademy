@@ -10,7 +10,6 @@ struct AlarmView: View {
             ReminderCard(content: {
             }, plant: plant, viewModel: viewModel, title: "Reminder", time: type == .watering ? plant.wateringTime : plant.sunTime,
                           careType: type == .watering ? "Watered" : "Sunbathed",
-                          checkColor: type == .watering ? Color("Water") : Color("Sun"),
                           toggleColor: type == .watering ? Color("Water") : Color("Sun"),
                           alarmType: type)
         }
