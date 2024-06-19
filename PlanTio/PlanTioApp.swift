@@ -28,7 +28,9 @@ struct PlanTioApp: App {
                         }
                     }
             } else {
+//                Host(contentView:
                 TabBarView()
+//                     )
                     .environmentObject(store)
                     .environmentObject(viewModel)
             }

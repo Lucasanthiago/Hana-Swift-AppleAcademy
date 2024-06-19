@@ -27,7 +27,7 @@ struct RiveAnimationView: View {
         }
         let primary = primaryFileName + (currentDayPeriod ?? currentCalculatedPeriod).rawValue
         let secondary = secondaryFileName + (currentDayPeriod ?? currentCalculatedPeriod).rawValue
-        print(primary, secondary)
+//        print(primary, secondary)
         _riveViewModel = StateObject(wrappedValue: RiveViewModel(fileName: primary))
         _secondaryRiveViewModel = StateObject(wrappedValue: RiveViewModel(fileName: secondary))
     }

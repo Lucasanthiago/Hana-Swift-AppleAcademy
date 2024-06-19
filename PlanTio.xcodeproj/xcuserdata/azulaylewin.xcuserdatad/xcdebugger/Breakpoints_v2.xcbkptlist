@@ -32,36 +32,6 @@
             endingLineNumber = "27"
             landmarkName = "seasons"
             landmarkType = "24">
-            <Locations>
-               <Location
-                  uuid = "64E143C4-409C-41E8-9A60-A84C3FE08756 - 44b644f4bb2fc758"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "PlanTio.Provider.init() -&gt; PlanTio.Provider"
-                  moduleName = "PlanTio"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/azulaylewin/Desktop/PlanTio/HanaWidget/HanaWidget.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "45"
-                  endingLineNumber = "45">
-               </Location>
-               <Location
-                  uuid = "64E143C4-409C-41E8-9A60-A84C3FE08756 - 44b644f4bb2fc758"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "PlanTio.Provider.init() -&gt; PlanTio.Provider"
-                  moduleName = "PlanTio"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/azulaylewin/Desktop/PlanTio/HanaWidget/HanaWidget.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "45"
-                  endingLineNumber = "45">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
