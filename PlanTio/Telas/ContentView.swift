@@ -4,7 +4,7 @@ import RiveRuntime
 
 
 struct ContentView: View {
-    
+    @EnvironmentObject var store: Store
     @State private var navigateToAddPlant = false
     @ObservedObject var viewModel: PlantViewModel
     @State private var showingAddPlant = false
@@ -56,17 +56,29 @@ struct ContentView: View {
             .navigationBarItems(
                 trailing:
                     HStack{
-                        if !hasUpgraded {
-                            UpgradeButton(showingUpgrade: $showingUpgrade)
+                        if viewModel.maxPlantCount == viewModel.globalDefaultPlantCount {
+                            if !hasUpgraded {
+                                UpgradeButton(showingUpgrade: $showingUpgrade)
+                            }
+                            else {
+                                
+                            }
+                            
                         }
                         
                         Button(action: {
-                            if viewModel.plants.count < viewModel.maxPlantCount {
+                            print("globalStore.hasPurchasedHanaPlus:", store.hasPurchasedHanaPlus)
+                            
+                            if viewModel.maxPlantCountNotReached { // Se não atigi limite, tudo bem
                                 showingAddPlant = true
-                            } else if viewModel.maxPlantCount == 5 {
-                                navigateToLimitReached = true
-                            } else if viewModel.plants.count >= 17 {
-                                navigateToMaxLimitReached = true
+                            } else {
+                                if store.hasPurchasedHanaPlus { // se já comprei, o limite geral foi atingido
+                                    navigateToMaxLimitReached = true
+                                } else { // Se não compre, compra
+                                    navigateToLimitReached = true
+                                }
+                                
+                                
                             }
                         }) {
                             Image(systemName: "plus.circle.fill")
@@ -91,7 +103,7 @@ struct ContentView: View {
                 AddPlantView(viewModel: viewModel)
             }
             .sheet(isPresented: $navigateToLimitReached) {
-                LimitReachedView(viewModel: viewModel, hasUpgraded: $hasUpgraded)
+                LimitReachedView(viewModel: viewModel)
             }
             .sheet(isPresented: $navigateToMaxLimitReached) {
                 MaxLimitReachedView()
@@ -128,13 +140,14 @@ struct ContentView: View {
 
 #Preview {
     //    Host(contentView:
-    ContentView(viewModel: PlantViewModel())
+    ContentView(viewModel: PlantViewModel.instance)
     //    )
         .ignoresSafeArea()
 }
 
 
 struct UpgradeButton: View {
+
     @Binding var showingUpgrade: Bool
     @State private var appeared = false
     var body: some View {

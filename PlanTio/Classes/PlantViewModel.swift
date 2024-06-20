@@ -11,16 +11,30 @@ import VMNotificationHandler
 import PostHog
 
 class PlantViewModel: ObservableObject {
+    static let instance = PlantViewModel(store: Store.instance)
+    
+    
+    
     @Published var plants: [Plant] = []
     @Published var commonNames: [String] = []
-    @Published var maxPlantCount = 5
+    @Published var store:Store
+    var maxPlantCount:Int {store.hasPurchasedHanaPlus ? globalMaxPlantCount : globalDefaultPlantCount}
+    
+    var maxPlantCountNotReached:Bool { plants.count < maxPlantCount }
+
+    
+    let globalDefaultPlantCount = 5
+    let globalMaxPlantCount = 17
+    
+    
     @AppStorage("plantData") var plantData: Data = Data() {
         didSet {
             plants = (try? JSONDecoder().decode([Plant].self, from: plantData)) ?? []
         }
     }
 
-    init() {
+    private init(store:Store) {
+        self.store = store
         plants = (try? JSONDecoder().decode([Plant].self, from: plantData)) ?? []
         loadCommonNames()
     }
@@ -214,8 +228,6 @@ class PlantViewModel: ObservableObject {
             print(plants.flatMap { $0.common })
         }
     }
-    func updateMaxPlantCount(to newLimit: Int) {
-            maxPlantCount = newLimit
-        }
-    }
+
+}
 

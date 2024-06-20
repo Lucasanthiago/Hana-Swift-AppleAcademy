@@ -19,18 +19,19 @@ public enum StoreError: Error {
 
 
 class Store: NSObject, ObservableObject  {
+    static let instance = Store()
     
 
     @Published private(set) var products: [Product]
     @Published private(set) var nonConsumableProducts: [Product] = []
     @Published private(set) var subscriptionGroupStatus: RenewalState?
-    @Published var hasPurchasedHanaPlus = false
+    @AppStorage("hasPurchasedHanaPlus") var hasPurchasedHanaPlus: Bool = false
     
     
     var updateListenerTask: Task<Void, Error>? = nil
 
 
-    override init() {
+    private override init() {
         //Initialize empty products, and then do a product request asynchronously to fill them in.
         products = []
         
