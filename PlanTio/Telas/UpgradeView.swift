@@ -112,12 +112,7 @@ struct UpgradeView: View {
                                     // Your restore purchase action here
                                     Task{
                                         await store.restorePurchases()
-                                        if store.hasPurchasedHanaPlus == true {
-                                            viewModel.updateMaxPlantCount(to: 17)
-                                            
-                                        }
-                        
-                                        
+                                        store.hasPurchasedHanaPlus = true
                                     }
                                     
                                 }, label: {
@@ -148,7 +143,6 @@ struct UpgradeView: View {
             let transaction = try await store.purchase(product)
             if let transaction = transaction {
                 print("Purchased successfully: \(transaction)")
-                viewModel.updateMaxPlantCount(to: 17) // Atualiza o limite para 17 após a compra
                 hasUpgraded = true // Atualiza o estado de upgrade
                 presentationMode.wrappedValue.dismiss() // Fecha a sheet após a compra
             } else {
@@ -161,7 +155,7 @@ struct UpgradeView: View {
 }
 
 #Preview {
-    UpgradeView(viewModel: PlantViewModel(), hasUpgraded: .constant(false))
-        .environmentObject(Store())
-        .environmentObject(PlantViewModel())
+    UpgradeView(viewModel: PlantViewModel.instance, hasUpgraded: .constant(false))
+        .environmentObject(Store.instance)
+        .environmentObject(PlantViewModel.instance)
 }

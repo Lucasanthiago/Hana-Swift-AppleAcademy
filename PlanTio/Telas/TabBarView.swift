@@ -9,7 +9,7 @@ import SwiftUI
 import VMNotificationHandler
 
 struct TabBarView: View {
-    @StateObject var viewModel = PlantViewModel()
+    @StateObject var viewModel = PlantViewModel.instance
 
     var body: some View {
         TabView {

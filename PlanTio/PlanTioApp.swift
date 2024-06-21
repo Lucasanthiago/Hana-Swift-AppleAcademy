@@ -4,8 +4,8 @@ import PostHog
 
 @main
 struct PlanTioApp: App {
-    @StateObject private var store = Store()
-    @StateObject private var viewModel = PlantViewModel()
+    @StateObject private var store = Store.instance
+    @StateObject private var viewModel = PlantViewModel.instance
     @State private var showSplashArt = true
 
     init(){
