@@ -17,20 +17,25 @@ struct TabBarView: View {
                 .tabItem {
                     Label("My Plants", image: "hana.flower.fill")
                 }
+                .toolbarBackground(.ultraThinMaterial, for: .tabBar)
             
             WateringView(viewModel: viewModel)
                 .tabItem {
                     Label("Watering", systemImage: "drop.circle.fill")
                 }
+                .toolbarBackground(.ultraThinMaterial, for: .tabBar)
             
             SunlightView(viewModel: viewModel)
                 .tabItem {
                     Label("Sunbathing", systemImage: "sun.horizon.fill")
                 }
+                .toolbarBackground(.ultraThinMaterial, for: .tabBar)
         }
         .onAppear{
             viewModel.getCommons()
+            
         }
+        
 //        .task{
 //            
 //            await VMNotificationHandler.shared.requestAuthorization()

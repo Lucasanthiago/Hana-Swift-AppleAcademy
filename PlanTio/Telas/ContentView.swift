@@ -51,7 +51,8 @@ struct ContentView: View {
             .font(.custom("Quicksand", size: 17, relativeTo: .body))
             .listStyle(.plain)
             .navigationBarTitleTextFont(fontName: "Quicksand", size: 34, color: .titleText)
-            .background(Color.background)
+            .background(
+                Color.background            )
             .navigationBarTitle("My Plants")
             .navigationBarItems(
                 trailing:
