@@ -1,4 +1,5 @@
 import SwiftUI
+import PhotosUI
 import PostHog
 
 struct PlantDetailView: View {
@@ -10,14 +11,14 @@ struct PlantDetailView: View {
     var onSave: (() -> Void)? // Callback for save action
     
     var body: some View {
-        ZStack{
+        ZStack {
             VStack {
-                FrameImage(imageData: $plant.imageData, aspectRatio: 21/9)
+                FrameImage(imageData: $plant.imageData, plantType: $plant.type, aspectRatio: 10)
                     .frame(maxWidth: .infinity, alignment: .center)
                     .disabled(isEditing == false)
                 
                 VStack {
-                    HStack{
+                    HStack {
                         TextField("Name", text: $plant.name)
                             .padding(.top, 0)
                             .font(.custom("Quicksand", size: 22, relativeTo: .title2))
@@ -25,39 +26,15 @@ struct PlantDetailView: View {
                             .frame(maxWidth: .infinity)
                             .padding()
                             .disabled(isEditing == false)
-                       
                     }
-                    Divider()
                     HStack {
-                        Text("Species")
-                            .foregroundColor(.gray)
-                            .font(.custom("Quicksand", size: 17, relativeTo: .body))
-                            .fontWeight(.medium)
-                        Spacer()
-                        Picker("Type", selection: $plant.type) {
-                            ForEach(viewModel.commonNames + ["Other"], id: \.self) { commonName in
-                                Text(commonName).tag(commonName)
-                            }
-                        }
-                        .disabled(isEditing == false)
-                        .pickerStyle(MenuPickerStyle())
-                    }
-                    .padding(.horizontal, 16)
-                    .listStyle(PlainListStyle())
-                    .padding(.top, 5)
-                    
-                    if plant.type.starts(with: "Other") {
-                        TextField("Enter custom type", text: $customType)
+                        TextField("Type", text: $plant.type)
+                            .padding(.top, 0)
+                            .font(.custom("Quicksand", size: 22, relativeTo: .title2))
+                            .bold()
+                            .frame(maxWidth: .infinity)
                             .padding()
-                            .background(Color(.systemGray6))
-                            .cornerRadius(8)
-                            .padding(.horizontal, 16)
                             .disabled(isEditing == false)
-                            .onChange(of: customType) { newValue in
-                                if plant.type.starts(with: "Other:") {
-                                    plant.type = "Other: \(newValue)"
-                                }
-                            }
                     }
                     
                     ScrollView {
@@ -74,14 +51,14 @@ struct PlantDetailView: View {
                             .padding(.horizontal)
                             
                             CareInfos(content: {
-                                HStack (alignment: .top) {
-                                    if plant.idealLight.isEmpty == false{
+                                HStack(alignment: .top) {
+                                    if plant.idealLight.isEmpty == false {
                                         IdealAndToleratedLight(content: {
                                         }, title: "Ideal light", icon: "sun.min.fill", iconColor: (Color("NormalText")), description: plant.idealLight)
                                         .padding()
                                         .fixedSize(horizontal: false, vertical: true)
                                     }
-                                    if plant.idealLight.isEmpty == false{
+                                    if plant.toleratedLight.isEmpty == false {
                                         IdealAndToleratedLight(content: {
                                         }, title: "Tolerated light", icon: "sun.max.fill", iconColor: (Color("NormalText")), description: plant.toleratedLight)
                                         .padding(.horizontal, 18)
@@ -98,43 +75,31 @@ struct PlantDetailView: View {
                     }
                 }
             }
-            VStack{
+            VStack {
                 Spacer()
-                HStack{
+                HStack {
                     Spacer()
                     if saveMode == false {
                         Button(action: {
                             isEditing.toggle()
-                            if plant.type == "Other" {
-                                plant.type = "Other: \(customType)"
-                                
-                            }
                         }) {
-                            Image( isEditing ? "Done" : "Edit")
+                            Image(isEditing ? "Done" : "Edit")
                                 .shadow(color: .shadow.opacity(0.3), radius: 5, x: 0, y: 4)
                         }
                     }
                 }
-            }.padding()
+            }
+            .padding()
         }
         .toolbar(.hidden, for: .tabBar)
         .safeAreaInset(edge: .bottom, content: {
             if saveMode == true {
                 Button(action: {
                     PostHogSDK.shared.capture("Newplant")
-                    if plant.type == "Other" {
-                        plant.type = "Other: \(customType)"
-                    }
                     saveMode = false
                     onSave?()
                     isEditing = false
-                    if plant.type == "Other: \(customType)" {
-                        print("eu")
-                    } else{
-                        randomInfos()
-
-                    }
-                        
+                    randomInfos()
                     addPlant()
                 }, label: {
                     Text("Save")
@@ -223,3 +188,37 @@ struct PlantDetailView: View {
     }
 }
 
+
+
+
+
+// Preview
+struct PlantDetailView_Previews: PreviewProvider {
+    static var previews: some View {
+        let viewModel = PlantViewModel.instance
+        let plant = Plant(
+            name: "Example Plant",
+            type: "Fern",
+            wateringTime: Date(),
+            sunTime: Date(),
+            watered: false,
+            sunbathed: false,
+            imageData: Data(),
+            wateringInstructions: "Water regularly.",
+            idealLight: "Bright light",
+            toleratedLight: "Low light"
+        )
+        
+        NavigationView {
+            PlantDetailView(
+                viewModel: viewModel,
+                isEditing: true,
+                plant: .constant(plant),
+                saveMode: true,
+                onSave: {
+                    print("Plant saved!")
+                }
+            )
+        }
+    }
+}
