@@ -103,21 +103,20 @@
 /* Begin PBXCopyFilesBuildPhase section */
 		07C14B732C07C2C600931DAE /* Embed Foundation Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 8;
+			buildActionMask = 12;
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
 				0738DF6D2C0E3DF500E39A3F /* HanaWidgetExtension.appex in Embed Foundation Extensions */,
 			);
 			name = "Embed Foundation Extensions";
-			runOnlyForDeploymentPostprocessing = 1;
+			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		072CA12E2BEAC3150085CB94 /* SwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIView.swift; sourceTree = "<group>"; };
 		072CA1332BEC28CC0085CB94 /* CustomContentUnavailableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomContentUnavailableView.swift; sourceTree = "<group>"; };
-		072CA1352BEEA64C0085CB94 /* CardsReminders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsReminders.swift; sourceTree = "<group>"; };
 		0738DF602C0E3DF400E39A3F /* HanaWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = HanaWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		0738DF642C0E3DF400E39A3F /* HanaWidgetBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HanaWidgetBundle.swift; sourceTree = "<group>"; };
 		0738DF662C0E3DF400E39A3F /* HanaWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HanaWidget.swift; sourceTree = "<group>"; };
@@ -269,7 +268,6 @@
 		769580DC2BF288F400FDB377 /* Recovered References */ = {
 			isa = PBXGroup;
 			children = (
-				072CA1352BEEA64C0085CB94 /* CardsReminders.swift */,
 			);
 			name = "Recovered References";
 			sourceTree = "<group>";
@@ -534,6 +532,7 @@
 				2EF02FE82BE042220023247F /* XCRemoteSwiftPackageReference "VMNotificationHandler" */,
 				2E68C0A12BFD11B10002B3B4 /* XCRemoteSwiftPackageReference "posthog-ios" */,
 				C4A47C912C05288E004D6FB8 /* XCRemoteSwiftPackageReference "rive-ios" */,
+				760DA37D2C274A6700D1E353 /* XCRemoteSwiftPackageReference "aiXplainKit" */,
 			);
 			productRefGroup = 76BA2A522BE0162A0038E2AD /* Products */;
 			projectDirPath = "";
@@ -888,7 +887,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.2;
+				MARKETING_VERSION = 1.3;
 				PRODUCT_BUNDLE_IDENTIFIER = challenge2.PlanTio;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -926,7 +925,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.2;
+				MARKETING_VERSION = 1.3;
 				PRODUCT_BUNDLE_IDENTIFIER = challenge2.PlanTio;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -1080,6 +1079,14 @@
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 1.2.0;
+			};
+		};
+		760DA37D2C274A6700D1E353 /* XCRemoteSwiftPackageReference "aiXplainKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/aixplain/aiXplainKit";
+			requirement = {
+				branch = main;
+				kind = branch;
 			};
 		};
 		C4A47C912C05288E004D6FB8 /* XCRemoteSwiftPackageReference "rive-ios" */ = {

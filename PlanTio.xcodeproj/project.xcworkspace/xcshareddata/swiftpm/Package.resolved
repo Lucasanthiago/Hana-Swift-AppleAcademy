@@ -1,6 +1,15 @@
 {
-  "originHash" : "b239dd0bb65df0afdca7499ab9485d20865a69413f46727b5b8b729282b1688d",
+  "originHash" : "6f5fb3b735f146b29bfbfe1c1b775e638b3f067816524bd266a02ea696e1d947",
   "pins" : [
+    {
+      "identity" : "aixplainkit",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/aixplain/aiXplainKit",
+      "state" : {
+        "branch" : "main",
+        "revision" : "64a294ba688e88e62a4728d78129da4ce055bf00"
+      }
+    },
     {
       "identity" : "posthog-ios",
       "kind" : "remoteSourceControl",
