@@ -143,8 +143,7 @@ struct LimitReachedView: View {
         do {
             let transaction = try await store.purchase(product)
             if let transaction = transaction {
-                print("Purchased successfully: \(transaction)")
-                
+                print("Purchased successfully: \(transaction)")                
                 store.hasPurchasedHanaPlus = true// Atualiza o limite para 17 após a compra
                 presentationMode.wrappedValue.dismiss() // Fecha a sheet após a compra
             } else {
