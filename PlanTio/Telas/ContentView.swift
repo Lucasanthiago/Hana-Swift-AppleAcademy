@@ -3,7 +3,9 @@ import PostHog
 import RiveRuntime
 
 
+
 struct ContentView: View {
+    
     @EnvironmentObject var store: Store
     @State private var navigateToAddPlant = false
     @ObservedObject var viewModel: PlantViewModel
@@ -15,103 +17,133 @@ struct ContentView: View {
     @State private var showingUpgrade = false
     @State private var hasUpgraded = false
     
+    
     var filteredPlants: [Plant] { viewModel.fiteredPlants(by: searchText) }
     
     var body: some View {
         
+        
         NavigationStack {
-            List {
-                TimelineView(.everyMinute) { _ in
-                    let openingViewModel = RiveViewModel(fileName: "Opening")
-                    RiveAnimationView(primaryFileName: "Mix_", secondaryFileName: "Sadly_", openingViewModel: openingViewModel)
-                }
-                .listRowBackground(Color.clear)
-                .listRowSeparator(.hidden)
-                
-                if filteredPlants.isEmpty {
-                    noPlants
-                } else {
-                    ForEach(filteredPlants) { plant in
-                        ZStack{
-                            ListPlantCard(content: {}, plantName: plant.name, plantSpecies: plant.type)
-                            
-                            NavigationLink(value: plant) {
-                                EmptyView()
-                            }
-                            .opacity(0.0)
-                            .contentShape(Rectangle())
-                        }
+                List {
+                    TimelineView(.everyMinute) { _ in
+                        let openingViewModel = RiveViewModel(fileName: "Opening")
+                        RiveAnimationView(primaryFileName: "Mix_", secondaryFileName: "Sadly_", openingViewModel: openingViewModel)
                     }
-                    .onDelete(perform: viewModel.removePlant(at:))
                     .listRowBackground(Color.clear)
                     .listRowSeparator(.hidden)
-                }
-            }
-            .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .automatic))
-            .font(.custom("Quicksand", size: 17, relativeTo: .body))
-            .listStyle(.plain)
-            .navigationBarTitleTextFont(fontName: "Quicksand", size: 34, color: .titleText)
-            .background(Color.background)
-            .navigationBarTitle("My Plants")
-            .navigationBarItems(
-                trailing:
-                    HStack{
-                        if viewModel.maxPlantCount == viewModel.globalDefaultPlantCount {
-                            if !hasUpgraded {
-                                UpgradeButton(showingUpgrade: $showingUpgrade)
-                            }
-                            else {
+                    
+                    if filteredPlants.isEmpty {
+                        noPlants
+                    } else {
+                        ForEach(filteredPlants) { plant in
+                            ZStack{
+                                ListPlantCard(content: {}, plantName: plant.name, plantSpecies: plant.type)
                                 
+                                NavigationLink(value: plant) {
+                                    EmptyView()
+                                }
+                                .opacity(0.0)
+                                .contentShape(Rectangle())
                             }
-                            
                         }
-                        
-                        Button(action: {
-                            print("globalStore.hasPurchasedHanaPlus:", store.hasPurchasedHanaPlus)
-                            
-                            if viewModel.maxPlantCountNotReached { // Se não atigi limite, tudo bem
-                                showingAddPlant = true
-                            } else {
-                                if store.hasPurchasedHanaPlus { // se já comprei, o limite geral foi atingido
-                                    navigateToMaxLimitReached = true
-                                } else { // Se não compre, compra
-                                    navigateToLimitReached = true
+                        .onDelete(perform: viewModel.removePlant(at:))
+                        .listRowBackground(Color.clear)
+                        .listRowSeparator(.hidden)
+                    }
+                }
+                .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .automatic))
+                .font(.custom("Quicksand", size: 17, relativeTo: .body))
+                .listStyle(.plain)
+                .background {
+                    if !store.hasPurchasedHanaPlus {
+                        LinearGradient(
+                            stops: [
+                                Gradient.Stop(color: .background, location: 0)
+                            ],
+                            startPoint: .top,
+                            endPoint: .bottom
+                        )
+                        .ignoresSafeArea()
+
+                    }
+                    else{
+                        LinearGradient(
+                            stops: [
+                                Gradient.Stop(color: .hanaPlusGradient1, location: -0.3),
+                                Gradient.Stop(color: .hanaPlusGradient2, location: 0.56),
+                                Gradient.Stop(color: .hanaPlusGradient3, location: 1.4)
+                            ],
+                            startPoint: .topLeading,
+                            endPoint: .bottomTrailing
+                        )
+                        .ignoresSafeArea()
+                    }
+                }
+                
+                
+                .navigationBarTitleTextFont(fontName: "Quicksand", size: 34, color: .titleText)
+                .navigationBarTitle("My Plants")
+                .navigationBarItems(
+                    trailing:
+                        HStack{
+                            if viewModel.maxPlantCount == viewModel.globalDefaultPlantCount {
+                                if !hasUpgraded {
+                                    UpgradeButton(showingUpgrade: $showingUpgrade)
+                                }
+                                else {
+                                    
                                 }
                                 
-                                
                             }
-                        }) {
-                            Image(systemName: "plus.circle.fill")
-                                .font(.title3)
-                                .bold()
+                            
+                            Button(action: {
+                                print("globalStore.hasPurchasedHanaPlus:", store.hasPurchasedHanaPlus)
+                                
+                                if viewModel.maxPlantCountNotReached { // Se não atigi limite, tudo bem
+                                    showingAddPlant = true
+                                } else {
+                                    if store.hasPurchasedHanaPlus { // se já comprei, o limite geral foi atingido
+                                        navigateToMaxLimitReached = true
+                                    } else { // Se não compre, compra
+                                        navigateToLimitReached = true
+                                    }
+                                    
+                                    
+                                }
+                            }) {
+                                Image(systemName: "plus.circle.fill")
+                                    .font(.title3)
+                                    .bold()
+                            }
                         }
+                )
+                .navigationDestination(for: Plant.self) { plant in
+                    if let index = viewModel.plants.firstIndex(where: { $0.id == plant.id }) {
+                        PlantDetailView(
+                            viewModel: viewModel,
+                            plant: $viewModel.plants[index],
+                            saveMode: false
+                        )
                     }
-            )
-            .navigationDestination(for: Plant.self) { plant in
-                if let index = viewModel.plants.firstIndex(where: { $0.id == plant.id }) {
-                    PlantDetailView(
-                        viewModel: viewModel,
-                        plant: $viewModel.plants[index],
-                        saveMode: false
-                    )
                 }
-            }
-            .onChange(of: searchText, { oldValue, newValue in
-                PostHogSDK.shared.capture("searchUsed")
-            })
-            .sheet(isPresented: $showingAddPlant) {
-                AddPlantView(viewModel: viewModel)
-            }
-            .sheet(isPresented: $navigateToLimitReached) {
-                LimitReachedView(viewModel: viewModel)
-            }
-            .sheet(isPresented: $navigateToMaxLimitReached) {
-                MaxLimitReachedView()
-            }
-            .sheet(isPresented: $showingUpgrade) {
-                UpgradeView(viewModel: viewModel, hasUpgraded: $hasUpgraded)
-            }
+                .onChange(of: searchText, { oldValue, newValue in
+                    PostHogSDK.shared.capture("searchUsed")
+                })
+                .sheet(isPresented: $showingAddPlant) {
+                    AddPlantView(viewModel: viewModel)
+                }
+                .sheet(isPresented: $navigateToLimitReached) {
+                    LimitReachedView(viewModel: viewModel)
+                }
+                .sheet(isPresented: $navigateToMaxLimitReached) {
+                    MaxLimitReachedView()
+                }
+                .sheet(isPresented: $showingUpgrade) {
+                    UpgradeView(viewModel: viewModel, hasUpgraded: $hasUpgraded)
+                }
+            
         }
+        
     }
     
     @ViewBuilder
@@ -146,8 +178,13 @@ struct ContentView: View {
 }
 
 
-struct UpgradeButton: View {
 
+
+
+
+
+struct UpgradeButton: View {
+    
     @Binding var showingUpgrade: Bool
     @State private var appeared = false
     var body: some View {

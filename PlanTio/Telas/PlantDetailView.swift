@@ -3,6 +3,7 @@ import PhotosUI
 import PostHog
 
 struct PlantDetailView: View {
+    @EnvironmentObject var store: Store
     @ObservedObject var viewModel: PlantViewModel
     @State var isEditing = false
     @Binding var plant: Plant
@@ -114,7 +115,32 @@ struct PlantDetailView: View {
             }
         })
         .navigationBarTitleDisplayMode(.inline)
-        .background(Color("Background"))
+        .background{
+            if !store.hasPurchasedHanaPlus {
+                LinearGradient(
+                    stops: [
+                        Gradient.Stop(color: .background, location: 0)
+                    ],
+                    startPoint: .top,
+                    endPoint: .bottom
+                )
+                .ignoresSafeArea()
+
+            }
+            else{
+                LinearGradient(
+                    stops: [
+                        Gradient.Stop(color: .hanaPlusGradient1, location: -0.3),
+                        Gradient.Stop(color: .hanaPlusGradient2, location: 0.56),
+                        Gradient.Stop(color: .hanaPlusGradient3, location: 1.4)
+                    ],
+                    startPoint: .topLeading,
+                    endPoint: .bottomTrailing
+                )
+                .ignoresSafeArea()
+            }
+            
+        }
         .onAppear {
             if plant.type.starts(with: "Other:") {
                 customType = String(plant.type.dropFirst(7))
