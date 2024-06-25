@@ -15,7 +15,6 @@ struct CareInfos<Content: View>: View {
     var iconColor : Color
     @Binding var date : Date
     
-    
     var body: some View {
         VStack {
             VStack {
@@ -29,28 +28,15 @@ struct CareInfos<Content: View>: View {
                         .bold()
                     
                     Spacer()
-                    
                     DatePicker("Watering Time", selection: $date, displayedComponents: [.hourAndMinute])
                         .background {
                             iconColor.opacity(1).saturation(1.0)
                                 .clipShape(.rect(cornerRadius: 8))
                         }
                         .environment(\.colorScheme, .dark)
-                        
-//                        .overlay {
-//                            Color.white
-//                                .clipShape(.rect(cornerRadius: 9))
-//                                .blendMode(.exclusion)
-//                            Color.white
-//                                .clipShape(.rect(cornerRadius: 9))
-//                                .blendMode(.colorDodge)
-//                        }
-//                        .colorInvert()
                     
                     .labelsHidden()
                     .fixedSize()
-                    
-                    
                 }
                 Divider()
             }
@@ -64,11 +50,10 @@ struct CareInfos<Content: View>: View {
         )
         .frame(maxWidth: .infinity, alignment: .leading) 
     }
-    
-    
+
 }
 
-
+//
 //#Preview {
 //    VStack {
 //        CareInfos(content: {

@@ -73,6 +73,7 @@
 		BB715CBD2BEE6300005481A7 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB715CBC2BEE6300005481A7 /* Extensions.swift */; };
 		C4A47CA42C052B4F004D6FB8 /* RiveRuntime in Frameworks */ = {isa = PBXBuildFile; productRef = C4A47CA32C052B4F004D6FB8 /* RiveRuntime */; };
 		C4A47CBD2C0620DA004D6FB8 /* RiveAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A47CBC2C0620DA004D6FB8 /* RiveAnimationView.swift */; };
+		C4EE43C52C2A0993002E78CC /* Instructions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4EE43C42C2A0993002E78CC /* Instructions.swift */; };
 		C4FD0CCD2C110623002CF955 /* SplashArt.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4FD0CCC2C110623002CF955 /* SplashArt.swift */; };
 /* End PBXBuildFile section */
 
@@ -180,6 +181,7 @@
 		76D4FDD32C11F313008E611F /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		BB715CBC2BEE6300005481A7 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		C4A47CBC2C0620DA004D6FB8 /* RiveAnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RiveAnimationView.swift; sourceTree = "<group>"; };
+		C4EE43C42C2A0993002E78CC /* Instructions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Instructions.swift; sourceTree = "<group>"; };
 		C4FD0CCC2C110623002CF955 /* SplashArt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashArt.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -224,6 +226,7 @@
 		072CA1302BEC288A0085CB94 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				C4EE43C42C2A0993002E78CC /* Instructions.swift */,
 				072CA1332BEC28CC0085CB94 /* CustomContentUnavailableView.swift */,
 				769580D62BF2803C00FDB377 /* CareInfos.swift */,
 				769580D82BF2805D00FDB377 /* IdealAndToleratedLight.swift */,
@@ -633,6 +636,7 @@
 				079B9D582C23530100283049 /* GradientBackgroundTestView.swift in Sources */,
 				769580E62BF3E84500FDB377 /* ReminderCard.swift in Sources */,
 				76BA2A7F2BE016720038E2AD /* TabBarView.swift in Sources */,
+				C4EE43C52C2A0993002E78CC /* Instructions.swift in Sources */,
 				76BA2A892BE01BDE0038E2AD /* PlantDetailView.swift in Sources */,
 				76BA2A8F2BE01C390038E2AD /* AlarmView.swift in Sources */,
 				76BA2A832BE01B490038E2AD /* PlantViewModel.swift in Sources */,

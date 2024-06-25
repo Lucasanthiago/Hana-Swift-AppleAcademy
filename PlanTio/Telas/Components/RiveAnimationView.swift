@@ -67,26 +67,7 @@ struct RiveAnimationView: View {
                                handlePrimaryAnimationTap()
                            }
                    )
-                   .gesture(
-                       LongPressGesture(minimumDuration: 1.5)
-                           .onChanged { _ in
-                               print("Long press started")
-                               if showPrimaryAnimation {
-                                   handleLongPress(isPressing: true)
-                               }
-                           }
-                           .onEnded { _ in
-                               print("Long press ended")
-                               if showPrimaryAnimation {
-                                   handleLongPress(isPressing: false)
-                               } else {
-                                   withAnimation(.easeInOut(duration: 2.0)) {
-                                       resetPrimaryAnimation()
-                                       showPrimaryAnimation = true
-                                   }
-                               }
-                           }
-                   )
+//                
            }
        }
     private func setupRive() {

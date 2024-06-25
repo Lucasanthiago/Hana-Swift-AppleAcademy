@@ -12,86 +12,85 @@ struct PlantDetailView: View {
     var onSave: (() -> Void)? // Callback for save action
     
     var body: some View {
-        ZStack {
+        ScrollView{
             VStack {
                 FrameImage(imageData: $plant.imageData, plantType: $plant.type, aspectRatio: 10)
-                    .frame(maxWidth: .infinity, alignment: .center)
+                
+                    .disabled(isEditing == false)
+                    .frame(width: 393, height: 293)
+                
+                
+                
+                TextField("Name", text: $plant.name)
+                    .font(.custom("Quicksand", size: 17, relativeTo: .body))
+                    .padding(.leading)
+                    .padding(.top)
                     .disabled(isEditing == false)
                 
+                
+                TextField("Type", text: $plant.type)
+                    .font(.custom("Quicksand", size: 28, relativeTo: .title))
+                    .bold()
+                    .padding(.leading)
+                    .disabled(isEditing == false)
+                
+                
+                
                 VStack {
-                    HStack {
-                        TextField("Name", text: $plant.name)
-                            .padding(.top, 0)
-                            .font(.custom("Quicksand", size: 22, relativeTo: .title2))
-                            .bold()
-                            .frame(maxWidth: .infinity)
-                            .padding()
-                            .disabled(isEditing == false)
-                    }
-                    HStack {
-                        TextField("Type", text: $plant.type)
-                            .padding(.top, 0)
-                            .font(.custom("Quicksand", size: 22, relativeTo: .title2))
-                            .bold()
-                            .frame(maxWidth: .infinity)
-                            .padding()
-                            .disabled(isEditing == false)
-                    }
+                    CareInfos(content: {
+                        if plant.wateringInstructions.isEmpty == false {
+                            Text(plant.wateringInstructions)
+                                .padding()
+                                .font(.custom("Quicksand", size: 15, relativeTo: .subheadline))
+                                .fontWeight(.medium)
+                        }
+                    }, title: "Watering", icon: "drop.circle.fill", iconColor: (Color("Water")), date: $plant.wateringTime)
+                    .padding(.vertical)
+                    .padding(.horizontal)
                     
-                    ScrollView {
-                        VStack {
-                            CareInfos(content: {
-                                if plant.wateringInstructions.isEmpty == false {
-                                    Text(plant.wateringInstructions)
-                                        .padding()
-                                        .font(.custom("Quicksand", size: 15, relativeTo: .subheadline))
-                                        .fontWeight(.medium)
-                                }
-                            }, title: "Watering", icon: "drop.circle.fill", iconColor: (Color("Water")), date: $plant.wateringTime)
-                            .padding(.vertical)
-                            .padding(.horizontal)
-                            
-                            CareInfos(content: {
-                                HStack(alignment: .top) {
-                                    if plant.idealLight.isEmpty == false {
-                                        IdealAndToleratedLight(content: {
-                                        }, title: "Ideal light", icon: "sun.min.fill", iconColor: (Color("NormalText")), description: plant.idealLight)
-                                        .padding()
-                                        .fixedSize(horizontal: false, vertical: true)
-                                    }
-                                    if plant.toleratedLight.isEmpty == false {
-                                        IdealAndToleratedLight(content: {
-                                        }, title: "Tolerated light", icon: "sun.max.fill", iconColor: (Color("NormalText")), description: plant.toleratedLight)
-                                        .padding(.horizontal, 18)
-                                        .padding(.vertical, 10)
-                                        .fixedSize(horizontal: false, vertical: true)
-                                    }
-                                }
-                                .padding(.leading, 10)
-                                .padding(.trailing, 10)
-                            }, title: "Sunbathing", icon: "sun.max.fill", iconColor: Color("Sun"), date: $plant.sunTime)
-                            .padding(.horizontal)
+                    CareInfos(content: {
+                        HStack(alignment: .center) {
+                            if plant.idealLight.isEmpty == false {
+                                IdealAndToleratedLight(content: {
+                                }, title: "Ideal light", icon: "sun.min.fill", iconColor: (Color("NormalText")), description: plant.idealLight)
+                                .padding()
+                                .fixedSize(horizontal: false, vertical: true)
+                            }
+                            if plant.toleratedLight.isEmpty == false {
+                                IdealAndToleratedLight(content: {
+                                }, title: "Tolerated light", icon: "sun.max.fill", iconColor: (Color("NormalText")), description: plant.toleratedLight)
+                                .padding(.horizontal, 18)
+                                .padding(.vertical, 10)
+                                .fixedSize(horizontal: false, vertical: true)
+                            }
                         }
-                        .disabled(isEditing == false)
-                    }
+                        .padding(.leading, 10)
+                        .padding(.trailing, 10)
+                    }, title: "Sunbathing", icon: "sun.max.fill", iconColor: Color("Sun"), date: $plant.sunTime)
+                    .padding(.horizontal)
                 }
-            }
-            VStack {
+                .disabled(isEditing == false)
+                
+                
+            }}
+        .ignoresSafeArea()
+        
+        VStack {
+            
+            HStack {
                 Spacer()
-                HStack {
-                    Spacer()
-                    if saveMode == false {
-                        Button(action: {
-                            isEditing.toggle()
-                        }) {
-                            Image(isEditing ? "Done" : "Edit")
-                                .shadow(color: .shadow.opacity(0.3), radius: 5, x: 0, y: 4)
-                        }
+                if saveMode == false {
+                    Button(action: {
+                        isEditing.toggle()
+                    }) {
+                        Image(isEditing ? "Done" : "Edit")
+                            .shadow(color: .shadow.opacity(0.3), radius: 5, x: 0, y: 4)
                     }
                 }
             }
-            .padding()
         }
+        
+        
         .toolbar(.hidden, for: .tabBar)
         .safeAreaInset(edge: .bottom, content: {
             if saveMode == true {
@@ -104,7 +103,7 @@ struct PlantDetailView: View {
                     addPlant()
                 }, label: {
                     Text("Save")
-                        .font(.body)
+                        .font(.custom("Quicksand", size: 17, relativeTo: .body))
                         .bold()
                         .foregroundStyle(Color.white)
                         .frame(maxWidth: .infinity, maxHeight: 56)
@@ -115,32 +114,7 @@ struct PlantDetailView: View {
             }
         })
         .navigationBarTitleDisplayMode(.inline)
-        .background{
-            if !store.hasPurchasedHanaPlus {
-                LinearGradient(
-                    stops: [
-                        Gradient.Stop(color: .background, location: 0)
-                    ],
-                    startPoint: .top,
-                    endPoint: .bottom
-                )
-                .ignoresSafeArea()
-
-            }
-            else{
-                LinearGradient(
-                    stops: [
-                        Gradient.Stop(color: .hanaPlusGradient1, location: -0.3),
-                        Gradient.Stop(color: .hanaPlusGradient2, location: 0.56),
-                        Gradient.Stop(color: .hanaPlusGradient3, location: 1.4)
-                    ],
-                    startPoint: .topLeading,
-                    endPoint: .bottomTrailing
-                )
-                .ignoresSafeArea()
-            }
-            
-        }
+        .background(Color(.red))
         .onAppear {
             if plant.type.starts(with: "Other:") {
                 customType = String(plant.type.dropFirst(7))

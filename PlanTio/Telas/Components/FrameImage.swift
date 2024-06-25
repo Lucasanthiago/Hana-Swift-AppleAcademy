@@ -25,14 +25,16 @@ struct FrameImage: View {
     
     var body: some View {
         VStack {
-            Image(uiImage: screenImage)
-                .resizable()
-                .scaledToFill()
-                .frame(height: 250)
-                .cornerRadius(0)
-                .onTapGesture {
-                    showingActionSheet = true
-                }
+            HStack{
+                Image(uiImage: screenImage)
+                    .resizable()
+                    .scaledToFill()
+                    .frame(alignment: .center)
+                    .cornerRadius(0)
+                    .onTapGesture {
+                        showingActionSheet = true
+                    }
+            }
         }
         .actionSheet(isPresented: $showingActionSheet) {
             ActionSheet(title: Text("Choose a photo"), buttons: [
