@@ -73,24 +73,43 @@ struct PlantDetailView: View {
                 
                 
             }}
+        .background {
+            if !store.hasPurchasedHanaPlus {
+                LinearGradient(
+                    stops: [
+                        Gradient.Stop(color: .background, location: 0)
+                    ],
+                    startPoint: .top,
+                    endPoint: .bottom
+                )
+                .ignoresSafeArea()
+
+            }
+            else{
+                LinearGradient(
+                    stops: [
+                        Gradient.Stop(color: .hanaPlusGradient1, location: -0.3),
+                        Gradient.Stop(color: .hanaPlusGradient2, location: 0.56),
+                        Gradient.Stop(color: .hanaPlusGradient3, location: 1.4)
+                    ],
+                    startPoint: .topLeading,
+                    endPoint: .bottomTrailing
+                )
+                .ignoresSafeArea()
+            }
+        }
         .ignoresSafeArea()
-        
-        VStack {
-            
-            HStack {
-                Spacer()
-                if saveMode == false {
-                    Button(action: {
-                        isEditing.toggle()
-                    }) {
-                        Image(isEditing ? "Done" : "Edit")
-                            .shadow(color: .shadow.opacity(0.3), radius: 5, x: 0, y: 4)
-                    }
+        .overlay (alignment: .bottomTrailing){
+            if saveMode == false {
+                Button(action: {
+                    isEditing.toggle()
+                }) {
+                    Image(isEditing ? "Done" : "Edit")
+                        .shadow(color: .shadow.opacity(0.3), radius: 5, x: 0, y: 4)
+                        .padding(.trailing, 20)
                 }
             }
         }
-        
-        
         .toolbar(.hidden, for: .tabBar)
         .safeAreaInset(edge: .bottom, content: {
             if saveMode == true {
@@ -113,8 +132,6 @@ struct PlantDetailView: View {
                 })
             }
         })
-        .navigationBarTitleDisplayMode(.inline)
-        .background(Color(.red))
         .onAppear {
             if plant.type.starts(with: "Other:") {
                 customType = String(plant.type.dropFirst(7))
@@ -191,34 +208,34 @@ struct PlantDetailView: View {
 
 
 
-
-// Preview
-struct PlantDetailView_Previews: PreviewProvider {
-    static var previews: some View {
-        let viewModel = PlantViewModel.instance
-        let plant = Plant(
-            name: "Example Plant",
-            type: "Fern",
-            wateringTime: Date(),
-            sunTime: Date(),
-            watered: false,
-            sunbathed: false,
-            imageData: Data(),
-            wateringInstructions: "Water regularly.",
-            idealLight: "Bright light",
-            toleratedLight: "Low light"
-        )
-        
-        NavigationView {
-            PlantDetailView(
-                viewModel: viewModel,
-                isEditing: true,
-                plant: .constant(plant),
-                saveMode: true,
-                onSave: {
-                    print("Plant saved!")
-                }
-            )
-        }
-    }
-}
+//
+//// Preview
+//struct PlantDetailView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        let viewModel = PlantViewModel.instance
+//        let plant = Plant(
+//            name: "Example Plant",
+//            type: "Fern",
+//            wateringTime: Date(),
+//            sunTime: Date(),
+//            watered: false,
+//            sunbathed: false,
+//            imageData: Data(),
+//            wateringInstructions: "Water regularly.",
+//            idealLight: "Bright light",
+//            toleratedLight: "Low light"
+//        )
+//        
+//        NavigationView {
+//            PlantDetailView(
+//                viewModel: viewModel,
+//                isEditing: true,
+//                plant: .constant(plant),
+//                saveMode: true,
+//                onSave: {
+//                    print("Plant saved!")
+//                }
+//            )
+//        }
+//    }
+//}
