@@ -3,14 +3,9 @@ import PostHog
 import RiveRuntime
 
 
-enum hanaVersion: String {
-    case normal = "Normal"
-    case plus = "Plus"
-    
-}
-
 
 struct ContentView: View {
+    
     @EnvironmentObject var store: Store
     @State private var navigateToAddPlant = false
     @ObservedObject var viewModel: PlantViewModel
@@ -22,71 +17,13 @@ struct ContentView: View {
     @State private var showingUpgrade = false
     @State private var hasUpgraded = false
     
-    let hanaNormalGradient = LinearGradient(
-        stops: [
-            Gradient.Stop(color: .background, location: 0)
-        ],
-        startPoint: .top,
-        endPoint: .bottom
-    )
-    
-    let hanaPlusGradient = LinearGradient(
-        stops: [
-            Gradient.Stop(color: .hanaPlusGradient1, location: -0.3),
-            Gradient.Stop(color: .hanaPlusGradient2, location: 0.56),
-            Gradient.Stop(color: .hanaPlusGradient3, location: 1.4)
-        ],
-        startPoint: .topLeading,
-        endPoint: .bottomTrailing
-    )
-    
-    //    var hanaVersionBG = LinearGradient {
-    //        switch hanaVersion {
-    //
-    //        case .normal:
-    //            hanaNormalGradient
-    //        case .plus:
-    //            hanaPlusGradient
-    //        }
-    //
-    //    }
-    
     
     var filteredPlants: [Plant] { viewModel.fiteredPlants(by: searchText) }
     
     var body: some View {
         
+        
         NavigationStack {
-            
-            ZStack {
-                
-                
-                
-                
-                //                if hasUpgraded {
-                //                    LinearGradient(
-                //                        stops: [
-                //                            Gradient.Stop(color: .background, location: 0)
-                //                        ],
-                //                        startPoint: .top,
-                //                        endPoint: .bottom
-                //                    )
-                //                    .ignoresSafeArea()
-                //                }
-                //                else {
-                //                    LinearGradient(
-                //                        stops: [
-                //                            Gradient.Stop(color: .hanaPlusGradient1, location: -0.3),
-                //                            Gradient.Stop(color: .hanaPlusGradient2, location: 0.56),
-                //                            Gradient.Stop(color: .hanaPlusGradient3, location: 1.4)
-                //                        ],
-                //                        startPoint: .topLeading,
-                //                        endPoint: .bottomTrailing
-                //                    )
-                //                    .ignoresSafeArea()
-                //                }
-                
-                
                 List {
                     TimelineView(.everyMinute) { _ in
                         let openingViewModel = RiveViewModel(fileName: "Opening")
@@ -117,23 +54,32 @@ struct ContentView: View {
                 .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .automatic))
                 .font(.custom("Quicksand", size: 17, relativeTo: .body))
                 .listStyle(.plain)
-                .background(hasUpgraded ? LinearGradient(
-                    stops: [
-                        Gradient.Stop(color: .background, location: 0)
-                    ],
-                    startPoint: .top,
-                    endPoint: .bottom
-                ) :
-                                
-                                LinearGradient(
-                                    stops: [
-                                        Gradient.Stop(color: .hanaPlusGradient1, location: -0.3),
-                                        Gradient.Stop(color: .hanaPlusGradient2, location: 0.56),
-                                        Gradient.Stop(color: .hanaPlusGradient3, location: 1.4)
-                                    ],
-                                    startPoint: .topLeading,
-                                    endPoint: .bottomTrailing
-                                ))
+                .background {
+                    if !store.hasPurchasedHanaPlus {
+                        LinearGradient(
+                            stops: [
+                                Gradient.Stop(color: .background, location: 0)
+                            ],
+                            startPoint: .top,
+                            endPoint: .bottom
+                        )
+                        .ignoresSafeArea()
+
+                    }
+                    else{
+                        LinearGradient(
+                            stops: [
+                                Gradient.Stop(color: .hanaPlusGradient1, location: -0.3),
+                                Gradient.Stop(color: .hanaPlusGradient2, location: 0.56),
+                                Gradient.Stop(color: .hanaPlusGradient3, location: 1.4)
+                            ],
+                            startPoint: .topLeading,
+                            endPoint: .bottomTrailing
+                        )
+                        .ignoresSafeArea()
+                    }
+                }
+                
                 
                 .navigationBarTitleTextFont(fontName: "Quicksand", size: 34, color: .titleText)
                 .navigationBarTitle("My Plants")
@@ -195,8 +141,9 @@ struct ContentView: View {
                 .sheet(isPresented: $showingUpgrade) {
                     UpgradeView(viewModel: viewModel, hasUpgraded: $hasUpgraded)
                 }
-            }
+            
         }
+        
     }
     
     @ViewBuilder
