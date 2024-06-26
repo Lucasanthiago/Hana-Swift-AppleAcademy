@@ -15,20 +15,20 @@ struct PlantDetailView: View {
         ScrollView{
             VStack {
                 FrameImage(imageData: $plant.imageData, plantType: $plant.type, aspectRatio: 10)
-                
                     .disabled(isEditing == false)
                     .frame(width: 393, height: 293)
                 
                 
                 
-                TextField("Name", text: $plant.name)
+                TextField("Nickame", text: $plant.name)
                     .font(.custom("Quicksand", size: 17, relativeTo: .body))
+                    .fontWeight(.medium)
                     .padding(.leading)
                     .padding(.top)
                     .disabled(isEditing == false)
                 
                 
-                TextField("Type", text: $plant.type)
+                TextField("Species", text: $plant.type)
                     .font(.custom("Quicksand", size: 28, relativeTo: .title))
                     .bold()
                     .padding(.leading)

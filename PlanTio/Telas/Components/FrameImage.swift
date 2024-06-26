@@ -24,43 +24,38 @@ struct FrameImage: View {
     @State private var itemSelect: PhotosPickerItem?
     
     var body: some View {
-        VStack {
-            HStack{
-                Image(uiImage: screenImage)
-                    .resizable()
-                    .scaledToFill()
-                    .frame(alignment: .center)
-                    .cornerRadius(0)
-                    .onTapGesture {
-                        showingActionSheet = true
-                    }
+        Image(uiImage: screenImage)
+            .resizable()
+            .scaledToFill()
+            .frame(alignment: .center)
+            .onTapGesture {
+                showingActionSheet = true
             }
-        }
-        .actionSheet(isPresented: $showingActionSheet) {
-            ActionSheet(title: Text("Choose a photo"), buttons: [
-                .default(Text("Photo Library")) {
-                    isShowingImagePicker = true
-                },
-                .default(Text("Camera")) {
-                    isShowingCamera = true
-                },
-                .cancel()
-            ])
-        }
-        .fullScreenCover(isPresented: $isShowingImagePicker, onDismiss: convertImageToImageData) {
-            ImagePicker(selectedImage: $pickedImage, sourceType: .photoLibrary)
-                .edgesIgnoringSafeArea(.all)
-        }
-        .fullScreenCover(isPresented: $isShowingCamera, onDismiss: convertImageToImageData) {
-            ImagePicker(selectedImage: $pickedImage, sourceType: .camera)
-                .edgesIgnoringSafeArea(.all)
-        }
-        .onChange(of: pickedImage) { newImage in
-            if let newImage = newImage {
-                convertImageToImageData()
-                analyzeImage(newImage)
+            .actionSheet(isPresented: $showingActionSheet) {
+                ActionSheet(title: Text("Choose a photo"), buttons: [
+                    .default(Text("Photo Library")) {
+                        isShowingImagePicker = true
+                    },
+                    .default(Text("Camera")) {
+                        isShowingCamera = true
+                    },
+                    .cancel()
+                ])
             }
-        }
+            .fullScreenCover(isPresented: $isShowingImagePicker, onDismiss: convertImageToImageData) {
+                ImagePicker(selectedImage: $pickedImage, sourceType: .photoLibrary)
+                    .edgesIgnoringSafeArea(.all)
+            }
+            .fullScreenCover(isPresented: $isShowingCamera, onDismiss: convertImageToImageData) {
+                ImagePicker(selectedImage: $pickedImage, sourceType: .camera)
+                    .edgesIgnoringSafeArea(.all)
+            }
+            .onChange(of: pickedImage) { newImage in
+                if let newImage = newImage {
+                    convertImageToImageData()
+                    analyzeImage(newImage)
+                }
+            }
     }
     
     func convertImageToImageData() {
