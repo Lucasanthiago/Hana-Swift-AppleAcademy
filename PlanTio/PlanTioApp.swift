@@ -24,6 +24,7 @@ struct PlanTioApp: App {
                         DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
                             withAnimation {
                                 showSplashArt = false
+//                                print(store.hasPurchasedHanaPlus)
                             }
                         }
                     }

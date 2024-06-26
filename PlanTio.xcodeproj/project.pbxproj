@@ -24,6 +24,7 @@
 		2E68C0A72C0E63540002B3B4 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E68C0A62C0E63540002B3B4 /* Store.swift */; };
 		2E68C0AD2C0EDD2E0002B3B4 /* LimitReachedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E68C0AC2C0EDD2E0002B3B4 /* LimitReachedView.swift */; };
 		2EF02FEA2BE042220023247F /* VMNotificationHandler in Frameworks */ = {isa = PBXBuildFile; productRef = 2EF02FE92BE042220023247F /* VMNotificationHandler */; };
+		760DA3CD2C2CB80F00D1E353 /* aiXplainKit in Frameworks */ = {isa = PBXBuildFile; productRef = 760DA3CC2C2CB80F00D1E353 /* aiXplainKit */; };
 		762189A92BF54E8800C80C62 /* ListPlantCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762189A82BF54E8800C80C62 /* ListPlantCard.swift */; };
 		7654490D2BFD0E050089F7F3 /* Quicksand-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7654490C2BFD0E050089F7F3 /* Quicksand-VariableFont_wght.ttf */; };
 		7654490E2BFD0E050089F7F3 /* Quicksand-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7654490C2BFD0E050089F7F3 /* Quicksand-VariableFont_wght.ttf */; };
@@ -203,6 +204,7 @@
 				2E68C0A32BFD12BE0002B3B4 /* PostHog in Frameworks */,
 				C4A47CA42C052B4F004D6FB8 /* RiveRuntime in Frameworks */,
 				76D4FDD42C11F313008E611F /* StoreKit.framework in Frameworks */,
+				760DA3CD2C2CB80F00D1E353 /* aiXplainKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -455,6 +457,7 @@
 				2EF02FE92BE042220023247F /* VMNotificationHandler */,
 				2E68C0A22BFD12BE0002B3B4 /* PostHog */,
 				C4A47CA32C052B4F004D6FB8 /* RiveRuntime */,
+				760DA3CC2C2CB80F00D1E353 /* aiXplainKit */,
 			);
 			productName = PlanTio;
 			productReference = 76BA2A512BE0162A0038E2AD /* PlanTio.app */;
@@ -1113,6 +1116,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 2EF02FE82BE042220023247F /* XCRemoteSwiftPackageReference "VMNotificationHandler" */;
 			productName = VMNotificationHandler;
+		};
+		760DA3CC2C2CB80F00D1E353 /* aiXplainKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 760DA37D2C274A6700D1E353 /* XCRemoteSwiftPackageReference "aiXplainKit" */;
+			productName = aiXplainKit;
 		};
 		C4A47CA32C052B4F004D6FB8 /* RiveRuntime */ = {
 			isa = XCSwiftPackageProductDependency;
