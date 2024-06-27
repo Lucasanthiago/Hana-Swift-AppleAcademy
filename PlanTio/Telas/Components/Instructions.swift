@@ -17,7 +17,7 @@ struct Instructions: View {
         HStack {
             Image(systemName: icon)
                 .foregroundStyle(iconColor)
-                .font(.system(size: 60).bold())
+                .font(.system(size: 40).bold())
             
             VStack(alignment: .leading, spacing: 5) {
                 if contentText.isEmpty /*== true*/ {

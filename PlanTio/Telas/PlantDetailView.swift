@@ -37,7 +37,8 @@ struct PlantDetailView: View {
                     if !plant.descriptionPlant.isEmpty {
                         Text(plant.descriptionPlant)
                     } else {
-                        Text("Hana Plant Care highlights the value of detailed descriptions for proper care and healthy growth.")
+                        Text("")
+                            .font(.custom("Quicksand", size: 17, relativeTo: .body))
                     }
                 }
                 
