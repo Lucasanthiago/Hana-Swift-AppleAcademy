@@ -24,18 +24,23 @@ struct Plant: Codable, Identifiable, Hashable {
  
     var watered: Bool = false
     var sunbathed: Bool = false
-    var imageData: Data?
-    var wateringInstructions: String // Fetched from API
-    var idealLight: String // Fetched from API
-    var toleratedLight: String // Fetched from API
+    var imageData:Data?
+    var descriptionPlant: String
+    var bestSoilDescription: String
+    var weatherDescription: String
+    var poisonDescription: String
+    var wateringDescription: String
+    var sunbathingDescription: String
+    var safeForPetDescription: String
+    var potSizeDescription: String
+    //     adicionar um id de notificação para conseguir apagar aqls que forem adicionadas
+//    var wateringInstructions: String // Precisar passar a API - Muda de acordo com o tipo
+//    var idealLight: String // Precisar passar a API - Muda de acordo com o tipo
+//    var toleratedLight: String// Precisar passar a API -  Muda de acordo com o tipo
     
-    // New variables to store additional plant info
-    var safeForPets: String // Fetched from API
-    var bestSoil: String // Fetched from API
-    var sunbathing: String // Fetched from API
-    var weather: String // Fetched from API
-    var potSize: String // Fetched from API
-    var poison: String // Fetched from API
+    var timesToWater:[Date] { Date.weekTimes(for: wateringTime, weekdays: Self.weekDays) }
+    var timesToSunbathing:[Date] { Date.weekTimes(for: sunTime, weekdays: Self.weekDays) }
+    
 
     var timesToWater: [Date] { Date.weekTimes(for: wateringTime, weekdays: Self.weekDays) }
     var timesToSunbathing: [Date] { Date.weekTimes(for: sunTime, weekdays: Self.weekDays) }

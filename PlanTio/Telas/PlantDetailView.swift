@@ -34,40 +34,117 @@ struct PlantDetailView: View {
                     .disabled(isEditing == false)
 
                 VStack {
-                    CareInfos(content: {
-                        if plant.wateringInstructions.isEmpty == false {
-                            Text(plant.wateringInstructions)
-                                .padding()
-                                .font(.custom("Quicksand", size: 15, relativeTo: .subheadline))
-                                .fontWeight(.medium)
-                        }
-                    }, title: "Watering", icon: "drop.circle.fill", iconColor: (Color("Water")), date: $plant.wateringTime)
-                    .padding(.vertical)
-                    .padding(.horizontal)
-
-                    CareInfos(content: {
-                        HStack(alignment: .center) {
-                            if plant.idealLight.isEmpty == false {
-                                IdealAndToleratedLight(content: {
-                                }, title: "Ideal light", icon: "sun.min.fill", iconColor: (Color("NormalText")), description: plant.idealLight)
-                                .padding()
-                                .fixedSize(horizontal: false, vertical: true)
-                            }
-                            if plant.toleratedLight.isEmpty == false {
-                                IdealAndToleratedLight(content: {
-                                }, title: "Tolerated light", icon: "sun.max.fill", iconColor: (Color("NormalText")), description: plant.toleratedLight)
-                                .padding(.horizontal, 18)
-                                .padding(.vertical, 10)
-                                .fixedSize(horizontal: false, vertical: true)
-                            }
-                        }
-                        .padding(.leading, 10)
-                        .padding(.trailing, 10)
-                    }, title: "Sunbathing", icon: "sun.max.fill", iconColor: Color("Sun"), date: $plant.sunTime)
-                    .padding(.horizontal)
+                    if plant.descriptionPlant.isEmpty {
+                        Text(plant.descriptionPlant)
+                    } else {
+                        Text("Hana Plant Care highlights the value of detailed descriptions for proper care and healthy growth.")
+                    }
                 }
-                .disabled(isEditing == false)
+                
             }
+            ScrollView(.horizontal){
+                HStack(spacing: 20) {
+                    Instructions(
+                        contentText: {
+                            if plant.wateringDescription.isEmpty {
+                                return plant.wateringDescription
+                            } else {
+                                return ""
+                            }
+                        }(),
+                        title: "Watering",
+                        icon: "drop.circle.fill", iconColor: .water
+                    )
+                    .disabled(isEditing == false)
+                    
+                    Instructions(
+                        contentText: {
+                            if plant.sunbathingDescription.isEmpty {
+                                return plant.sunbathingDescription
+                            } else {
+                                return ""
+                            }
+                        }(),
+                        title: "Sunbathing",
+                        icon: "sun.max.fill", iconColor: .sun
+                    )
+                    .disabled(isEditing == false)
+                    
+                Instructions(
+                        contentText: {
+                            if plant.poisonDescription.isEmpty {
+                                return plant.bestSoilDescription
+                            } else {
+                                return ""
+                            }
+                        }(),
+                        title: "Best soil",
+                        icon: "leaf.circle.fill", iconColor: .soil
+                    )
+                    .disabled(isEditing == false)
+                    
+                    Instructions(
+                        contentText: {
+                            if plant.safeForPetDescription.isEmpty {
+                                return plant.safeForPetDescription
+                            } else {
+                                return ""
+                            }
+                        }(),
+                        title: "Safe for Pets",
+                        icon: "pawprint.circle.fill", iconColor: .pinkButton
+                    )
+                    .disabled(isEditing == false)
+                }
+                .padding(.init(top: 20, leading: 10, bottom: 20, trailing: 0))
+            }
+            .scrollIndicators(.hidden)
+            
+            ScrollView(.horizontal){
+                HStack(spacing: 20) {
+                    AdditionalCards(
+                        contentText: {
+                            if plant.weatherDescription.isEmpty {
+                                return plant.weatherDescription
+                            } else {
+                                return ""
+                            }
+                        }(),
+                        title: "Weather",
+                        icon: "Weather"
+                    )
+                    .disabled(isEditing == false)
+                    
+                    AdditionalCards(
+                        contentText: {
+                            if plant.potSizeDescription.isEmpty {
+                                return plant.potSizeDescription
+                            } else {
+                                return ""
+                            }
+                        }(),
+                        title: "Pot Size",
+                        icon: "PotSize"
+                    )
+                    .disabled(isEditing == false)
+                    
+                    AdditionalCards(
+                        contentText: {
+                            if plant.poisonDescription.isEmpty {
+                                return plant.poisonDescription
+                            } else {
+                                return ""
+                            }
+                        }(),
+                        title: "Poison",
+                        icon: "Poison"
+                    )
+                    .disabled(isEditing == false)
+                }
+                .padding(.init(top: 20, leading: 10, bottom: 20, trailing: 0))
+            }
+            .scrollIndicators(.hidden)
+
         }
         .background {
             if !store.hasPurchasedHanaPlus {
@@ -202,15 +279,17 @@ struct PlantDetailView: View {
             watered: plant.watered,
             sunbathed: plant.sunbathed,
             imageData: plant.imageData,
-            wateringInstructions: plant.wateringInstructions,
-            idealLight: plant.idealLight,
-            toleratedLight: plant.toleratedLight,
-            safeForPets: plant.safeForPets,
-            bestSoil: plant.bestSoil,
-            sunbathing: plant.sunbathing,
-            weather: plant.weather,
-            potSize: plant.potSize,
-            poison: plant.poison
+            descriptionPlant:  plant.descriptionPlant,
+            bestSoilDescription:  plant.bestSoilDescription,
+            weatherDescription:  plant.weatherDescription,
+            poisonDescription:  plant.poisonDescription,
+            wateringDescription:  plant.wateringDescription,
+            sunbathingDescription: plant.sunbathingDescription,
+            safeForPetDescription:  plant.safeForPetDescription,
+            potSizeDescription: plant.potSizeDescription
+//            wateringInstructions: plant.wateringInstructions,
+//            idealLight: plant.idealLight,
+//            toleratedLight: plant.toleratedLight
         )
         Task {
             do {
