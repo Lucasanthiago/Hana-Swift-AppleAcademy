@@ -4,7 +4,7 @@ import PostHog
 
 struct PlantDetailView: View {
     @StateObject var plantInfoManager: PlantInfoManager = PlantInfoManager()
-
+    
     @EnvironmentObject var store: Store
     @ObservedObject var viewModel: PlantViewModel
     @State var isEditing = false
@@ -12,27 +12,27 @@ struct PlantDetailView: View {
     @State var saveMode: Bool
     @State private var customType: String = ""
     var onSave: (() -> Void)? // Callback for save action
-
+    
     var body: some View {
         ScrollView {
             VStack {
                 FrameImage(imageData: $plant.imageData, plantType: $plant.type, aspectRatio: 10)
                     .disabled(isEditing == false)
                     .frame(width: 393, height: 293)
-
+                
                 TextField("Nickname", text: $plant.name)
                     .font(.custom("Quicksand", size: 17, relativeTo: .body))
                     .fontWeight(.medium)
                     .padding(.leading)
                     .padding(.top)
                     .disabled(isEditing == false)
-
+                
                 TextField("Species", text: $plant.type)
                     .font(.custom("Quicksand", size: 28, relativeTo: .title))
                     .bold()
                     .padding(.leading)
                     .disabled(isEditing == false)
-
+                
                 VStack {
                     if !plant.descriptionPlant.isEmpty {
                         Text(plant.descriptionPlant)
@@ -82,7 +82,7 @@ struct PlantDetailView: View {
                     )
                     .disabled(isEditing == false)
                     
-                Instructions(
+                    Instructions(
                         contentText: {
                             if !plant.bestSoilDescription.isEmpty {
                                 return plant.bestSoilDescription
@@ -156,7 +156,7 @@ struct PlantDetailView: View {
                 .padding(.init(top: 20, leading: 10, bottom: 20, trailing: 0))
             }
             .scrollIndicators(.hidden)
-
+            
         }
         .background {
             if !store.hasPurchasedHanaPlus {
@@ -186,6 +186,8 @@ struct PlantDetailView: View {
             if saveMode == false {
                 Button(action: {
                     isEditing.toggle()
+                    updatePlant()
+
                 }) {
                     Image(isEditing ? "Done" : "Edit")
                         .shadow(color: .shadow.opacity(0.3), radius: 5, x: 0, y: 4)
@@ -235,7 +237,19 @@ struct PlantDetailView: View {
             }
         }
     }
-
+    
+    func updatePlant() {
+        plant.imageData = plant.imageData
+        Task {
+            do {
+                try await viewModel.save(plant: plant)
+            } catch {
+                print("* Erro salvando Planta *")
+                print(error)
+            }
+        }
+    }
+    
     func updatePlantInfo(with plantInfo: PlantInfo) {
         plant.safeForPetDescription = plantInfo.safeForPets
         plant.bestSoilDescription = plantInfo.bestSoil
@@ -245,7 +259,7 @@ struct PlantDetailView: View {
         plant.potSizeDescription = plantInfo.potSize
         plant.poisonDescription = plantInfo.poison
     }
-
+    
     func addPlant() {
         let newPlant = Plant(
             id: plant.id,
@@ -361,7 +375,7 @@ final class PlantInfoManager: ObservableObject {
         Weather: Thrives in warm climates
         Pot Size: Medium to large
         Poison: Thorny, can cause skin irritation
-
+        
         Plant type: \(plantType)
         """
         
