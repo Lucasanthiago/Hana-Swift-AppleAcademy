@@ -34,7 +34,7 @@ struct PlantDetailView: View {
                     .disabled(isEditing == false)
 
                 VStack {
-                    if plant.descriptionPlant.isEmpty {
+                    if !plant.descriptionPlant.isEmpty {
                         Text(plant.descriptionPlant)
                     } else {
                         Text("Hana Plant Care highlights the value of detailed descriptions for proper care and healthy growth.")
@@ -46,7 +46,7 @@ struct PlantDetailView: View {
                 HStack(spacing: 20) {
                     Instructions(
                         contentText: {
-                            if plant.wateringDescription.isEmpty {
+                            if !plant.wateringDescription.isEmpty {
                                 return plant.wateringDescription
                             } else {
                                 return ""
@@ -59,7 +59,7 @@ struct PlantDetailView: View {
                     
                     Instructions(
                         contentText: {
-                            if plant.sunbathingDescription.isEmpty {
+                            if !plant.sunbathingDescription.isEmpty {
                                 return plant.sunbathingDescription
                             } else {
                                 return ""
@@ -72,7 +72,7 @@ struct PlantDetailView: View {
                     
                 Instructions(
                         contentText: {
-                            if plant.poisonDescription.isEmpty {
+                            if !plant.bestSoilDescription.isEmpty {
                                 return plant.bestSoilDescription
                             } else {
                                 return ""
@@ -85,7 +85,7 @@ struct PlantDetailView: View {
                     
                     Instructions(
                         contentText: {
-                            if plant.safeForPetDescription.isEmpty {
+                            if !plant.safeForPetDescription.isEmpty {
                                 return plant.safeForPetDescription
                             } else {
                                 return ""
@@ -104,7 +104,7 @@ struct PlantDetailView: View {
                 HStack(spacing: 20) {
                     AdditionalCards(
                         contentText: {
-                            if plant.weatherDescription.isEmpty {
+                            if !plant.weatherDescription.isEmpty {
                                 return plant.weatherDescription
                             } else {
                                 return ""
@@ -117,7 +117,7 @@ struct PlantDetailView: View {
                     
                     AdditionalCards(
                         contentText: {
-                            if plant.potSizeDescription.isEmpty {
+                            if !plant.potSizeDescription.isEmpty {
                                 return plant.potSizeDescription
                             } else {
                                 return ""
@@ -130,7 +130,7 @@ struct PlantDetailView: View {
                     
                     AdditionalCards(
                         contentText: {
-                            if plant.poisonDescription.isEmpty {
+                            if !plant.poisonDescription.isEmpty {
                                 return plant.poisonDescription
                             } else {
                                 return ""
@@ -193,7 +193,6 @@ struct PlantDetailView: View {
                             saveMode = false
                             onSave?()
                             isEditing = false
-                            randomInfos()
                             addPlant()
                         } catch {
                             print("Error fetching plant info: \(error)")
@@ -226,47 +225,13 @@ struct PlantDetailView: View {
     }
 
     func updatePlantInfo(with plantInfo: PlantInfo) {
-        plant.safeForPets = plantInfo.safeForPets
-        plant.bestSoil = plantInfo.bestSoil
-        plant.wateringInstructions = plantInfo.watering
-        plant.sunbathing = plantInfo.sunbathing
-        plant.weather = plantInfo.weather
-        plant.potSize = plantInfo.potSize
-        plant.poison = plantInfo.poison
-    }
-
-    func randomInfos() {
-        let wateringInstructionsOptions = [
-            "Keep moist between watering.\nMust not be dry between watering",
-            "Water only when the soil is dry.\nMust be dry between watering",
-            "Water when soil is half dry.\nChange water in the vase regularly."
-        ]
-
-        let idealLightOptions = [
-            "Bright light",
-            "6 or more hours of direct sunlight per day"
-        ]
-
-        let toleratedLightOptions = [
-            "Diffused",
-            "Direct sunlight",
-        ]
-
-        plant.wateringInstructions = wateringInstructionsOptions.randomElement() ?? ""
-        plant.idealLight = idealLightOptions.randomElement() ?? ""
-        plant.toleratedLight = toleratedLightOptions.randomElement() ?? ""
-    }
-
-    func updatePlant() {
-        plant.imageData = plant.imageData
-        Task {
-            do {
-                try await viewModel.save(plant: plant)
-            } catch {
-                print("* Error saving Plant *")
-                print(error)
-            }
-        }
+        plant.safeForPetDescription = plantInfo.safeForPets
+        plant.bestSoilDescription = plantInfo.bestSoil
+        plant.wateringDescription = plantInfo.watering
+        plant.sunbathingDescription = plantInfo.sunbathing
+        plant.weatherDescription = plantInfo.weather
+        plant.potSizeDescription = plantInfo.potSize
+        plant.poisonDescription = plantInfo.poison
     }
 
     func addPlant() {
@@ -287,9 +252,6 @@ struct PlantDetailView: View {
             sunbathingDescription: plant.sunbathingDescription,
             safeForPetDescription:  plant.safeForPetDescription,
             potSizeDescription: plant.potSizeDescription
-//            wateringInstructions: plant.wateringInstructions,
-//            idealLight: plant.idealLight,
-//            toleratedLight: plant.toleratedLight
         )
         Task {
             do {
@@ -301,6 +263,8 @@ struct PlantDetailView: View {
         }
     }
 }
+
+
 
 
 
