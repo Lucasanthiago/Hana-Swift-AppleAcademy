@@ -13,9 +13,11 @@ struct Instructions: View {
     var icon: String
     var iconColor: Color
     
+    
     var body: some View {
         HStack {
             Image(systemName: icon)
+                .symbolRenderingMode(.multicolor)
                 .foregroundStyle(iconColor)
                 .font(.system(size: 40).bold())
             
@@ -45,6 +47,7 @@ struct Instructions: View {
                 .shadow(color: Color.shadow.opacity(0.3),
                         radius: 5, x: 0, y: 4)
         )
+        
     }
 }
 

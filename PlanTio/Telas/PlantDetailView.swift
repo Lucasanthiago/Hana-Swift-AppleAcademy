@@ -43,16 +43,15 @@ struct PlantDetailView: View {
                 }
                 
             }
-            ScrollView(.horizontal){
-                HStack (spacing: 20){
-                    SetRemindersCards(title: "Watering Reminders", icon: "alarm.fill", cardAccentColor: .water, date: $plant.wateringTime)
-                    SetRemindersCards(title: "Sunbathing Reminders", icon: "alarm.fill", cardAccentColor: .sun, date: $plant.sunTime)
+            
+                VStack (spacing: 20){
+                    SetRemindersCards(title: "Watering\nReminders", icon: "drop.circle.fill", cardAccentColor: .water, date: $plant.wateringTime)
+                    SetRemindersCards(title: "Sunbathing\nReminders", icon: "sun.max.circle.fill", cardAccentColor: .orange, date: $plant.sunTime)
                     
                 }
                 .padding()
                 .disabled(isEditing == false)
-            }
-            .scrollIndicators(.hidden)
+            
             
             ScrollView(.horizontal){
                 HStack(spacing: 20) {
@@ -65,7 +64,7 @@ struct PlantDetailView: View {
                             }
                         }(),
                         title: "Watering",
-                        icon: "drop.circle.fill", iconColor: .water
+                        icon: "drop.fill", iconColor: .water
                     )
                     .disabled(isEditing == false)
                     
@@ -91,7 +90,7 @@ struct PlantDetailView: View {
                             }
                         }(),
                         title: "Best soil",
-                        icon: "leaf.circle.fill", iconColor: .soil
+                        icon: "tree.fill", iconColor: .soil
                     )
                     .disabled(isEditing == false)
                     
@@ -104,7 +103,7 @@ struct PlantDetailView: View {
                             }
                         }(),
                         title: "Safe for Pets",
-                        icon: "pawprint.circle.fill", iconColor: .pinkButton
+                        icon: "pawprint.fill", iconColor: .pinkButton
                     )
                     .disabled(isEditing == false)
                 }
@@ -157,7 +156,11 @@ struct PlantDetailView: View {
             }
             .scrollIndicators(.hidden)
             
+            Rectangle()
+                .frame(height: 150)
+                .foregroundStyle(Color.clear)
         }
+        .scrollIndicators(.hidden)
         .background {
             if !store.hasPurchasedHanaPlus {
                 LinearGradient(

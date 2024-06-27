@@ -20,12 +20,12 @@ struct SetRemindersCards: View {
         
         
         
-            HStack {
-                Image(systemName: icon)
-                    .font(.largeTitle)
-                    .foregroundStyle(cardAccentColor)
-                
-                VStack (alignment: .leading){
+           
+        HStack (spacing: 20){
+                    Image(systemName: icon)
+                        .font(.largeTitle)
+                        .foregroundStyle(cardAccentColor)
+                    
                     Text(title)
                         .font(.custom("Quicksand", size: 20, relativeTo: .title3))
                         .bold()
@@ -43,13 +43,13 @@ struct SetRemindersCards: View {
                             .labelsHidden()
                             .fixedSize()
                         
-                        Spacer()
+//                        Spacer()
                         
-                        Toggle(isOn: $isToggled) {
-                            Text("Toggle Notifications")
-                        }
-                        .tint(Color(cardAccentColor))
-                        .labelsHidden()
+//                        Toggle(isOn: $isToggled) {
+//                            Text("Toggle Notifications")
+//                        }
+//                        .tint(Color(cardAccentColor))
+//                        .labelsHidden()
                         //                .onChange(of: isToggled) { newValue in
                         //                    Task {
                         //                        if alarmType == .watering {
@@ -61,19 +61,20 @@ struct SetRemindersCards: View {
                     }
                     
                 }
-                
+                .padding()
+                .background(
+                    RoundedRectangle(cornerRadius: 20)
+                        .foregroundStyle(Color("Cards"))
+                        .shadow(color: Color.shadow.opacity(0.3), radius: 5, x: 0, y: 4)
+                    )
             }
-            .padding()
-            .background(
-                RoundedRectangle(cornerRadius: 20)
-                    .foregroundStyle(Color("Cards"))
-                    .shadow(color: Color.shadow.opacity(0.3), radius: 5, x: 0, y: 4)
-            )
+            
+            
             
             
             
         }
-    }
+    
     
     
     
