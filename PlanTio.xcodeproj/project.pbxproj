@@ -75,6 +75,7 @@
 		C4A47CA42C052B4F004D6FB8 /* RiveRuntime in Frameworks */ = {isa = PBXBuildFile; productRef = C4A47CA32C052B4F004D6FB8 /* RiveRuntime */; };
 		C4A47CBD2C0620DA004D6FB8 /* RiveAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A47CBC2C0620DA004D6FB8 /* RiveAnimationView.swift */; };
 		C4EE43C52C2A0993002E78CC /* Instructions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4EE43C42C2A0993002E78CC /* Instructions.swift */; };
+		C4EE43CD2C2DDE6F002E78CC /* AdditionalCards.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4EE43CC2C2DDE6F002E78CC /* AdditionalCards.swift */; };
 		C4FD0CCD2C110623002CF955 /* SplashArt.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4FD0CCC2C110623002CF955 /* SplashArt.swift */; };
 /* End PBXBuildFile section */
 
@@ -183,6 +184,7 @@
 		BB715CBC2BEE6300005481A7 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		C4A47CBC2C0620DA004D6FB8 /* RiveAnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RiveAnimationView.swift; sourceTree = "<group>"; };
 		C4EE43C42C2A0993002E78CC /* Instructions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Instructions.swift; sourceTree = "<group>"; };
+		C4EE43CC2C2DDE6F002E78CC /* AdditionalCards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdditionalCards.swift; sourceTree = "<group>"; };
 		C4FD0CCC2C110623002CF955 /* SplashArt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashArt.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -234,6 +236,7 @@
 				769580D82BF2805D00FDB377 /* IdealAndToleratedLight.swift */,
 				769580DA2BF2806A00FDB377 /* FrameImage.swift */,
 				769580E52BF3E84500FDB377 /* ReminderCard.swift */,
+				C4EE43CC2C2DDE6F002E78CC /* AdditionalCards.swift */,
 				C4A47CBC2C0620DA004D6FB8 /* RiveAnimationView.swift */,
 				762189A82BF54E8800C80C62 /* ListPlantCard.swift */,
 				07C14B582C07C14D00931DAE /* WidgetPlantView.swift */,
@@ -644,6 +647,7 @@
 				76BA2A8F2BE01C390038E2AD /* AlarmView.swift in Sources */,
 				76BA2A832BE01B490038E2AD /* PlantViewModel.swift in Sources */,
 				BB715CBD2BEE6300005481A7 /* Extensions.swift in Sources */,
+				C4EE43CD2C2DDE6F002E78CC /* AdditionalCards.swift in Sources */,
 				76BA2A992BE16B1A0038E2AD /* ImagePicker.swift in Sources */,
 				07C14B592C07C14D00931DAE /* WidgetPlantView.swift in Sources */,
 				2E68C0AD2C0EDD2E0002B3B4 /* LimitReachedView.swift in Sources */,
