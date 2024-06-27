@@ -44,6 +44,17 @@ struct PlantDetailView: View {
                 
             }
             ScrollView(.horizontal){
+                HStack (spacing: 20){
+                    SetRemindersCards(title: "Watering Reminders", icon: "alarm.fill", cardAccentColor: .water, date: $plant.wateringTime)
+                    SetRemindersCards(title: "Sunbathing Reminders", icon: "alarm.fill", cardAccentColor: .sun, date: $plant.sunTime)
+                    
+                }
+                .padding()
+                .disabled(isEditing == false)
+            }
+            .scrollIndicators(.hidden)
+            
+            ScrollView(.horizontal){
                 HStack(spacing: 20) {
                     Instructions(
                         contentText: {
