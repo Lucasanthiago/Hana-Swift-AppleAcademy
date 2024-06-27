@@ -32,7 +32,7 @@ struct AdditionalCards: View {
         .background(
             RoundedRectangle(cornerRadius: 20)
                 .foregroundStyle(Color("Cards"))
-                .shadow(color: Color.black.opacity(0.3), radius: 5, x: 0, y: 4)
+                .shadow(color: Color.shadow.opacity(0.3), radius: 5, x: 0, y: 4)
         )
     }
 }

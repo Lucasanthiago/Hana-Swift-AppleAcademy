@@ -101,6 +101,8 @@ struct PlantDetailView: View {
                 }
                 .padding(.init(top: 20, leading: 10, bottom: 20, trailing: 0))
             }
+            .scrollIndicators(.hidden)
+            
             ScrollView(.horizontal){
                 HStack(spacing: 20) {
                     AdditionalCards(
@@ -144,35 +146,34 @@ struct PlantDetailView: View {
                 }
                 .padding(.init(top: 20, leading: 10, bottom: 20, trailing: 0))
             }
-            .frame(height: .infinity) // Esconde a barra de rolagem horizontal
+            .scrollIndicators(.hidden)
 
         }
-      
-//        .background {
-//            if !store.hasPurchasedHanaPlus {
-//                LinearGradient(
-//                    stops: [
-//                        Gradient.Stop(color: .background, location: 0)
-//                    ],
-//                    startPoint: .top,
-//                    endPoint: .bottom
-//                )
-//                .ignoresSafeArea()
-//
-//            }
-//            else{
-//                LinearGradient(
-//                    stops: [
-//                        Gradient.Stop(color: .hanaPlusGradient1, location: -0.3),
-//                        Gradient.Stop(color: .hanaPlusGradient2, location: 0.56),
-//                        Gradient.Stop(color: .hanaPlusGradient3, location: 1.4)
-//                    ],
-//                    startPoint: .topLeading,
-//                    endPoint: .bottomTrailing
-//                )
-//                .ignoresSafeArea()
-//            }
-//        }
+        .background {
+            if !store.hasPurchasedHanaPlus {
+                LinearGradient(
+                    stops: [
+                        Gradient.Stop(color: .background, location: 0)
+                    ],
+                    startPoint: .top,
+                    endPoint: .bottom
+                )
+                .ignoresSafeArea()
+
+            }
+            else{
+                LinearGradient(
+                    stops: [
+                        Gradient.Stop(color: .hanaPlusGradient1, location: -0.3),
+                        Gradient.Stop(color: .hanaPlusGradient2, location: 0.56),
+                        Gradient.Stop(color: .hanaPlusGradient3, location: 1.4)
+                    ],
+                    startPoint: .topLeading,
+                    endPoint: .bottomTrailing
+                )
+                .ignoresSafeArea()
+            }
+        }
         .ignoresSafeArea()
         .overlay (alignment: .bottomTrailing){
             if saveMode == false {
