@@ -9,9 +9,8 @@ struct FrameImage: View {
         if let data = imageData,
            let image = UIImage(data: data) {
             return image
-        } else {
-            return UIImage(named: "AddPicture")!
         }
+        return UIImage(named: "AddPicture")!
     }
     
     var aspectRatio: CGFloat
@@ -24,10 +23,13 @@ struct FrameImage: View {
     @State private var itemSelect: PhotosPickerItem?
     
     var body: some View {
+        
         Image(uiImage: screenImage)
             .resizable()
-            .scaledToFill()
-            .frame(alignment: .center)
+            .aspectRatio(contentMode: .fill)
+            .frame(height: 300)
+            .frame(maxWidth: UIScreen.main.bounds.width)
+            .clipped()
             .onTapGesture {
                 showingActionSheet = true
             }
