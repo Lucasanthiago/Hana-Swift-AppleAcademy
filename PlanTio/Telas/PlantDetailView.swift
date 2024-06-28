@@ -18,7 +18,7 @@ struct PlantDetailView: View {
             VStack {
                 FrameImage(imageData: $plant.imageData, plantType: $plant.type, aspectRatio: 10)
                     .disabled(isEditing == false)
-                    .frame(width: 393, height: 293)
+//                    .frame(width: 393, height: 293)
                 
                 TextField("Nickname", text: $plant.name)
                     .font(.custom("Quicksand", size: 17, relativeTo: .body))
@@ -198,6 +198,7 @@ struct PlantDetailView: View {
                 }
             }
         }
+        .toolbarTitleDisplayMode(.inline)
         .toolbar(.hidden, for: .tabBar)
         .safeAreaInset(edge: .bottom) {
             if saveMode == true {

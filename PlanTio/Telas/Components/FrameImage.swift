@@ -69,6 +69,11 @@ struct FrameImage: View {
         }
         
         let apiKey = "***CHAVE-REMOVIDA***"
+        
+        // gabi key = ***CHAVE-REMOVIDA*** ( app store )
+        //lucas key = ***CHAVE-REMOVIDA*** ( build de testes )
+        
+        
         let url = URL(string: "https://api.plant.id/v2/identify")!
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
