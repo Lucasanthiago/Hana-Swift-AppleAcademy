@@ -2,6 +2,12 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>PLANT_ID_API_KEY</key>
+	<string>$(PLANT_ID_API_KEY)</string>
+	<key>AIXPLAIN_TEAM_API_KEY</key>
+	<string>$(AIXPLAIN_TEAM_API_KEY)</string>
+	<key>POSTHOG_API_KEY</key>
+	<string>$(POSTHOG_API_KEY)</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>Quicksand-VariableFont_wght.ttf</string>

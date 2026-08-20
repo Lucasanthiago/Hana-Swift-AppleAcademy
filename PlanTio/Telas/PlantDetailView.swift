@@ -337,7 +337,7 @@ final class PlantInfoManager: ObservableObject {
     }
     
     func configureAPIKey() {
-        AiXplainKit.shared.keyManager.TEAM_API_KEY = "***CHAVE-REMOVIDA***"
+        AiXplainKit.shared.keyManager.TEAM_API_KEY = AppSecrets.aiXplainTeam
     }
     
     func fetchModels() async {

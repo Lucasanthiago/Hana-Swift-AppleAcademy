@@ -90,3 +90,7 @@ fastlane/test_output
 iOSInjectionProject/
 
 .DS_Store
+
+# Local API keys - never commit. Copy Config/Secrets.example.xcconfig
+# to Config/Secrets.xcconfig and fill it in.
+Config/Secrets.xcconfig

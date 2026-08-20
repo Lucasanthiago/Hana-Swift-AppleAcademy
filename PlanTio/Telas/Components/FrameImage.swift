@@ -70,10 +70,7 @@ struct FrameImage: View {
             return
         }
         
-        let apiKey = "***CHAVE-REMOVIDA***"
-        
-        // gabi key = ***CHAVE-REMOVIDA*** ( app store )
-        //lucas key = ***CHAVE-REMOVIDA*** ( build de testes )
+        let apiKey = AppSecrets.plantID
         
         
         let url = URL(string: "https://api.plant.id/v2/identify")!
