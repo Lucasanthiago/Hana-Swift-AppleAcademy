@@ -1,13 +1,17 @@
-# Hana
+# Hana: Plant Care
 
 App iOS de cuidado de plantas domésticas: o usuário fotografa uma planta, o app
 identifica a espécie e gera as instruções de cuidado correspondentes. A partir
 daí ele registra rega e banho de sol, recebe notificações locais nos horários
 configurados e acompanha o estado das plantas por um widget na tela de início.
 
-Publicado na App Store como **Hana**. O alvo do Xcode ainda se chama `PlanTio`,
-que era o nome do projeto antes do rebranding — os dois nomes convivem no
-código.
+[**Baixar na App Store**](https://apps.apple.com/br/app/hana-plant-care/id6502200432) ·
+[**Página do projeto**](https://apps.ecoa.puc-rio.br/hana/)
+
+Publicado na App Store sob a conta da Fundação Padre Leonel Franca (PUC-Rio).
+Gratuito, com uma compra única opcional ("Hana Plus"). O alvo do Xcode ainda se
+chama `PlanTio`, que era o nome do projeto antes do rebranding — os dois nomes
+convivem no código.
 
 ---
 
